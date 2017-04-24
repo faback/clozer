@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F241EAE5E6B003721CE /* AppDelegate.swift */; };
+		43B85F271EAE5E6B003721CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F261EAE5E6B003721CE /* ViewController.swift */; };
+		43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F281EAE5E6B003721CE /* Main.storyboard */; };
+		43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2B1EAE5E6B003721CE /* Assets.xcassets */; };
+		43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */; };
+		43B85F3A1EAE5E6B003721CE /* ClozrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F391EAE5E6B003721CE /* ClozrTests.swift */; };
+		43B85F451EAE5E6B003721CE /* ClozrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F441EAE5E6B003721CE /* ClozrUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43B85F361EAE5E6B003721CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43B85F191EAE5E6B003721CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43B85F201EAE5E6B003721CE;
+			remoteInfo = Clozr;
+		};
+		43B85F411EAE5E6B003721CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43B85F191EAE5E6B003721CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43B85F201EAE5E6B003721CE;
+			remoteInfo = Clozr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43B85F211EAE5E6B003721CE /* Clozr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clozr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B85F241EAE5E6B003721CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		43B85F261EAE5E6B003721CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		43B85F291EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43B85F2B1EAE5E6B003721CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43B85F2E1EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		43B85F301EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B85F351EAE5E6B003721CE /* ClozrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClozrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B85F391EAE5E6B003721CE /* ClozrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClozrTests.swift; sourceTree = "<group>"; };
+		43B85F3B1EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClozrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B85F441EAE5E6B003721CE /* ClozrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClozrUITests.swift; sourceTree = "<group>"; };
+		43B85F461EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43B85F1E1EAE5E6B003721CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F321EAE5E6B003721CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F3D1EAE5E6B003721CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43B85F181EAE5E6B003721CE = {
+			isa = PBXGroup;
+			children = (
+				43B85F231EAE5E6B003721CE /* Clozr */,
+				43B85F381EAE5E6B003721CE /* ClozrTests */,
+				43B85F431EAE5E6B003721CE /* ClozrUITests */,
+				43B85F221EAE5E6B003721CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43B85F221EAE5E6B003721CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43B85F211EAE5E6B003721CE /* Clozr.app */,
+				43B85F351EAE5E6B003721CE /* ClozrTests.xctest */,
+				43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43B85F231EAE5E6B003721CE /* Clozr */ = {
+			isa = PBXGroup;
+			children = (
+				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
+				43B85F261EAE5E6B003721CE /* ViewController.swift */,
+				43B85F281EAE5E6B003721CE /* Main.storyboard */,
+				43B85F2B1EAE5E6B003721CE /* Assets.xcassets */,
+				43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */,
+				43B85F301EAE5E6B003721CE /* Info.plist */,
+			);
+			path = Clozr;
+			sourceTree = "<group>";
+		};
+		43B85F381EAE5E6B003721CE /* ClozrTests */ = {
+			isa = PBXGroup;
+			children = (
+				43B85F391EAE5E6B003721CE /* ClozrTests.swift */,
+				43B85F3B1EAE5E6B003721CE /* Info.plist */,
+			);
+			path = ClozrTests;
+			sourceTree = "<group>";
+		};
+		43B85F431EAE5E6B003721CE /* ClozrUITests */ = {
+			isa = PBXGroup;
+			children = (
+				43B85F441EAE5E6B003721CE /* ClozrUITests.swift */,
+				43B85F461EAE5E6B003721CE /* Info.plist */,
+			);
+			path = ClozrUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43B85F201EAE5E6B003721CE /* Clozr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43B85F491EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "Clozr" */;
+			buildPhases = (
+				43B85F1D1EAE5E6B003721CE /* Sources */,
+				43B85F1E1EAE5E6B003721CE /* Frameworks */,
+				43B85F1F1EAE5E6B003721CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clozr;
+			productName = Clozr;
+			productReference = 43B85F211EAE5E6B003721CE /* Clozr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43B85F341EAE5E6B003721CE /* ClozrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43B85F4C1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrTests" */;
+			buildPhases = (
+				43B85F311EAE5E6B003721CE /* Sources */,
+				43B85F321EAE5E6B003721CE /* Frameworks */,
+				43B85F331EAE5E6B003721CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43B85F371EAE5E6B003721CE /* PBXTargetDependency */,
+			);
+			name = ClozrTests;
+			productName = ClozrTests;
+			productReference = 43B85F351EAE5E6B003721CE /* ClozrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		43B85F3F1EAE5E6B003721CE /* ClozrUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43B85F4F1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrUITests" */;
+			buildPhases = (
+				43B85F3C1EAE5E6B003721CE /* Sources */,
+				43B85F3D1EAE5E6B003721CE /* Frameworks */,
+				43B85F3E1EAE5E6B003721CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43B85F421EAE5E6B003721CE /* PBXTargetDependency */,
+			);
+			name = ClozrUITests;
+			productName = ClozrUITests;
+			productReference = 43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43B85F191EAE5E6B003721CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Faback;
+				TargetAttributes = {
+					43B85F201EAE5E6B003721CE = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+					43B85F341EAE5E6B003721CE = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 43B85F201EAE5E6B003721CE;
+					};
+					43B85F3F1EAE5E6B003721CE = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 43B85F201EAE5E6B003721CE;
+					};
+				};
+			};
+			buildConfigurationList = 43B85F1C1EAE5E6B003721CE /* Build configuration list for PBXProject "Clozr" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 43B85F181EAE5E6B003721CE;
+			productRefGroup = 43B85F221EAE5E6B003721CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43B85F201EAE5E6B003721CE /* Clozr */,
+				43B85F341EAE5E6B003721CE /* ClozrTests */,
+				43B85F3F1EAE5E6B003721CE /* ClozrUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43B85F1F1EAE5E6B003721CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
+				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
+				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F331EAE5E6B003721CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F3E1EAE5E6B003721CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43B85F1D1EAE5E6B003721CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43B85F271EAE5E6B003721CE /* ViewController.swift in Sources */,
+				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F311EAE5E6B003721CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43B85F3A1EAE5E6B003721CE /* ClozrTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43B85F3C1EAE5E6B003721CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43B85F451EAE5E6B003721CE /* ClozrUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43B85F371EAE5E6B003721CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43B85F201EAE5E6B003721CE /* Clozr */;
+			targetProxy = 43B85F361EAE5E6B003721CE /* PBXContainerItemProxy */;
+		};
+		43B85F421EAE5E6B003721CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43B85F201EAE5E6B003721CE /* Clozr */;
+			targetProxy = 43B85F411EAE5E6B003721CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43B85F281EAE5E6B003721CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43B85F291EAE5E6B003721CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43B85F2E1EAE5E6B003721CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43B85F471EAE5E6B003721CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43B85F481EAE5E6B003721CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43B85F4A1EAE5E6B003721CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Clozr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		43B85F4B1EAE5E6B003721CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Clozr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		43B85F4D1EAE5E6B003721CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ClozrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.ClozrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clozr.app/Clozr";
+			};
+			name = Debug;
+		};
+		43B85F4E1EAE5E6B003721CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ClozrTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.ClozrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clozr.app/Clozr";
+			};
+			name = Release;
+		};
+		43B85F501EAE5E6B003721CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ClozrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.ClozrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Clozr;
+			};
+			name = Debug;
+		};
+		43B85F511EAE5E6B003721CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ClozrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faback.ClozrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Clozr;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43B85F1C1EAE5E6B003721CE /* Build configuration list for PBXProject "Clozr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43B85F471EAE5E6B003721CE /* Debug */,
+				43B85F481EAE5E6B003721CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43B85F491EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "Clozr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43B85F4A1EAE5E6B003721CE /* Debug */,
+				43B85F4B1EAE5E6B003721CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		43B85F4C1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43B85F4D1EAE5E6B003721CE /* Debug */,
+				43B85F4E1EAE5E6B003721CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		43B85F4F1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43B85F501EAE5E6B003721CE /* Debug */,
+				43B85F511EAE5E6B003721CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43B85F191EAE5E6B003721CE /* Project object */;
+}
