@@ -1,9 +1,13 @@
-#clozr
+# clozr
 
 Clozr keeps you and your friends from different circles **meet often** on casual occasions to watch/play a movie/tv show or a game at home/theater or courts/parks/stadium.
 
 It focuses on providing an app to manage these casual meetups within your clozr groups.
 App will have **before** , **during** , **after** features to assist a meet.
+
+## UX Designs.
+
+<img src='https://github.com/faback/clozer/blob/master/Design/screenflow-1/login_events_moments_settings.png' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ## User registration and login 
