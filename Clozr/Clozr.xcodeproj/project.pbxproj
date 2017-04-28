@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F241EAE5E6B003721CE /* AppDelegate.swift */; };
-		43B85F271EAE5E6B003721CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F261EAE5E6B003721CE /* ViewController.swift */; };
 		43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F281EAE5E6B003721CE /* Main.storyboard */; };
 		43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2B1EAE5E6B003721CE /* Assets.xcassets */; };
 		43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */; };
 		43B85F3A1EAE5E6B003721CE /* ClozrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F391EAE5E6B003721CE /* ClozrTests.swift */; };
 		43B85F451EAE5E6B003721CE /* ClozrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F441EAE5E6B003721CE /* ClozrUITests.swift */; };
+		8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977021EB2FF330076992B /* LoginScreenViewController.swift */; };
+		8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */; };
+		8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */; };
+		8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */; };
+		8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59770B1EB2FFE60076992B /* MapsViewController.swift */; };
+		8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59770D1EB300110076992B /* MessagesViewController.swift */; };
+		8F5977111EB303410076992B /* TabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5977101EB303410076992B /* TabBar.xib */; };
+		8F5977131EB312850076992B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977121EB312850076992B /* TabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,6 @@
 /* Begin PBXFileReference section */
 		43B85F211EAE5E6B003721CE /* Clozr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clozr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F241EAE5E6B003721CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43B85F261EAE5E6B003721CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43B85F291EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43B85F2B1EAE5E6B003721CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B85F2E1EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,14 @@
 		43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClozrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F441EAE5E6B003721CE /* ClozrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClozrUITests.swift; sourceTree = "<group>"; };
 		43B85F461EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F5977021EB2FF330076992B /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginScreenViewController.swift; path = ../LoginScreenViewController.swift; sourceTree = "<group>"; };
+		8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveEventsViewController.swift; path = ../LiveEventsViewController.swift; sourceTree = "<group>"; };
+		8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedEventsViewController.swift; sourceTree = "<group>"; };
+		8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		8F59770B1EB2FFE60076992B /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		8F59770D1EB300110076992B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		8F5977101EB303410076992B /* TabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBar.xib; sourceTree = "<group>"; };
+		8F5977121EB312850076992B /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +111,9 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				8F59770F1EB3026D0076992B /* Nibs */,
+				8F5977041EB2FF6C0076992B /* ViewControllers */,
 				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
-				43B85F261EAE5E6B003721CE /* ViewController.swift */,
 				43B85F281EAE5E6B003721CE /* Main.storyboard */,
 				43B85F2B1EAE5E6B003721CE /* Assets.xcassets */,
 				43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */,
@@ -123,6 +138,28 @@
 				43B85F461EAE5E6B003721CE /* Info.plist */,
 			);
 			path = ClozrUITests;
+			sourceTree = "<group>";
+		};
+		8F5977041EB2FF6C0076992B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F5977021EB2FF330076992B /* LoginScreenViewController.swift */,
+				8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */,
+				8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */,
+				8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */,
+				8F59770B1EB2FFE60076992B /* MapsViewController.swift */,
+				8F59770D1EB300110076992B /* MessagesViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8F59770F1EB3026D0076992B /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				8F5977101EB303410076992B /* TabBar.xib */,
+				8F5977121EB312850076992B /* TabBarView.swift */,
+			);
+			name = Nibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +272,7 @@
 				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
+				8F5977111EB303410076992B /* TabBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B85F271EAE5E6B003721CE /* ViewController.swift in Sources */,
+				8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */,
+				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
+				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
+				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
+				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
+				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
+				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +551,7 @@
 				43B85F4B1EAE5E6B003721CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43B85F4C1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +560,7 @@
 				43B85F4E1EAE5E6B003721CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43B85F4F1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +569,7 @@
 				43B85F511EAE5E6B003721CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,26 +1,184 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vym-Oh-Ygh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Login Screen View Controller-->
+        <scene sceneID="GHh-GC-V6o">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iHr-tX-hnO" customClass="LoginScreenViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="fJp-YB-hUi"/>
+                        <viewControllerLayoutGuide type="bottom" id="fsO-nF-b9O"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Bxt-zd-Wsl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ull-2Y-obf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-426" y="-317"/>
+        </scene>
+        <!--Suggested Events View Controller-->
+        <scene sceneID="Yoc-h7-GOE">
+            <objects>
+                <viewController id="z4I-l9-TKH" customClass="SuggestedEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fIw-6v-fiq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bvv-1r-ywb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G3f-8T-EQ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l47-3c-tTv" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="YSp-I3-Clh"/>
+                                    <constraint firstAttribute="height" constant="50" id="w35-Ux-Crf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="l47-3c-tTv" secondAttribute="trailing" id="FMn-3P-YKm"/>
+                            <constraint firstItem="l47-3c-tTv" firstAttribute="leading" secondItem="G3f-8T-EQ3" secondAttribute="leading" id="oMb-i1-c8n"/>
+                            <constraint firstItem="Bvv-1r-ywb" firstAttribute="top" secondItem="l47-3c-tTv" secondAttribute="bottom" id="q5F-5F-vt8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gow-OI-5Wk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="-317"/>
+        </scene>
+        <!--Live Events View Controller-->
+        <scene sceneID="efu-JB-KAn">
+            <objects>
+                <viewController id="NCQ-fP-Svm" customClass="LiveEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KTV-aV-k07"/>
+                        <viewControllerLayoutGuide type="bottom" id="6zx-C3-bLe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JsK-3U-TKL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z7-dD-JL4" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="jzf-mp-oI2"/>
+                                    <constraint firstAttribute="height" constant="50" id="tgm-sU-T44"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Z7-dD-JL4" firstAttribute="leading" secondItem="JsK-3U-TKL" secondAttribute="leading" id="AaT-5M-ulc"/>
+                            <constraint firstItem="6zx-C3-bLe" firstAttribute="top" secondItem="8Z7-dD-JL4" secondAttribute="bottom" id="eu5-7j-6yH"/>
+                            <constraint firstAttribute="trailing" secondItem="8Z7-dD-JL4" secondAttribute="trailing" id="m9d-R1-faR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RM9-l0-nGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="-317"/>
+        </scene>
+        <!--Event Details View Controller-->
+        <scene sceneID="7fU-IJ-CHV">
+            <objects>
+                <viewController id="slD-0b-ULM" customClass="EventDetailsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xFL-ZC-9Q1"/>
+                        <viewControllerLayoutGuide type="bottom" id="IBr-0B-cIu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HbP-dc-EAg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-ll-Eh8" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PfD-bc-0Ge"/>
+                                    <constraint firstAttribute="width" constant="375" id="qGF-ts-X6o"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HPQ-ll-Eh8" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="fp7-p7-bwu"/>
+                            <constraint firstItem="IBr-0B-cIu" firstAttribute="top" secondItem="HPQ-ll-Eh8" secondAttribute="bottom" id="i0d-xG-gww"/>
+                            <constraint firstAttribute="trailing" secondItem="HPQ-ll-Eh8" secondAttribute="trailing" id="rd8-fP-33v"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6y-Av-PDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426" y="635"/>
+        </scene>
+        <!--Maps View Controller-->
+        <scene sceneID="L6N-oa-fEp">
+            <objects>
+                <viewController id="8ro-6t-RTt" customClass="MapsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZhM-nX-Zzx"/>
+                        <viewControllerLayoutGuide type="bottom" id="iFC-tU-zxF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KH5-Nd-x16">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXz-1W-iFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.79999999999995" y="634.632683658171"/>
+        </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="td4-pL-QTy">
+            <objects>
+                <viewController id="Vym-Oh-Ygh" customClass="MessagesViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UFX-BP-ZlN"/>
+                        <viewControllerLayoutGuide type="bottom" id="82B-jP-0S0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3fP-zq-nAV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2v-9T-cuh" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Rt6-DU-Hj7"/>
+                                    <constraint firstAttribute="height" constant="50" id="pEj-hA-ljF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N2v-9T-cuh" firstAttribute="leading" secondItem="3fP-zq-nAV" secondAttribute="leading" id="1M1-Hd-eFJ"/>
+                            <constraint firstItem="82B-jP-0S0" firstAttribute="top" secondItem="N2v-9T-cuh" secondAttribute="bottom" id="R7J-lk-6MU"/>
+                            <constraint firstAttribute="trailing" secondItem="N2v-9T-cuh" secondAttribute="trailing" id="s0I-LU-lR9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabBarView" destination="N2v-9T-cuh" id="z3A-k9-U4f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ezr-UC-Jll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357.5999999999999" y="634.632683658171"/>
         </scene>
     </scenes>
 </document>
