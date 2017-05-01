@@ -32,6 +32,10 @@
 		8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59770D1EB300110076992B /* MessagesViewController.swift */; };
 		8F5977111EB303410076992B /* TabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5977101EB303410076992B /* TabBar.xib */; };
 		8F5977131EB312850076992B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977121EB312850076992B /* TabBarView.swift */; };
+		8F5977151EB64FE10076992B /* EventDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5977141EB64FE10076992B /* EventDetails.xib */; };
+		8F5977171EB654390076992B /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977161EB654390076992B /* EventDetailsView.swift */; };
+		8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */; };
+		8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F59771A1EB65D3F0076992B /* FriendListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		8F59770D1EB300110076992B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		8F5977101EB303410076992B /* TabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBar.xib; sourceTree = "<group>"; };
 		8F5977121EB312850076992B /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		8F5977141EB64FE10076992B /* EventDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetails.xib; sourceTree = "<group>"; };
+		8F5977161EB654390076992B /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		8F59771A1EB65D3F0076992B /* FriendListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +207,10 @@
 			children = (
 				8F5977101EB303410076992B /* TabBar.xib */,
 				8F5977121EB312850076992B /* TabBarView.swift */,
+				8F5977141EB64FE10076992B /* EventDetails.xib */,
+				8F5977161EB654390076992B /* EventDetailsView.swift */,
+				8F59771A1EB65D3F0076992B /* FriendListCell.xib */,
+				8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -311,8 +323,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
+				8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */,
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
+				8F5977151EB64FE10076992B /* EventDetails.xib in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +359,7 @@
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
 				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
 				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
+				8F5977171EB654390076992B /* EventDetailsView.swift in Sources */,
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
 				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
@@ -355,6 +370,7 @@
 				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
+				8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
 				43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */,
 			);
