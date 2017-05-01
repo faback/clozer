@@ -17,6 +17,7 @@
 		43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD91EB6EA7E001F6B6F /* App.swift */; };
 		43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ADA1EB6EA7E001F6B6F /* Integration.swift */; };
 		43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */; };
+		43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ADF1EB6EFF1001F6B6F /* Circle.swift */; };
 		43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F241EAE5E6B003721CE /* AppDelegate.swift */; };
 		43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F281EAE5E6B003721CE /* Main.storyboard */; };
 		43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2B1EAE5E6B003721CE /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		43B02AD91EB6EA7E001F6B6F /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		43B02ADA1EB6EA7E001F6B6F /* Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integration.swift; sourceTree = "<group>"; };
 		43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		43B02ADF1EB6EFF1001F6B6F /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		43B85F211EAE5E6B003721CE /* Clozr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clozr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F241EAE5E6B003721CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B85F291EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				43B02AD31EB6E837001F6B6F /* LiveEvent.swift */,
 				43B02AC91EB6E79E001F6B6F /* Message.swift */,
 				43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */,
+				43B02ADF1EB6EFF1001F6B6F /* Circle.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
 				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
+				43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */,
 				43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */,
 				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
 				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
