@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
+		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
+		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
+		43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACF1EB6E806001F6B6F /* Settings.swift */; };
+		43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD31EB6E837001F6B6F /* LiveEvent.swift */; };
+		43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD51EB6E891001F6B6F /* EventVenue.swift */; };
+		43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */; };
+		43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD91EB6EA7E001F6B6F /* App.swift */; };
+		43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ADA1EB6EA7E001F6B6F /* Integration.swift */; };
+		43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */; };
 		43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F241EAE5E6B003721CE /* AppDelegate.swift */; };
 		43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F281EAE5E6B003721CE /* Main.storyboard */; };
 		43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2B1EAE5E6B003721CE /* Assets.xcassets */; };
@@ -41,6 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		43B02ACF1EB6E806001F6B6F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		43B02AD31EB6E837001F6B6F /* LiveEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveEvent.swift; sourceTree = "<group>"; };
+		43B02AD51EB6E891001F6B6F /* EventVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventVenue.swift; sourceTree = "<group>"; };
+		43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventChatRoom.swift; sourceTree = "<group>"; };
+		43B02AD91EB6EA7E001F6B6F /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		43B02ADA1EB6EA7E001F6B6F /* Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integration.swift; sourceTree = "<group>"; };
+		43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		43B85F211EAE5E6B003721CE /* Clozr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clozr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F241EAE5E6B003721CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B85F291EAE5E6B003721CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +108,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43B02AC71EB6E734001F6B6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43B02AD91EB6EA7E001F6B6F /* App.swift */,
+				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
+				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
+				43B02AD51EB6E891001F6B6F /* EventVenue.swift */,
+				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
+				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
+				43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */,
+				43B02AD31EB6E837001F6B6F /* LiveEvent.swift */,
+				43B02AC91EB6E79E001F6B6F /* Message.swift */,
+				43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		43B85F181EAE5E6B003721CE = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +148,7 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				43B02AC71EB6E734001F6B6F /* Model */,
 				8F59770F1EB3026D0076992B /* Nibs */,
 				8F5977041EB2FF6C0076992B /* ViewControllers */,
 				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
@@ -300,11 +338,21 @@
 				8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */,
 				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
 				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
+				43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */,
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
+				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
+				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
+				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
+				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
+				43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */,
 				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
+				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
 				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
+				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
+				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
+				43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
