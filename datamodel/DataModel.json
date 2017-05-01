@@ -1,0 +1,215 @@
+App/integrations
+
+{
+  "id" : "weqweqweqw" ,
+  "app": "Clozer",
+  "theme": "Green",
+  "version": "1.0",
+  "bundle": "com.clozer.app",
+  "integrations": [
+    {
+      "name": "TMDB",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,tvshows",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "Gruvi/IST",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,theaters",
+      "descUrl": "https://api.internationalshowtimes.com/documentation/v4/#showtimes",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "TVMedia/3Scale",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,tvsguide",
+      "descUrl": "https://developer.tvmedia.ca/",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "Yelp",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "custom,games , local",
+      "descUrl": "https://yelp.com/",
+      "expiryDate": "2017-05-01T01:50:29.939Z"
+    },
+    {
+      "name": "Facebook",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "custom,games , local",
+      "descUrl": "https://developer.facebook.com/",
+      "expiryDate": "2017-05-01T01:50:29.939Z"
+    }
+  ]
+}
+
+
+
+
+User
+
+{
+  "id" : "weqweqweqw" ,
+  "name": "Mike Kinsley",
+  "firstname": "Michael",
+  "lastname": "Kinsley",
+  "nickname": "Mike",
+  "auth": {
+    "secrettoken": "token",
+    "lastrefreshed": "2017-05-01T02:00:25.725Z",
+    "expirydate": "2017-05-01T02:00:25.725Z",
+    "lastlogin": "2017-05-01T02:00:25.725Z",
+    "": {}
+  },
+  "interests": {
+    "moviesGenres": [
+      "drama",
+      "thriller",
+      "action",
+      "horror"
+    ],
+    "sports": [
+      "pingpong",
+      "tennis",
+      "football",
+      "basketball"
+    ],
+    "tvshows": [
+      "Game of thrones",
+      "Prison Break",
+      "Lost",
+      "Five O"
+    ]
+  },
+  "homeAddress": {
+    "homeAddress": "3295 el camino real , Santa Clara , CA",
+    "city": "Santa clara",
+    "state": "California",
+    "country": "US",
+    "zip": 95051,
+    "lat": "29.3332",
+    "lon": "109.33"
+  },
+  "currentLocationDetails": {
+    "address": "3975 agnew rd. Santa Clara",
+    "lat": "29.3332",
+    "lon": "109.33"
+  },
+  "numberOfFriends": 1322,
+  "topUserConnectionsAndLocal(50max)": [
+    "user1",
+    "user2",
+    "user3",
+    "user4",
+    "user5 ."
+  ]
+}
+
+
+Circle
+
+{
+  "name": "abc",
+  "createdBy": "user1",
+  "joinedUsers": "[u1,u2,u3,u4]",
+  "invitedUsers": "[u1,u2,u3,u4,u5,u6]",
+  "belongs": true
+}
+
+Event
+{
+  "eventId": "12",
+  "eventName": "Baahubali 2",
+  "eventType": "Movie at Theater",
+  "category": "Watch:Movie",
+  "eventIntegrationSource": "TMDB",
+  "eventIntegrationSourceId": "1882883434",
+  "eventMainImageUrl": "http://img.url/223/122.png",
+  "eventVideoUrl": "http://yt.url/223/122",
+  "eventTime": "2017-05-01T02:08:44.578Z",
+  "eventVenue": [
+    {
+      "lat": "29.22",
+      "lon": "129.333",
+      "address": "883,AMC Ed , Santa Clara CA."
+    }
+  ],
+
+  "globalInterestCount" : 222
+
+}
+
+Live/Hosted Event 
+
+
+{
+  "eventRef": "222",
+  "hostedBy": "userId",
+  "numberOfInterestedFromFriends": "21",
+  "joiningUsers": [
+    "user1",
+    "user2",
+    "user3",
+    "user4"
+  ]
+}
+
+
+Settings 
+
+{
+  "settings": [],
+  "trackLocation": true,
+  "forUser": "usrid",
+  "notifications": [
+    {
+      "friendInterestInEvent": true,
+      "friendStartingtoSameEvent": false,
+      "turnOffNotifications": false
+    }
+  ]
+}
+
+
+
+
+
+
+
+ChatRoom
+
+{
+  "_id": "F2194E83-049A-4ADD-9F6A-79AB8FBA5F3C",
+  "channel_id": "F2194E83-049A-4ADD-9F6A-79AB8FBA5F3C",
+  "owners" : ["jchris"] ,
+  "members": ["jens","tran"],
+  "title": "EventTitle",
+  "type": "room"
+}
+
+Message 
+
+{
+  "_id": "DDB00A7C-936F-498A-876F-4C6F5E5756DE",
+  "author": "grampz@gmail.com",
+  "channel_id": "F2194E83-049A-4ADD-9F6A-79AB8FBA5F3C",
+  "created_at": "2013-04-11T11:34:39.876Z",
+  "markdown": "Hello",
+  "type": "chat"
+}
+
+
+
+
+

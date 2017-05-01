@@ -1,0 +1,8 @@
+{
+  "_id": "F2194E83-049A-4ADD-9F6A-79AB8FBA5F3C",
+  "channel_id": "F2194E83-049A-4ADD-9F6A-79AB8FBA5F3C",
+  "owners" : ["jchris"] ,
+  "members": ["jens","tran"],
+  "title": "EventTitle",
+  "type": "room"
+}

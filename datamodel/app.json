@@ -1,0 +1,53 @@
+{
+  "id": "weqweqweqw",
+  "app": "Clozer",
+  "theme": "Green",
+  "version": "1.0",
+  "bundle": "com.clozer.app",
+  "integrations": [
+    {
+      "name": "TMDB",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,tvshows",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "Gruvi/IST",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,theaters",
+      "descUrl": "https://api.internationalshowtimes.com/documentation/v4/#showtimes",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "TVMedia/3Scale",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "movies,tvsguide",
+      "descUrl": "https://developer.tvmedia.ca/",
+      "expiryDate": "2017-05-01T01:50:29.938Z"
+    },
+    {
+      "name": "Yelp",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "custom,games , local",
+      "descUrl": "https://yelp.com/",
+      "expiryDate": "2017-05-01T01:50:29.939Z"
+    },
+    {
+      "name": "Facebook",
+      "auth": "oauth2",
+      "clientkey": "key1",
+      "clientsecret": "secret1",
+      "servingcategory": "custom,games , local",
+      "descUrl": "https://developer.facebook.com/",
+      "expiryDate": "2017-05-01T01:50:29.939Z"
+    }
+  ]
+}

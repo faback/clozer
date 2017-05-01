@@ -1,0 +1,21 @@
+{
+  "eventId": "12",
+  "eventName": "Baahubali 2",
+  "eventType": "Movie at Theater",
+  "category": "Watch:Movie",
+  "eventIntegrationSource": "TMDB",
+  "eventIntegrationSourceId": "1882883434",
+  "eventMainImageUrl": "http://img.url/223/122.png",
+  "eventVideoUrl": "http://yt.url/223/122",
+  "eventTime": "2017-05-01T02:08:44.578Z",
+  "eventVenue": [
+    {
+      "lat": "29.22",
+      "lon": "129.333",
+      "address": "883,AMC Ed , Santa Clara CA."
+    }
+  ],
+
+  "globalInterestCount" : 222
+
+}

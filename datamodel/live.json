@@ -1,0 +1,11 @@
+{
+  "eventRef": "222",
+  "hostedBy": "userId",
+  "numberOfInterestedFromFriends": "21",
+  "joiningUsers": [
+    "user1",
+    "user2",
+    "user3",
+    "user4"
+  ]
+}

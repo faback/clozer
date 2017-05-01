@@ -1,0 +1,13 @@
+
+{
+  "settings": [],
+  "trackLocation": true,
+  "forUser": "usrid",
+  "notifications": [
+    {
+      "friendInterestInEvent": true,
+      "friendStartingtoSameEvent": false,
+      "turnOffNotifications": false
+    }
+  ]
+}
