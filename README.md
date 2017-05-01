@@ -1,13 +1,13 @@
 # clozr
 
-Clozr keeps you and your friends from different circles **meet often** on casual occasions to watch/play a movie/tv show or a game at home/theater or courts/parks/stadium.
+Clozr keeps you and your friends from different circles **meet often** on casual occasions to watch/play/catchup show or a game at home/theater or courts/parks/stadium or just for coffee/shopping.
 
-It focuses on providing an app to manage these casual meetups within your clozr groups.
+It focuses on providing an app to manage these casual catchups within your clozr groups.
 App will have **before** , **during** , **after** features to assist a meet.
 
 ## UX Designs.
 
-<img src='https://github.com/faback/clozer/blob/master/Design/screenflow-1/login_events_moments_settings.png' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/faback/clozer/blob/master/Design/clozr_apr30.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ## User registration and login 
@@ -26,9 +26,7 @@ App will have **before** , **during** , **after** features to assist a meet.
 
 ## integrations
 
-1. Required : Movie/TV/Sport schedules from imdb/some other data source.
-2. Locally :  Some partner aggregation. (eventbrite/some other data source like fb).
-3. Food : Uber eats integration.
+1. Required : Movie/TV/Sport schedules and local businesses = TMDB/Gruvi/Yelp/EventBrite.
 
 
 ### BEFORE MEET.
@@ -59,26 +57,26 @@ App will have **before** , **during** , **after** features to assist a meet.
 
 ## Watch/Enjoy
 
-1. Required : Take pics/videos/memes. 
-2. Share - comments to twitter/fb/reddit.
+1. Optional : Take pics/videos/memes. 
+2. Optional - comments to twitter/fb/reddit.
 
 
 ### POST MEET
 
-1. Required : Brief stats of meet across globally.
-2. Required : Any payment sharing/brief budgeting.
-3. Required : Share each others - media within group or comments/discussions on twitter/fb/instagram.  Have it public/private
+1. Optional : Brief stats of meet across globally.
+2. Optional : Any payment sharing/brief budgeting.
+3. Optional : Share each others - media within group or comments/discussions on twitter/fb/instagram.  Have it public/private
 
 
 ## Settings/Filters/Analytics
 
-1. Required : User can set his preferences on games or movie interests - nearby or zip. 
-1. Required : Food or drinks or other interests during a meet.
+1. Required : User can set his preferences on notifications/locations.
 2. Required : User will know amongst his friends who are interested in similar movie/games.
-3. Buzz - meets happening for movie/show/game through out world.
+99. Buzz - meets happening for movie/show/game through out world.
+100. Optional : Food or drinks or other interests during a meet.
 
 
-Clozr focuses on making a meet as easy as 3 taps once the user have had friends/groups/meetpoints in app , with 
+Clozr focuses on making a meet as easy as 3 taps once the user have had friends/groups/meetpoints in app.
 
 
 
