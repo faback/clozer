@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8577D1EA1AD781F8CF4999 /* Pods_ClozrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */; };
+		1163A7FF238771C049C778B1 /* Pods_Clozr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B874010EADF68645F307E /* Pods_Clozr.framework */; };
+		375964AF1EB9953900D592AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375964AE1EB9953900D592AA /* MapKit.framework */; };
+		375964B11EBA1BCF00D592AA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964B01EBA1BCF00D592AA /* Business.swift */; };
+		375964BA1EBA21C600D592AA /* BusinessTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964B81EBA21C600D592AA /* BusinessTableCell.swift */; };
+		375964BB1EBA21C600D592AA /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375964B91EBA21C600D592AA /* CustomCell.xib */; };
+		375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964BC1EBA276100D592AA /* ListBusinessView.swift */; };
+		375964BF1EBA277A00D592AA /* ListBusinessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375964BE1EBA277A00D592AA /* ListBusinessView.xib */; };
+		375964C11EBA2F4200D592AA /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964C01EBA2F4200D592AA /* PinAnnotation.swift */; };
+		375964C31EBA30B400D592AA /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964C21EBA30B400D592AA /* BusinessViewController.swift */; };
+		375964C61EBA6EAD00D592AA /* FriendTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964C41EBA6EAD00D592AA /* FriendTableCell.swift */; };
+		375964C71EBA6EAD00D592AA /* FriendTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375964C51EBA6EAD00D592AA /* FriendTableCell.xib */; };
+		375964C91EBA70A100D592AA /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964C81EBA70A100D592AA /* CreateEventView.swift */; };
+		375964CB1EBA70AE00D592AA /* CreateEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375964CA1EBA70AE00D592AA /* CreateEventView.xib */; };
+		375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */; };
+		375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CD1EBBEA5300D592AA /* DateTimePicker.swift */; };
+		375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */; };
+		375964D61EBD13F800D592AA /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964D51EBD13F800D592AA /* YelpClient.swift */; };
 		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
 		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
@@ -36,6 +54,7 @@
 		8F5977171EB654390076992B /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977161EB654390076992B /* EventDetailsView.swift */; };
 		8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */; };
 		8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F59771A1EB65D3F0076992B /* FriendListCell.xib */; };
+		C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +75,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClozrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		375964AE1EB9953900D592AA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		375964B01EBA1BCF00D592AA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		375964B81EBA21C600D592AA /* BusinessTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableCell.swift; sourceTree = "<group>"; };
+		375964B91EBA21C600D592AA /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		375964BC1EBA276100D592AA /* ListBusinessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListBusinessView.swift; sourceTree = "<group>"; };
+		375964BE1EBA277A00D592AA /* ListBusinessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListBusinessView.xib; sourceTree = "<group>"; };
+		375964C01EBA2F4200D592AA /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		375964C21EBA30B400D592AA /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		375964C41EBA6EAD00D592AA /* FriendTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableCell.swift; sourceTree = "<group>"; };
+		375964C51EBA6EAD00D592AA /* FriendTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableCell.xib; sourceTree = "<group>"; };
+		375964C81EBA70A100D592AA /* CreateEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		375964CA1EBA70AE00D592AA /* CreateEventView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventView.xib; sourceTree = "<group>"; };
+		375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		375964CD1EBBEA5300D592AA /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		375964D51EBD13F800D592AA /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -79,6 +115,10 @@
 		43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClozrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F441EAE5E6B003721CE /* ClozrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClozrUITests.swift; sourceTree = "<group>"; };
 		43B85F461EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.release.xcconfig"; sourceTree = "<group>"; };
+		53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClozrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5977021EB2FF330076992B /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginScreenViewController.swift; path = ../LoginScreenViewController.swift; sourceTree = "<group>"; };
 		8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveEventsViewController.swift; path = ../LiveEventsViewController.swift; sourceTree = "<group>"; };
 		8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedEventsViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +131,10 @@
 		8F5977161EB654390076992B /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F59771A1EB65D3F0076992B /* FriendListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
+		99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD8B874010EADF68645F307E /* Pods_Clozr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clozr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.debug.xcconfig"; sourceTree = "<group>"; };
+		EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375964AF1EB9953900D592AA /* MapKit.framework in Frameworks */,
+				1163A7FF238771C049C778B1 /* Pods_Clozr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,15 +159,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8577D1EA1AD781F8CF4999 /* Pods_ClozrUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0107F26AB32191442E04FFEB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */,
+				4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */,
+				99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */,
+				53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */,
+				5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */,
+				EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		375964AD1EB9953900D592AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				375964AE1EB9953900D592AA /* MapKit.framework */,
+				AD8B874010EADF68645F307E /* Pods_Clozr.framework */,
+				24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */,
+				7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		375964D21EBCD08900D592AA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				375964D51EBD13F800D592AA /* YelpClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		43B02AC71EB6E734001F6B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */,
+				375964CD1EBBEA5300D592AA /* DateTimePicker.swift */,
+				375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */,
 				43B02AD91EB6EA7E001F6B6F /* App.swift */,
 				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
@@ -132,6 +215,8 @@
 				43B02AC91EB6E79E001F6B6F /* Message.swift */,
 				43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */,
 				43B02ADF1EB6EFF1001F6B6F /* Circle.swift */,
+				375964B01EBA1BCF00D592AA /* Business.swift */,
+				375964C01EBA2F4200D592AA /* PinAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -143,6 +228,8 @@
 				43B85F381EAE5E6B003721CE /* ClozrTests */,
 				43B85F431EAE5E6B003721CE /* ClozrUITests */,
 				43B85F221EAE5E6B003721CE /* Products */,
+				375964AD1EB9953900D592AA /* Frameworks */,
+				0107F26AB32191442E04FFEB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +246,7 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				375964D21EBCD08900D592AA /* API */,
 				43B02AC71EB6E734001F6B6F /* Model */,
 				8F59770F1EB3026D0076992B /* Nibs */,
 				8F5977041EB2FF6C0076992B /* ViewControllers */,
@@ -198,6 +286,7 @@
 				8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */,
 				8F59770B1EB2FFE60076992B /* MapsViewController.swift */,
 				8F59770D1EB300110076992B /* MessagesViewController.swift */,
+				375964C21EBA30B400D592AA /* BusinessViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +300,14 @@
 				8F5977161EB654390076992B /* EventDetailsView.swift */,
 				8F59771A1EB65D3F0076992B /* FriendListCell.xib */,
 				8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */,
+				375964B81EBA21C600D592AA /* BusinessTableCell.swift */,
+				375964B91EBA21C600D592AA /* CustomCell.xib */,
+				375964BC1EBA276100D592AA /* ListBusinessView.swift */,
+				375964BE1EBA277A00D592AA /* ListBusinessView.xib */,
+				375964C41EBA6EAD00D592AA /* FriendTableCell.swift */,
+				375964C51EBA6EAD00D592AA /* FriendTableCell.xib */,
+				375964C81EBA70A100D592AA /* CreateEventView.swift */,
+				375964CA1EBA70AE00D592AA /* CreateEventView.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -222,9 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B85F491EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "Clozr" */;
 			buildPhases = (
+				5FCD8AED2AA65795B9144E2F /* [CP] Check Pods Manifest.lock */,
 				43B85F1D1EAE5E6B003721CE /* Sources */,
 				43B85F1E1EAE5E6B003721CE /* Frameworks */,
 				43B85F1F1EAE5E6B003721CE /* Resources */,
+				848FCE2E368B379912755C00 /* [CP] Embed Pods Frameworks */,
+				95174951F50DAE2A5C774653 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,9 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B85F4C1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrTests" */;
 			buildPhases = (
+				9E2F557094189EA55D017686 /* [CP] Check Pods Manifest.lock */,
 				43B85F311EAE5E6B003721CE /* Sources */,
 				43B85F321EAE5E6B003721CE /* Frameworks */,
 				43B85F331EAE5E6B003721CE /* Resources */,
+				B37B6DA20C9DB9E0C329FB21 /* [CP] Embed Pods Frameworks */,
+				0E01A5510820B4A47F8F8DDD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,9 +360,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B85F4F1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrUITests" */;
 			buildPhases = (
+				EEE9234FB34F30924FD645F3 /* [CP] Check Pods Manifest.lock */,
 				43B85F3C1EAE5E6B003721CE /* Sources */,
 				43B85F3D1EAE5E6B003721CE /* Frameworks */,
 				43B85F3E1EAE5E6B003721CE /* Resources */,
+				1CF55FD73A6139AB127B93B2 /* [CP] Embed Pods Frameworks */,
+				AC7E3BDED58FFAC61AA1D52F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,6 +390,11 @@
 					43B85F201EAE5E6B003721CE = {
 						CreatedOnToolsVersion = 8.3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					43B85F341EAE5E6B003721CE = {
 						CreatedOnToolsVersion = 8.3;
@@ -322,12 +433,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375964BF1EBA277A00D592AA /* ListBusinessView.xib in Resources */,
 				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
 				8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */,
+				375964CB1EBA70AE00D592AA /* CreateEventView.xib in Resources */,
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
+				375964C71EBA6EAD00D592AA /* FriendTableCell.xib in Resources */,
 				8F5977151EB64FE10076992B /* EventDetails.xib in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
+				375964BB1EBA21C600D592AA /* CustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +462,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E01A5510820B4A47F8F8DDD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CF55FD73A6139AB127B93B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FCD8AED2AA65795B9144E2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		848FCE2E368B379912755C00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Clozr/Pods-Clozr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95174951F50DAE2A5C774653 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Clozr/Pods-Clozr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E2F557094189EA55D017686 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC7E3BDED58FFAC61AA1D52F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B37B6DA20C9DB9E0C329FB21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEE9234FB34F30924FD645F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43B85F1D1EAE5E6B003721CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -356,21 +609,32 @@
 				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
 				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
 				43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */,
+				375964D61EBD13F800D592AA /* YelpClient.swift in Sources */,
+				375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */,
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
 				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
+				375964C61EBA6EAD00D592AA /* FriendTableCell.swift in Sources */,
 				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
 				8F5977171EB654390076992B /* EventDetailsView.swift in Sources */,
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
 				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
+				375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */,
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
+				375964C91EBA70A100D592AA /* CreateEventView.swift in Sources */,
 				43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */,
+				375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */,
 				43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */,
 				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
+				375964BA1EBA21C600D592AA /* BusinessTableCell.swift in Sources */,
 				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
+				375964C11EBA2F4200D592AA /* PinAnnotation.swift in Sources */,
+				375964C31EBA30B400D592AA /* BusinessViewController.swift in Sources */,
 				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
+				375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */,
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
 				8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */,
+				375964B11EBA1BCF00D592AA /* Business.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
 				43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */,
 			);
@@ -524,6 +788,7 @@
 		};
 		43B85F4A1EAE5E6B003721CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Clozr/Info.plist;
@@ -536,6 +801,7 @@
 		};
 		43B85F4B1EAE5E6B003721CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Clozr/Info.plist;
@@ -548,6 +814,7 @@
 		};
 		43B85F4D1EAE5E6B003721CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -562,6 +829,7 @@
 		};
 		43B85F4E1EAE5E6B003721CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -576,6 +844,7 @@
 		};
 		43B85F501EAE5E6B003721CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ClozrUITests/Info.plist;
@@ -589,6 +858,7 @@
 		};
 		43B85F511EAE5E6B003721CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ClozrUITests/Info.plist;

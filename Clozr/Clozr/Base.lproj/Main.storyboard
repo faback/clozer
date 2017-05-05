@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-Is-gVo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fHs-xH-6Sa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,8 +14,8 @@
             <objects>
                 <viewController id="iHr-tX-hnO" customClass="LoginScreenViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fJp-YB-hUi"/>
-                        <viewControllerLayoutGuide type="bottom" id="fsO-nF-b9O"/>
+                        <viewControllerLayoutGuide type="top" id="Ye3-kC-xj2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Az1-oj-Qb8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bxt-zd-Wsl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -32,28 +32,20 @@
             <objects>
                 <viewController id="z4I-l9-TKH" customClass="SuggestedEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fIw-6v-fiq"/>
-                        <viewControllerLayoutGuide type="bottom" id="Bvv-1r-ywb"/>
+                        <viewControllerLayoutGuide type="top" id="Is3-CS-ufz"/>
+                        <viewControllerLayoutGuide type="bottom" id="QD1-pG-w8H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G3f-8T-EQ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l47-3c-tTv" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l47-3c-tTv" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="YSp-I3-Clh"/>
-                                    <constraint firstAttribute="height" constant="50" id="w35-Ux-Crf"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="l47-3c-tTv" secondAttribute="trailing" id="FMn-3P-YKm"/>
-                            <constraint firstItem="l47-3c-tTv" firstAttribute="leading" secondItem="G3f-8T-EQ3" secondAttribute="leading" id="oMb-i1-c8n"/>
-                            <constraint firstItem="Bvv-1r-ywb" firstAttribute="top" secondItem="l47-3c-tTv" secondAttribute="bottom" id="q5F-5F-vt8"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gow-OI-5Wk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,28 +57,20 @@
             <objects>
                 <viewController id="NCQ-fP-Svm" customClass="LiveEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KTV-aV-k07"/>
-                        <viewControllerLayoutGuide type="bottom" id="6zx-C3-bLe"/>
+                        <viewControllerLayoutGuide type="top" id="mJA-y0-ko0"/>
+                        <viewControllerLayoutGuide type="bottom" id="GVS-sq-iVd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JsK-3U-TKL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z7-dD-JL4" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Z7-dD-JL4" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="jzf-mp-oI2"/>
-                                    <constraint firstAttribute="height" constant="50" id="tgm-sU-T44"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8Z7-dD-JL4" firstAttribute="leading" secondItem="JsK-3U-TKL" secondAttribute="leading" id="AaT-5M-ulc"/>
-                            <constraint firstItem="6zx-C3-bLe" firstAttribute="top" secondItem="8Z7-dD-JL4" secondAttribute="bottom" id="eu5-7j-6yH"/>
-                            <constraint firstAttribute="trailing" secondItem="8Z7-dD-JL4" secondAttribute="trailing" id="m9d-R1-faR"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RM9-l0-nGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -98,50 +82,67 @@
             <objects>
                 <viewController id="slD-0b-ULM" customClass="EventDetailsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xFL-ZC-9Q1"/>
-                        <viewControllerLayoutGuide type="bottom" id="IBr-0B-cIu"/>
+                        <viewControllerLayoutGuide type="top" id="cld-lK-429"/>
+                        <viewControllerLayoutGuide type="bottom" id="ACD-5R-nXQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HbP-dc-EAg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-ll-Eh8" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-ll-Eh8" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="PfD-bc-0Ge"/>
-                                    <constraint firstAttribute="width" constant="375" id="qGF-ts-X6o"/>
-                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWJ-iv-uSu" customClass="EventDetailsView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWJ-iv-uSu" customClass="EventDetailsView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hWJ-iv-uSu" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="2GT-VU-7ae"/>
-                            <constraint firstItem="hWJ-iv-uSu" firstAttribute="top" secondItem="xFL-ZC-9Q1" secondAttribute="bottom" id="2xV-qS-ZbL"/>
-                            <constraint firstItem="HPQ-ll-Eh8" firstAttribute="top" secondItem="hWJ-iv-uSu" secondAttribute="bottom" id="7r7-iJ-Cw7"/>
-                            <constraint firstAttribute="trailing" secondItem="hWJ-iv-uSu" secondAttribute="trailing" id="Ehr-Xi-Yj6"/>
-                            <constraint firstItem="HPQ-ll-Eh8" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="fp7-p7-bwu"/>
-                            <constraint firstItem="IBr-0B-cIu" firstAttribute="top" secondItem="HPQ-ll-Eh8" secondAttribute="bottom" id="i0d-xG-gww"/>
-                            <constraint firstAttribute="trailing" secondItem="HPQ-ll-Eh8" secondAttribute="trailing" id="rd8-fP-33v"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qvs-t7-WaP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6y-Av-PDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="512.79999999999995" y="634.632683658171"/>
+            <point key="canvasLocation" x="512.80000000000007" y="634.632683658171"/>
+        </scene>
+        <!--Business View Controller-->
+        <scene sceneID="AFA-GY-ltO">
+            <objects>
+                <viewController id="fHs-xH-6Sa" customClass="BusinessViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y13-mw-Io4"/>
+                        <viewControllerLayoutGuide type="bottom" id="UNG-dM-BsL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Da-1h-lgS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nD3-6A-cnz" customClass="ListBusinessView" customModule="Clozr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="nD3-6A-cnz" id="zMF-jV-wLL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zt9-lj-XTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559.20000000000005" y="1410.0449775112445"/>
         </scene>
         <!--Maps View Controller-->
         <scene sceneID="L6N-oa-fEp">
             <objects>
                 <viewController id="8ro-6t-RTt" customClass="MapsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZhM-nX-Zzx"/>
-                        <viewControllerLayoutGuide type="bottom" id="iFC-tU-zxF"/>
+                        <viewControllerLayoutGuide type="top" id="lLs-Cu-xqc"/>
+                        <viewControllerLayoutGuide type="bottom" id="cBD-hj-bbM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KH5-Nd-x16">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -158,28 +159,20 @@
             <objects>
                 <viewController id="Vym-Oh-Ygh" customClass="MessagesViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UFX-BP-ZlN"/>
-                        <viewControllerLayoutGuide type="bottom" id="82B-jP-0S0"/>
+                        <viewControllerLayoutGuide type="top" id="IpT-Iu-JyJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="u1B-G1-Zwz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3fP-zq-nAV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2v-9T-cuh" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N2v-9T-cuh" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="Rt6-DU-Hj7"/>
-                                    <constraint firstAttribute="height" constant="50" id="pEj-hA-ljF"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="N2v-9T-cuh" firstAttribute="leading" secondItem="3fP-zq-nAV" secondAttribute="leading" id="1M1-Hd-eFJ"/>
-                            <constraint firstItem="82B-jP-0S0" firstAttribute="top" secondItem="N2v-9T-cuh" secondAttribute="bottom" id="R7J-lk-6MU"/>
-                            <constraint firstAttribute="trailing" secondItem="N2v-9T-cuh" secondAttribute="trailing" id="s0I-LU-lR9"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tabBarView" destination="N2v-9T-cuh" id="z3A-k9-U4f"/>
@@ -205,7 +198,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17G-EK-Pae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426.39999999999998" y="634.632683658171"/>
+            <point key="canvasLocation" x="-426.40000000000003" y="634.632683658171"/>
         </scene>
     </scenes>
 </document>
