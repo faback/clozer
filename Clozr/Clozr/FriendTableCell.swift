@@ -17,6 +17,9 @@ class FriendTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        friendImageView.layer.cornerRadius = 3
+        friendImageView.clipsToBounds = true
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

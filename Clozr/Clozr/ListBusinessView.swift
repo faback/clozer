@@ -9,12 +9,17 @@
 import UIKit
 import MapKit
 
+@objc protocol ListBusinessViewDelegate {
+    func performSeguetoCreateEvent(business: Business)
+}
+
 class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var businessMapView: MKMapView!
     @IBOutlet weak var businessTableView: UITableView!
     var businesses: [Business]!
+    var delegate: ListBusinessViewDelegate!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -59,6 +64,7 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
                 for business in businesses {
                     print(business.name!)
                     print(business.address!)
+                    
                 }
             }
             
@@ -68,10 +74,6 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = businessTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! BusinessTableCell
-//        cell.addressLabel.text = "10 DOwning Street"
-//        cell.distanceLabel.text = "1.25 mi"
-//        cell.openOrCloseStatusLabel.text = "Open"
-//        cell.businessNameLabel.text = "Lou Malnatis"
         cell.business = businesses[indexPath.row]
         return cell
     }
@@ -81,11 +83,16 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
     }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        if let businesses = businesses {
+            return businesses.count
+        } else {
+            return 0
+        }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 62.5
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.performSeguetoCreateEvent(business: businesses[indexPath.row])
+    }
+    
 
 }

@@ -25,6 +25,10 @@
 		375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CD1EBBEA5300D592AA /* DateTimePicker.swift */; };
 		375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */; };
 		375964D61EBD13F800D592AA /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964D51EBD13F800D592AA /* YelpClient.swift */; };
+		37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367151EBE959F004B7679 /* CreateEventViewController.swift */; };
+		37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */; };
+		37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */; };
+		37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */; };
 		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
 		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
@@ -92,6 +96,10 @@
 		375964CD1EBBEA5300D592AA /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		375964D51EBD13F800D592AA /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		37D367151EBE959F004B7679 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
+		37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDisplayCell.swift; sourceTree = "<group>"; };
+		37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTimingsCollectionCell.swift; sourceTree = "<group>"; };
 		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -287,6 +295,8 @@
 				8F59770B1EB2FFE60076992B /* MapsViewController.swift */,
 				8F59770D1EB300110076992B /* MessagesViewController.swift */,
 				375964C21EBA30B400D592AA /* BusinessViewController.swift */,
+				37D367151EBE959F004B7679 /* CreateEventViewController.swift */,
+				37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -308,6 +318,8 @@
 				375964C51EBA6EAD00D592AA /* FriendTableCell.xib */,
 				375964C81EBA70A100D592AA /* CreateEventView.swift */,
 				375964CA1EBA70AE00D592AA /* CreateEventView.xib */,
+				37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */,
+				37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -605,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */,
 				8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */,
 				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
 				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
@@ -612,6 +625,8 @@
 				375964D61EBD13F800D592AA /* YelpClient.swift in Sources */,
 				375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */,
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
+				37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */,
+				37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */,
 				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
 				375964C61EBA6EAD00D592AA /* FriendTableCell.swift in Sources */,
 				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
@@ -634,6 +649,7 @@
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
 				8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */,
+				37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */,
 				375964B11EBA1BCF00D592AA /* Business.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
 				43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */,

@@ -12,6 +12,7 @@ import UIKit
 @objc public class DateTimePicker: UIView {
     
     var contentHeight: CGFloat = 310
+    var blurViewDismiss: UIVisualEffectView!
     
     // public vars
     public var backgroundViewColor: UIColor? = .clear {
@@ -99,6 +100,7 @@ import UIKit
         }
     }
     
+    
     public var timeZone = TimeZone.current
     public var completionHandler: ((Date)->Void)?
     
@@ -134,7 +136,7 @@ import UIKit
     }
     
     
-    @objc open class func show(view:UIView!,selected: Date? = nil, minimumDate: Date? = nil, maximumDate: Date? = nil) -> DateTimePicker {
+    @objc open class func show(view:UIView!, blurView:UIVisualEffectView!, selected: Date? = nil, minimumDate: Date? = nil, maximumDate: Date? = nil) -> DateTimePicker {
         let dateTimePicker = DateTimePicker()
         dateTimePicker.minimumDate = minimumDate ?? Date(timeIntervalSinceNow: -3600 * 24 * 365 * 20)
         dateTimePicker.maximumDate = maximumDate ?? Date(timeIntervalSinceNow: 3600 * 24 * 365 * 20)
@@ -145,8 +147,10 @@ import UIKit
         
         dateTimePicker.configureView()
         view.addSubview(dateTimePicker)
+        dateTimePicker.blurViewDismiss = blurView
         return dateTimePicker
     }
+
     
     private func configureView() {
         if self.contentView != nil {
@@ -465,6 +469,11 @@ import UIKit
                 self.completionHandler?(self.selectedDate)
             }
             self.removeFromSuperview()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.blurViewDismiss.effect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+                
+            })
+            self.blurViewDismiss.removeFromSuperview()
         }
     }
 }

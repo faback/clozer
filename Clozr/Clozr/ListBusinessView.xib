@@ -24,19 +24,24 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Huv-Tl-Nze">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="203" id="lE5-FN-WpN"/>
+                        <constraint firstAttribute="height" constant="203" id="L5P-nu-hRP"/>
                     </constraints>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-bT-mNG">
                     <rect key="frame" x="0.0" y="203" width="375" height="464"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-QQ-iLg">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-QQ-iLg">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="464"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bxt-QQ-iLg" secondAttribute="trailing" id="10G-cu-tVx"/>
+                        <constraint firstAttribute="bottom" secondItem="bxt-QQ-iLg" secondAttribute="bottom" id="KGb-Sm-ULM"/>
+                        <constraint firstItem="bxt-QQ-iLg" firstAttribute="leading" secondItem="ar3-bT-mNG" secondAttribute="leading" id="PGg-dk-jSb"/>
+                        <constraint firstItem="bxt-QQ-iLg" firstAttribute="top" secondItem="ar3-bT-mNG" secondAttribute="top" id="kJH-Da-V6r"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,7 +50,6 @@
                 <constraint firstAttribute="trailing" secondItem="ar3-bT-mNG" secondAttribute="trailing" id="Cww-1j-LWM"/>
                 <constraint firstItem="ar3-bT-mNG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GDu-TQ-E81"/>
                 <constraint firstAttribute="trailing" secondItem="Huv-Tl-Nze" secondAttribute="trailing" id="Gnn-R7-WGj"/>
-                <constraint firstItem="ar3-bT-mNG" firstAttribute="top" secondItem="Huv-Tl-Nze" secondAttribute="bottom" id="HX8-JP-ihW"/>
                 <constraint firstItem="ar3-bT-mNG" firstAttribute="top" secondItem="Huv-Tl-Nze" secondAttribute="bottom" id="OG7-m0-Dbw"/>
                 <constraint firstAttribute="bottom" secondItem="ar3-bT-mNG" secondAttribute="bottom" id="gae-x4-94C"/>
                 <constraint firstItem="Huv-Tl-Nze" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tRx-hn-qz5"/>

@@ -75,7 +75,9 @@ class Business: NSObject {
         }
         
         reviewCount = dictionary["review_count"] as? NSNumber
-        phoneNumber = dictionary["phone"] as? String
+        let phNumber = dictionary["display_phone"] as? String
+        let index = phNumber?.index((phNumber?.startIndex)!, offsetBy: 3)
+        phoneNumber = (phNumber?.substring(from: index!))!
     }
     
     class func businesses(array: [NSDictionary]) -> [Business] {

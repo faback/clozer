@@ -8,17 +8,20 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController {
+class BusinessViewController: UIViewController, ListBusinessViewDelegate  {
 
     @IBOutlet weak var contentView: ListBusinessView!
+    var business: Business!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let picker = DateTimePicker.show(view: contentView)
-        picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
-        picker.completionHandler = { date in
-            // do something after tapping done
-            
-        }
+        contentView.delegate = self
+        
+//        let picker = DateTimePicker.show(view: contentView)
+//        picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+//        picker.completionHandler = { date in
+//            // do something after tapping done
+//            
+//        }
 
 
         // Do any additional setup after loading the view.
@@ -39,6 +42,15 @@ class BusinessViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func performSeguetoCreateEvent(business: Business) {
+        self.business = business
+        performSegue(withIdentifier: "BusinessToCreateEvent", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let createEventViewController = segue.destination as! CreateEventViewController
+        createEventViewController.business = self.business
+    }
     
 
 }
