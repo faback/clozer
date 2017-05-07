@@ -15,6 +15,7 @@ class EventDetailsView: UIView, UICollectionViewDataSource, UICollectionViewDele
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var smallMapView: MKMapView!
     @IBOutlet weak var smallChatView: UIView!
+    @IBOutlet weak var smallMessagesView: UIView!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,6 +26,7 @@ class EventDetailsView: UIView, UICollectionViewDataSource, UICollectionViewDele
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubView()
+        
     }
     
     func initSubView() {
@@ -49,6 +51,9 @@ class EventDetailsView: UIView, UICollectionViewDataSource, UICollectionViewDele
         smallMapView.setRegion(region, animated: false)
         print(smallChatView.frame.size)
         
+        
+        print("         XIB HEIGHT IS \(contentView.frame)")
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
