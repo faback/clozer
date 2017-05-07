@@ -1,0 +1,6 @@
+framework module Pods_Clozr {
+  umbrella header "Pods-Clozr-umbrella.h"
+
+  export *
+  module * { export * }
+}
