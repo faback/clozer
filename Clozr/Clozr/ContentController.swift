@@ -87,13 +87,13 @@ class ContentController: UIViewController {
 
     @IBAction func homeButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
-        loadNavInContent(navName: "homeNav")
+        loadNavInContent(navName: Clozer.Nav.homeNav)
     }
     
     
     @IBAction func myButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
-        loadNavInContent(navName: "businessViewNav")
+        loadNavInContent(navName: Clozer.Nav.liveEventNav)
 
         
     }
@@ -101,19 +101,19 @@ class ContentController: UIViewController {
     @IBAction func mapButton(_ sender: UIButton) {
         
         otherAlpha(curr: sender)
-        loadNavInContent(navName: "eventDetailNav")
+        loadNavInContent(navName: Clozer.Nav.eventDetailNav)
     }
     
     
     @IBAction func friendsButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
-        loadNavInContent(navName: "friendsNav")
+        loadNavInContent(navName: Clozer.Nav.friendsNav)
     }
     
     
     @IBAction func settingsButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
-        loadNavInContent(navName: "settingsNav")
+        loadNavInContent(navName: Clozer.Nav.settingsNav)
     }
     
 

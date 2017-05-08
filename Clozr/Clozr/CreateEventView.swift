@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, CreateEventViewControllerDelegate {
-    
+
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -23,7 +23,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var addDateandTimelabel: UILabel!
     @IBOutlet weak var friendsTableView: UITableView!
     var dateFormat = "HH:mm MM/dd/YYYY"
-    var business:Business!
+    var event:Event!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -52,14 +52,14 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
         
-        if let business = self.business {
-            businessNameLabel.text = business.name
-            distanceLabel.text = business.distance
-            addressLabel.text = business.address
-            reviewImageView.setImageWith(business.ratingImageURL!)
-            cuisineTypeLabel.text = business.categories
-            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
-            businessPhoneNumberLabel.text = business.phoneNumber
+        if let evt = self.event {
+            businessNameLabel.text = evt.name
+//            distanceLabel.text = business.distance
+            addressLabel.text = evt.address
+//            reviewImageView.setImageWith(business.ratingImageURL!)
+//            cuisineTypeLabel.text = business.categories
+//            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
+//            businessPhoneNumberLabel.text = business.phoneNumber
         }
     }
     
@@ -106,8 +106,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         return 15
     }
     
-    func setBusiness(business: Business){
-        self.business = business
+    func setEvent(event: Event){
+        self.event = event
     }
 
 

@@ -24,7 +24,8 @@ public class Event {
     public var latitude:Double?
     public var longitude:Double?
     public var eventRawContent:[String:Any]?
-
+    public var distance:String?
+    public var phone:String?
     public class func modelsFromDictionaryArray(array:NSArray) -> [Event]
     {
         var models:[Event] = []
@@ -50,6 +51,8 @@ public class Event {
         summary = dictionary["summary"] as? String
         latitude = dictionary["latitude"] as? Double
         longitude = dictionary["longitude"] as? Double
+        distance = dictionary["distance"] as? String
+        phone = dictionary["phone"] as? String
     }
     
 
@@ -70,13 +73,16 @@ public class Event {
         dictionary.setValue(self.address, forKey: "address")
         dictionary.setValue(self.latitude, forKey: "latitude")
         dictionary.setValue(self.longitude, forKey: "longitude")
-        
+        dictionary.setValue(self.distance, forKey: "distance")
+        dictionary.setValue(self.phone, forKey: "phone")
+//        let phNumber = dictionary["phone"] as? String
+
         return dictionary
     }
     
     
     
-    class func getFavEvents(mainCategory:String , subCategory:String , completionHandler:@escaping ([Event])->()){
+    class func getEvents(mainCategory:String , subCategory:String , completionHandler:@escaping ([Event])->()){
         
         if(mainCategory == "watch"  && subCategory == "movies") {
             MovieDB.sharedInstance.withMovies(endPoint: "now_playing") { (movieEvents) in

@@ -8,8 +8,8 @@
 
 import UIKit
 
-@objc protocol CreateEventViewControllerDelegate {
-    func setBusiness(business: Business)
+protocol CreateEventViewControllerDelegate {
+    func setEvent(event: Event)
 }
 
 class CreateEventViewController: UIViewController {
@@ -17,11 +17,11 @@ class CreateEventViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     var businessdelegate: CreateEventViewControllerDelegate!
     @IBOutlet weak var createEventView: CreateEventView!
-    var business: Business!
+    var event: Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createEventView.business = self.business
+        createEventView.event = self.event
         createEventView.initSubView()
         // Do any additional setup after loading the view.
     }

@@ -70,6 +70,11 @@
 		43A42B081EC0167500A2BD80 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B071EC0167500A2BD80 /* noimage.png */; };
 		43A42B0A1EC016B600A2BD80 /* shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B091EC016B600A2BD80 /* shopping.png */; };
 		43A42B0C1EC016BC00A2BD80 /* restaurants.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B0B1EC016BC00A2BD80 /* restaurants.png */; };
+		43A42B161EC01FE300A2BD80 /* pool.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B151EC01FE300A2BD80 /* pool.png */; };
+		43A42B181EC01FED00A2BD80 /* pingpong.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B171EC01FED00A2BD80 /* pingpong.png */; };
+		43A42B1A1EC01FF600A2BD80 /* tennis.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B191EC01FF600A2BD80 /* tennis.png */; };
+		43A42B1C1EC020B300A2BD80 /* Clozer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42B1B1EC020B300A2BD80 /* Clozer.swift */; };
+		43A42B1E1EC03ECB00A2BD80 /* soccer.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B1D1EC03ECB00A2BD80 /* soccer.png */; };
 		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
 		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
@@ -185,6 +190,11 @@
 		43A42B071EC0167500A2BD80 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		43A42B091EC016B600A2BD80 /* shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping.png; sourceTree = "<group>"; };
 		43A42B0B1EC016BC00A2BD80 /* restaurants.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurants.png; sourceTree = "<group>"; };
+		43A42B151EC01FE300A2BD80 /* pool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pool.png; sourceTree = "<group>"; };
+		43A42B171EC01FED00A2BD80 /* pingpong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pingpong.png; sourceTree = "<group>"; };
+		43A42B191EC01FF600A2BD80 /* tennis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis.png; sourceTree = "<group>"; };
+		43A42B1B1EC020B300A2BD80 /* Clozer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clozer.swift; sourceTree = "<group>"; };
+		43A42B1D1EC03ECB00A2BD80 /* soccer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccer.png; sourceTree = "<group>"; };
 		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -296,6 +306,10 @@
 		43A42B0D1EC0174700A2BD80 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				43A42B1D1EC03ECB00A2BD80 /* soccer.png */,
+				43A42B191EC01FF600A2BD80 /* tennis.png */,
+				43A42B171EC01FED00A2BD80 /* pingpong.png */,
+				43A42B151EC01FE300A2BD80 /* pool.png */,
 				43A42B051EC0137600A2BD80 /* movies.png */,
 				43A42B071EC0167500A2BD80 /* noimage.png */,
 				43A42B091EC016B600A2BD80 /* shopping.png */,
@@ -399,8 +413,8 @@
 		43B02AC71EB6E734001F6B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
 				43B02AD91EB6EA7E001F6B6F /* App.swift */,
+				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
 				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
 				43B02AD51EB6E891001F6B6F /* EventVenue.swift */,
@@ -441,6 +455,7 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				43A42B1B1EC020B300A2BD80 /* Clozer.swift */,
 				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
 				43A42AFD1EC00FA300A2BD80 /* Style.swift */,
 				43A42ACE1EC00D7400A2BD80 /* Info.plist */,
@@ -653,21 +668,25 @@
 				43A42AE01EC00D7400A2BD80 /* friendsicon.png in Resources */,
 				375964C71EBA6EAD00D592AA /* FriendTableCell.xib in Resources */,
 				43A42AD41EC00D7400A2BD80 /* bowling.png in Resources */,
+				43A42B1A1EC01FF600A2BD80 /* tennis.png in Resources */,
 				43A42B061EC0137600A2BD80 /* movies.png in Resources */,
 				43A42AD61EC00D7400A2BD80 /* catchup.png in Resources */,
 				43A42ADF1EC00D7400A2BD80 /* friends33.png in Resources */,
 				43A42AE41EC00D7400A2BD80 /* gym.png in Resources */,
+				43A42B161EC01FE300A2BD80 /* pool.png in Resources */,
 				43A42AD51EC00D7400A2BD80 /* cafe.png in Resources */,
 				43A42AD91EC00D7400A2BD80 /* fit-baseball-player.png in Resources */,
 				43A42AD01EC00D7400A2BD80 /* baseball.png in Resources */,
 				43A42AD21EC00D7400A2BD80 /* beer.png in Resources */,
 				43A42B081EC0167500A2BD80 /* noimage.png in Resources */,
+				43A42B1E1EC03ECB00A2BD80 /* soccer.png in Resources */,
 				43A42AE31EC00D7400A2BD80 /* GoogleService-Info.plist in Resources */,
 				43A42B041EC0136800A2BD80 /* tvshows.png in Resources */,
 				43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */,
 				43A42AE21EC00D7400A2BD80 /* gametime.png in Resources */,
 				43A42ADE1EC00D7400A2BD80 /* friends22.png in Resources */,
 				43A42ADA1EC00D7400A2BD80 /* football.png in Resources */,
+				43A42B181EC01FED00A2BD80 /* pingpong.png in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
 				43A42AD11EC00D7400A2BD80 /* basketball.png in Resources */,
 				43A42B0C1EC016BC00A2BD80 /* restaurants.png in Resources */,
@@ -820,6 +839,7 @@
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
 				375964C91EBA70A100D592AA /* CreateEventView.swift in Sources */,
 				43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */,
+				43A42B1C1EC020B300A2BD80 /* Clozer.swift in Sources */,
 				375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */,
 				43A42B001EC0100100A2BD80 /* YelpSettings.swift in Sources */,
 				43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */,

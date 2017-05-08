@@ -12,6 +12,8 @@ import Foundation
 
 
 public class App {
+    
+    
 	public var id : String?
 	public var app : String?
 	public var theme : String?
@@ -19,16 +21,6 @@ public class App {
 	public var bundle : String?
 	public var integrations : Array<Integration>?
 
-/**
-    Returns an array of models based on given dictionary.
-    
-    Sample usage:
-    let app = App.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
-
-    - parameter array:  NSArray from JSON dictionary.
-
-    - returns: Array of App Instances.
-*/
     public class func modelsFromDictionaryArray(array:NSArray) -> [App]
     {
         var models:[App] = []
@@ -39,17 +31,7 @@ public class App {
         return models
     }
 
-/**
-    Constructs the object based on the given dictionary.
-    
-    Sample usage:
-    let app = App(someDictionaryFromJSON)
-
-    - parameter dictionary:  NSDictionary from JSON.
-
-    - returns: App Instance.
-*/
-	required public init?(dictionary: NSDictionary) {
+    required public init?(dictionary: NSDictionary) {
 
 		id = dictionary["id"] as? String
 		app = dictionary["app"] as? String
@@ -59,12 +41,6 @@ public class App {
 		if (dictionary["integrations"] != nil) { integrations = dictionary["integrations"] as? Array<Integration> }
 	}
 
-		
-/**
-    Returns the dictionary representation for the current instance.
-    
-    - returns: NSDictionary.
-*/
 	public func dictionaryRepresentation() -> NSDictionary {
 
 		let dictionary = NSMutableDictionary()

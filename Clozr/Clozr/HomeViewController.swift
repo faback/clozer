@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     var sectionedEvents = [Int:[Event]]()
     var sectionTitles = [Int: String]()
 
+    var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +64,7 @@ class HomeViewController: UIViewController {
         }
     }
     func reloadEventsData() {
-        Event.getFavEvents(mainCategory: mainCategory.code!, subCategory: selectedSubCategory.code!) { (evts) in
+        Event.getEvents(mainCategory: mainCategory.code!, subCategory: selectedSubCategory.code!) { (evts) in
             self.sectionedEvents[0] = evts
             self.sectionTitles[0] = "Suggested"
             self.eventsTableView.reloadData()
@@ -71,7 +72,7 @@ class HomeViewController: UIViewController {
     }
     @IBAction func moreEvents(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "eventsList", sender: "moreEvent")
+        self.performSegue(withIdentifier: Clozer.Segues.moreBusinesses, sender: "moreBusinesses")
         
     }
     
@@ -100,15 +101,27 @@ class HomeViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        Category.mainCategory = mainCategory
+        Category.subCategory = selectedSubCategory
         let senderStr = sender as! String
-        if(senderStr == "moreEvent") {
-            let eventListController = segue.destination as! EventsListViewController
+        if(senderStr == "moreBusinesses") {
+            //:BALAJI-NAV
+            let eventListController = segue.destination as! BusinessViewController
             eventListController.category = mainCategory
             eventListController.subCategory = selectedSubCategory
         }
         if(senderStr == "showFriends") {
             let eventListController = segue.destination as! FriendEventsViewController
         }
+        
+        if(senderStr == "movieDetail") {
+            
+            var indexPath  = selectedIndexPath
+            let evt = sectionedEvents[(indexPath?.section)!]?[(indexPath?.row)!]
+            let movieController = segue.destination as! SelectMovieViewController
+            movieController.event = evt
+        }
+        
         
     }
  
@@ -168,7 +181,8 @@ extension HomeViewController: UITableViewDelegate , UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "tweetDetail", sender: indexPath)
+        self.selectedIndexPath = indexPath
+        self.performSegue(withIdentifier: Clozer.Segues.movieDetail, sender: "movieDetail")
     }
     
     

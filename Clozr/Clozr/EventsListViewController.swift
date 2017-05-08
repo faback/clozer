@@ -42,7 +42,7 @@ class EventsListViewController: UIViewController {
     func loadEvents(searchTerm:String? ) {
         if(category?.code == "watch" && (subCategory?.code == "movies" || subCategory?.code == "tvshows")) {
             locCell  = true
-            sections = [0:"This Week", 1:"Next Week"]
+            sections = [0:"Hosted", 1:"Going to"]
         }else {
             sections = [0:(subCategory?.name)!]
         }

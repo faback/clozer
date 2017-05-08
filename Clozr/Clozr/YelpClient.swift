@@ -147,6 +147,18 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                         eventDict["address"] = address
                                         eventDict["latitude"] = lat
                                         eventDict["longitude"] = lon
+                                        let distance: String?
+                                        let distanceMeters = m["distance"] as? NSNumber
+                                        if distanceMeters != nil {
+                                            let milesPerMeter = 0.000621371
+                                            distance = String(format: "%.2f mi", milesPerMeter * distanceMeters!.doubleValue)
+                                        } else {
+                                            distance = nil
+                                        }
+                                        let phNumber = m["display_phone"] as? String
+
+                                        eventDict["distance"] = distance
+                                        eventDict["phone"] = phNumber
                                         //-----------------------------
                                         eventArray.append(Event(dictionary: eventDict)!)
                                     }

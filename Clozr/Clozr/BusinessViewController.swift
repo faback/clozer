@@ -11,7 +11,10 @@ import UIKit
 class BusinessViewController: UIViewController, ListBusinessViewDelegate  {
 
     @IBOutlet weak var contentView: ListBusinessView!
-    var business: Business!
+    
+    var category:Category?
+    var subCategory:Category?
+    var event: Event!
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.delegate = self
@@ -42,14 +45,14 @@ class BusinessViewController: UIViewController, ListBusinessViewDelegate  {
         // Pass the selected object to the new view controller.
     }
     */
-    func performSeguetoCreateEvent(business: Business) {
-        self.business = business
+    func performSeguetoCreateEvent(event: Event) {
+        self.event = event
         performSegue(withIdentifier: "BusinessToCreateEvent", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let createEventViewController = segue.destination as! CreateEventViewController
-        createEventViewController.business = self.business
+        createEventViewController.event = self.event
     }
     
 

@@ -15,6 +15,9 @@ class Category {
     var subCategories = [Category]()
     var code:String?
     
+    static var mainCategory = Category()
+    static var subCategory = Category()
+    
     class func getPlay()->Category {
         let sportsCategory = Category()
         sportsCategory.name = "Play"

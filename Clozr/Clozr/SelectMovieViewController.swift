@@ -13,18 +13,47 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var displayTheatrersTableView: UITableView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var moveiNameLabel: UILabel!
+    
+    var event:Event?
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTheatrersTableView.delegate = self
         displayTheatrersTableView.dataSource = self
-        
-        movieImageView.alpha = 0.4
+        renderMovieView()
+
+//        movieImageView.alpha = 0.4
         
   //       displayTheatrersTableView.rowHeight = UITableViewAutomaticDimension
  //      displayTheatrersTableView.estimatedRowHeight = 150
         // Do any additional setup after loading the view.
     }
 
+    
+    func renderMovieView() {
+        moveiNameLabel.text = event?.name
+
+        if let imgUrl = event?.image {
+            var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+            if(event?.category != "movies") {
+                imageUrl = imgUrl
+            }
+            let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
+            movieImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
+                if res != nil {
+                    self.movieImageView.alpha = 1
+                    self.movieImageView.image = result
+                    UIView.animate(withDuration: 3.0, animations: { () -> Void in
+                        self.movieImageView.alpha = 0.4
+                    })
+                }else{
+                    self.movieImageView.image = result
+                    self.movieImageView.alpha = 0.4
+                }
+            }, failure: {(req, res, result) -> Void in
+                
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

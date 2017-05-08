@@ -9,8 +9,8 @@
 import UIKit
 import MapKit
 
-@objc protocol ListBusinessViewDelegate {
-    func performSeguetoCreateEvent(business: Business)
+protocol ListBusinessViewDelegate {
+    func performSeguetoCreateEvent(event: Event)
 }
 
 class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
@@ -18,7 +18,7 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var businessMapView: MKMapView!
     @IBOutlet weak var businessTableView: UITableView!
-    var businesses: [Business]!
+    var events: [Event]!
     var delegate: ListBusinessViewDelegate!
     /*
     // Only override draw() if you perform custom drawing.
@@ -55,26 +55,19 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
         businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
         let pin = PinAnnotation(title: "Test Restuarant", coordinate: location)
         businessMapView.addAnnotation(pin)
-        Business.searchWithTerm(term: "Restuarants", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
-         //   self.filteredBusinesses = businesses
+        reloadEventsData()
+    }
+    
+    func reloadEventsData() {
+        Event.getEvents(mainCategory: Category.mainCategory.code!, subCategory: Category.subCategory.code!) { (evts) in
+            self.events = evts
             self.businessTableView.reloadData()
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                    
-                }
-            }
-            
         }
-        )
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = businessTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! BusinessTableCell
-        cell.business = businesses[indexPath.row]
+        cell.event = events[indexPath.row]
         return cell
     }
     
@@ -83,15 +76,15 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
     }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let businesses = businesses {
-            return businesses.count
+        if let events = events {
+            return events.count
         } else {
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.performSeguetoCreateEvent(business: businesses[indexPath.row])
+        delegate?.performSeguetoCreateEvent(event: events[indexPath.row])
     }
     
 
