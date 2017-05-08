@@ -2,69 +2,50 @@
 //  Settings.swift
 //  Clozr
 //
-//  Created by CK on 4/30/17.
+//  Created by CK on 5/7/17.
 //  Copyright © 2017 Faback. All rights reserved.
 //
 
 import Foundation
 
 
+
 public class Settings {
-    public var trackLocation : String?
-    public var forUser : String?
-    public var notifications : Array<Notifications>?
+    public var name : String?
+    public var icon : String?
     
-    /**
-     Returns an array of models based on given dictionary.
-     
-     Sample usage:
-     let settings = Settings.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
-     
-     - parameter array:  NSArray from JSON dictionary.
-     
-     - returns: Array of Settings Instances.
-     */
     public class func modelsFromDictionaryArray(array:NSArray) -> [Settings]
     {
         var models:[Settings] = []
         for item in array
         {
-            models.append(Settings(dictionary: item as! NSDictionary)!)
+            models.append(Settings(dictionary: item as! [String:String])!)
         }
         return models
     }
     
-    /**
-     Constructs the object based on the given dictionary.
-     
-     Sample usage:
-     let settings = Settings(someDictionaryFromJSON)
-     
-     - parameter dictionary:  NSDictionary from JSON.
-     
-     - returns: Settings Instance.
-     */
-    required public init?(dictionary: NSDictionary) {
+    required public init?(dictionary: [String:String]) {
         
-        trackLocation = dictionary["trackLocation"] as? String
-        forUser = dictionary["forUser"] as? String
-        if (dictionary["notifications"] != nil) { notifications = Notifications.modelsFromDictionaryArray(array: dictionary["notifications"] as! NSArray) }
+        name = dictionary["name"] as! String
+        icon = dictionary["icon"] as! String
     }
     
-    
-    /**
-     Returns the dictionary representation for the current instance.
-     
-     - returns: NSDictionary.
-     */
     public func dictionaryRepresentation() -> NSDictionary {
         
         let dictionary = NSMutableDictionary()
         
-        dictionary.setValue(self.trackLocation, forKey: "trackLocation")
-        dictionary.setValue(self.forUser, forKey: "forUser")
+        dictionary.setValue(self.name, forKey: "name")
+        dictionary.setValue(self.icon, forKey: "icon")
         
         return dictionary
+    }
+    
+    
+    class func  getSettings(forSection:String) -> [Settings]{
+        var results = [Settings]()
+        var info = Settings(dictionary: ["name" : "Info" , "icon": "info"])
+        results.append(info!)
+        return results
     }
     
 }

@@ -79,3 +79,16 @@ public class App {
 	}
 
 }
+
+//MARK: - Localizable Strings for our ViewController
+ struct Strings {
+    static let btnOK = NSLocalizedString("OK",comment: "OK button title")
+    
+    static let errorGraphRequestTitle = NSLocalizedString("Something went wrong", comment: "This is the alert title shown to the user if an error happens during a request to get data from Facebook")
+    static let errorGraphRequestMessage = NSLocalizedString("An Error occured trying to get data from Facebook\nError:%@\n\nHit ok to try again", comment: "This is the alert message shown to the user if an error happens during a request to get data from Facebook")
+    
+    static let errorAbortTitle = NSLocalizedString("Houston we have a problem", comment: "This is the alert title shown to the user if we are unable to get the Facebook data of the user or his friends")
+    static let errorAbortMessage = NSLocalizedString("It seems that we can't get the data from Facebook right now.\nPlease try logging in again through Facebook and make sure you are connected to the interent!", comment: "This is the alert message shown to the user if we are unable to get the Facebook data of the user or his friends")
+    static let errorUserDataMissingMessage = NSLocalizedString("It seems that some of your user Data is missing from Facebook\nPlease try logging in again through Facebook\nIf this error persists, please let us know!", comment: "This is the alert message shown to the user if we are unable to get the users basic information from Facebook")
+}
+
