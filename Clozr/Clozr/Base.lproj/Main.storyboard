@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4qj-5y-gg8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-Is-gVo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--Login Screen View Controller-->
         <scene sceneID="GHh-GC-V6o">
             <objects>
-                <viewController id="iHr-tX-hnO" customClass="LoginScreenViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iHr-tX-hnO" customClass="LoginScreenViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ye3-kC-xj2"/>
                         <viewControllerLayoutGuide type="bottom" id="Az1-oj-Qb8"/>
@@ -30,7 +31,7 @@
         <!--Suggested Events View Controller-->
         <scene sceneID="Yoc-h7-GOE">
             <objects>
-                <viewController id="z4I-l9-TKH" customClass="SuggestedEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z4I-l9-TKH" customClass="SuggestedEventsViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Is3-CS-ufz"/>
                         <viewControllerLayoutGuide type="bottom" id="QD1-pG-w8H"/>
@@ -55,7 +56,7 @@
         <!--Live Events View Controller-->
         <scene sceneID="efu-JB-KAn">
             <objects>
-                <viewController id="NCQ-fP-Svm" customClass="LiveEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NCQ-fP-Svm" customClass="LiveEventsViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mJA-y0-ko0"/>
                         <viewControllerLayoutGuide type="bottom" id="GVS-sq-iVd"/>
@@ -80,7 +81,7 @@
         <!--Event Details View Controller-->
         <scene sceneID="7fU-IJ-CHV">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="slD-0b-ULM" customClass="EventDetailsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="slD-0b-ULM" customClass="EventDetailsViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cld-lK-429"/>
                         <viewControllerLayoutGuide type="bottom" id="ACD-5R-nXQ"/>
@@ -89,16 +90,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-ll-Eh8" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-ll-Eh8" customClass="TabBarView" customModule="Clozr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWJ-iv-uSu" customClass="EventDetailsView" customModule="Clozr" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="WwY-HA-lPF"/>
+                                    <constraint firstAttribute="height" constant="50" id="6e4-IZ-JFt"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Sd-BS-q3a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Sd-BS-q3a">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -280,12 +279,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HPQ-ll-Eh8" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="15g-cJ-QX0"/>
-                            <constraint firstAttribute="trailing" secondItem="HPQ-ll-Eh8" secondAttribute="trailing" id="HAI-9j-ZJT"/>
-                            <constraint firstAttribute="trailing" secondItem="1Sd-BS-q3a" secondAttribute="trailing" id="Lfd-Nr-8YB"/>
-                            <constraint firstAttribute="top" secondItem="HPQ-ll-Eh8" secondAttribute="bottom" id="TKf-8l-WfB"/>
-                            <constraint firstItem="1Sd-BS-q3a" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="VJ7-w2-fvB"/>
-                            <constraint firstAttribute="top" secondItem="1Sd-BS-q3a" secondAttribute="bottom" constant="50" id="cXq-IU-84l"/>
+                            <constraint firstItem="ACD-5R-nXQ" firstAttribute="top" secondItem="1Sd-BS-q3a" secondAttribute="bottom" constant="50" id="4Qy-Ox-Fb5"/>
+                            <constraint firstItem="ACD-5R-nXQ" firstAttribute="top" secondItem="HPQ-ll-Eh8" secondAttribute="bottom" id="6eV-hM-Ep9"/>
+                            <constraint firstAttribute="trailing" secondItem="1Sd-BS-q3a" secondAttribute="trailing" id="Dff-p1-Exq"/>
+                            <constraint firstItem="1Sd-BS-q3a" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="EUk-eB-fb3"/>
+                            <constraint firstAttribute="trailing" secondItem="HPQ-ll-Eh8" secondAttribute="trailing" id="Gft-tM-whe"/>
+                            <constraint firstItem="1Sd-BS-q3a" firstAttribute="top" secondItem="cld-lK-429" secondAttribute="bottom" id="JHm-aA-f9N"/>
+                            <constraint firstItem="HPQ-ll-Eh8" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="juH-xX-Ctw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qvs-t7-WaP"/>
@@ -295,12 +295,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6y-Av-PDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="512.80000000000007" y="634.632683658171"/>
+            <point key="canvasLocation" x="512.79999999999995" y="634.632683658171"/>
         </scene>
         <!--Business View Controller-->
         <scene sceneID="AFA-GY-ltO">
             <objects>
-                <viewController id="fHs-xH-6Sa" customClass="BusinessViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fHs-xH-6Sa" customClass="BusinessViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y13-mw-Io4"/>
                         <viewControllerLayoutGuide type="bottom" id="UNG-dM-BsL"/>
@@ -335,7 +335,7 @@
         <!--Create Event View Controller-->
         <scene sceneID="fzj-pj-N3c">
             <objects>
-                <viewController storyboardIdentifier="CreateEventViewController" id="LJv-OL-Y6R" customClass="CreateEventViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateEventViewController" id="LJv-OL-Y6R" customClass="CreateEventViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vz5-PI-F0d"/>
                         <viewControllerLayoutGuide type="bottom" id="42D-Me-ALp"/>
@@ -369,7 +369,7 @@
         <!--Select Movie View Controller-->
         <scene sceneID="pr9-Zw-L0h">
             <objects>
-                <viewController id="Gzt-nz-z7L" customClass="SelectMovieViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gzt-nz-z7L" customClass="SelectMovieViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hgi-gZ-A6L"/>
                         <viewControllerLayoutGuide type="bottom" id="lTK-Vt-GJy"/>
@@ -496,7 +496,7 @@
         <!--Maps View Controller-->
         <scene sceneID="L6N-oa-fEp">
             <objects>
-                <viewController id="8ro-6t-RTt" customClass="MapsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8ro-6t-RTt" customClass="MapsViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lLs-Cu-xqc"/>
                         <viewControllerLayoutGuide type="bottom" id="cBD-hj-bbM"/>
@@ -539,7 +539,7 @@
         <!--Messages View Controller-->
         <scene sceneID="td4-pL-QTy">
             <objects>
-                <viewController id="Vym-Oh-Ygh" customClass="MessagesViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vym-Oh-Ygh" customClass="MessagesViewController" customModule="Clozr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IpT-Iu-JyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="u1B-G1-Zwz"/>
@@ -567,7 +567,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -585,7 +585,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4qj-5y-gg8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VJH-ga-B1P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VJH-ga-B1P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
