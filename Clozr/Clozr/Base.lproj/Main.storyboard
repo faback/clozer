@@ -877,6 +877,7 @@
                         <outlet property="moreButton" destination="z17-fI-u8P" id="olH-db-UcL"/>
                         <segue destination="fHs-xH-6Sa" kind="show" identifier="moreBusinesses" id="JXC-mq-aFT"/>
                         <segue destination="Gzt-nz-z7L" kind="show" identifier="movieDetail" id="FmN-st-sFW"/>
+                        <segue destination="LJv-OL-Y6R" kind="show" identifier="createEventSegue" id="u4M-XE-OaJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvs-qU-VUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1521,4 +1522,7 @@
         <image name="mapstab" width="25" height="25"/>
         <image name="settingstab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="u4M-XE-OaJ"/>
+    </inferredMetricsTieBreakers>
 </document>

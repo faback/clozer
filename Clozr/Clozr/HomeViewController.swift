@@ -121,7 +121,13 @@ class HomeViewController: UIViewController {
             let movieController = segue.destination as! SelectMovieViewController
             movieController.event = evt
         }
-        
+        if(senderStr == "createEventSegue") {
+            
+            var indexPath  = selectedIndexPath
+            let evt = sectionedEvents[(indexPath?.section)!]?[(indexPath?.row)!]
+            let createEventController = segue.destination as! CreateEventViewController
+            createEventController.event = evt
+        }
         
     }
  
@@ -182,7 +188,11 @@ extension HomeViewController: UITableViewDelegate , UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
+        if(selectedSubCategory.code == "movies") {
         self.performSegue(withIdentifier: Clozer.Segues.movieDetail, sender: "movieDetail")
+        }else{
+         self.performSegue(withIdentifier: Clozer.Segues.createEventSegue, sender: "createEventSegue")
+        }
     }
     
     
