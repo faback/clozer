@@ -35,15 +35,16 @@ class EventDetailsMapCell: UITableViewCell, MKMapViewDelegate, CLLocationManager
         eventLocation.coordinate = mapCenter
         eventLocation.title      = "Event Location"
         smallMapView.addAnnotation(eventLocation)
+        smallMapView.showsUserLocation = true
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let mylocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
-        smallMapView.setRegion(region, animated: false)
-        smallMapView.showsUserLocation = true
+//        let location = locations[0]
+//        let span = MKCoordinateSpanMake(0.01, 0.01)
+//        let mylocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+//        let region:MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
+//        smallMapView.setRegion(region, animated: false)
+//        smallMapView.showsUserLocation = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
