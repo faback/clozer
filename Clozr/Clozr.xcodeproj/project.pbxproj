@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E8577D1EA1AD781F8CF4999 /* Pods_ClozrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */; };
 		1163A7FF238771C049C778B1 /* Pods_Clozr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B874010EADF68645F307E /* Pods_Clozr.framework */; };
 		375964AF1EB9953900D592AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375964AE1EB9953900D592AA /* MapKit.framework */; };
 		375964B11EBA1BCF00D592AA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964B01EBA1BCF00D592AA /* Business.swift */; };
@@ -56,11 +55,11 @@
 		8F5977131EB312850076992B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977121EB312850076992B /* TabBarView.swift */; };
 		8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */; };
 		8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F59771A1EB65D3F0076992B /* FriendListCell.xib */; };
-		C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */; };
 		8F59771E1EBE64100076992B /* EventDetailsDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */; };
 		8F5977201EBE65A70076992B /* EventDetailsMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */; };
 		8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */; };
 		8F5977241EBE65F70076992B /* EventDetailsFriendsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */; };
+		C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +126,6 @@
 		43B85F461EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.release.xcconfig"; sourceTree = "<group>"; };
 		53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.release.xcconfig"; sourceTree = "<group>"; };
-		5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClozrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5977021EB2FF330076992B /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginScreenViewController.swift; path = ../LoginScreenViewController.swift; sourceTree = "<group>"; };
 		8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveEventsViewController.swift; path = ../LiveEventsViewController.swift; sourceTree = "<group>"; };
@@ -139,14 +137,13 @@
 		8F5977121EB312850076992B /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F59771A1EB65D3F0076992B /* FriendListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
-		99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AD8B874010EADF68645F307E /* Pods_Clozr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clozr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.debug.xcconfig"; sourceTree = "<group>"; };
-		EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsDescriptionCell.swift; sourceTree = "<group>"; };
 		8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMapCell.swift; sourceTree = "<group>"; };
 		8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMessagesCell.swift; sourceTree = "<group>"; };
 		8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsFriendsListCell.swift; sourceTree = "<group>"; };
+		99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD8B874010EADF68645F307E /* Pods_Clozr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clozr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E8577D1EA1AD781F8CF4999 /* Pods_ClozrUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +181,6 @@
 				4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */,
 				99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */,
 				53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */,
-				5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */,
-				EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -387,12 +381,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43B85F4F1EAE5E6B003721CE /* Build configuration list for PBXNativeTarget "ClozrUITests" */;
 			buildPhases = (
-				EEE9234FB34F30924FD645F3 /* [CP] Check Pods Manifest.lock */,
 				43B85F3C1EAE5E6B003721CE /* Sources */,
 				43B85F3D1EAE5E6B003721CE /* Frameworks */,
 				43B85F3E1EAE5E6B003721CE /* Resources */,
-				1CF55FD73A6139AB127B93B2 /* [CP] Embed Pods Frameworks */,
-				AC7E3BDED58FFAC61AA1D52F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -467,7 +458,6 @@
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
 				375964C71EBA6EAD00D592AA /* FriendTableCell.xib in Resources */,
-				8F5977151EB64FE10076992B /* EventDetails.xib in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
 				375964BB1EBA21C600D592AA /* CustomCell.xib in Resources */,
 			);
@@ -505,21 +495,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1CF55FD73A6139AB127B93B2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5FCD8AED2AA65795B9144E2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,7 +507,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		848FCE2E368B379912755C00 /* [CP] Embed Pods Frameworks */ = {
@@ -577,22 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AC7E3BDED58FFAC61AA1D52F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B37B6DA20C9DB9E0C329FB21 /* [CP] Embed Pods Frameworks */ = {
@@ -608,21 +568,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEE9234FB34F30924FD645F3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -878,7 +823,6 @@
 		};
 		43B85F501EAE5E6B003721CE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D026710DC46AF11B9FFB9BC /* Pods-ClozrUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ClozrUITests/Info.plist;
@@ -892,7 +836,6 @@
 		};
 		43B85F511EAE5E6B003721CE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ClozrUITests/Info.plist;

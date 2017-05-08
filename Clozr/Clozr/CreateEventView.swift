@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DateTimePicker
 
 class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, CreateEventViewControllerDelegate {
     
