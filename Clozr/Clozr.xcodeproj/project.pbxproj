@@ -54,11 +54,13 @@
 		8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59770D1EB300110076992B /* MessagesViewController.swift */; };
 		8F5977111EB303410076992B /* TabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5977101EB303410076992B /* TabBar.xib */; };
 		8F5977131EB312850076992B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977121EB312850076992B /* TabBarView.swift */; };
-		8F5977151EB64FE10076992B /* EventDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5977141EB64FE10076992B /* EventDetails.xib */; };
-		8F5977171EB654390076992B /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977161EB654390076992B /* EventDetailsView.swift */; };
 		8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */; };
 		8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F59771A1EB65D3F0076992B /* FriendListCell.xib */; };
 		C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */; };
+		8F59771E1EBE64100076992B /* EventDetailsDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */; };
+		8F5977201EBE65A70076992B /* EventDetailsMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */; };
+		8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */; };
+		8F5977241EBE65F70076992B /* EventDetailsFriendsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,14 +137,16 @@
 		8F59770D1EB300110076992B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		8F5977101EB303410076992B /* TabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBar.xib; sourceTree = "<group>"; };
 		8F5977121EB312850076992B /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		8F5977141EB64FE10076992B /* EventDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetails.xib; sourceTree = "<group>"; };
-		8F5977161EB654390076992B /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F59771A1EB65D3F0076992B /* FriendListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListCell.xib; sourceTree = "<group>"; };
 		99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD8B874010EADF68645F307E /* Pods_Clozr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clozr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7666DFDDDB6607D8424667 /* Pods-ClozrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrUITests/Pods-ClozrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsDescriptionCell.swift; sourceTree = "<group>"; };
+		8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMapCell.swift; sourceTree = "<group>"; };
+		8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMessagesCell.swift; sourceTree = "<group>"; };
+		8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsFriendsListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +260,7 @@
 			children = (
 				375964D21EBCD08900D592AA /* API */,
 				43B02AC71EB6E734001F6B6F /* Model */,
+				8F59771C1EBE56430076992B /* Cells */,
 				8F59770F1EB3026D0076992B /* Nibs */,
 				8F5977041EB2FF6C0076992B /* ViewControllers */,
 				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
@@ -306,8 +311,6 @@
 			children = (
 				8F5977101EB303410076992B /* TabBar.xib */,
 				8F5977121EB312850076992B /* TabBarView.swift */,
-				8F5977141EB64FE10076992B /* EventDetails.xib */,
-				8F5977161EB654390076992B /* EventDetailsView.swift */,
 				8F59771A1EB65D3F0076992B /* FriendListCell.xib */,
 				8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */,
 				375964B81EBA21C600D592AA /* BusinessTableCell.swift */,
@@ -322,6 +325,18 @@
 				37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */,
 			);
 			name = Nibs;
+			sourceTree = "<group>";
+		};
+		8F59771C1EBE56430076992B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */,
+				8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */,
+				8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */,
+				8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */,
+				8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -621,6 +636,7 @@
 				8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */,
 				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
 				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
+				8F5977201EBE65A70076992B /* EventDetailsMapCell.swift in Sources */,
 				43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */,
 				375964D61EBD13F800D592AA /* YelpClient.swift in Sources */,
 				375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */,
@@ -630,10 +646,11 @@
 				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
 				375964C61EBA6EAD00D592AA /* FriendTableCell.swift in Sources */,
 				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
-				8F5977171EB654390076992B /* EventDetailsView.swift in Sources */,
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
+				8F5977241EBE65F70076992B /* EventDetailsFriendsListCell.swift in Sources */,
 				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
 				375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */,
+				8F59771E1EBE64100076992B /* EventDetailsDescriptionCell.swift in Sources */,
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
 				375964C91EBA70A100D592AA /* CreateEventView.swift in Sources */,
 				43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */,
@@ -644,6 +661,7 @@
 				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
 				375964C11EBA2F4200D592AA /* PinAnnotation.swift in Sources */,
 				375964C31EBA30B400D592AA /* BusinessViewController.swift in Sources */,
+				8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */,
 				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
 				375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */,
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
