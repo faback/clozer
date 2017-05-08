@@ -67,6 +67,9 @@
 		43A42B021EC0109800A2BD80 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42B011EC0109800A2BD80 /* ContentController.swift */; };
 		43A42B041EC0136800A2BD80 /* tvshows.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B031EC0136800A2BD80 /* tvshows.png */; };
 		43A42B061EC0137600A2BD80 /* movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B051EC0137600A2BD80 /* movies.png */; };
+		43A42B081EC0167500A2BD80 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B071EC0167500A2BD80 /* noimage.png */; };
+		43A42B0A1EC016B600A2BD80 /* shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B091EC016B600A2BD80 /* shopping.png */; };
+		43A42B0C1EC016BC00A2BD80 /* restaurants.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B0B1EC016BC00A2BD80 /* restaurants.png */; };
 		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
 		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
@@ -179,6 +182,9 @@
 		43A42B011EC0109800A2BD80 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		43A42B031EC0136800A2BD80 /* tvshows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvshows.png; sourceTree = "<group>"; };
 		43A42B051EC0137600A2BD80 /* movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movies.png; sourceTree = "<group>"; };
+		43A42B071EC0167500A2BD80 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
+		43A42B091EC016B600A2BD80 /* shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping.png; sourceTree = "<group>"; };
+		43A42B0B1EC016BC00A2BD80 /* restaurants.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurants.png; sourceTree = "<group>"; };
 		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -277,6 +283,8 @@
 		375964D21EBCD08900D592AA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				43A42AE91EC00D8000A2BD80 /* LocalStore.swift */,
+				43A42ABE1EC00D7400A2BD80 /* CloudStore.swift */,
 				43A42AFF1EC0100100A2BD80 /* YelpSettings.swift */,
 				43A42AB31EC00D1F00A2BD80 /* FBClient.swift */,
 				375964D51EBD13F800D592AA /* YelpClient.swift */,
@@ -285,14 +293,14 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		43B02AC71EB6E734001F6B6F /* Model */ = {
+		43A42B0D1EC0174700A2BD80 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				43A42B051EC0137600A2BD80 /* movies.png */,
+				43A42B071EC0167500A2BD80 /* noimage.png */,
+				43A42B091EC016B600A2BD80 /* shopping.png */,
+				43A42B0B1EC016BC00A2BD80 /* restaurants.png */,
 				43A42B031EC0136800A2BD80 /* tvshows.png */,
-				43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */,
-				43A42AEF1EC00D8D00A2BD80 /* SettingsViewController.swift */,
-				43A42AE91EC00D8000A2BD80 /* LocalStore.swift */,
-				43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */,
 				43A42AB51EC00D7400A2BD80 /* badminton.png */,
 				43A42AB61EC00D7400A2BD80 /* baseball.png */,
 				43A42AB71EC00D7400A2BD80 /* basketball.png */,
@@ -301,26 +309,97 @@
 				43A42ABA1EC00D7400A2BD80 /* bowling.png */,
 				43A42ABB1EC00D7400A2BD80 /* cafe.png */,
 				43A42ABC1EC00D7400A2BD80 /* catchup.png */,
-				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
-				43A42ABE1EC00D7400A2BD80 /* CloudStore.swift */,
 				43A42ABF1EC00D7400A2BD80 /* fit-baseball-player.png */,
 				43A42AC01EC00D7400A2BD80 /* football.png */,
-				43A42AC11EC00D7400A2BD80 /* FriendCollectionCell.swift */,
-				43A42AC21EC00D7400A2BD80 /* FriendEventsViewController.swift */,
 				43A42AC41EC00D7400A2BD80 /* friends22.png */,
 				43A42AC51EC00D7400A2BD80 /* friends33.png */,
 				43A42AC61EC00D7400A2BD80 /* friendsicon.png */,
-				43A42AC71EC00D7400A2BD80 /* FriendsSmallCell.swift */,
 				43A42AC81EC00D7400A2BD80 /* gametime.png */,
-				43A42AC91EC00D7400A2BD80 /* GoogleService-Info.plist */,
 				43A42ACA1EC00D7400A2BD80 /* gym.png */,
-				43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */,
-				43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */,
 				43A42ACD1EC00D7400A2BD80 /* icehockey.png */,
-				43A42ACE1EC00D7400A2BD80 /* Info.plist */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		43A42B0E1EC0179400A2BD80 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */,
+				43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */,
+				43A42AC11EC00D7400A2BD80 /* FriendCollectionCell.swift */,
+				43A42AC71EC00D7400A2BD80 /* FriendsSmallCell.swift */,
+				43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */,
+				43A42AFB1EC00F9100A2BD80 /* EventTableCell.swift */,
+				43A42AF71EC00F6200A2BD80 /* SubCategoryCell.swift */,
+			);
+			name = home;
+			sourceTree = "<group>";
+		};
+		43A42B0F1EC017A000A2BD80 /* create */ = {
+			isa = PBXGroup;
+			children = (
 				375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */,
-				375964CD1EBBEA5300D592AA /* DateTimePicker.swift */,
+			);
+			name = create;
+			sourceTree = "<group>";
+		};
+		43A42B101EC017AA00A2BD80 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */,
+				8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */,
+				8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */,
+				8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */,
+			);
+			name = detail;
+			sourceTree = "<group>";
+		};
+		43A42B111EC017ED00A2BD80 /* home&login */ = {
+			isa = PBXGroup;
+			children = (
+				43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */,
+				43A42AEF1EC00D8D00A2BD80 /* SettingsViewController.swift */,
+				8F5977021EB2FF330076992B /* LoginScreenViewController.swift */,
+				43A42AF51EC00F3E00A2BD80 /* EventsListViewController.swift */,
+				43A42AC21EC00D7400A2BD80 /* FriendEventsViewController.swift */,
+			);
+			name = "home&login";
+			sourceTree = "<group>";
+		};
+		43A42B121EC017F800A2BD80 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				8F59770B1EB2FFE60076992B /* MapsViewController.swift */,
+				8F59770D1EB300110076992B /* MessagesViewController.swift */,
+				8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */,
+			);
+			name = detail;
+			sourceTree = "<group>";
+		};
+		43A42B131EC0180100A2BD80 /* create */ = {
+			isa = PBXGroup;
+			children = (
+				375964C21EBA30B400D592AA /* BusinessViewController.swift */,
+				37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */,
+				37D367151EBE959F004B7679 /* CreateEventViewController.swift */,
+			);
+			name = create;
+			sourceTree = "<group>";
+		};
+		43A42B141EC018B400A2BD80 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */,
+				375964CD1EBBEA5300D592AA /* DateTimePicker.swift */,
+				375964C01EBA2F4200D592AA /* PinAnnotation.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		43B02AC71EB6E734001F6B6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
 				43B02AD91EB6EA7E001F6B6F /* App.swift */,
 				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
@@ -333,7 +412,6 @@
 				43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */,
 				43B02ADF1EB6EFF1001F6B6F /* Circle.swift */,
 				375964B01EBA1BCF00D592AA /* Business.swift */,
-				375964C01EBA2F4200D592AA /* PinAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,13 +441,17 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
 				43A42AFD1EC00FA300A2BD80 /* Style.swift */,
+				43A42ACE1EC00D7400A2BD80 /* Info.plist */,
+				43A42AC91EC00D7400A2BD80 /* GoogleService-Info.plist */,
+				43A42B141EC018B400A2BD80 /* Extensions */,
+				8F59770F1EB3026D0076992B /* Nibs */,
+				43A42B0D1EC0174700A2BD80 /* icons */,
 				375964D21EBCD08900D592AA /* API */,
 				43B02AC71EB6E734001F6B6F /* Model */,
 				8F59771C1EBE56430076992B /* Cells */,
-				8F59770F1EB3026D0076992B /* Nibs */,
 				8F5977041EB2FF6C0076992B /* ViewControllers */,
-				43B85F241EAE5E6B003721CE /* AppDelegate.swift */,
 				43B85F281EAE5E6B003721CE /* Main.storyboard */,
 				43B85F2B1EAE5E6B003721CE /* Assets.xcassets */,
 				43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */,
@@ -400,16 +482,11 @@
 			isa = PBXGroup;
 			children = (
 				43A42B011EC0109800A2BD80 /* ContentController.swift */,
-				43A42AF51EC00F3E00A2BD80 /* EventsListViewController.swift */,
-				8F5977021EB2FF330076992B /* LoginScreenViewController.swift */,
+				43A42B131EC0180100A2BD80 /* create */,
+				43A42B121EC017F800A2BD80 /* detail */,
+				43A42B111EC017ED00A2BD80 /* home&login */,
 				8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */,
 				8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */,
-				8F5977091EB2FFD10076992B /* EventDetailsViewController.swift */,
-				8F59770B1EB2FFE60076992B /* MapsViewController.swift */,
-				8F59770D1EB300110076992B /* MessagesViewController.swift */,
-				375964C21EBA30B400D592AA /* BusinessViewController.swift */,
-				37D367151EBE959F004B7679 /* CreateEventViewController.swift */,
-				37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -438,13 +515,9 @@
 		8F59771C1EBE56430076992B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				43A42B051EC0137600A2BD80 /* movies.png */,
-				43A42AFB1EC00F9100A2BD80 /* EventTableCell.swift */,
-				43A42AF71EC00F6200A2BD80 /* SubCategoryCell.swift */,
-				8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */,
-				8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */,
-				8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */,
-				8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */,
+				43A42B101EC017AA00A2BD80 /* detail */,
+				43A42B0F1EC017A000A2BD80 /* create */,
+				43A42B0E1EC0179400A2BD80 /* home */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -571,6 +644,7 @@
 				375964BF1EBA277A00D592AA /* ListBusinessView.xib in Resources */,
 				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
 				43A42ACF1EC00D7400A2BD80 /* badminton.png in Resources */,
+				43A42B0A1EC016B600A2BD80 /* shopping.png in Resources */,
 				8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */,
 				375964CB1EBA70AE00D592AA /* CreateEventView.xib in Resources */,
 				43A42AD31EC00D7400A2BD80 /* blue.png in Resources */,
@@ -587,6 +661,7 @@
 				43A42AD91EC00D7400A2BD80 /* fit-baseball-player.png in Resources */,
 				43A42AD01EC00D7400A2BD80 /* baseball.png in Resources */,
 				43A42AD21EC00D7400A2BD80 /* beer.png in Resources */,
+				43A42B081EC0167500A2BD80 /* noimage.png in Resources */,
 				43A42AE31EC00D7400A2BD80 /* GoogleService-Info.plist in Resources */,
 				43A42B041EC0136800A2BD80 /* tvshows.png in Resources */,
 				43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */,
@@ -595,6 +670,7 @@
 				43A42ADA1EC00D7400A2BD80 /* football.png in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
 				43A42AD11EC00D7400A2BD80 /* basketball.png in Resources */,
+				43A42B0C1EC016BC00A2BD80 /* restaurants.png in Resources */,
 				375964BB1EBA21C600D592AA /* CustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

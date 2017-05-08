@@ -72,7 +72,7 @@ class HomeEventsCell: UITableViewCell {
     
     override func prepareForReuse() {
         event = nil
-        eventImage.image = #imageLiteral(resourceName: "noimage.png")
+//        eventImage.image = #imageLiteral(resourceName: "noimage.png")
         eventTitle.text = ""
         eventDescription.text = ""
         location.text = ""
