@@ -1,0 +1,6 @@
+framework module Pods_ClozrUITests {
+  umbrella header "Pods-ClozrUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
