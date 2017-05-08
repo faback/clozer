@@ -1,10 +1,13 @@
 //
 //  YelpClient.swift
-//  Yelp
+//  Clozr
 //
-//  Created by Timothy Lee on 9/19/14.
-//  Copyright (c) 2014 Timothy Lee. All rights reserved.
+//  Created by CK on 5/6/17.
+//  Copyright © 2017 Faback. All rights reserved.
 //
+
+import Foundation
+
 
 import UIKit
 
@@ -19,7 +22,41 @@ let yelpTokenSecret = "mqtKIxMIR4iBtBPZCmCLEb-Dz3Y"
 
 enum YelpSortMode: Int {
     case bestMatched = 0, distance, highestRated
+    //    var sortModes:[String] = ["Best Match" ,"Distance" ,  "Highest Rated"]
+    
+    func toSortby() -> String {
+        switch self {
+        case .bestMatched:
+            return "Best Match"
+        case .distance:
+            return "Distance"
+        case .highestRated:
+            return "Highest Rated"
+        }
+    }
 }
+
+enum YelpDistance: Double  {
+    case auto = 0 , point3 = 0.3  , onemile = 1 , five = 5.0 , twenty = 20
+    
+    //    var distances:[String] =  ["Auto" ,"0.3 miles" ,"1 mile" , "5 miles" , "20 miles"]
+    
+    func toDistance() -> String {
+        switch self {
+        case .auto:
+            return "Auto"
+        case .point3:
+            return "0.3 miles"
+        case .onemile:
+            return "1 mile"
+        case .five:
+            return "5 miles"
+        case .twenty:
+            return "20 miles"
+        }
+    }
+}
+
 
 class YelpClient: BDBOAuth1RequestOperationManager {
     var accessToken: String!
@@ -43,52 +80,84 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func searchWithTerm(_ term: String, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
-        return searchWithTerm(term, sort: nil, categories: nil, distance: 10000, deals: nil, completion: completion)
-    }
-    
-    func searchWithTerm(_ term: String, distance: Double, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
-        return searchWithTerm(term, sort: nil, categories: nil, distance: distance, deals: nil, completion: completion)
-    }
+    var limit = 20
+    var offset = 0
     
     
-    func searchWithTerm(_ term: String, sort: YelpSortMode?, categories: [String]?, distance: Double?, deals: Bool?, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
-        // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
+    func yelpSearch(_ searchTerm: String, subCat:String , completion: @escaping ([Event]?, Error?) -> Void) -> AFHTTPRequestOperation {
         
-        // Default the location to San Francisco
-        var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "37.785771,-122.406165" as AnyObject]
+        let distance = 5.0
+        let term = searchTerm
+        //        let sort  = 0
         
-        if sort != nil {
-            parameters["sort"] = sort!.rawValue as AnyObject?
-        }
-        
-        if categories != nil && categories!.count > 0 {
-            parameters["category_filter"] = (categories!).joined(separator: ",") as AnyObject?
-        }
-        
-        if distance != nil {
-            parameters["radius_filter"] = distance! as AnyObject?
-        }
-        
-        if deals != nil {
-            parameters["deals_filter"] = deals! as AnyObject?
-        }
-        
-        print(parameters)
+        var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "\(YelpSettings.centeredLatitude),\(YelpSettings.centerdLongitude)" as AnyObject]
+        //        parameters["sort"] = sort as AnyObject?
+        parameters["radius_filter"] = (distance*1609.34) as AnyObject?
+        parameters["limit"] = limit as AnyObject?
+        parameters["offset"] = offset as AnyObject?
         
         return self.get("search", parameters: parameters,
                         success: { (operation: AFHTTPRequestOperation, response: Any) -> Void in
                             if let response = response as? [String: Any]{
                                 let dictionaries = response["businesses"] as? [NSDictionary]
+                                
                                 if dictionaries != nil {
-                                    print("Hello")
-                                    completion(Business.businesses(array: dictionaries!), nil)
+                                    
+                                    
+                                    var eventArray = [Event]()
+                                    for m in dictionaries! {
+                                        //------------------------------
+                                        let location = m["location"] as? NSDictionary
+                                        var address = ""
+                                        var lat = 37.785771
+                                        var lon = -122.406165
+                                        var fullAddress = ""
+                                        if location != nil {
+                                            let addressArray = location!["address"] as? NSArray
+                                            if addressArray != nil && addressArray!.count > 0 {
+                                                address = addressArray![0] as! String
+                                            }
+                                            
+                                            let neighborhoods = location!["neighborhoods"] as? NSArray
+                                            if neighborhoods != nil && neighborhoods!.count > 0 {
+                                                if !address.isEmpty {
+                                                    address += ", "
+                                                }
+                                                address += neighborhoods![0] as! String
+                                            }
+                                            let coordinates = location!["coordinate"] as? NSDictionary
+                                            if(coordinates != nil) {
+                                                lat = coordinates!["latitude"] as! Double
+                                                lon = coordinates!["longitude"] as! Double
+                                            }
+                                            
+                                            if let displayAddress = location!["display_address"]  {
+                                                let arr = displayAddress as! NSArray
+                                                for lineOf in arr {
+                                                    fullAddress = fullAddress + (lineOf as! String)
+                                                }
+                                            }
+                                        }
+                                        var eventDict = [String:Any]()
+                                        eventDict["name"] =  m["name"] as? String
+                                        eventDict["category"] = subCat
+                                        eventDict["source"] = "yelp"
+                                        eventDict["summary"] =  m["name"] as? String
+                                        eventDict["image"] =  m["image_url"] as? String
+                                        eventDict["address"] = address
+                                        eventDict["latitude"] = lat
+                                        eventDict["longitude"] = lon
+                                        //-----------------------------
+                                        eventArray.append(Event(dictionary: eventDict)!)
+                                    }
+                                    
+                                    completion(eventArray, nil)
+                                    
                                 }
                             }
-                        },
+        },
                         failure: { (operation: AFHTTPRequestOperation?, error: Error) -> Void in
                             completion(nil, error)
-                            print(error.localizedDescription)
-                        })!
+        })!
     }
 }

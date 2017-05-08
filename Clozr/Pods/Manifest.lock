@@ -23,6 +23,7 @@ PODS:
   - BDBOAuth1Manager (1.6.0):
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
+  - BetterSegmentedControl (0.7)
   - Blurry (0.0.4)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -82,6 +83,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BDBOAuth1Manager
+  - BetterSegmentedControl
   - Blurry (~> 0.0.1)
   - Bolts
   - CBZSplashView (~> 1.0.0)
@@ -98,6 +100,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
+  BetterSegmentedControl: 0b4dde1caac22de345820858a5e2789132378c1c
   Blurry: 8ac9810609199fce73fd6575c54f1aa7f7695840
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CBZSplashView: 9ce4cba22024476ff4a97d6433e7347da6376016
@@ -117,6 +120,6 @@ SPEC CHECKSUMS:
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: '05159817bc1fcd863c7e732f3405837038302569'
+PODFILE CHECKSUM: 03bbbc624c85328db313b9643f7a6dfbf385192e
 
 COCOAPODS: 1.2.1

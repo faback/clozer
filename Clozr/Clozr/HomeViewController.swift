@@ -30,8 +30,8 @@ class HomeViewController: UIViewController {
         
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
-        control3.titleFont = UIFont.appFont()
-        control3.selectedTitleFont = UIFont.appFont()
+//        control3.titleFont = UIFont.appFont()
+//        control3.selectedTitleFont = UIFont.appFont()
         control3.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
 
         try! control3.setIndex(0, animated: false)

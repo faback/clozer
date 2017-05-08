@@ -189,7 +189,7 @@ extension LoginScreenViewController {
     
     
     func showErrorMessage(error:Error, completionHandler:((Bool) -> ())?) {
-        LoadingOverlay.shared.hideOverlayView()
+//        LoadingOverlay.shared.hideOverlayView()
         
         self.showAlert(title: Strings.errorGraphRequestTitle, message:String(format:Strings.errorGraphRequestMessage, error.localizedDescription) , { (buttonIndex) in
             if self.retryCounter < self.maxRetries {
@@ -207,7 +207,7 @@ extension LoginScreenViewController {
     
     
     func showAbortMessage(title:String,message:String) {
-        LoadingOverlay.shared.hideOverlayView()
+//        LoadingOverlay.shared.hideOverlayView()
         self.showAlert(title: title, message:message ,
                        { (buttonIndex) in
                         self.kickUserBackToMain()

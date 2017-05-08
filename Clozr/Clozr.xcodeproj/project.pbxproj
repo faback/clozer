@@ -28,6 +28,45 @@
 		37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */; };
 		37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */; };
 		37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */; };
+		43A42AB41EC00D1F00A2BD80 /* FBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AB31EC00D1F00A2BD80 /* FBClient.swift */; };
+		43A42ACF1EC00D7400A2BD80 /* badminton.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB51EC00D7400A2BD80 /* badminton.png */; };
+		43A42AD01EC00D7400A2BD80 /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB61EC00D7400A2BD80 /* baseball.png */; };
+		43A42AD11EC00D7400A2BD80 /* basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB71EC00D7400A2BD80 /* basketball.png */; };
+		43A42AD21EC00D7400A2BD80 /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB81EC00D7400A2BD80 /* beer.png */; };
+		43A42AD31EC00D7400A2BD80 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB91EC00D7400A2BD80 /* blue.png */; };
+		43A42AD41EC00D7400A2BD80 /* bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ABA1EC00D7400A2BD80 /* bowling.png */; };
+		43A42AD51EC00D7400A2BD80 /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ABB1EC00D7400A2BD80 /* cafe.png */; };
+		43A42AD61EC00D7400A2BD80 /* catchup.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ABC1EC00D7400A2BD80 /* catchup.png */; };
+		43A42AD71EC00D7400A2BD80 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ABD1EC00D7400A2BD80 /* Category.swift */; };
+		43A42AD81EC00D7400A2BD80 /* CloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ABE1EC00D7400A2BD80 /* CloudStore.swift */; };
+		43A42AD91EC00D7400A2BD80 /* fit-baseball-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ABF1EC00D7400A2BD80 /* fit-baseball-player.png */; };
+		43A42ADA1EC00D7400A2BD80 /* football.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC01EC00D7400A2BD80 /* football.png */; };
+		43A42ADB1EC00D7400A2BD80 /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AC11EC00D7400A2BD80 /* FriendCollectionCell.swift */; };
+		43A42ADC1EC00D7400A2BD80 /* FriendEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AC21EC00D7400A2BD80 /* FriendEventsViewController.swift */; };
+		43A42ADE1EC00D7400A2BD80 /* friends22.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC41EC00D7400A2BD80 /* friends22.png */; };
+		43A42ADF1EC00D7400A2BD80 /* friends33.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC51EC00D7400A2BD80 /* friends33.png */; };
+		43A42AE01EC00D7400A2BD80 /* friendsicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC61EC00D7400A2BD80 /* friendsicon.png */; };
+		43A42AE11EC00D7400A2BD80 /* FriendsSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AC71EC00D7400A2BD80 /* FriendsSmallCell.swift */; };
+		43A42AE21EC00D7400A2BD80 /* gametime.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC81EC00D7400A2BD80 /* gametime.png */; };
+		43A42AE31EC00D7400A2BD80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AC91EC00D7400A2BD80 /* GoogleService-Info.plist */; };
+		43A42AE41EC00D7400A2BD80 /* gym.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ACA1EC00D7400A2BD80 /* gym.png */; };
+		43A42AE51EC00D7400A2BD80 /* HomeEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */; };
+		43A42AE61EC00D7400A2BD80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */; };
+		43A42AE71EC00D7400A2BD80 /* icehockey.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ACD1EC00D7400A2BD80 /* icehockey.png */; };
+		43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ACE1EC00D7400A2BD80 /* Info.plist */; };
+		43A42AEB1EC00D8000A2BD80 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AE91EC00D8000A2BD80 /* LocalStore.swift */; };
+		43A42AEC1EC00D8000A2BD80 /* LocEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */; };
+		43A42AF11EC00D8E00A2BD80 /* SettingsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */; };
+		43A42AF21EC00D8E00A2BD80 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AEF1EC00D8D00A2BD80 /* SettingsViewController.swift */; };
+		43A42AF61EC00F3E00A2BD80 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AF51EC00F3E00A2BD80 /* EventsListViewController.swift */; };
+		43A42AF81EC00F6200A2BD80 /* SubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AF71EC00F6200A2BD80 /* SubCategoryCell.swift */; };
+		43A42AFA1EC00F7600A2BD80 /* MovieDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AF91EC00F7600A2BD80 /* MovieDB.swift */; };
+		43A42AFC1EC00F9100A2BD80 /* EventTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AFB1EC00F9100A2BD80 /* EventTableCell.swift */; };
+		43A42AFE1EC00FA300A2BD80 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AFD1EC00FA300A2BD80 /* Style.swift */; };
+		43A42B001EC0100100A2BD80 /* YelpSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AFF1EC0100100A2BD80 /* YelpSettings.swift */; };
+		43A42B021EC0109800A2BD80 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42B011EC0109800A2BD80 /* ContentController.swift */; };
+		43A42B041EC0136800A2BD80 /* tvshows.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B031EC0136800A2BD80 /* tvshows.png */; };
+		43A42B061EC0137600A2BD80 /* movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42B051EC0137600A2BD80 /* movies.png */; };
 		43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AC91EB6E79E001F6B6F /* Message.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
 		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
@@ -101,6 +140,45 @@
 		37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
 		37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDisplayCell.swift; sourceTree = "<group>"; };
 		37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTimingsCollectionCell.swift; sourceTree = "<group>"; };
+		43A42AB31EC00D1F00A2BD80 /* FBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClient.swift; sourceTree = "<group>"; };
+		43A42AB51EC00D7400A2BD80 /* badminton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badminton.png; sourceTree = "<group>"; };
+		43A42AB61EC00D7400A2BD80 /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
+		43A42AB71EC00D7400A2BD80 /* basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball.png; sourceTree = "<group>"; };
+		43A42AB81EC00D7400A2BD80 /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
+		43A42AB91EC00D7400A2BD80 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		43A42ABA1EC00D7400A2BD80 /* bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bowling.png; sourceTree = "<group>"; };
+		43A42ABB1EC00D7400A2BD80 /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
+		43A42ABC1EC00D7400A2BD80 /* catchup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catchup.png; sourceTree = "<group>"; };
+		43A42ABD1EC00D7400A2BD80 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		43A42ABE1EC00D7400A2BD80 /* CloudStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStore.swift; sourceTree = "<group>"; };
+		43A42ABF1EC00D7400A2BD80 /* fit-baseball-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fit-baseball-player.png"; sourceTree = "<group>"; };
+		43A42AC01EC00D7400A2BD80 /* football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = football.png; sourceTree = "<group>"; };
+		43A42AC11EC00D7400A2BD80 /* FriendCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
+		43A42AC21EC00D7400A2BD80 /* FriendEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendEventsViewController.swift; sourceTree = "<group>"; };
+		43A42AC41EC00D7400A2BD80 /* friends22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends22.png; sourceTree = "<group>"; };
+		43A42AC51EC00D7400A2BD80 /* friends33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends33.png; sourceTree = "<group>"; };
+		43A42AC61EC00D7400A2BD80 /* friendsicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsicon.png; sourceTree = "<group>"; };
+		43A42AC71EC00D7400A2BD80 /* FriendsSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSmallCell.swift; sourceTree = "<group>"; };
+		43A42AC81EC00D7400A2BD80 /* gametime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gametime.png; sourceTree = "<group>"; };
+		43A42AC91EC00D7400A2BD80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43A42ACA1EC00D7400A2BD80 /* gym.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gym.png; sourceTree = "<group>"; };
+		43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEventsCell.swift; sourceTree = "<group>"; };
+		43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		43A42ACD1EC00D7400A2BD80 /* icehockey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icehockey.png; sourceTree = "<group>"; };
+		43A42ACE1EC00D7400A2BD80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43A42AE91EC00D8000A2BD80 /* LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
+		43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocEventCell.swift; sourceTree = "<group>"; };
+		43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellTableViewCell.swift; sourceTree = "<group>"; };
+		43A42AEF1EC00D8D00A2BD80 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		43A42AF51EC00F3E00A2BD80 /* EventsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListViewController.swift; sourceTree = "<group>"; };
+		43A42AF71EC00F6200A2BD80 /* SubCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryCell.swift; sourceTree = "<group>"; };
+		43A42AF91EC00F7600A2BD80 /* MovieDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDB.swift; sourceTree = "<group>"; };
+		43A42AFB1EC00F9100A2BD80 /* EventTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableCell.swift; sourceTree = "<group>"; };
+		43A42AFD1EC00FA300A2BD80 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		43A42AFF1EC0100100A2BD80 /* YelpSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpSettings.swift; sourceTree = "<group>"; };
+		43A42B011EC0109800A2BD80 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
+		43A42B031EC0136800A2BD80 /* tvshows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvshows.png; sourceTree = "<group>"; };
+		43A42B051EC0137600A2BD80 /* movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movies.png; sourceTree = "<group>"; };
 		43B02AC91EB6E79E001F6B6F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -199,7 +277,10 @@
 		375964D21EBCD08900D592AA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				43A42AFF1EC0100100A2BD80 /* YelpSettings.swift */,
+				43A42AB31EC00D1F00A2BD80 /* FBClient.swift */,
 				375964D51EBD13F800D592AA /* YelpClient.swift */,
+				43A42AF91EC00F7600A2BD80 /* MovieDB.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -207,6 +288,36 @@
 		43B02AC71EB6E734001F6B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43A42B031EC0136800A2BD80 /* tvshows.png */,
+				43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */,
+				43A42AEF1EC00D8D00A2BD80 /* SettingsViewController.swift */,
+				43A42AE91EC00D8000A2BD80 /* LocalStore.swift */,
+				43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */,
+				43A42AB51EC00D7400A2BD80 /* badminton.png */,
+				43A42AB61EC00D7400A2BD80 /* baseball.png */,
+				43A42AB71EC00D7400A2BD80 /* basketball.png */,
+				43A42AB81EC00D7400A2BD80 /* beer.png */,
+				43A42AB91EC00D7400A2BD80 /* blue.png */,
+				43A42ABA1EC00D7400A2BD80 /* bowling.png */,
+				43A42ABB1EC00D7400A2BD80 /* cafe.png */,
+				43A42ABC1EC00D7400A2BD80 /* catchup.png */,
+				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
+				43A42ABE1EC00D7400A2BD80 /* CloudStore.swift */,
+				43A42ABF1EC00D7400A2BD80 /* fit-baseball-player.png */,
+				43A42AC01EC00D7400A2BD80 /* football.png */,
+				43A42AC11EC00D7400A2BD80 /* FriendCollectionCell.swift */,
+				43A42AC21EC00D7400A2BD80 /* FriendEventsViewController.swift */,
+				43A42AC41EC00D7400A2BD80 /* friends22.png */,
+				43A42AC51EC00D7400A2BD80 /* friends33.png */,
+				43A42AC61EC00D7400A2BD80 /* friendsicon.png */,
+				43A42AC71EC00D7400A2BD80 /* FriendsSmallCell.swift */,
+				43A42AC81EC00D7400A2BD80 /* gametime.png */,
+				43A42AC91EC00D7400A2BD80 /* GoogleService-Info.plist */,
+				43A42ACA1EC00D7400A2BD80 /* gym.png */,
+				43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */,
+				43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */,
+				43A42ACD1EC00D7400A2BD80 /* icehockey.png */,
+				43A42ACE1EC00D7400A2BD80 /* Info.plist */,
 				375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */,
 				375964CD1EBBEA5300D592AA /* DateTimePicker.swift */,
 				375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */,
@@ -252,6 +363,7 @@
 		43B85F231EAE5E6B003721CE /* Clozr */ = {
 			isa = PBXGroup;
 			children = (
+				43A42AFD1EC00FA300A2BD80 /* Style.swift */,
 				375964D21EBCD08900D592AA /* API */,
 				43B02AC71EB6E734001F6B6F /* Model */,
 				8F59771C1EBE56430076992B /* Cells */,
@@ -287,6 +399,8 @@
 		8F5977041EB2FF6C0076992B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				43A42B011EC0109800A2BD80 /* ContentController.swift */,
+				43A42AF51EC00F3E00A2BD80 /* EventsListViewController.swift */,
 				8F5977021EB2FF330076992B /* LoginScreenViewController.swift */,
 				8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */,
 				8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */,
@@ -324,7 +438,9 @@
 		8F59771C1EBE56430076992B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8F5977181EB65D050076992B /* FriendListCellCollectionViewCell.swift */,
+				43A42B051EC0137600A2BD80 /* movies.png */,
+				43A42AFB1EC00F9100A2BD80 /* EventTableCell.swift */,
+				43A42AF71EC00F6200A2BD80 /* SubCategoryCell.swift */,
 				8F59771D1EBE64100076992B /* EventDetailsDescriptionCell.swift */,
 				8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */,
 				8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */,
@@ -451,14 +567,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A42AE71EC00D7400A2BD80 /* icehockey.png in Resources */,
 				375964BF1EBA277A00D592AA /* ListBusinessView.xib in Resources */,
 				43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */,
+				43A42ACF1EC00D7400A2BD80 /* badminton.png in Resources */,
 				8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */,
 				375964CB1EBA70AE00D592AA /* CreateEventView.xib in Resources */,
+				43A42AD31EC00D7400A2BD80 /* blue.png in Resources */,
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
+				43A42AE01EC00D7400A2BD80 /* friendsicon.png in Resources */,
 				375964C71EBA6EAD00D592AA /* FriendTableCell.xib in Resources */,
+				43A42AD41EC00D7400A2BD80 /* bowling.png in Resources */,
+				43A42B061EC0137600A2BD80 /* movies.png in Resources */,
+				43A42AD61EC00D7400A2BD80 /* catchup.png in Resources */,
+				43A42ADF1EC00D7400A2BD80 /* friends33.png in Resources */,
+				43A42AE41EC00D7400A2BD80 /* gym.png in Resources */,
+				43A42AD51EC00D7400A2BD80 /* cafe.png in Resources */,
+				43A42AD91EC00D7400A2BD80 /* fit-baseball-player.png in Resources */,
+				43A42AD01EC00D7400A2BD80 /* baseball.png in Resources */,
+				43A42AD21EC00D7400A2BD80 /* beer.png in Resources */,
+				43A42AE31EC00D7400A2BD80 /* GoogleService-Info.plist in Resources */,
+				43A42B041EC0136800A2BD80 /* tvshows.png in Resources */,
+				43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */,
+				43A42AE21EC00D7400A2BD80 /* gametime.png in Resources */,
+				43A42ADE1EC00D7400A2BD80 /* friends22.png in Resources */,
+				43A42ADA1EC00D7400A2BD80 /* football.png in Resources */,
 				8F5977111EB303410076992B /* TabBar.xib in Resources */,
+				43A42AD11EC00D7400A2BD80 /* basketball.png in Resources */,
 				375964BB1EBA21C600D592AA /* CustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,14 +714,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */,
+				43A42AEC1EC00D8000A2BD80 /* LocEventCell.swift in Sources */,
 				8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */,
 				8F59770E1EB300110076992B /* MessagesViewController.swift in Sources */,
+				43A42AE51EC00D7400A2BD80 /* HomeEventsCell.swift in Sources */,
+				43A42AF61EC00F3E00A2BD80 /* EventsListViewController.swift in Sources */,
 				8F5977131EB312850076992B /* TabBarView.swift in Sources */,
 				8F5977201EBE65A70076992B /* EventDetailsMapCell.swift in Sources */,
+				43A42AE11EC00D7400A2BD80 /* FriendsSmallCell.swift in Sources */,
 				43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */,
 				375964D61EBD13F800D592AA /* YelpClient.swift in Sources */,
 				375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */,
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
+				43A42AE61EC00D7400A2BD80 /* HomeViewController.swift in Sources */,
+				43A42AD71EC00D7400A2BD80 /* Category.swift in Sources */,
 				37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */,
 				37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */,
 				43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */,
@@ -593,24 +735,37 @@
 				43B02ADB1EB6EA7E001F6B6F /* App.swift in Sources */,
 				8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */,
 				8F5977241EBE65F70076992B /* EventDetailsFriendsListCell.swift in Sources */,
+				43A42AB41EC00D1F00A2BD80 /* FBClient.swift in Sources */,
+				43A42ADC1EC00D7400A2BD80 /* FriendEventsViewController.swift in Sources */,
 				43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */,
 				375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */,
 				8F59771E1EBE64100076992B /* EventDetailsDescriptionCell.swift in Sources */,
+				43A42AFC1EC00F9100A2BD80 /* EventTableCell.swift in Sources */,
 				43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */,
 				375964C91EBA70A100D592AA /* CreateEventView.swift in Sources */,
 				43B02AE01EB6EFF1001F6B6F /* Circle.swift in Sources */,
 				375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */,
+				43A42B001EC0100100A2BD80 /* YelpSettings.swift in Sources */,
 				43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */,
 				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
 				375964BA1EBA21C600D592AA /* BusinessTableCell.swift in Sources */,
+				43A42AF81EC00F6200A2BD80 /* SubCategoryCell.swift in Sources */,
 				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
+				43A42ADB1EC00D7400A2BD80 /* FriendCollectionCell.swift in Sources */,
+				43A42B021EC0109800A2BD80 /* ContentController.swift in Sources */,
+				43A42AD81EC00D7400A2BD80 /* CloudStore.swift in Sources */,
 				375964C11EBA2F4200D592AA /* PinAnnotation.swift in Sources */,
 				375964C31EBA30B400D592AA /* BusinessViewController.swift in Sources */,
 				8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */,
 				8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */,
+				43A42AFA1EC00F7600A2BD80 /* MovieDB.swift in Sources */,
+				43A42AF11EC00D8E00A2BD80 /* SettingsCellTableViewCell.swift in Sources */,
+				43A42AF21EC00D8E00A2BD80 /* SettingsViewController.swift in Sources */,
 				375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */,
+				43A42AFE1EC00FA300A2BD80 /* Style.swift in Sources */,
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
+				43A42AEB1EC00D8000A2BD80 /* LocalStore.swift in Sources */,
 				8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */,
 				37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */,
 				375964B11EBA1BCF00D592AA /* Business.swift in Sources */,

@@ -93,12 +93,15 @@ class ContentController: UIViewController {
     
     @IBAction func myButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
+        loadNavInContent(navName: "businessViewNav")
+
         
     }
     
     @IBAction func mapButton(_ sender: UIButton) {
         
         otherAlpha(curr: sender)
+        loadNavInContent(navName: "eventDetailNav")
     }
     
     
