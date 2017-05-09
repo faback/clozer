@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-Is-gVo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2uJ-RX-xf0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -201,6 +201,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mG-jL-6or">
+                                <rect key="frame" x="66" y="264" width="243" height="138"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC3-na-7mW">
+                                        <rect key="frame" x="8" y="90" width="227" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="onCancelClick:" destination="slD-0b-ULM" eventType="touchUpInside" id="IvT-7k-ubo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJm-zs-ndc">
+                                        <rect key="frame" x="8" y="8" width="227" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Accept"/>
+                                        <connections>
+                                            <action selector="onAcceptEvent:" destination="slD-0b-ULM" eventType="touchUpInside" id="9Hc-ZH-9W9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ8-lZ-47k">
+                                        <rect key="frame" x="8" y="49" width="227" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Reject"/>
+                                        <connections>
+                                            <action selector="onRejectEvent:" destination="slD-0b-ULM" eventType="touchUpInside" id="fCn-N8-uli"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87620362109944305" green="0.87620362109944305" blue="0.87620362109944305" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="Dbl-1J-Jdr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -208,10 +244,21 @@
                             <constraint firstAttribute="trailing" secondItem="1Sd-BS-q3a" secondAttribute="trailing" id="Dff-p1-Exq"/>
                             <constraint firstItem="1Sd-BS-q3a" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leading" id="EUk-eB-fb3"/>
                             <constraint firstItem="1Sd-BS-q3a" firstAttribute="top" secondItem="cld-lK-429" secondAttribute="bottom" id="JHm-aA-f9N"/>
+                            <constraint firstItem="6mG-jL-6or" firstAttribute="centerY" secondItem="HbP-dc-EAg" secondAttribute="centerY" id="Jcb-iS-GDT"/>
+                            <constraint firstItem="6mG-jL-6or" firstAttribute="top" secondItem="cld-lK-429" secondAttribute="bottom" constant="200" id="PfI-TU-EoN"/>
+                            <constraint firstItem="6mG-jL-6or" firstAttribute="leading" secondItem="HbP-dc-EAg" secondAttribute="leadingMargin" constant="50" id="Qfp-6B-Heh"/>
+                            <constraint firstItem="6mG-jL-6or" firstAttribute="centerX" secondItem="HbP-dc-EAg" secondAttribute="centerX" id="o52-pU-zbY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qvs-t7-WaP"/>
+                    <navigationItem key="navigationItem" id="Qvs-t7-WaP">
+                        <barButtonItem key="rightBarButtonItem" title="Respond" id="2xC-4o-Kdc">
+                            <connections>
+                                <action selector="onRespondClick:" destination="slD-0b-ULM" id="Fhh-qi-KYd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="alertView" destination="6mG-jL-6or" id="m4Y-hS-YdD"/>
                         <outlet property="eventDetailsTableView" destination="1Sd-BS-q3a" id="6MU-je-TJM"/>
                     </connections>
                 </viewController>
@@ -487,6 +534,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3cz-eC-DU9">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17G-EK-Pae" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
@@ -498,7 +546,6 @@
                         <segue destination="slD-0b-ULM" kind="relationship" relationship="rootViewController" id="sEy-l3-9lj"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="17G-EK-Pae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-490" y="503"/>
         </scene>

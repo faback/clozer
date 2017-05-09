@@ -10,6 +10,7 @@ import UIKit
 
 class EventDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var eventDetailsTableView: UITableView!
+    @IBOutlet weak var alertView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         eventDetailsTableView.delegate   = self
         eventDetailsTableView.rowHeight  = UITableViewAutomaticDimension
         eventDetailsTableView.estimatedRowHeight = 100
+        
+        alertView.layer.cornerRadius = 10
 
     }
     override func viewDidLayoutSubviews()
@@ -47,6 +50,22 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
             return cell
         }
         
+    }
+    
+    @IBAction func onRespondClick(_ sender: Any) {
+        alertView.isHidden = false
+    }
+    
+    @IBAction func onAcceptEvent(_ sender: Any) {
+        alertView.isHidden = true
+    }
+    
+    @IBAction func onRejectEvent(_ sender: Any) {
+        alertView.isHidden = true
+    }
+    
+    @IBAction func onCancelClick(_ sender: Any) {
+        alertView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
