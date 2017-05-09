@@ -116,7 +116,9 @@ class LoginScreenViewController: UIViewController {
                             }
 //                            self.getUsersFriends()
                             CloudStore.shared.createOrUpdateUser(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                            User.me = self.currentFacebookUser
                             FBClient.currentFacebookUser = self.currentFacebookUser
+                            
                             self.performSegue(withIdentifier: "postLogin", sender: self)
 
                         }

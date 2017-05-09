@@ -184,6 +184,7 @@ import UIKit
         contentView.layer.shadowOpacity = 0.5
         contentView.backgroundColor = .white
         contentView.isHidden = true
+        print("contentView x: \(contentView.frame.origin.x) y: \(contentView.frame.origin.y)")
         addSubview(contentView)
         
         // title view
@@ -359,7 +360,7 @@ import UIKit
         // animate to show contentView
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.4, options: .curveEaseIn, animations: {
             self.contentView.frame = CGRect(x: 0,
-                                            y: self.frame.height - self.contentHeight,
+                                            y: self.frame.height - self.contentHeight-150,
                                             width: self.frame.width,
                                             height: self.contentHeight)
         }, completion: nil)

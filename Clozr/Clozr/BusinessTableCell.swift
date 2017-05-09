@@ -50,7 +50,7 @@ class BusinessTableCell: UITableViewCell {
 
             addressLabel.text = event.address
             distanceLabel.text = event.distance
-//            phoneNumberLabel.text = business.phoneNumber
+            phoneNumberLabel.text = event.phone
 //            ratingsCountLabel.text = "\(business.reviewCount!) Reviews"
 //            ratingImageView.setImageWith(business.ratingImageURL!)
 //            CuisineTypeLabel.text = business.categories

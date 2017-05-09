@@ -47,11 +47,12 @@ class FBClient {
             }
             currentFacebookUser.friends = friendsArray
             friends = friendsArray
+            User.me?.friends = friends
             currentFacebookUser.userRawContent?["friends"] = friendsUserIds
 
             print("Friends count \(friendsArray.count)")
 //            LoadingOverlay.shared.hideOverlayView()
-            User.me = currentFacebookUser
+           
         }
     }
     

@@ -14,6 +14,7 @@
                 <outlet property="addDateView" destination="GJT-6c-2JJ" id="NuZ-ya-5O4"/>
                 <outlet property="addDateandTimelabel" destination="hgQ-TI-hOT" id="7sr-oj-j2x"/>
                 <outlet property="addressLabel" destination="qZk-mC-fIt" id="RJK-tP-TWg"/>
+                <outlet property="backgroundImageView" destination="wsQ-nY-ddZ" id="xx9-CA-VLd"/>
                 <outlet property="businessNameLabel" destination="i5Z-V0-QU8" id="ZRA-Qc-eEt"/>
                 <outlet property="businessPhoneNumberLabel" destination="NIY-7v-8aC" id="FmG-1o-reF"/>
                 <outlet property="cuisineTypeLabel" destination="KI4-G6-Rzd" id="h3k-ef-h9y"/>

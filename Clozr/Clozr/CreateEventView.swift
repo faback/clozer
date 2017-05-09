@@ -17,6 +17,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var reviewImageView: UIImageView!
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var reviewCountLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var businessPhoneNumberLabel: UILabel!
 
     @IBOutlet weak var addDateView: UIView!
@@ -59,7 +60,27 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
 //            reviewImageView.setImageWith(business.ratingImageURL!)
 //            cuisineTypeLabel.text = business.categories
 //            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
-//            businessPhoneNumberLabel.text = business.phoneNumber
+            businessPhoneNumberLabel.text = evt.phone
+//            if let imgUrl = evt.image {
+//                var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+//                if(event.category != "movies") {
+//                    imageUrl = imgUrl
+//                }
+//                let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
+//                backgroundImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
+//                    if res != nil {
+//                        self.backgroundImageView.alpha = 0.5
+//                        self.backgroundImageView.image = result
+//                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
+//                            self.backgroundImageView.alpha = 1.2
+//                        })
+//                    }else{
+//                        self.backgroundImageView.image = result
+//                    }
+//                }, failure: {(req, res, result) -> Void in
+//                    
+//                })
+//            }
         }
     }
     

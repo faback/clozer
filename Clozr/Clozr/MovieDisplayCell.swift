@@ -16,7 +16,7 @@ class MovieDisplayCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         // Initialization code
         movieTimingsCollectionVIew.dataSource = self
         movieTimingsCollectionVIew.delegate = self
-        movieTimingsCollectionVIew.isScrollEnabled = false
+        //movieTimingsCollectionVIew.isScrollEnabled = false
         movieTimingsCollectionVIew.allowsMultipleSelection = false
         
     }

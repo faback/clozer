@@ -51,10 +51,10 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
         businessTableView.estimatedRowHeight = 100
         
         
-        let location = CLLocationCoordinate2DMake(37.361893,-122.024229)
-        businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
-        let pin = PinAnnotation(title: "Test Restuarant", coordinate: location)
-        businessMapView.addAnnotation(pin)
+//        let location = CLLocationCoordinate2DMake(37.361893,-122.024229)
+//        businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(location, 2000, 2000), animated: true)
+//        let pin = PinAnnotation(title: "Test Restuarant", coordinate: location)
+//        businessMapView.addAnnotation(pin)
         reloadEventsData()
     }
     
@@ -62,6 +62,14 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
         Event.getEvents(mainCategory: Category.mainCategory.code!, subCategory: Category.subCategory.code!) { (evts) in
             self.events = evts
             self.businessTableView.reloadData()
+            var pinArray=[MKAnnotation]()
+                for event in evts {
+                    let pinLocation = CLLocationCoordinate2DMake(event.latitude!,event.longitude!)
+                    self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
+                    let pin = PinAnnotation(title: event.name!, coordinate: pinLocation)
+                    pinArray.append(pin)
+            }
+                self.businessMapView.addAnnotations(pinArray)
         }
     }
     

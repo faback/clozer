@@ -77,14 +77,14 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         return "TheaterName"
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cell = displayTheatrersTableView.dequeueReusableCell(withIdentifier: "MovieDisplayCell", for: indexPath) as! MovieDisplayCell
-//        print(cell.movieTimingsCollectionVIew.frame.size.height)
-//        return cell.movieTimingsCollectionVIew.frame.size.height
-        return UITableViewAutomaticDimension
- //       return 120
-    
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        let cell = displayTheatrersTableView.dequeueReusableCell(withIdentifier: "MovieDisplayCell", for: indexPath) as! MovieDisplayCell
+////        print(cell.movieTimingsCollectionVIew.frame.size.height)
+////        return cell.movieTimingsCollectionVIew.frame.size.height
+//        return UITableViewAutomaticDimension
+// //       return 120
+//    
+//    }
     
 
     /*
