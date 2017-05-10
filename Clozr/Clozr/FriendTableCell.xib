@@ -18,43 +18,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name from Contacts/Fb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVS-Go-one">
-                        <rect key="frame" x="117" y="8" width="225" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0017655200530" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyb-7h-Kcf">
-                        <rect key="frame" x="117" y="37" width="130" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name from Contacts/Fb" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVS-Go-one">
+                        <rect key="frame" x="117" y="8" width="221.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Angelina-Jolie-717x403" translatesAutoresizingMaskIntoConstraints="NO" id="RNA-s5-Ke9">
-                        <rect key="frame" x="25" y="8" width="72" height="49"/>
+                        <rect key="frame" x="25" y="8" width="66" height="49"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="72" id="Mi2-mV-QRK"/>
+                            <constraint firstAttribute="width" constant="66" id="Mi2-mV-QRK"/>
                             <constraint firstAttribute="height" constant="49" id="OzN-mg-v5O"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cyb-7h-Kcf" firstAttribute="top" secondItem="cVS-Go-one" secondAttribute="bottom" constant="8" id="1hz-BG-Gvb"/>
                     <constraint firstItem="cVS-Go-one" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2KQ-2s-9nE"/>
                     <constraint firstAttribute="bottom" secondItem="RNA-s5-Ke9" secondAttribute="bottom" constant="8" id="6P4-B9-rha"/>
-                    <constraint firstAttribute="bottom" secondItem="cyb-7h-Kcf" secondAttribute="bottom" constant="6.5" id="GRX-3u-ZXc"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cyb-7h-Kcf" secondAttribute="trailing" constant="20" id="MUB-53-wQ4"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cVS-Go-one" secondAttribute="bottom" constant="15" id="KGu-06-9Ac"/>
                     <constraint firstItem="RNA-s5-Ke9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="Y6J-qq-07q"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cVS-Go-one" secondAttribute="trailing" constant="5" id="c26-VC-cJi"/>
                     <constraint firstItem="RNA-s5-Ke9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cG9-zO-hcc"/>
-                    <constraint firstItem="cyb-7h-Kcf" firstAttribute="leading" secondItem="RNA-s5-Ke9" secondAttribute="trailing" constant="20" id="d5x-Gh-JCJ"/>
-                    <constraint firstItem="cVS-Go-one" firstAttribute="leading" secondItem="RNA-s5-Ke9" secondAttribute="trailing" constant="20" id="tt3-PY-hRG"/>
+                    <constraint firstItem="cVS-Go-one" firstAttribute="leading" secondItem="RNA-s5-Ke9" secondAttribute="trailing" constant="26" id="tt3-PY-hRG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="friendImageView" destination="RNA-s5-Ke9" id="Opw-Sf-S8n"/>
                 <outlet property="friendNameLabel" destination="cVS-Go-one" id="WWv-NJ-GCY"/>
-                <outlet property="friendPhoneNoLabel" destination="cyb-7h-Kcf" id="63w-gw-bf6"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="101.5"/>
         </tableViewCell>
