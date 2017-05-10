@@ -152,7 +152,8 @@ class User:NSObject {
                 
             }
             else {
-               self.userId = self.name.trimmingCharacters(in: .whitespaces)
+               self.userId = self.name.replacingOccurrences(of: " ", with: "")
+            
             }
         }
         self.userRawContent["userId"] = self.userId

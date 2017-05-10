@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol CreateEventViewDelegate {
+    func performSegueToListEventsController(event: Event)
+}
+
 class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, CreateEventViewControllerDelegate {
 
     @IBOutlet var mainView: UIView!
@@ -30,6 +34,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var event:Event!
     var friends : [User]!
     var invitedFriends = [User]()
+    var delegate: CreateEventViewDelegate!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -130,14 +135,28 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     
     func createEvent(sender: UIView?=nil){
         
+        User.getUserFromFirebase(mail: User.currentLoginUserId()) { (usr, error) in
+            self.event.inviteUser(userId: (usr?.userId)! , accepted: true)
+            currentLoggedInUser = usr
+            if let uid = usr?.userId {
+                let me = usr
+                me?.addEvent(evt: self.event.id!)
+                User.createOrUpdateUserInFirebase(user: me)
+            }else {
+                let me = usr
+                me?.addEvent(evt: self.event.id!)
+                User.createOrUpdateUserInFirebase(user: me)
+            }
+            Event.createOrUpdateEventInFirebase(event: self.event)
+        }
+        //TODO:Balaji loop all users  call invite.
         for friend in self.invitedFriends{
+            print(friend.name!)
             self.event.inviteUser(userId: (friend.userId)!, accepted: false)
         }
+        Event.createOrUpdateEventInFirebase(event: event)
         //Then save event.
-        Event.createOrUpdateEventInFirebase(event: self.event)
-        User.me?.addEvent(evt: self.event.id!)
-        User.createOrUpdateUserInFirebase(user: User.me)
-        Event.createOrUpdateEventInFirebase(event: self.event)
+        delegate?.performSegueToListEventsController(event: event)
     }
     /*
     // Only override draw() if you perform custom drawing.

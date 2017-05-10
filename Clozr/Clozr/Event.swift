@@ -129,6 +129,7 @@ public class Event:NSObject {
     class func createOrUpdateEventInFirebase(event:Event?) {
         let uniqueId = (event?.id)!
         var dictionary = (event?.dictionaryRepresentation() as! [String:Any])
+        dictionary["createdBy"] = User.getEmailStripped(mailID: User.currentLoginUserId())
         events.child("/\(uniqueId)").setValue(dictionary)
     }
     

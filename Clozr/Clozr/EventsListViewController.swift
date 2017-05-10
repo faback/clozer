@@ -16,6 +16,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     @IBOutlet weak var titleLabel: UILabel!
     var category:Category?
     var subCategory:Category?
+    var comingFromCreateEvent: Bool = false
+    var newEventFromCreateEventView: Event!
     var events:[Int:[Event]] = [Int:[Event]]()
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
@@ -50,6 +52,9 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         Styles.styleNav(controller: self)
         
         loadEvents(searchTerm: nil)
+        if comingFromCreateEvent {
+            onAddedEvent(evt: newEventFromCreateEventView)
+        }
         
     }
     
