@@ -25,6 +25,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var friendsTableView: UITableView!
     var dateFormat = "HH:mm MM/dd/YYYY"
     var event:Event!
+    var friends : [User]!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -52,7 +53,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
-        
+        self.friends = User.me?.friends
         if let evt = self.event {
             businessNameLabel.text = evt.name
 //            distanceLabel.text = business.distance
@@ -61,27 +62,33 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
 //            cuisineTypeLabel.text = business.categories
 //            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
             businessPhoneNumberLabel.text = evt.phone
-//            if let imgUrl = evt.image {
-//                var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
-//                if(event.category != "movies") {
-//                    imageUrl = imgUrl
-//                }
-//                let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
-//                backgroundImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
-//                    if res != nil {
-//                        self.backgroundImageView.alpha = 0.5
-//                        self.backgroundImageView.image = result
-//                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
-//                            self.backgroundImageView.alpha = 1.2
-//                        })
-//                    }else{
-//                        self.backgroundImageView.image = result
-//                    }
-//                }, failure: {(req, res, result) -> Void in
-//                    
-//                })
-//            }
+            if let imgUrl = evt.image {
+                var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+                if(event.category != "movies") {
+                    imageUrl = imgUrl
+                }
+                let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
+                backgroundImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
+                    if res != nil {
+                        self.backgroundImageView.alpha = 0.5
+                        self.backgroundImageView.image = result
+                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
+                            self.backgroundImageView.alpha = 0.4
+                        })
+                    }else{
+                        self.backgroundImageView.image = result
+                    }
+                }, failure: {(req, res, result) -> Void in
+                    
+                })
+            }
         }
+        addDateView.layer.shadowColor = UIColor.black.cgColor
+        addDateView.layer.shadowOpacity = 1
+        addDateView.layer.shadowOffset = CGSize.zero
+        addDateView.layer.shadowRadius = 10
+        addDateView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+        addDateView.layer.shouldRasterize = true
     }
     
     func showDateTime(sender: UIView?=nil){
@@ -116,7 +123,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendTableCell", for: indexPath) as! FriendTableCell
-                return cell
+        cell.friend = self.friends[indexPath.row]
+        return cell
     }
     
     /*  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,7 +132,12 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
      }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        if(self.friends != nil) {
+            return self.friends.count
+        }
+        else {
+            return 0
+        }
     }
     
     func setEvent(event: Event){
