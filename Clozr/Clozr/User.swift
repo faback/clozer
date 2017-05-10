@@ -151,6 +151,9 @@ class User:NSObject {
                 self.userId = fname + lname
                 
             }
+            else {
+               self.userId = self.name.trimmingCharacters(in: .whitespaces)
+            }
         }
         self.userRawContent["userId"] = self.userId
     }

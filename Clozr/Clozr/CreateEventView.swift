@@ -11,6 +11,8 @@ import UIKit
 class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, CreateEventViewControllerDelegate {
 
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var createEventView: UIView!
+    @IBOutlet weak var creaeEventLabel: UILabel!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -19,6 +21,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var businessPhoneNumberLabel: UILabel!
+    @IBOutlet weak var createEventLabel: UILabel!
 
     @IBOutlet weak var addDateView: UIView!
     @IBOutlet weak var addDateandTimelabel: UILabel!
@@ -26,6 +29,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var dateFormat = "HH:mm MM/dd/YYYY"
     var event:Event!
     var friends : [User]!
+    var invitedFriends = [User]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,6 +58,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
         self.friends = FBClient.friends
+        let createEventTap = UITapGestureRecognizer(target: self, action: #selector(createEvent(sender:)))
+        createEventView.addGestureRecognizer(createEventTap)
         if let evt = self.event {
             businessNameLabel.text = evt.name
 //            distanceLabel.text = business.distance
@@ -86,9 +92,16 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         addDateView.layer.shadowColor = UIColor.black.cgColor
         addDateView.layer.shadowOpacity = 1
         addDateView.layer.shadowOffset = CGSize.zero
-        addDateView.layer.shadowRadius = 10
+        addDateView.layer.shadowRadius = 5
         addDateView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
         addDateView.layer.shouldRasterize = true
+        
+        createEventView.layer.shadowColor = UIColor.black.cgColor
+        createEventView.layer.shadowOpacity = 1
+        createEventView.layer.shadowOffset = CGSize.zero
+        createEventView.layer.shadowRadius = 5
+        createEventView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+        createEventView.layer.shouldRasterize = true
     }
     
     func showDateTime(sender: UIView?=nil){
@@ -114,6 +127,18 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             }
         
     }
+    
+    func createEvent(sender: UIView?=nil){
+        
+        for friend in self.invitedFriends{
+            self.event.inviteUser(userId: (friend.userId)!, accepted: false)
+        }
+        //Then save event.
+        Event.createOrUpdateEventInFirebase(event: self.event)
+        User.me?.addEvent(evt: self.event.id!)
+        User.createOrUpdateUserInFirebase(user: User.me)
+        Event.createOrUpdateEventInFirebase(event: self.event)
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -123,6 +148,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendTableCell", for: indexPath) as! FriendTableCell
+        cell.accessoryType = cell.isSelected ? .checkmark : .none
         cell.friend = self.friends[indexPath.row]
         return cell
     }
@@ -138,6 +164,16 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         else {
             return 0
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.invitedFriends.append(self.friends[indexPath.row])
+        print(self.friends[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.invitedFriends.remove(at: self.invitedFriends.index(of: self.friends[indexPath.row])!)
+        print(self.friends[indexPath.row])
     }
     
     func setEvent(event: Event){
