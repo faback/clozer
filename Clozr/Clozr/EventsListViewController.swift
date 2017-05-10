@@ -28,13 +28,15 @@ class EventsListViewController: UIViewController {
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
-        navigationItem.titleView = searchBar
+//        navigationItem.titleView = searchBar
         eventsTable.delegate = self
         eventsTable.dataSource = self
         eventsTable.rowHeight = UITableViewAutomaticDimension
         eventsTable.estimatedRowHeight = 100
         Styles.styleNav(controller: self)
-
+        User.me?.getInvitedEvents();
+        events[0] = User.me?.myCurrentEventInvites
+        eventsTable.reloadData()
         loadEvents(searchTerm: nil)
         
     }
@@ -42,21 +44,17 @@ class EventsListViewController: UIViewController {
     func loadEvents(searchTerm:String? ) {
         if(category?.code == "watch" && (subCategory?.code == "movies" || subCategory?.code == "tvshows")) {
             locCell  = true
-            sections = [0:"Hosted", 1:"Going to"]
-        }else {
-            sections = [0:(subCategory?.name)!]
         }
+        sections = [0:"You hosted", 1:"You are attending "]
         
         for (s , name ) in sections {
-            var term = (subCategory?.code)!
-            if let sterm = searchTerm {
-                term = term + "" + sterm
+            if(s == 0) {
+                //CK:TODO your filtered events.
+                
+            }else {
+                //CK:TODO your attending events.
+                
             }
-            Event.getEventsBySection(mainCategory: (category?.code)!, subCategory: term, section: name) { (evts) in
-                self.events[s] = evts
-                self.eventsTable.reloadData()
-            }
-
         }
     }
     

@@ -8,10 +8,6 @@
 
 import Foundation
 import Firebase
-
-let base = "https://clozer-ebbea.firebaseio.com"
-var database: FIRDatabase = FIRDatabase.database()
-
 class CloudStore {
     
     static let shared = CloudStore()
@@ -28,17 +24,8 @@ class CloudStore {
     //settings
     private var settings = database.reference().child("settings")
     
-    
-    func createOrUpdateUser(userUid:FIRUser , user:User?) {
-        if let fbuser = user  {
-            user?.firId = userUid.uid
-            user?.isClozerUser = true
-            user?.userRawContent?["firId"] = userUid.uid
-            user?.userRawContent?["isClozerUser"] = true
-            users.child("/\(fbuser.id!)").setValue(user?.userRawContent)
-        }
-    }
-    
+       
+
     
     func createOrUpdateEvent(evt:Event?) {
         if evt != nil  {

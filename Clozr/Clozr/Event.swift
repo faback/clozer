@@ -7,15 +7,20 @@
 //
 
 import Foundation
+import Firebase
 
 
-public class Event {
-    public var id : String?
+public class Event:NSObject {
+    
+    static var users = database.reference().child("users")
+    static var events = database.reference().child("events")
+
+    public var id : String!
     public var name : String?
     public var type : String?
     public var category : String?
     public var summary : String?
-    public var source : String?
+    public var source : String = "none"
     public var sourceId : Int?
     public var image : String?
     public var video : String?
@@ -26,35 +31,27 @@ public class Event {
     public var eventRawContent:[String:Any]?
     public var distance:String?
     public var phone:String?
-    public class func modelsFromDictionaryArray(array:NSArray) -> [Event]
-    {
-        var models:[Event] = []
-        for item in array
-        {
-            models.append(Event(dictionary: item as! [String : Any] )!)
-        }
-        return models
-    }
-
-    required public init?(dictionary: [String:Any]) {
-        
-        id = dictionary["id"] as? String
-        name = dictionary["name"] as? String
-        type = dictionary["type"] as? String
-        category = dictionary["category"] as? String
-        address = dictionary["address"] as? String
-        source = dictionary["source"] as? String
-        sourceId = dictionary["sourceId"] as? Int
-        image = dictionary["image"] as? String
-        video = dictionary["video"] as? String
-        time = dictionary["time"] as? String
-        summary = dictionary["summary"] as? String
-        latitude = dictionary["latitude"] as? Double
-        longitude = dictionary["longitude"] as? Double
-        distance = dictionary["distance"] as? String
-        phone = dictionary["phone"] as? String
-    }
+    public var epoch:CLong?
+    public var createdBy:String?
+    public var invitedUserIds:[[String:Bool]] = [[String:Bool]]()
     
+    var snapshot: FIRDataSnapshot! = nil
+    var key: String { return snapshot.key }
+    var ref: FIRDatabaseReference { return snapshot.ref }
+    var userId:String?
+    
+    init(snapshot: FIRDataSnapshot) {
+        
+        self.snapshot = snapshot
+        
+        super.init()
+        
+        for child in snapshot.children.allObjects as? [FIRDataSnapshot] ?? [] {
+            if responds(to: Selector(child.key)) {
+                setValue(child.value, forKey: child.key)
+            }
+        }
+    }
 
     public func dictionaryRepresentation() -> NSDictionary {
         
@@ -75,9 +72,75 @@ public class Event {
         dictionary.setValue(self.longitude, forKey: "longitude")
         dictionary.setValue(self.distance, forKey: "distance")
         dictionary.setValue(self.phone, forKey: "phone")
-//        let phNumber = dictionary["phone"] as? String
-
+        dictionary.setValue(self.phone, forKey: "epoch")
+        dictionary.setValue(self.invitedUserIds , forKey: "invitedUserIds")
         return dictionary
+    }
+    
+    //
+        public class func modelsFromDictionaryArray(array:NSArray) -> [Event]
+        {
+            var models:[Event] = []
+            for item in array
+            {
+                models.append(Event(dictionary: item as! [String : Any] )!)
+            }
+            return models
+        }
+    
+        required public init?(dictionary: [String:Any]) {
+    
+    
+            name = dictionary["name"] as? String
+            type = dictionary["type"] as? String
+            category = dictionary["category"] as? String
+            address = dictionary["address"] as? String
+            source = (dictionary["source"] as? String)!
+            sourceId = dictionary["sourceId"] as? Int
+            image = dictionary["image"] as? String
+            video = dictionary["video"] as? String
+            time = dictionary["time"] as? String
+            summary = dictionary["summary"] as? String
+            latitude = dictionary["latitude"] as? Double
+            longitude = dictionary["longitude"] as? Double
+            distance = dictionary["distance"] as? String
+            phone = dictionary["phone"] as? String
+            epoch = dictionary["epoch"] as? CLong
+            if(dictionary["invitedUserIds"] != nil){
+                invitedUserIds = (dictionary["invitedUserIds"] as? [[String:Bool]])!
+            }
+            if let eventID = (Event.getSpaceStripped(val: name!)) {
+                id = eventID + source
+            }
+        }
+    
+
+    
+    class func getSpaceStripped(val:String)->String? {
+        let newval = val.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        return newval
+    }
+
+    func inviteUser(userId:String,accepted:Bool){
+        invitedUserIds.append([userId:accepted])
+    }
+    
+    
+    class func createOrUpdateEventInFirebase(event:Event?) {
+        let uniqueId = (event?.id)!
+        var dictionary = (event?.dictionaryRepresentation() as! [String:Any])
+        events.child("/\(uniqueId)").setValue(dictionary)
+    }
+    
+    
+    class func getEventFromFirebase(uniqueId: String,completion: @escaping (Event?, Error?) -> Void){
+        let uniqueId = getSpaceStripped(val: uniqueId)
+        let eventRef = events.child("/\(uniqueId)")
+        
+        eventRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let usr = Event(snapshot: snapshot)
+            completion(usr,nil)
+        })
     }
     
     

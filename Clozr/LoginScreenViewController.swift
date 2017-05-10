@@ -112,10 +112,10 @@ class LoginScreenViewController: UIViewController {
                             let user = FIRAuth.auth()?.currentUser
                             self.currentFirUser = user
                             if ((user) != nil) {
-                                CloudStore.shared.createOrUpdateUser(userUid: user!, user: self.currentFacebookUser)
+                                User.createMe(userUid: user!, user: self.currentFacebookUser)
                             }
 //                            self.getUsersFriends()
-                            CloudStore.shared.createOrUpdateUser(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                            User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
                             User.me = self.currentFacebookUser
                             FBClient.currentFacebookUser = self.currentFacebookUser
                             
@@ -137,8 +137,7 @@ class LoginScreenViewController: UIViewController {
         }
         else {
             retryCounter = 0
-//            self.getUsersFriends()
-            CloudStore.shared.createOrUpdateUser(userUid: currentFirUser!, user: currentFacebookUser)
+            User.createMe(userUid: currentFirUser!, user: currentFacebookUser)
             FBClient.currentFacebookUser = currentFacebookUser
             self.performSegue(withIdentifier: "postLogin", sender: self)
 

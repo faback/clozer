@@ -410,15 +410,12 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		43B02AC71EB6E734001F6B6F /* Model */ = {
+		43A42B1F1EC29A6200A2BD80 /* unused */ = {
 			isa = PBXGroup;
 			children = (
 				43B02AD91EB6EA7E001F6B6F /* App.swift */,
-				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
 				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
-				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
 				43B02AD51EB6E891001F6B6F /* EventVenue.swift */,
-				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
 				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
 				43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */,
 				43B02AD31EB6E837001F6B6F /* LiveEvent.swift */,
@@ -426,6 +423,17 @@
 				43B02AD71EB6E99E001F6B6F /* EventChatRoom.swift */,
 				43B02ADF1EB6EFF1001F6B6F /* Circle.swift */,
 				375964B01EBA1BCF00D592AA /* Business.swift */,
+			);
+			name = unused;
+			sourceTree = "<group>";
+		};
+		43B02AC71EB6E734001F6B6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43A42B1F1EC29A6200A2BD80 /* unused */,
+				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
+				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
+				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

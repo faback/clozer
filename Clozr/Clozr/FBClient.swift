@@ -14,9 +14,10 @@ import FirebaseAuth
 class FBClient {
     static var currentFacebookUser:User!
     static var friends:[User]!
+    
     class func getUsersFriends(completionHandler:((Any?, Error?) -> ())? = nil) {
         if(friends == nil) {
-            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me/taggable_friends?limit=1000", parameters:["fields":"id,name,picture.width(500).height(500)"])
+            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me/taggable_friends?limit=100", parameters:["fields":"id,name,picture.width(500).height(500)"])
             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
                 if error != nil {
                     print("Error in getting friends list \(error.debugDescription)")
@@ -55,6 +56,9 @@ class FBClient {
            
         }
     }
+    
+    
+    
     
     
 }
