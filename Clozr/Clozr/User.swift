@@ -46,6 +46,7 @@ class User:NSObject {
     public var longitude:Double?
     public var locDict:[String:Any]?
     static let defaults = UserDefaults.standard
+    var previousLocations:[String] = [String]()
     var userRawContent:[String:Any]! = [String:Any]()
 
     // referrence: https://developers.facebook.com/docs/graph-api/reference/user
@@ -95,6 +96,7 @@ class User:NSObject {
         dictionary.setValue(self.userId, forKey: "userId")
         dictionary.setValue(self.locDict, forKey: "locDict")
         dictionary.setValue(self.isClozerUser, forKey: "isClozerUser")
+        dictionary.setValue(self.previousLocations, forKey: "previousLocations")
         return dictionary
     }
     

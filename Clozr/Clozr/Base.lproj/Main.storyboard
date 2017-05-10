@@ -967,7 +967,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="ADl-1k-ZmN"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ns1-CD-SSW">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ns1-CD-SSW">
                                                         <size key="itemSize" width="40" height="33"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -975,7 +975,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendssmallcell" id="InZ-sD-cFB" customClass="FriendsSmallCell" customModule="Clozr" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="33"/>
+                                                            <rect key="frame" x="0.0" y="1.5" width="40" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="33"/>

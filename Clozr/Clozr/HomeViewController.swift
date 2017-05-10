@@ -10,26 +10,33 @@ import UIKit
 import Firebase
 //import HMSegmentedControl
 import BetterSegmentedControl
+import MapKit
 
 class HomeViewController: UIViewController {
+    var locationManager:CLLocationManager!
 
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var control3: BetterSegmentedControl!
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var eventsTableView: UITableView!
     
+    var locations = [CLLocation]()
+    var coordinateList = [CLLocationCoordinate2D]()
+
     var mainCategory = Category()
     var isHeightCalculated: Bool = false
     var selectedSubCategory = Category()
 
     var sectionedEvents = [Int:[Event]]()
     var sectionTitles = [Int: String]()
-
+    var userReady:Bool = false
     var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
         User.getUserFromFirebase(mail: (User.currentLoginUserId())) { (usr, error) in
                 currentLoggedInUser = usr
+                self.userReady = true
+                self.determineMyCurrentLocation()
         }
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
@@ -135,6 +142,67 @@ class HomeViewController: UIViewController {
     }
  
 
+}
+
+
+extension HomeViewController : CLLocationManagerDelegate  {
+    
+    func determineMyCurrentLocation() {
+        locationManager = CLLocationManager()
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        appDelegate.locationManager = locationManager
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 10
+        
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let newLocation = locations.last!
+        print("current position: \(newLocation.coordinate.longitude) , \(newLocation.coordinate.latitude)")
+        self.locations.append(newLocation)
+        self.coordinateList.append(newLocation.coordinate)
+        if(userReady) {
+            let locString = "\(newLocation.coordinate.latitude),\(newLocation.coordinate.longitude)"
+                
+            currentLoggedInUser?.latitude = newLocation.coordinate.latitude
+            currentLoggedInUser?.longitude = newLocation.coordinate.longitude
+            currentLoggedInUser?.previousLocations.append(locString)
+            currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
+            User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+        }
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        
+
+        
+        if let bg =  appDelegate.isBackground , let df = appDelegate.deferringUpdates
+        {
+            if(bg && !df) {
+                appDelegate.deferringUpdates = true;
+                locationManager.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: 1)
+            }
+        }
+        // Building the kml file, building the message and pushing it
+        let message = "{\"lat\":\(newLocation.coordinate.latitude),\"lng\":\(newLocation.coordinate.longitude), \"alt\": \(newLocation.altitude)}"
+        print(message)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        YelpSettings.resetLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        appDelegate.deferringUpdates = false
+    }
+    
 }
 
 
