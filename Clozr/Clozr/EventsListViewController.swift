@@ -91,15 +91,21 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let indexPath = sender as! IndexPath
+        let currEvents = events[indexPath.section]
+        let evt = currEvents?[indexPath.row]
+        let vc = segue.destination as! EventDetailsViewController
+        vc.event = evt
     }
-    */
+ 
 
 }
 
@@ -168,6 +174,10 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitle = sections[section]
         return sectionTitle
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: Clozer.Segues.toDetail, sender: indexPath)
     }
     
     

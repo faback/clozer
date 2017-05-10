@@ -531,24 +531,6 @@
             </objects>
             <point key="canvasLocation" x="1727" y="502"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3cz-eC-DU9">
-            <objects>
-                <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="slD-0b-ULM" kind="relationship" relationship="rootViewController" id="sEy-l3-9lj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="17G-EK-Pae" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-490" y="503"/>
-        </scene>
         <!--Login Screen View Controller-->
         <scene sceneID="dFd-9q-xWL">
             <objects>
@@ -1121,11 +1103,12 @@
                     <connections>
                         <outlet property="eventsTable" destination="Nn5-6P-3nb" id="ZVm-3U-syg"/>
                         <outlet property="titleLabel" destination="Hub-wY-i8f" id="8qt-Ln-MVc"/>
+                        <segue destination="slD-0b-ULM" kind="show" identifier="toDetail" id="EbY-d4-66r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0n-TP-Jkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023.2" y="2653.2233883058475"/>
+            <point key="canvasLocation" x="937" y="1334"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="uc3-7V-ch3">

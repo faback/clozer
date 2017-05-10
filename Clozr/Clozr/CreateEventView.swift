@@ -53,7 +53,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
-        self.friends = User.me?.friends
+        self.friends = FBClient.friends
         if let evt = self.event {
             businessNameLabel.text = evt.name
 //            distanceLabel.text = business.distance

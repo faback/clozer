@@ -12,6 +12,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var eventDetailsTableView: UITableView!
     @IBOutlet weak var alertView: UIView!
     
+    var event:Event?
     override func viewDidLoad() {
         super.viewDidLoad()
         
