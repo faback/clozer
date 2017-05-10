@@ -42,13 +42,13 @@ class FBClient {
         if let data = data["data"] as? [[String: AnyObject]] {
             for userData:[String: AnyObject] in data {
                 if let friend = User(dictionary: userData) {
+                    friend.setUserId()
                     friendsArray.append(friend)
                     friendsUserIds.append(friend.id!)
                 }
             }
             currentFacebookUser.friends = friendsArray
             friends = friendsArray
-            User.me?.friends = friends
             currentFacebookUser.userRawContent?["friends"] = friendsUserIds
 
             print("Friends count \(friendsArray.count)")

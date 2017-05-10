@@ -107,8 +107,12 @@ class LoginScreenViewController: UIViewController {
                 else {
                     if let data:[String:AnyObject] = result as? [String : AnyObject] {
                        let user = User(dictionary: data)
+                       user?.setUserId()
+                        
                         if let fbuser = user {
                             self.currentFacebookUser = fbuser
+                            let defaults = UserDefaults.standard
+                            defaults.set(user?.userId, forKey: User.currentUserDataKeyId)
                             let user = FIRAuth.auth()?.currentUser
                             self.currentFirUser = user
                             if ((user) != nil) {
@@ -116,7 +120,6 @@ class LoginScreenViewController: UIViewController {
                             }
 //                            self.getUsersFriends()
                             User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
-                            User.me = self.currentFacebookUser
                             FBClient.currentFacebookUser = self.currentFacebookUser
                             
                             self.performSegue(withIdentifier: "postLogin", sender: self)

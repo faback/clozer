@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsListViewController: UIViewController {
+class EventsListViewController: UIViewController,UserChangesProtocol {
 
     @IBOutlet weak var eventsTable: UITableView!
     var searchBar: UISearchBar!
@@ -19,9 +19,23 @@ class EventsListViewController: UIViewController {
     var events:[Int:[Event]] = [Int:[Event]]()
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
-    
+    var currentUser :User?
     override func viewDidLoad() {
         super.viewDidLoad()
+        events[0] = [Event]()
+        events[1] = [Event]()
+        
+        if let me = currentLoggedInUser   {
+            reloadData(user: me)
+        }else {
+            User.getUserFromFirebase(mail: User.currentLoginUserId()) { (loggedInUser, error) in
+                currentLoggedInUser = loggedInUser
+                self.currentUser = loggedInUser
+                self.reloadData(user: self.currentUser)
+            }
+        }
+        
+    
         if let sc = subCategory?.name {
             titleLabel.text = "Your choice for \(sc) "
         }
@@ -34,11 +48,23 @@ class EventsListViewController: UIViewController {
         eventsTable.rowHeight = UITableViewAutomaticDimension
         eventsTable.estimatedRowHeight = 100
         Styles.styleNav(controller: self)
-        User.me?.getInvitedEvents();
-        events[0] = User.me?.myCurrentEventInvites
-        eventsTable.reloadData()
+        
         loadEvents(searchTerm: nil)
         
+    }
+    
+    
+    func reloadData(user:User?) {
+        user?.delegate = self
+        user?.getInvitedEvents();
+    }
+    
+    
+    func onAddedEvent(evt:Event) {
+        var eventArray = events[0]
+        eventArray?.append(evt)
+        events[0] = eventArray
+        self.eventsTable.reloadData()
     }
 
     func loadEvents(searchTerm:String? ) {

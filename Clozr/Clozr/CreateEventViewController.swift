@@ -22,13 +22,27 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createEventView.event = self.event
+         User.getUserFromFirebase(mail: User.currentLoginUserId()) { (usr, error) in
+                self.event.inviteUser(userId: (usr?.userId)! , accepted: false)
+            currentLoggedInUser = usr
+                if let uid = usr?.userId {
+                    let me = usr
+                    me?.addEvent(evt: self.event.id!)
+                    User.createOrUpdateUserInFirebase(user: me)
+                }else {
+                    let me = usr
+                    me?.addEvent(evt: self.event.id!)
+                    User.createOrUpdateUserInFirebase(user: me)
+                }
+            Event.createOrUpdateEventInFirebase(event: self.event)
+        }
         //TODO:Balaji loop all users  call invite.
-        event.inviteUser(userId: (User.me?.userId)!, accepted: false)
+        
         
         //Then save event.
-        Event.createOrUpdateEventInFirebase(event: event)
-        User.me?.addEvent(evt: event.id!)
-        User.createOrUpdateUserInFirebase(user: User.me)
+        
+        
+        
         createEventView.initSubView()
         // Do any additional setup after loading the view.
     }

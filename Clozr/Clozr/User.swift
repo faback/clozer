@@ -11,9 +11,14 @@ import Firebase
 
 let base = "https://clozer-ebbea.firebaseio.com"
 var database: FIRDatabase = FIRDatabase.database()
-
+var currentLoggedInUser:User?
 public protocol UserInviteDelegate: class {
     func passEvent(event:Event)
+}
+
+
+protocol UserChangesProtocol  {
+    func onAddedEvent(evt:Event)
 }
 
 
@@ -21,7 +26,7 @@ class User:NSObject {
     
     static var users = database.reference().child("users")
     static var events = database.reference().child("events")
-    
+    var delegate:UserChangesProtocol?
     var id: String! = nil
     var about:String! = nil
     var birthday: String! = nil
@@ -31,15 +36,18 @@ class User:NSObject {
     var lastName: String! = nil
     var name: String! = nil
     var relationshipStatus: String! = nil
-    var location: Location! = nil
     var friends = ([User]())
     var isClozerUser:Bool = false
     private static var _current: User! = nil
-    static let defaults = UserDefaults.standard
-    var userRawContent:[String:Any]! = [String:Any]()
     var firId:String! = nil
     var invitedEvents:[String]! = [String]()
-    
+    public var address : String?
+    public var latitude:Double?
+    public var longitude:Double?
+    public var locDict:[String:Any]?
+    static let defaults = UserDefaults.standard
+    var userRawContent:[String:Any]! = [String:Any]()
+
     // referrence: https://developers.facebook.com/docs/graph-api/reference/user
     
     var snapshot: FIRDataSnapshot! = nil
@@ -63,10 +71,40 @@ class User:NSObject {
     }
     
     static let currentUserDataKey = "com.clozr.loggedinuser"
+    static let currentUserDataKeyId = "com.clozr.loggedinuserid"
+    
+    
+    
+    
+    public func dictionaryRepresentation() -> NSDictionary {
+        
+        let dictionary = NSMutableDictionary()
+        dictionary.setValue(self.id, forKey: "id")
+        dictionary.setValue(self.name, forKey: "name")
+        dictionary.setValue(self.about, forKey: "about")
+        dictionary.setValue(self.profilePictureURLString, forKey: "profilePictureURLString")
+        dictionary.setValue(self.email, forKey: "email")
+        dictionary.setValue(self.lastName, forKey: "lastName")
+        dictionary.setValue(self.relationshipStatus, forKey: "relationshipStatus")
+        dictionary.setValue(self.latitude, forKey: "latitude")
+        dictionary.setValue(self.longitude, forKey: "longitude")
+        dictionary.setValue(self.firId, forKey: "firId")
+        dictionary.setValue(self.address, forKey: "address")
+        dictionary.setValue(self.invitedEvents, forKey: "invitedEvents")
+        dictionary.setValue(self.userRawContent, forKey: "userRawContent")
+        dictionary.setValue(self.userId, forKey: "userId")
+        dictionary.setValue(self.locDict, forKey: "locDict")
+        dictionary.setValue(self.isClozerUser, forKey: "isClozerUser")
+        return dictionary
+    }
+    
     
     init?(dictionary: [String : Any]) {
         
         self.userRawContent = dictionary
+        if let usrid = dictionary["userId"] {
+            self.userId = usrid as! String
+        }
         guard let name = dictionary["name"] as? String,
             let id = dictionary["id"] as? String else {
                 return nil
@@ -95,43 +133,33 @@ class User:NSObject {
             self.profilePictureURLString = nil
         }
         
-        //get the user's location if we have the data for it
-        if let locationDict = dictionary["location"] as? [String: Any] {
-            self.location = Location(dict: locationDict)
-        }
-        else {
-            self.location = nil
-        }
+
+        self.locDict = dictionary["location"] as? [String: Any]
         self.isClozerUser = true
-        if let mailNotNil = mailId {
-            self.userId = User.getEmailStripped(mailID:mailNotNil )
+        
+        
+       
+    }
+    
+    func setUserId() {
+        if let mail = self.email {
+            self.userId = User.getEmailStripped(mailID:mail )
         }else{
             if let fname = firstName , let lname = lastName {
                 self.userId = fname + lname
+                
             }
         }
-        
-//        subScribeToInviteUsers(forOperation: "subscribe.to.invites")
+        self.userRawContent["userId"] = self.userId
     }
     
-    func subScribeToInviteUsers(forOperation:String){
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: forOperation), object: nil, queue: OperationQueue.main) { (Notification) in
-            if let userInfo  = Notification.userInfo {
-                let evt = userInfo["invitedEvent"] as! Event
-                self.myCurrentEventInvites.append(evt)
-            }
-        }
-    }
+
     
     func getInvitedEvents()  {
         for ev in invitedEvents {
             Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
-                if(error != nil) {
-                    let nc = NotificationCenter.default
-                    nc.post(name:NSNotification.Name(rawValue: "subscribe.to.invites"),
-                            object: nil,
-                            userInfo:["invitedEvent":evt!])
-                }
+
+                  self.delegate?.onAddedEvent(evt: evt!)
             })
         }
     }
@@ -150,15 +178,15 @@ class User:NSObject {
                 fbuser.userRawContent?["isClozerUser"] = true
             }
             let uniqueId = getEmailStripped(mailID: (user?.email)!)
-            users.child("/\(uniqueId)").setValue(user?.userRawContent)
+            users.child("/\(uniqueId)").setValue(user?.dictionaryRepresentation())
         }
     }
     
     
     class func createOrUpdateUserInFirebase(user:User?) {
         let uniqueId = getEmailStripped(mailID: (user?.email)!)
-        var dictionary = user?.userRawContent
-        dictionary?["invitedEvents"] = user?.invitedEvents
+        var dictionary = user?.dictionaryRepresentation() as! [String:Any]
+        dictionary["invitedEvents"] = user?.invitedEvents
         users.child("/\(uniqueId)").setValue(dictionary)
     }
     
@@ -182,35 +210,11 @@ class User:NSObject {
     }
 
     
+
     
-    class var me: User? {
-        get{
-            if _current == nil {
-                let userData =  defaults.object(forKey: currentUserDataKey) as? Data
-                if let userData = userData {
-                    let dictionary = NSKeyedUnarchiver.unarchiveObject(with: userData)
-                    if(dictionary != nil){
-                        _current = User.init(dictionary: dictionary as! [String:Any])
-                    }
-                }
-            }
-            return _current
-        }
-        set(user){
-            _current = user
-            if let user = user {
-                let data = NSKeyedArchiver.archivedData(withRootObject: user.userRawContent!)
-                defaults.set(data, forKey: currentUserDataKey)
-                
-            }
-            else {
-                defaults.set(nil, forKey: currentUserDataKey)
-            }
-            
-            defaults.synchronize()
-        }
+    class func currentLoginUserId() -> String {
+        return defaults.string(forKey: currentUserDataKeyId)!
     }
-    
 
     
 }

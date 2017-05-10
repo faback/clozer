@@ -24,8 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loggedinUser = FIRAuth.auth()?.currentUser
         if let usr = loggedinUser  {
-            FBClient.currentFacebookUser = User.me
-            FBClient.getUsersFriends()
+            User.getUserFromFirebase(mail: User.currentLoginUserId(), completion: { (usr1, error) in
+                FBClient.currentFacebookUser = usr1
+                FBClient.getUsersFriends()
+            })
+            
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
 
         }else {

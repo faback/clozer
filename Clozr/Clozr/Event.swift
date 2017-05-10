@@ -134,13 +134,15 @@ public class Event:NSObject {
     
     
     class func getEventFromFirebase(uniqueId: String,completion: @escaping (Event?, Error?) -> Void){
-        let uniqueId = getSpaceStripped(val: uniqueId)
-        let eventRef = events.child("/\(uniqueId)")
+        let uniqueId:String? = getSpaceStripped(val: uniqueId)
         
+        if let uid = uniqueId {
+            let eventRef = events.child("/\(uid)")
         eventRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let usr = Event(snapshot: snapshot)
             completion(usr,nil)
         })
+        }
     }
     
     

@@ -28,7 +28,9 @@ class HomeViewController: UIViewController {
     var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        User.getUserFromFirebase(mail: (User.currentLoginUserId())) { (usr, error) in
+                currentLoggedInUser = usr
+        }
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
 //        control3.titleFont = UIFont.appFont()
@@ -46,6 +48,7 @@ class HomeViewController: UIViewController {
         
         self.categoriesCollection.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
+        
         selectedSubCategory = mainCategory.subCategories[0];
         changeButtonTitle()
         reloadEventsData()
