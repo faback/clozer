@@ -41,16 +41,9 @@ public class Event:NSObject {
     var userId:String?
     
     init(snapshot: FIRDataSnapshot) {
-        
         self.snapshot = snapshot
-        
         super.init()
-        
-        for child in snapshot.children.allObjects as? [FIRDataSnapshot] ?? [] {
-            if responds(to: Selector(child.key)) {
-                setValue(child.value, forKey: child.key)
-            }
-        }
+        setAllValues(dictionary: snapshot.value as! [String:Any])
     }
 
     public func dictionaryRepresentation() -> NSDictionary {
@@ -77,43 +70,46 @@ public class Event:NSObject {
         return dictionary
     }
     
-    //
-        public class func modelsFromDictionaryArray(array:NSArray) -> [Event]
+
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Event]
+    {
+        var models:[Event] = []
+        for item in array
         {
-            var models:[Event] = []
-            for item in array
-            {
-                models.append(Event(dictionary: item as! [String : Any] )!)
-            }
-            return models
+            models.append(Event(dictionary: item as! [String : Any] )!)
         }
+        return models
+    }
+
+    required public init?(dictionary: [String:Any]) {
+        super.init()
+        setAllValues(dictionary: dictionary)
+    }
     
-        required public init?(dictionary: [String:Any]) {
+    func setAllValues(dictionary:[String:Any]) {
     
-    
-            name = dictionary["name"] as? String
-            type = dictionary["type"] as? String
-            category = dictionary["category"] as? String
-            address = dictionary["address"] as? String
-            source = (dictionary["source"] as? String)!
-            sourceId = dictionary["sourceId"] as? Int
-            image = dictionary["image"] as? String
-            video = dictionary["video"] as? String
-            time = dictionary["time"] as? String
-            summary = dictionary["summary"] as? String
-            latitude = dictionary["latitude"] as? Double
-            longitude = dictionary["longitude"] as? Double
-            distance = dictionary["distance"] as? String
-            phone = dictionary["phone"] as? String
-            epoch = dictionary["epoch"] as? CLong
-            if(dictionary["invitedUserIds"] != nil){
-                invitedUserIds = (dictionary["invitedUserIds"] as? [[String:Bool]])!
-            }
-            if let eventID = (Event.getSpaceStripped(val: name!)) {
-                id = eventID + source
-            }
+        name = dictionary["name"] as? String
+        type = dictionary["type"] as? String
+        category = dictionary["category"] as? String
+        address = dictionary["address"] as? String
+        source = (dictionary["source"] as? String)!
+        sourceId = dictionary["sourceId"] as? Int
+        image = dictionary["image"] as? String
+        video = dictionary["video"] as? String
+        time = dictionary["time"] as? String
+        summary = dictionary["summary"] as? String
+        latitude = dictionary["latitude"] as? Double
+        longitude = dictionary["longitude"] as? Double
+        distance = dictionary["distance"] as? String
+        phone = dictionary["phone"] as? String
+        epoch = dictionary["epoch"] as? CLong
+        if(dictionary["invitedUserIds"] != nil){
+        invitedUserIds = (dictionary["invitedUserIds"] as? [[String:Bool]])!
         }
-    
+        if let eventID = (Event.getSpaceStripped(val: name!)) {
+        id = eventID + source
+        }
+    }
 
     
     class func getSpaceStripped(val:String)->String? {
@@ -158,7 +154,7 @@ public class Event:NSObject {
         
         if(mainCategory == "play" || mainCategory == "catchup") {
             YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
-                if let err = error  {
+                if error != nil  {
                      completionHandler([])
                 }
                 else{
@@ -181,7 +177,7 @@ public class Event:NSObject {
         
         if(mainCategory == "play" || mainCategory == "catchup") {
             YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
-                if let err = error  {
+                if error != nil  {
                     completionHandler([])
                 }
                 else{

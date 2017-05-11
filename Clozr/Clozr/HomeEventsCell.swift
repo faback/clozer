@@ -30,6 +30,7 @@ class HomeEventsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization c ode
+        self.eventImage.layer.cornerRadius = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,6 +63,8 @@ class HomeEventsCell: UITableViewCell {
                 }else{
                     self.eventImage.image = result
                 }
+                self.eventImage.layer.cornerRadius = 5
+
             }, failure: {(req, res, result) -> Void in
                 
             })

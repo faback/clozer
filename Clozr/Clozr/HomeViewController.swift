@@ -40,8 +40,6 @@ class HomeViewController: UIViewController {
         }
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
-//        control3.titleFont = UIFont.appFont()
-//        control3.selectedTitleFont = UIFont.appFont()
         control3.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
 
         try! control3.setIndex(0, animated: false)
@@ -102,8 +100,10 @@ class HomeViewController: UIViewController {
         else {
             mainCategory = Category.getCatchup()
         }
+        selectedSubCategory = mainCategory.subCategories[0];
         categoriesCollection.reloadData()
-        eventsTableView.reloadData()
+        reloadEventsData()
+        changeButtonTitle()
     }
 
     
@@ -121,11 +121,10 @@ class HomeViewController: UIViewController {
             eventListController.subCategory = selectedSubCategory
         }
         if(senderStr == "showFriends") {
-            let eventListController = segue.destination as! FriendEventsViewController
+            _ = segue.destination as! FriendEventsViewController
         }
         
         if(senderStr == "movieDetail") {
-            
             var indexPath  = selectedIndexPath
             let evt = sectionedEvents[(indexPath?.section)!]?[(indexPath?.row)!]
             let movieController = segue.destination as! SelectMovieViewController

@@ -19,6 +19,7 @@ public protocol UserInviteDelegate: class {
 
 protocol UserChangesProtocol  {
     func onAddedEvent(evt:Event)
+    func reloadTable()
 }
 
 
@@ -159,15 +160,23 @@ class User:NSObject {
         self.userRawContent["userId"] = self.userId
     }
     
-
+    
     
     func getInvitedEvents()  {
+        let count = invitedEvents.count
+        var checker = 0
         for ev in invitedEvents {
             Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
 
                   self.delegate?.onAddedEvent(evt: evt!)
+                  checker = checker + 1
             })
         }
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.delegate?.reloadTable()
+        }
+        
     }
     
     
@@ -204,7 +213,9 @@ class User:NSObject {
         usrRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let usr = User(snapshot: snapshot)
             completion(usr,nil)
+            usrRef.removeAllObservers()
         })
+//        usrRef.removeAllObservers()
     }
     
     

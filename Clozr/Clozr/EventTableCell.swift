@@ -7,19 +7,23 @@
 //
 
 import UIKit
-
+import FlatUIKit
 class EventTableCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var friendsCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
     
+    @IBOutlet weak var joinDeclineButton: FUIButton!
     
+    @IBOutlet weak var friendsCollectionWidth: NSLayoutConstraint!
     @IBOutlet weak var friendsCollectionTable: UICollectionView!
     
     var indexRow:Int?
-    var users = [User]()
+    var users = [(User,Bool)]()
     var count = 0
     var event:Event!  {
         didSet {
@@ -35,6 +39,14 @@ class EventTableCell: UITableViewCell {
         super.awakeFromNib()
         friendsCollectionTable.delegate = self
         friendsCollectionTable.dataSource = self
+        
+        
+        joinDeclineButton.buttonColor = UIColor.belizeHole()
+        joinDeclineButton.shadowColor = UIColor.white
+        joinDeclineButton.shadowHeight = 1.0
+        joinDeclineButton.cornerRadius = 2.0
+        joinDeclineButton.setTitleColor(UIColor.white, for: .normal)
+        
         // Initialization code
     }
 
@@ -49,7 +61,7 @@ class EventTableCell: UITableViewCell {
     func layoutEvent() {
         //        eventImage.image = UIImage(named: event.image!)
         eventTitle.text = event.name
-        eventTime.text = event.time
+        eventTime.text = event.time ?? "11:30 AM May 31 , 2017"
         eventLocation.text = event.address
         if let imgUrl = event.image {
             var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
@@ -67,31 +79,37 @@ class EventTableCell: UITableViewCell {
                 }else{
                     self.eventImage.image = result
                 }
+                self.eventImage.layer.cornerRadius = 5
             }, failure: {(req, res, result) -> Void in
                 
             })
         }
         
         
-        friendsCollectionTable.delegate = self
-        for usersInvited in event.invitedUserIds {
-            for (k,v) in usersInvited {
-                let usrId = k
-                let accepted = v
-                
-                User.getUserFromFirebase(mail: usrId, completion: { (usr, error) in
-                    self.users.append(usr!)
-                    self.count += 1;
-                    self.friendsCollectionTable.reloadData()
-                    self.setNeedsLayout()
-                })
-                
-                
-                
-            }
-        }
-
         
+        
+        friendsCollectionTable.delegate = self
+        print("count of users \(event.invitedUserIds.count)")
+        var processedUsers = [String]()
+        if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+            self.count = 0
+            for dict in invitedUsers {
+                let allKeys = dict.keys
+                for usr in allKeys {
+                    let accepted = dict[usr]
+                    if (!processedUsers.contains(usr)) {
+                        processedUsers.append(usr)
+                        
+                        User.getUserFromFirebase(mail: usr, completion: { (usrF, error) in
+                            self.users.append((usrF! , accepted!))
+                                self.count += 1;
+                                self.friendsCollectionTable.reloadData()
+                                self.friendsCollectionWidth.constant = CGFloat((self.count * 38 ) + 7 )
+                        })
+                    }
+                }
+          }
+        }
     }
 
     
@@ -119,10 +137,13 @@ extension EventTableCell: UICollectionViewDelegate , UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendssmallcell", for: indexPath) as! FriendsSmallCell
         if(!users.isEmpty) {
             let connectedUser = users[indexPath.row]
-            cell.profileUrl = connectedUser.profilePictureURLString
+            
+            cell.profileUrl = connectedUser.0.profilePictureURLString
         }
         return cell
     }
+    
+    
     
     //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //       //todo

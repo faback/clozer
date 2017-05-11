@@ -21,6 +21,8 @@ target 'Clozr' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'BetterSegmentedControl'
+  pod 'FlatUIKit'
+
   target 'ClozrTests' do
     inherit! :search_paths
     # Pods for testing
