@@ -34,6 +34,7 @@ class Clozer {
         static let movieDetail = "movieDetail"
         static let moreBusinesses = "moreBusinesses"
         static let createEventSegue = "createEventSegue"
+        static let toDetail = "toDetail"
         
     }
     

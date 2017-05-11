@@ -16,7 +16,7 @@ class FriendEventsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        friends = (User.me!.friends)
+        friends = (FBClient.friends)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()

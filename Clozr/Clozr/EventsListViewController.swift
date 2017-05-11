@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsListViewController: UIViewController {
+class EventsListViewController: UIViewController,UserChangesProtocol {
 
     @IBOutlet weak var eventsTable: UITableView!
     var searchBar: UISearchBar!
@@ -16,47 +16,76 @@ class EventsListViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     var category:Category?
     var subCategory:Category?
+    var comingFromCreateEvent: Bool = false
+    var newEventFromCreateEventView: Event!
     var events:[Int:[Event]] = [Int:[Event]]()
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
-    
+    var currentUser :User?
     override func viewDidLoad() {
         super.viewDidLoad()
+        events[0] = [Event]()
+        events[1] = [Event]()
+        
+        if let me = currentLoggedInUser   {
+            reloadData(user: me)
+        }else {
+            User.getUserFromFirebase(mail: User.currentLoginUserId()) { (loggedInUser, error) in
+                currentLoggedInUser = loggedInUser
+                self.currentUser = loggedInUser
+                self.reloadData(user: self.currentUser)
+            }
+        }
+        
+    
         if let sc = subCategory?.name {
             titleLabel.text = "Your choice for \(sc) "
         }
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
-        navigationItem.titleView = searchBar
+//        navigationItem.titleView = searchBar
         eventsTable.delegate = self
         eventsTable.dataSource = self
         eventsTable.rowHeight = UITableViewAutomaticDimension
         eventsTable.estimatedRowHeight = 100
         Styles.styleNav(controller: self)
-
-        loadEvents(searchTerm: nil)
         
+        loadEvents(searchTerm: nil)
+        if comingFromCreateEvent {
+            onAddedEvent(evt: newEventFromCreateEventView)
+        }
+        
+    }
+    
+    
+    func reloadData(user:User?) {
+        user?.delegate = self
+        user?.getInvitedEvents();
+    }
+    
+    
+    func onAddedEvent(evt:Event) {
+        var eventArray = events[0]
+        eventArray?.append(evt)
+        events[0] = eventArray
+        self.eventsTable.reloadData()
     }
 
     func loadEvents(searchTerm:String? ) {
         if(category?.code == "watch" && (subCategory?.code == "movies" || subCategory?.code == "tvshows")) {
             locCell  = true
-            sections = [0:"Hosted", 1:"Going to"]
-        }else {
-            sections = [0:(subCategory?.name)!]
         }
+        sections = [0:"You hosted", 1:"You are attending "]
         
         for (s , name ) in sections {
-            var term = (subCategory?.code)!
-            if let sterm = searchTerm {
-                term = term + "" + sterm
+            if(s == 0) {
+                //CK:TODO your filtered events.
+                
+            }else {
+                //CK:TODO your attending events.
+                
             }
-            Event.getEventsBySection(mainCategory: (category?.code)!, subCategory: term, section: name) { (evts) in
-                self.events[s] = evts
-                self.eventsTable.reloadData()
-            }
-
         }
     }
     
@@ -67,15 +96,21 @@ class EventsListViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let indexPath = sender as! IndexPath
+        let currEvents = events[indexPath.section]
+        let evt = currEvents?[indexPath.row]
+        let vc = segue.destination as! EventDetailsViewController
+        vc.event = evt
     }
-    */
+ 
 
 }
 
@@ -144,6 +179,10 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitle = sections[section]
         return sectionTitle
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: Clozer.Segues.toDetail, sender: indexPath)
     }
     
     

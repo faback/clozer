@@ -19,7 +19,8 @@ class EventTableCell: UITableViewCell {
     @IBOutlet weak var friendsCollectionTable: UICollectionView!
     
     var indexRow:Int?
-    
+    var users = [User]()
+    var count = 0
     var event:Event!  {
         didSet {
             if(event != nil) {
@@ -28,8 +29,12 @@ class EventTableCell: UITableViewCell {
         }
         
     }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        friendsCollectionTable.delegate = self
+        friendsCollectionTable.dataSource = self
         // Initialization code
     }
 
@@ -67,6 +72,26 @@ class EventTableCell: UITableViewCell {
             })
         }
         
+        
+        friendsCollectionTable.delegate = self
+        for usersInvited in event.invitedUserIds {
+            for (k,v) in usersInvited {
+                let usrId = k
+                let accepted = v
+                
+                User.getUserFromFirebase(mail: usrId, completion: { (usr, error) in
+                    self.users.append(usr!)
+                    self.count += 1;
+                    self.friendsCollectionTable.reloadData()
+                    self.setNeedsLayout()
+                })
+                
+                
+                
+            }
+        }
+
+        
     }
 
     
@@ -76,4 +101,39 @@ class EventTableCell: UITableViewCell {
         eventTitle.text = ""
         eventLocation.text = ""
     }
+    
+    
+    
 }
+
+
+extension EventTableCell: UICollectionViewDelegate , UICollectionViewDataSource   {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendssmallcell", for: indexPath) as! FriendsSmallCell
+        if(!users.isEmpty) {
+            let connectedUser = users[indexPath.row]
+            cell.profileUrl = connectedUser.profilePictureURLString
+        }
+        return cell
+    }
+    
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //       //todo
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    //        let cell = collectionView.cellForItem(at: indexPath) as! SubCategoryCell
+    //        cell.unTintImage()
+    //    }
+    //    
+    
+    
+}
+

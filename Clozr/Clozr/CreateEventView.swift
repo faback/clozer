@@ -8,9 +8,15 @@
 
 import UIKit
 
+@objc protocol CreateEventViewDelegate {
+    func performSegueToListEventsController(event: Event)
+}
+
 class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, CreateEventViewControllerDelegate {
 
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var createEventView: UIView!
+    @IBOutlet weak var creaeEventLabel: UILabel!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -19,12 +25,16 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var businessPhoneNumberLabel: UILabel!
+    @IBOutlet weak var createEventLabel: UILabel!
 
     @IBOutlet weak var addDateView: UIView!
     @IBOutlet weak var addDateandTimelabel: UILabel!
     @IBOutlet weak var friendsTableView: UITableView!
     var dateFormat = "HH:mm MM/dd/YYYY"
     var event:Event!
+    var friends : [User]!
+    var invitedFriends = [User]()
+    var delegate: CreateEventViewDelegate!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -52,7 +62,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
-        
+        self.friends = FBClient.friends
+        let createEventTap = UITapGestureRecognizer(target: self, action: #selector(createEvent(sender:)))
+        createEventView.addGestureRecognizer(createEventTap)
         if let evt = self.event {
             businessNameLabel.text = evt.name
 //            distanceLabel.text = business.distance
@@ -61,27 +73,40 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
 //            cuisineTypeLabel.text = business.categories
 //            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
             businessPhoneNumberLabel.text = evt.phone
-//            if let imgUrl = evt.image {
-//                var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
-//                if(event.category != "movies") {
-//                    imageUrl = imgUrl
-//                }
-//                let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
-//                backgroundImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
-//                    if res != nil {
-//                        self.backgroundImageView.alpha = 0.5
-//                        self.backgroundImageView.image = result
-//                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
-//                            self.backgroundImageView.alpha = 1.2
-//                        })
-//                    }else{
-//                        self.backgroundImageView.image = result
-//                    }
-//                }, failure: {(req, res, result) -> Void in
-//                    
-//                })
-//            }
+            if let imgUrl = evt.image {
+                var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+                if(event.category != "movies") {
+                    imageUrl = imgUrl
+                }
+                let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imageUrl)!)
+                backgroundImageView.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
+                    if res != nil {
+                        self.backgroundImageView.alpha = 0.5
+                        self.backgroundImageView.image = result
+                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
+                            self.backgroundImageView.alpha = 0.4
+                        })
+                    }else{
+                        self.backgroundImageView.image = result
+                    }
+                }, failure: {(req, res, result) -> Void in
+                    
+                })
+            }
         }
+        addDateView.layer.shadowColor = UIColor.black.cgColor
+        addDateView.layer.shadowOpacity = 1
+        addDateView.layer.shadowOffset = CGSize.zero
+        addDateView.layer.shadowRadius = 5
+        addDateView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+        addDateView.layer.shouldRasterize = true
+        
+        createEventView.layer.shadowColor = UIColor.black.cgColor
+        createEventView.layer.shadowOpacity = 1
+        createEventView.layer.shadowOffset = CGSize.zero
+        createEventView.layer.shadowRadius = 5
+        createEventView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+        createEventView.layer.shouldRasterize = true
     }
     
     func showDateTime(sender: UIView?=nil){
@@ -107,6 +132,32 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             }
         
     }
+    
+    func createEvent(sender: UIView?=nil){
+        
+        User.getUserFromFirebase(mail: User.currentLoginUserId()) { (usr, error) in
+            self.event.inviteUser(userId: (usr?.userId)! , accepted: true)
+            currentLoggedInUser = usr
+            if let uid = usr?.userId {
+                let me = usr
+                me?.addEvent(evt: self.event.id!)
+                User.createOrUpdateUserInFirebase(user: me)
+            }else {
+                let me = usr
+                me?.addEvent(evt: self.event.id!)
+                User.createOrUpdateUserInFirebase(user: me)
+            }
+            Event.createOrUpdateEventInFirebase(event: self.event)
+        }
+        //TODO:Balaji loop all users  call invite.
+        for friend in self.invitedFriends{
+            print(friend.name!)
+            self.event.inviteUser(userId: (friend.userId)!, accepted: false)
+        }
+        Event.createOrUpdateEventInFirebase(event: event)
+        //Then save event.
+        delegate?.performSegueToListEventsController(event: event)
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -116,7 +167,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendTableCell", for: indexPath) as! FriendTableCell
-                return cell
+        cell.accessoryType = cell.isSelected ? .checkmark : .none
+        cell.friend = self.friends[indexPath.row]
+        return cell
     }
     
     /*  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,7 +177,22 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
      }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        if(self.friends != nil) {
+            return self.friends.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.invitedFriends.append(self.friends[indexPath.row])
+        print(self.friends[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.invitedFriends.remove(at: self.invitedFriends.index(of: self.friends[indexPath.row])!)
+        print(self.friends[indexPath.row])
     }
     
     func setEvent(event: Event){

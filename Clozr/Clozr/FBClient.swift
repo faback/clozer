@@ -14,9 +14,10 @@ import FirebaseAuth
 class FBClient {
     static var currentFacebookUser:User!
     static var friends:[User]!
+    
     class func getUsersFriends(completionHandler:((Any?, Error?) -> ())? = nil) {
         if(friends == nil) {
-            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me/taggable_friends?limit=1000", parameters:["fields":"id,name,picture.width(500).height(500)"])
+            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me/taggable_friends?limit=100", parameters:["fields":"id,name,picture.width(500).height(500)"])
             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
                 if error != nil {
                     print("Error in getting friends list \(error.debugDescription)")
@@ -41,13 +42,13 @@ class FBClient {
         if let data = data["data"] as? [[String: AnyObject]] {
             for userData:[String: AnyObject] in data {
                 if let friend = User(dictionary: userData) {
+                    friend.setUserId()
                     friendsArray.append(friend)
                     friendsUserIds.append(friend.id!)
                 }
             }
             currentFacebookUser.friends = friendsArray
             friends = friendsArray
-            User.me?.friends = friends
             currentFacebookUser.userRawContent?["friends"] = friendsUserIds
 
             print("Friends count \(friendsArray.count)")
@@ -55,6 +56,9 @@ class FBClient {
            
         }
     }
+    
+    
+    
     
     
 }

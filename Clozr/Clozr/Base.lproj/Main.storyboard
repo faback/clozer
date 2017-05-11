@@ -282,7 +282,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYS-dl-grc" customClass="CreateEventView" customModule="Clozr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -294,9 +294,12 @@
                             <constraint firstItem="rYS-dl-grc" firstAttribute="top" secondItem="dtb-Su-kyf" secondAttribute="top" constant="64" id="ugB-On-7wK"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createEventView" destination="rYS-dl-grc" id="dnQ-Mx-Pwy"/>
                         <outlet property="mainView" destination="dtb-Su-kyf" id="Xfo-i2-xDx"/>
+                        <segue destination="evY-Yq-BwE" kind="show" identifier="fromCreateEventToListEvents" id="dCX-x9-slC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Nm-plZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,7 +361,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="azd-8o-yta">
                                                     <rect key="frame" x="16" y="8" width="342" height="47"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="47" id="yrj-XP-INH"/>
                                                     </constraints>
@@ -916,7 +919,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nn5-6P-3nb">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventTableCell" rowHeight="141" id="mZg-bA-feL" customClass="EventTableCell" customModule="Clozr" customModuleProvider="target">
@@ -957,7 +960,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="ADl-1k-ZmN"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ns1-CD-SSW">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ns1-CD-SSW">
                                                         <size key="itemSize" width="40" height="33"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -965,7 +968,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendssmallcell" id="InZ-sD-cFB" customClass="FriendsSmallCell" customModule="Clozr" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="33"/>
+                                                            <rect key="frame" x="0.0" y="1.5" width="40" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="33"/>
@@ -1093,11 +1096,12 @@
                     <connections>
                         <outlet property="eventsTable" destination="Nn5-6P-3nb" id="ZVm-3U-syg"/>
                         <outlet property="titleLabel" destination="Hub-wY-i8f" id="8qt-Ln-MVc"/>
+                        <segue destination="slD-0b-ULM" kind="show" identifier="toDetail" id="EbY-d4-66r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0n-TP-Jkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023.2" y="2653.2233883058475"/>
+            <point key="canvasLocation" x="937" y="1334"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="uc3-7V-ch3">
@@ -1542,6 +1546,7 @@
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u4M-XE-OaJ"/>
+        <segue reference="Vij-K3-8Gs"/>
+        <segue reference="dCX-x9-slC"/>
     </inferredMetricsTieBreakers>
 </document>

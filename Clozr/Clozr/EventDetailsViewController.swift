@@ -16,6 +16,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     let alert = UIAlertController(title: "Your response", message: nil, preferredStyle: .actionSheet)
     weak var event: Event!
     
+    var event:Event?
     override func viewDidLoad() {
         super.viewDidLoad()
         

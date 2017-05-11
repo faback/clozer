@@ -13,6 +13,14 @@ class FriendTableCell: UITableViewCell {
     @IBOutlet weak var friendNameLabel: UILabel!
     @IBOutlet weak var friendImageView: UIImageView!
     @IBOutlet weak var friendPhoneNoLabel: UILabel!
+    var friend: User!{
+        didSet{
+            friendNameLabel.text = friend.name!
+            if let profilePic = friend.profilePictureURLString{
+            friendImageView.setImageWith(URL(string: profilePic)!)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
