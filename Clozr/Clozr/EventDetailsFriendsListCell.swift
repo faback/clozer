@@ -10,6 +10,8 @@ import UIKit
 
 class EventDetailsFriendsListCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    weak var event: Event!
+    
     @IBOutlet weak var friendListCollectionView: UICollectionView!
 
     override func awakeFromNib() {
@@ -20,14 +22,14 @@ class EventDetailsFriendsListCell: UITableViewCell, UICollectionViewDelegate, UI
         
         let friendListCellNib = UINib(nibName: "FriendListCell", bundle: nil)
         friendListCollectionView.register(friendListCellNib, forCellWithReuseIdentifier: "FriendListCell")
+        
+        if event != nil {
+            // Get the friendlist..
+        } else {
+            
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10;
     }
@@ -35,6 +37,10 @@ class EventDetailsFriendsListCell: UITableViewCell, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = friendListCollectionView.dequeueReusableCell(withReuseIdentifier: "FriendListCell", for: indexPath) as! FriendListCellCollectionViewCell
         return cell
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(false, animated: false)
     }
 
 }

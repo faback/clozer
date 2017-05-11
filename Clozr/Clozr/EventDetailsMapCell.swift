@@ -11,46 +11,40 @@ import MapKit
 
 class EventDetailsMapCell: UITableViewCell, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var smallMapView: MKMapView!
-    let manager = CLLocationManager()
     let eventLocation = MKPointAnnotation()
+    
+    weak var event: Event!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         smallMapView.delegate = self
-        manager.delegate = self
         
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation()
+        var latitude: Double = 37.3549144
+        var longitude: Double = -122.0035661
         
-        let mapCenter = CLLocationCoordinate2D(latitude: 37.3549144, longitude: -122.0035661)
+        if event != nil {
+            latitude = event.latitude!
+            longitude = event.longitude!
+            addressLabel.text = event.address ?? ""
+        }
+        
+        let mapCenter = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
-        // Set animated property to true to animate the transition to the region
-        smallMapView.setRegion(region, animated: false)
+        smallMapView.setRegion(region, animated: true)
         
         eventLocation.coordinate = mapCenter
         eventLocation.title      = "Event Location"
         smallMapView.addAnnotation(eventLocation)
         smallMapView.showsUserLocation = true
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location = locations[0]
-//        let span = MKCoordinateSpanMake(0.01, 0.01)
-//        let mylocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-//        let region:MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
-//        smallMapView.setRegion(region, animated: false)
-//        smallMapView.showsUserLocation = true
-    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

@@ -9,7 +9,9 @@
 import UIKit
 
 class EventDetailsMessagesCell: UITableViewCell {
-
+    
+    weak var event: Event!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
