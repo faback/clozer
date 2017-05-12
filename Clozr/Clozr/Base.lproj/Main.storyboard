@@ -998,6 +998,9 @@
                                                     <state key="normal" title="Join">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onJoin:" destination="mZg-bA-feL" eventType="touchUpInside" id="Oh5-nn-a1E"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accepted" translatesAutoresizingMaskIntoConstraints="NO" id="pap-6I-SSY">
                                                     <rect key="frame" x="76" y="65" width="13" height="13"/>

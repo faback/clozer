@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loggedinUser = FIRAuth.auth()?.currentUser
         if loggedinUser != nil  {
-            User.getUserFromFirebase(mail: User.currentLoginUserId(), completion: { (usr1, error) in
+            User.getUserFromFirebase(usrId: User.currentLoginUserId(), completion: { (usr1, error) in
                 FBClient.currentFacebookUser = usr1
                 FBClient.getUsersFriends()
             })

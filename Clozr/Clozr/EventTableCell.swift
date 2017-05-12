@@ -23,7 +23,7 @@ class EventTableCell: UITableViewCell {
     @IBOutlet weak var friendsCollectionTable: UICollectionView!
     
     var indexRow:Int?
-    var users = [(User,Bool)]()
+    var users = [(User,Int)]()
     var count = 0
     var event:Event!  {
         didSet {
@@ -56,8 +56,39 @@ class EventTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onJoin(_ sender: Any) {
+        
+        var index = 0
+        var selectedIndex = 0
+        if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+            for dict in invitedUsers {
+                let allKeys = dict.keys
+                for usr in allKeys {
+                    if(usr == User.currentLoginUserId()) {
+                        selectedIndex = index
+                    }
+                    
+                }
+                index = index + 1
+            }
+        }
+        
+        event.invitedUserIds.remove(at: selectedIndex)
+        event.invitedUserIds.append([User.currentLoginUserId() : true])
+        
+        Event.createOrUpdateEventInFirebase(event: event)
+        disableJoinButton()
+        
+    }
     
-    
+    func disableJoinButton() {
+        joinDeclineButton.setTitle("Joined", for: .normal)
+        joinDeclineButton.setTitleColor(UIColor.greenSea(), for: .disabled)
+        joinDeclineButton.isEnabled = false
+        joinDeclineButton.disabledColor = UIColor.white
+
+    }
+  
     func layoutEvent() {
         //        eventImage.image = UIImage(named: event.image!)
         eventTitle.text = event.name
@@ -85,7 +116,12 @@ class EventTableCell: UITableViewCell {
             })
         }
         
-        
+        if let cby = event.createdBy {
+            let lusr = User.currentLoginUserId()
+            if( cby == lusr) {
+                disableJoinButton()
+            }
+        }
         
         
         friendsCollectionTable.delegate = self
@@ -97,19 +133,20 @@ class EventTableCell: UITableViewCell {
                 let allKeys = dict.keys
                 for usr in allKeys {
                     let accepted = dict[usr]
-                    if (!processedUsers.contains(usr)) {
-                        processedUsers.append(usr)
-                        
-                        User.getUserFromFirebase(mail: usr, completion: { (usrF, error) in
-                            self.users.append((usrF! , accepted!))
-                                self.count += 1;
-                                self.friendsCollectionWidth.constant = CGFloat((self.count * 38 ) + 7 )
-                        })
+                    var acc = 0
+                    if(accepted!){
+                        acc = 1
                     }
+                        User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
+                            
+                            self.users.append((usrF! , acc))
+                                self.count += 1;
+                                self.friendsCollectionWidth.constant = CGFloat((self.count * 50 ) + 7 )
+                        })
                 }
           }
         }
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.friendsCollectionTable.reloadData()
         }
@@ -140,8 +177,9 @@ extension EventTableCell: UICollectionViewDelegate , UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendssmallcell", for: indexPath) as! FriendsSmallCell
         if(!users.isEmpty) {
             let connectedUser = users[indexPath.row]
-            
+            cell.acc = connectedUser.1
             cell.profileUrl = connectedUser.0.profilePictureURLString
+            
         }
         return cell
     }

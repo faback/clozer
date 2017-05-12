@@ -45,6 +45,7 @@ class FBClient {
                     friend.setUserId()
                     friendsArray.append(friend)
                     friendsUserIds.append(friend.id!)
+                    User.tryAndCreate(user: friend)
                 }
             }
             currentFacebookUser.friends = friendsArray

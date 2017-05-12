@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
     var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
-        User.getUserFromFirebase(mail: (User.currentLoginUserId())) { (usr, error) in
+        User.getUserFromFirebase(usrId: (User.currentLoginUserId())) { (usr, error) in
                 currentLoggedInUser = usr
                 self.userReady = true
                 self.determineMyCurrentLocation()
@@ -174,7 +174,9 @@ extension HomeViewController : CLLocationManagerDelegate  {
             currentLoggedInUser?.longitude = newLocation.coordinate.longitude
             currentLoggedInUser?.previousLocations.append(locString)
             currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
-            User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+            if let cuser = currentLoggedInUser {
+                User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+            }
         }
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         
