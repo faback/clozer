@@ -103,12 +103,15 @@ class EventTableCell: UITableViewCell {
                         User.getUserFromFirebase(mail: usr, completion: { (usrF, error) in
                             self.users.append((usrF! , accepted!))
                                 self.count += 1;
-                                self.friendsCollectionTable.reloadData()
                                 self.friendsCollectionWidth.constant = CGFloat((self.count * 38 ) + 7 )
                         })
                     }
                 }
           }
+        }
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.friendsCollectionTable.reloadData()
         }
     }
 
