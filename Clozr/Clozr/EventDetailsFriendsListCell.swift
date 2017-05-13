@@ -9,11 +9,14 @@
 import UIKit
 
 class EventDetailsFriendsListCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
-
-    weak var event: Event!
-    
     @IBOutlet weak var friendListCollectionView: UICollectionView!
-
+    
+    weak var event: Event! {
+        didSet {
+            friendListCollectionView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,19 +26,31 @@ class EventDetailsFriendsListCell: UITableViewCell, UICollectionViewDelegate, UI
         let friendListCellNib = UINib(nibName: "FriendListCell", bundle: nil)
         friendListCollectionView.register(friendListCellNib, forCellWithReuseIdentifier: "FriendListCell")
         
-        if event != nil {
-            // Get the friendlist..
-        } else {
-            
-        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10;
+        if event == nil {
+            return 0;
+        } else {
+            return event.invitedUserIds.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = friendListCollectionView.dequeueReusableCell(withReuseIdentifier: "FriendListCell", for: indexPath) as! FriendListCellCollectionViewCell
+        if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+            for (index, dict) in invitedUsers.enumerated() {
+                if index == indexPath.row {
+                    let allKeys = dict.keys
+                    for usr in allKeys {
+                        let accepted = dict[usr]
+                        cell.accepted = accepted ?? false
+                        cell.user = usr
+                    }
+                }
+            }
+        }
+        
         return cell
     }
     

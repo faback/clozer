@@ -265,6 +265,7 @@ extension HomeViewController: UITableViewDelegate , UITableViewDataSource  {
         }else{
          self.performSegue(withIdentifier: Clozer.Segues.createEventSegue, sender: "createEventSegue")
         }
+        eventsTableView.deselectRow(at: indexPath, animated: true)
     }
     
     

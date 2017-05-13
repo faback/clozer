@@ -94,7 +94,6 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -191,6 +190,8 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: Clozer.Segues.toDetail, sender: indexPath)
+        eventsTable.deselectRow(at: indexPath, animated: true)
+
     }
     
     

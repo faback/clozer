@@ -10,6 +10,8 @@ import UIKit
 
 class MessagesViewController: UIViewController {
 
+    weak var event: Event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
