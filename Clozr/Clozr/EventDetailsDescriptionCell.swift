@@ -16,7 +16,13 @@ class EventDetailsDescriptionCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    weak var event: Event!
+    weak var event: Event! {
+        didSet {
+            titleLabel.text = event.name ?? ""
+            descriptionLabel.text = event.summary ?? ""
+            timeLabel.text = event.time ?? ""
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

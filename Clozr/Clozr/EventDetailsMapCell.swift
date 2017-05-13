@@ -15,7 +15,28 @@ class EventDetailsMapCell: UITableViewCell, MKMapViewDelegate, CLLocationManager
     @IBOutlet weak var smallMapView: MKMapView!
     let eventLocation = MKPointAnnotation()
     
-    weak var event: Event!
+    weak var event: Event! {
+        didSet {
+            var latitude: Double = 37.3549144
+            var longitude: Double = -122.0035661
+            
+            if event != nil {
+                latitude = event.latitude ?? 37.3549144
+                longitude = event.longitude ?? -122.0035661
+                addressLabel.text = event.address ?? ""
+            }
+            
+            let mapCenter = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
+            smallMapView.setRegion(region, animated: true)
+            
+            eventLocation.coordinate = mapCenter
+            eventLocation.title      = "Event Location"
+            smallMapView.addAnnotation(eventLocation)
+            smallMapView.showsUserLocation = true
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,24 +44,7 @@ class EventDetailsMapCell: UITableViewCell, MKMapViewDelegate, CLLocationManager
         
         smallMapView.delegate = self
         
-        var latitude: Double = 37.3549144
-        var longitude: Double = -122.0035661
-        
-        if event != nil {
-            latitude = event.latitude!
-            longitude = event.longitude!
-            addressLabel.text = event.address ?? ""
-        }
-        
-        let mapCenter = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
-        smallMapView.setRegion(region, animated: true)
-        
-        eventLocation.coordinate = mapCenter
-        eventLocation.title      = "Event Location"
-        smallMapView.addAnnotation(eventLocation)
-        smallMapView.showsUserLocation = true
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

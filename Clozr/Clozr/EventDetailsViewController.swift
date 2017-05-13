@@ -14,14 +14,13 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var respondButton: UIBarButtonItem!
     
     let alert = UIAlertController(title: "Your response", message: nil, preferredStyle: .actionSheet)
-    weak var event: Event!
-    
     var event:Event?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if event != nil {
-            
+            print(event!)
         } else {
             // Throw an exception.. This should never happen.
             // For now make a test Event.

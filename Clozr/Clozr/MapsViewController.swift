@@ -18,7 +18,23 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var centerMap:Bool = false
     @IBOutlet weak var centerMapButton: UIButton!
     
-    var event:Event?
+    var event:Event! {
+        didSet {
+            let latitude = event.latitude ?? 37.3549144
+            let longitude = event.longitude ?? -122.0035661
+            
+            // Center the map around the location of the event.
+            let eventLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: eventLocation, span: mapSpan)
+            mapView.setRegion(region, animated: true)
+            
+            eventLocationAnnotation.coordinate = eventLocation
+            eventLocationAnnotation.title      = "Event Location"
+            mapView.addAnnotation(eventLocationAnnotation)
+            mapView.showsUserLocation = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +46,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
-        // Center the map around the location of the event.
-        let eventLocation = CLLocationCoordinate2D(latitude: 37.3549144, longitude: -122.0035661)
-        let mapSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: eventLocation, span: mapSpan)
-        mapView.setRegion(region, animated: false)
-        mapView.showsUserLocation = true
-        
-        // Add annotation for the event location.
-        eventLocationAnnotation.coordinate = eventLocation
-        eventLocationAnnotation.title      = "Event Location"
-        mapView.addAnnotation(eventLocationAnnotation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +63,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
         
     }
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if (centerMap) {
