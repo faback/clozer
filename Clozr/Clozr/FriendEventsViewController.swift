@@ -41,7 +41,9 @@ class FriendEventsViewController: UIViewController {
             collectionViewFlowLayout.minimumInteritemSpacing = 3
         }
         
+        var once:Int = 0
         User.getAllUserFromFirebase { (allFriends, error) in
+            if(once == 0) {
             self.friends = allFriends!
             self.clozrFriends = [User]()
             self.nonClozrFriends = [User]()
@@ -52,7 +54,9 @@ class FriendEventsViewController: UIViewController {
                     self.nonClozrFriends.append(usr)
                 }
             }
+            once = 1
             self.collectionView.reloadData()
+            }
 
         }
         

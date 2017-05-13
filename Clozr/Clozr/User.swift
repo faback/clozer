@@ -292,8 +292,13 @@ class User:NSObject {
                     usrArray.append(u)
                 }
             }
-            completion(usrArray, nil)
+           
         })
+        let when = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            completion(usrArray, nil)
+        }
+        
         
     }
 
