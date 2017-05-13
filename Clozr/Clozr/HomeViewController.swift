@@ -33,15 +33,13 @@ class HomeViewController: UIViewController {
     var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
-        User.getUserFromFirebase(mail: (User.currentLoginUserId())) { (usr, error) in
+        User.getUserFromFirebase(usrId: (User.currentLoginUserId())) { (usr, error) in
                 currentLoggedInUser = usr
                 self.userReady = true
                 self.determineMyCurrentLocation()
         }
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
-//        control3.titleFont = UIFont.appFont()
-//        control3.selectedTitleFont = UIFont.appFont()
         control3.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
 
         try! control3.setIndex(0, animated: false)
@@ -102,8 +100,10 @@ class HomeViewController: UIViewController {
         else {
             mainCategory = Category.getCatchup()
         }
+        selectedSubCategory = mainCategory.subCategories[0];
         categoriesCollection.reloadData()
-        eventsTableView.reloadData()
+        reloadEventsData()
+        changeButtonTitle()
     }
 
     
@@ -121,11 +121,10 @@ class HomeViewController: UIViewController {
             eventListController.subCategory = selectedSubCategory
         }
         if(senderStr == "showFriends") {
-            let eventListController = segue.destination as! FriendEventsViewController
+            _ = segue.destination as! FriendEventsViewController
         }
         
         if(senderStr == "movieDetail") {
-            
             var indexPath  = selectedIndexPath
             let evt = sectionedEvents[(indexPath?.section)!]?[(indexPath?.row)!]
             let movieController = segue.destination as! SelectMovieViewController
@@ -175,7 +174,9 @@ extension HomeViewController : CLLocationManagerDelegate  {
             currentLoggedInUser?.longitude = newLocation.coordinate.longitude
             currentLoggedInUser?.previousLocations.append(locString)
             currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
-            User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+            if let cuser = currentLoggedInUser {
+                User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+            }
         }
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         

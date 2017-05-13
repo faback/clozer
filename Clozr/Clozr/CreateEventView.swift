@@ -135,7 +135,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     
     func createEvent(sender: UIView?=nil){
         
-        User.getUserFromFirebase(mail: User.currentLoginUserId()) { (usr, error) in
+        User.getUserFromFirebase(usrId: User.currentLoginUserId()) { (usr, error) in
             self.event.inviteUser(userId: (usr?.userId)! , accepted: true)
             currentLoggedInUser = usr
             if let uid = usr?.userId {
@@ -147,6 +147,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 me?.addEvent(evt: self.event.id!)
                 User.createOrUpdateUserInFirebase(user: me)
             }
+            self.event.createdBy = User.currentLoginUserId()
             Event.createOrUpdateEventInFirebase(event: self.event)
         }
         //TODO:Balaji loop all users  call invite.

@@ -19,6 +19,7 @@ public protocol UserInviteDelegate: class {
 
 protocol UserChangesProtocol  {
     func onAddedEvent(evt:Event)
+    func reloadTable()
 }
 
 
@@ -101,7 +102,7 @@ class User:NSObject {
     }
     
     
-    init?(dictionary: [String : Any]) {
+    init?(dictionary: [String : Any] ) {
         
         self.userRawContent = dictionary
         if let usrid = dictionary["userId"] {
@@ -137,10 +138,6 @@ class User:NSObject {
         
 
         self.locDict = dictionary["location"] as? [String: Any]
-        self.isClozerUser = true
-        
-        
-       
     }
     
     func setUserId() {
@@ -152,22 +149,35 @@ class User:NSObject {
                 
             }
             else {
-               self.userId = self.name.replacingOccurrences(of: " ", with: "")
+                if let nm = self.name {
+                   self.userId = nm.replacingOccurrences(of: " ", with: "")
+                }
+                else {
+                    print("there shouldnt be usr")
+                }
             
             }
         }
         self.userRawContent["userId"] = self.userId
     }
     
-
+    
     
     func getInvitedEvents()  {
+        let count = invitedEvents.count
+        var checker = 0
         for ev in invitedEvents {
             Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
 
                   self.delegate?.onAddedEvent(evt: evt!)
+                  checker = checker + 1
             })
         }
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.delegate?.reloadTable()
+        }
+        
     }
     
     
@@ -183,28 +193,47 @@ class User:NSObject {
                 fbuser.userRawContent?["firId"] = firebaseDetails.uid
                 fbuser.userRawContent?["isClozerUser"] = true
             }
-            let uniqueId = getEmailStripped(mailID: (user?.email)!)
-            users.child("/\(uniqueId)").setValue(user?.dictionaryRepresentation())
+            user?.setUserId()
+            if let usrId = user?.userId {
+                users.child("/\(usrId)").setValue(user?.dictionaryRepresentation())
+            }
         }
     }
     
     
     class func createOrUpdateUserInFirebase(user:User?) {
-        let uniqueId = getEmailStripped(mailID: (user?.email)!)
+        user?.setUserId()
         var dictionary = user?.dictionaryRepresentation() as! [String:Any]
-        dictionary["invitedEvents"] = user?.invitedEvents
-        users.child("/\(uniqueId)").setValue(dictionary)
+        if( user?.invitedEvents != nil &&  (user?.invitedEvents.count)! > 0 ) {
+            dictionary["invitedEvents"] = user?.invitedEvents
+        }
+        if let usrId  = user?.userId {
+            users.child("/\(usrId)").setValue(dictionary)
+        }
     }
     
-    
-    class func getUserFromFirebase(mail: String,completion: @escaping (User?, Error?) -> Void){
-        let uniqueId = getEmailStripped(mailID: mail)
-        let usrRef = users.child("/\(uniqueId)")
+    class func tryAndCreate(user:User?) {
+        var dictionary = user?.dictionaryRepresentation() as! [String:Any]
+        user?.setUserId()
         
-        usrRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let usr = User(snapshot: snapshot)
-            completion(usr,nil)
-        })
+        if let usrId  = user?.userId {
+            getUserFromFirebase(usrId: usrId) { (usr, error) in
+
+                if(error != nil) {
+                    dictionary["invitedEvents"] = user?.invitedEvents
+                    dictionary["isClozerUser"] = false
+                }else{
+                    if(usr?.isClozerUser)! {
+                        if( user?.invitedEvents != nil &&  (user?.invitedEvents.count)! > 0 ) {
+                            dictionary["invitedEvents"] = user?.invitedEvents
+                        }
+                        users.child("/\(usrId)").setValue(dictionary)
+                    }
+                }
+                 users.child("/\(usrId)").setValue(dictionary)
+            }
+        }
+  
     }
     
     
@@ -213,6 +242,18 @@ class User:NSObject {
         newmail =  newmail.replacingOccurrences(of: ".", with: "", options: .literal, range: nil)
         return newmail
         
+    }
+    
+    
+
+    class func getUserFromFirebase(usrId: String,completion: @escaping (User?, Error?) -> Void){
+        let usrRef = users.child("/\(usrId)")
+        
+        usrRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let usr = User(snapshot: snapshot)
+            completion(usr,nil)
+            usrRef.removeAllObservers()
+        })
     }
 
     

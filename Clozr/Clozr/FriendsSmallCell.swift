@@ -22,6 +22,8 @@ class FriendsSmallCell: UICollectionViewCell {
         
     }
     
+    var acc: Int = 0
+    
     func layoutFriend() {
         if let imgUrl = profileUrl {
             let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:imgUrl)!)
@@ -35,7 +37,14 @@ class FriendsSmallCell: UICollectionViewCell {
                 }else{
                     self.friendsImage.image = result
                 }
-                self.friendsImage.layer.cornerRadius = 19
+                self.friendsImage.layer.borderWidth = 1
+                if(self.acc == 0){
+                    self.friendsImage.layer.borderColor =  UIColor.red.cgColor
+                    self.friendsImage.alpha = 0.5
+                }else{
+                    self.friendsImage.layer.borderColor =  UIColor.greenSea().cgColor
+                }
+                self.friendsImage.layer.cornerRadius = 18
                 self.friendsImage.layer.masksToBounds = true
                 
                 self.friendsImage.layoutIfNeeded()

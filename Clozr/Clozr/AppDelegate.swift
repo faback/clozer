@@ -22,21 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let loggedinUser = FIRAuth.auth()?.currentUser
-        if let usr = loggedinUser  {
-            User.getUserFromFirebase(mail: User.currentLoginUserId(), completion: { (usr1, error) in
+        if loggedinUser != nil  {
+            User.getUserFromFirebase(usrId: User.currentLoginUserId(), completion: { (usr1, error) in
                 FBClient.currentFacebookUser = usr1
                 FBClient.getUsersFriends()
             })
-            
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
-
         }else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
- 
         }
         return true
     }
@@ -46,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         isBackground = true;
         locationManager?.stopUpdatingLocation()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.distanceFilter = kCLDistanceFilterNone
+        locationManager?.distanceFilter = 10.0
         locationManager?.pausesLocationUpdatesAutomatically = false
         locationManager?.activityType = CLActivityType.automotiveNavigation
         locationManager?.startUpdatingLocation()
@@ -71,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
-        
         return handled
     }
 

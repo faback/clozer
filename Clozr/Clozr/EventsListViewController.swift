@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class EventsListViewController: UIViewController,UserChangesProtocol {
 
@@ -18,28 +19,25 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var subCategory:Category?
     var comingFromCreateEvent: Bool = false
     var newEventFromCreateEventView: Event!
-    var events:[Int:[Event]] = [Int:[Event]]()
+    var events:[Int:Any] = [Int:Any]()
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
     var currentUser :User?
     override func viewDidLoad() {
         super.viewDidLoad()
+        category = Category.mainCategory
+        subCategory = Category.subCategory
         events[0] = [Event]()
         events[1] = [Event]()
         
         if let me = currentLoggedInUser   {
             reloadData(user: me)
         }else {
-            User.getUserFromFirebase(mail: User.currentLoginUserId()) { (loggedInUser, error) in
+            User.getUserFromFirebase(usrId: User.currentLoginUserId()) { (loggedInUser, error) in
                 currentLoggedInUser = loggedInUser
                 self.currentUser = loggedInUser
                 self.reloadData(user: self.currentUser)
             }
-        }
-        
-    
-        if let sc = subCategory?.name {
-            titleLabel.text = "Your choice for \(sc) "
         }
         searchBar = UISearchBar()
         searchBar.delegate = self
@@ -52,31 +50,38 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         Styles.styleNav(controller: self)
         
         loadEvents(searchTerm: nil)
-        if comingFromCreateEvent {
-            onAddedEvent(evt: newEventFromCreateEventView)
-        }
+//        if comingFromCreateEvent {
+//            onAddedEvent(evt: newEventFromCreateEventView)
+//        }
         
     }
     
     
     func reloadData(user:User?) {
         user?.delegate = self
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         user?.getInvitedEvents();
+    }
+    
+    func reloadTable() {
+        
+        self.eventsTable.reloadData()
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     
     func onAddedEvent(evt:Event) {
-        var eventArray = events[0]
-        eventArray?.append(evt)
+        var eventArray = events[0] as! [Event]
+        print("Count \(eventArray.count)")
+        eventArray.append(evt)
         events[0] = eventArray
-        self.eventsTable.reloadData()
     }
 
     func loadEvents(searchTerm:String? ) {
         if(category?.code == "watch" && (subCategory?.code == "movies" || subCategory?.code == "tvshows")) {
             locCell  = true
         }
-        sections = [0:"You hosted", 1:"You are attending "]
+        sections = [0:"This Week"]
         
         for (s , name ) in sections {
             if(s == 0) {
@@ -105,8 +110,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         // Pass the selected object to the new view controller.
         
         let indexPath = sender as! IndexPath
-        let currEvents = events[indexPath.section]
-        let evt = currEvents?[indexPath.row]
+        let currEvents = events[indexPath.section] as! [Event]
+        let evt = currEvents[indexPath.row]
         let vc = segue.destination as! EventDetailsViewController
         vc.event = evt
     }
@@ -152,13 +157,16 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
             let  eventCell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell") as! EventTableCell
             let section = indexPath.section
             let row = indexPath.row
-            eventCell.event = events[section]?[row]
+            let arr = events[section] as! [Event]
+            eventCell.event = arr[row]
             return eventCell
         }else {
             let  locCell = tableView.dequeueReusableCell(withIdentifier: "loceventcell") as! LocEventCell
             let section = indexPath.section
             let row = indexPath.row
-            locCell.event = events[section]?[row]
+            let arr = events[section] as! [Event]
+
+            locCell.event = arr[row]
             return locCell
         }
     }
@@ -169,7 +177,7 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let currentEvents = events[section] {
+        if let currentEvents = events[section] as? [Event] {
             return currentEvents.count
         }
         return 0
