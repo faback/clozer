@@ -11,6 +11,7 @@ import Firebase
 //import HMSegmentedControl
 import BetterSegmentedControl
 import MapKit
+import MBProgressHUD
 
 class HomeViewController: UIViewController {
     var locationManager:CLLocationManager!
@@ -36,6 +37,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
         User.getUserFromFirebase(usrId: (User.currentLoginUserId())) { (usr, error) in
@@ -82,6 +85,9 @@ class HomeViewController: UIViewController {
             self.sectionedEvents[0] = evts
             self.sectionTitles[0] = "Suggested"
             self.eventsTableView.reloadData()
+            MBProgressHUD.hide(for: self.view, animated: true)
+
+
         }
     }
     @IBAction func moreEvents(_ sender: Any) {

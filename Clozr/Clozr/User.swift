@@ -58,6 +58,7 @@ class User:NSObject {
     var userId:String?
     
     var myCurrentEventInvites = [Event]()
+    static var current:User?
     
     init(snapshot: FIRDataSnapshot) {
         
@@ -231,6 +232,10 @@ class User:NSObject {
         }
         if let usrId  = user?.userId {
             users.child("/\(usrId)").setValue(dictionary)
+        }
+        
+        if(user?.userId == User.currentLoginUserId())  {
+            User.current = current
         }
     }
     

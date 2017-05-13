@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-
+import AFNetworking
 
 public class Event:NSObject {
     
@@ -34,6 +34,8 @@ public class Event:NSObject {
     public var epoch:CLong?
     public var createdBy:String?
     public var invitedUserIds:[[String:Bool]] = [[String:Bool]]()
+    public var selectedTheater:String?
+    public var theaters:[Theater]?
     
     var snapshot: FIRDataSnapshot! = nil
     var key: String { return snapshot.key }
@@ -68,6 +70,8 @@ public class Event:NSObject {
         dictionary.setValue(self.distance, forKey: "distance")
         dictionary.setValue(self.phone, forKey: "phone")
         dictionary.setValue(self.phone, forKey: "epoch")
+        dictionary.setValue(self.selectedTheater, forKey: "selectedTheater")
+        
         dictionary.setValue(self.invitedUserIds , forKey: "invitedUserIds")
         return dictionary
     }
@@ -106,6 +110,8 @@ public class Event:NSObject {
         phone = dictionary["phone"] as? String
         epoch = dictionary["epoch"] as? CLong
         createdBy = dictionary["createdBy"] as? String
+        selectedTheater = dictionary["selectedTheater"] as? String
+        theaters = [Theater]()
         if(dictionary["invitedUserIds"] != nil){
         invitedUserIds = (dictionary["invitedUserIds"] as? [[String:Bool]])!
         }
@@ -154,6 +160,12 @@ public class Event:NSObject {
                 completionHandler(movieEvents)
             }
         }
+        if(mainCategory == "watch"  && subCategory == "tvshows") {
+
+            MovieDB.sharedInstance.withTVShows(endPoint: "on_the_air") { (movieEvents) in
+                completionHandler(movieEvents)
+            }
+        }
         
         if(mainCategory == "play" || mainCategory == "catchup") {
             YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
@@ -173,7 +185,7 @@ public class Event:NSObject {
     class func getEventsBySection(mainCategory:String , subCategory:String ,section:String ,completionHandler:@escaping ([Event])->()){
         
         if(mainCategory == "watch"  && subCategory == "movies") {
-            getInternationalMovieTimes()
+//            getInternationalMovieTimes()
             MovieDB.sharedInstance.withMovies(endPoint: "now_playing") { (movieEvents) in
                 completionHandler(movieEvents)
             }
@@ -193,41 +205,161 @@ public class Event:NSObject {
     }
     
     
-    class func getInternationalMovieTimes() {
-        /* Configure session, choose between:
-         * defaultSessionConfiguration
-         * ephemeralSessionConfiguration
-         * backgroundSessionConfigurationWithIdentifier:
-         And set session-wide properties, such as: HTTPAdditionalHeaders,
-         HTTPCookieAcceptPolicy, requestCachePolicy or timeoutIntervalForRequest.
-         */
-        let sessionConfig = URLSessionConfiguration.default
-        
-        /* Create session, and optionally set a URLSessionDelegate. */
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-        guard let url = URL(string: "https://api.cinepass.de/v4/movies?countries=US") else {return}
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        // Headers
-        
-        request.addValue("YOUR_API_KEY", forHTTPHeaderField: "X-API-Key")
-        
-        /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if (error == nil) {
-                // Success
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                print("URL Session Task Succeeded: HTTP \(statusCode)")
+    class func getShowTimes() {
+        var location = "37.785771,-122.406165"
+        if let usr = User.current  {
+            if let lat = usr.latitude , let lon = usr.longitude {
+                location = "\(lat),\(lon)"
             }
-            else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
+        }
+
+        let showtimesUrl = "https://api.cinepass.de/v4/showtimes?countries=US&location=\(location)&radius=3"
+        let manager = AFHTTPSessionManager()
+        manager.requestSerializer = AFJSONRequestSerializer.init()
+        manager.requestSerializer.setValue("UVFfr7DSh85JN3I207j9kAEw8CHa5cBc", forHTTPHeaderField: "X-API-Key")
+        
+       manager.get(showtimesUrl, parameters: nil, success: { (task, response) in
+        
+            print(response)
+            if let response = response as? [String: Any]{
+                let dictionaries = response["showtimes"] as? [NSDictionary]
+                print("CKKKKKKKKKK  -> Showtimes : \(dictionaries)")
+
             }
-        })
-        task.resume()
-        session.finishTasksAndInvalidate()
+        
+       }) { (task, error) in
+        
+        
+        }
+    }
+    
+    
+    class func getMovies(completionHandler:@escaping ([Event])->()) {
+        var location = "37.785771,-122.406165"
+        if let usr = User.current  {
+            if let lat = usr.latitude , let lon = usr.longitude {
+                location = "\(lat),\(lon)"
+            }
+        }
+        //cinemas
+        let showtimesUrl = "https://api.cinepass.de/v4/movies?countries=US&location=\(location)&radius=3"
+        let manager = AFHTTPSessionManager()
+        manager.requestSerializer = AFJSONRequestSerializer.init()
+        manager.requestSerializer.setValue("UVFfr7DSh85JN3I207j9kAEw8CHa5cBc", forHTTPHeaderField: "X-API-Key")
+        
+        manager.get(showtimesUrl, parameters: nil, success: { (task, response) in
+            
+//            print(response)
+            if let responseDict = response as? [String: Any]{
+                let movies = responseDict["movies"] as! [[String:Any]]
+                var eventArray = [Event]()
+                for m in movies {
+                    var eventDict = [String:Any]()
+                    let title = m["title"] as? String
+                    eventDict["name"] = title
+                    eventDict["category"] = "movies"
+                    eventDict["source"] = "ishowtimes"
+//                    eventDict["summary"] = m["overview"] as! String
+                    eventDict["image"] = m["poster_image_thumbnail"] as? String
+                    print(eventDict)
+                    if let titlePresence = title {
+                        eventArray.append(Event(dictionary: eventDict)!)
+                    }
+                    
+                }
+                completionHandler(eventArray)
+            }
+            
+        }) { (task, error) in
+            
+            print(error.localizedDescription)
+            
+        }
+    }
+    
+   
+    
+//    class func getMoviesForCinema(cinemaId:String,completionHandler:@escaping ([String:Any])->())  {
+//        var location = "37.785771,-122.406165"
+//        if let usr = User.current  {
+//            if let lat = usr.latitude , let lon = usr.longitude {
+//                location = "\(lat),\(lon)"
+//            }
+//        }
+//        let showtimesUrl = "https://api.cinepass.de/movies?cinema_id=\(cinemaId)"
+//        let manager = AFHTTPSessionManager()
+//        manager.requestSerializer = AFJSONRequestSerializer.init()
+//        manager.requestSerializer.setValue("UVFfr7DSh85JN3I207j9kAEw8CHa5cBc", forHTTPHeaderField: "X-API-Key")
+//        
+//        manager.get(showtimesUrl, parameters: nil, success: { (task, response) in
+//            
+//              if let response = response as? [String: Any]{
+//                completionHandler(response)
+//            }
+//            
+//        }) { (task, error) in
+//            
+//            print(error.localizedDescription)
+//            
+//        }
+//    }
+//    
+//    
+//    class func getCinemaDetails(cinemaID:String,completionHandler:@escaping ([String:Any])->())  {
+//        let cinemaUrl = "https://api.cinepass.de/v4/cinemas/\(cinemaID)"
+//        let manager = AFHTTPSessionManager()
+//        manager.requestSerializer = AFJSONRequestSerializer.init()
+//        manager.requestSerializer.setValue("UVFfr7DSh85JN3I207j9kAEw8CHa5cBc", forHTTPHeaderField: "X-API-Key")
+//        
+//        manager.get(cinemaUrl, parameters: nil, success: { (task, response) in
+//            
+//            if let response = response as? [String: Any]{
+//                completionHandler(response)
+//            }
+//            
+//        }) { (task, error) in
+//            
+//            print(error.localizedDescription)
+//            
+//        }
+//    }
+//    
+//    
+}
+
+protocol URLQueryParameterStringConvertible {
+    var queryParameters: String {get}
+}
+
+extension Dictionary : URLQueryParameterStringConvertible {
+    /**
+     This computed property returns a query parameters string from the given NSDictionary. For
+     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
+     string will be @"day=Tuesday&month=January".
+     @return The computed parameters string.
+     */
+    var queryParameters: String {
+        var parts: [String] = []
+        for (key, value) in self {
+            let part = String(format: "%@=%@",
+                              String(describing: key).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!,
+                              String(describing: value).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+            parts.append(part as String)
+        }
+        return parts.joined(separator: "&")
     }
     
 }
+
+extension URL {
+    /**
+     Creates a new URL by adding the given query parameters.
+     @param parametersDictionary The query parameter dictionary to add.
+     @return A new URL.
+     */
+    func appendingQueryParameters(_ parametersDictionary : Dictionary<String, String>) -> URL {
+        let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
+        return URL(string: URLString)!
+    }
+}
+

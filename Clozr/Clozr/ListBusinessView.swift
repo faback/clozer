@@ -64,10 +64,12 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
             self.businessTableView.reloadData()
             var pinArray=[MKAnnotation]()
                 for event in evts {
-                    let pinLocation = CLLocationCoordinate2DMake(event.latitude!,event.longitude!)
-                    self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
-                    let pin = PinAnnotation(title: event.name!, coordinate: pinLocation)
-                    pinArray.append(pin)
+                    if let latitude = event.latitude , let longitude = event.longitude {
+                        let pinLocation = CLLocationCoordinate2DMake(latitude,longitude)
+                        self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
+                        let pin = PinAnnotation(title: event.name!, coordinate: pinLocation)
+                        pinArray.append(pin)
+                    }
             }
                 self.businessMapView.addAnnotations(pinArray)
         }

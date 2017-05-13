@@ -19,8 +19,12 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         displayTheatrersTableView.delegate = self
         displayTheatrersTableView.dataSource = self
+        getTheaters()
+        
+        
+        
         renderMovieView()
-
+        
 //        movieImageView.alpha = 0.4
         
   //       displayTheatrersTableView.rowHeight = UITableViewAutomaticDimension
@@ -28,6 +32,31 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
 
+    func getTheaters() {
+    
+    MovieDB.sharedInstance.getCinemas(completionHandler: { (theaters) in
+            var count = 0
+            var theaterArray = [Theater]()
+
+                for theater in theaters  {
+                    if(count < 7) {
+                        var tDictionary = [String:Any]()
+                        tDictionary["name"] = theater["name"]
+                        let loc = tDictionary["location"] as? [String:Any]
+                        let addr = loc?["address"] as? [String:Any]
+                        let addrText = addr?["display_text"]
+                        tDictionary["location"] = addrText
+                        tDictionary["showtimes"] = ["10:00 AM","1:00 PM", "3:00 AM","6:30 PM"]
+                        let theater = Theater(dictionary: tDictionary)
+                        theaterArray.append(theater!)
+                    }
+                    count = count + 1
+                }
+            self.event?.theaters = theaterArray
+            self.displayTheatrersTableView.reloadData()
+            })
+    }
+    
     
     func renderMovieView() {
         moveiNameLabel.text = event?.name
@@ -60,7 +89,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return (event?.theaters!.count)!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +103,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "TheaterName"
+        return event?.theaters?[section].name
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
