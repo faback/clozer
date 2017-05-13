@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     var sections:[Int:String] = [Int:String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+
         sections[0] = "General"
         let settingsGeneral = Settings.getSettings(forSection: sections[0]!)
         settings[0] = settingsGeneral
