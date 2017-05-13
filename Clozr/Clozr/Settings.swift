@@ -43,8 +43,11 @@ public class Settings {
     
     class func  getSettings(forSection:String) -> [Settings]{
         var results = [Settings]()
-        var info = Settings(dictionary: ["name" : "Info" , "icon": "info"])
-        results.append(info!)
+        var loc = Settings(dictionary: ["name" : "Location" , "icon": "locationicon"])
+        var se = Settings(dictionary: ["name" : "Show All My Events" , "icon": "showeventsicon"])
+
+        results.append(loc!)
+        results.append(se!)
         return results
     }
     

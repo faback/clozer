@@ -53,7 +53,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         
         loadEvents(searchTerm: nil)
 //        if comingFromCreateEvent {
-//            onAddedEvent(evt: newEventFromCreateEventView)
+////            onAddedEvent(evt: newEventFromCreateEventView)
+//            self.eventsTable.reloadData()
 //        }
         
     }
