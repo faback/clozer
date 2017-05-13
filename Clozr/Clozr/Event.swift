@@ -173,6 +173,7 @@ public class Event:NSObject {
     class func getEventsBySection(mainCategory:String , subCategory:String ,section:String ,completionHandler:@escaping ([Event])->()){
         
         if(mainCategory == "watch"  && subCategory == "movies") {
+            getInternationalMovieTimes()
             MovieDB.sharedInstance.withMovies(endPoint: "now_playing") { (movieEvents) in
                 completionHandler(movieEvents)
             }
@@ -189,6 +190,44 @@ public class Event:NSObject {
                 
             })
         }
+    }
+    
+    
+    class func getInternationalMovieTimes() {
+        /* Configure session, choose between:
+         * defaultSessionConfiguration
+         * ephemeralSessionConfiguration
+         * backgroundSessionConfigurationWithIdentifier:
+         And set session-wide properties, such as: HTTPAdditionalHeaders,
+         HTTPCookieAcceptPolicy, requestCachePolicy or timeoutIntervalForRequest.
+         */
+        let sessionConfig = URLSessionConfiguration.default
+        
+        /* Create session, and optionally set a URLSessionDelegate. */
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        guard let url = URL(string: "https://api.cinepass.de/v4/movies?countries=US") else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Headers
+        
+        request.addValue("YOUR_API_KEY", forHTTPHeaderField: "X-API-Key")
+        
+        /* Start a new Task */
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if (error == nil) {
+                // Success
+                let statusCode = (response as! HTTPURLResponse).statusCode
+                print("URL Session Task Succeeded: HTTP \(statusCode)")
+            }
+            else {
+                // Failure
+                print("URL Session Task Failed: %@", error!.localizedDescription);
+            }
+        })
+        task.resume()
+        session.finishTasksAndInvalidate()
     }
     
 }

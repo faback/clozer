@@ -192,8 +192,8 @@ extension HomeViewController : CLLocationManagerDelegate  {
                 
             currentLoggedInUser?.latitude = newLocation.coordinate.latitude
             currentLoggedInUser?.longitude = newLocation.coordinate.longitude
-            currentLoggedInUser?.previousLocations.append(locString)
-            currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
+//            currentLoggedInUser?.previousLocations.append(locString)
+//            currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
             if let cuser = currentLoggedInUser {
                 User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
             }
