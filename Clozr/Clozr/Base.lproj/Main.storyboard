@@ -529,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXz-1W-iFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="509"/>
+            <point key="canvasLocation" x="1000.8" y="508.69565217391306"/>
         </scene>
         <!--Messages View Controller-->
         <scene sceneID="td4-pL-QTy">
@@ -555,7 +555,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1198,19 +1198,19 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TQb-QX-H0K" id="JFX-7s-Oeb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PYb-tH-iO9">
-                                                    <rect key="frame" x="16" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="16" y="8" width="45" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="4TP-a9-evs"/>
                                                         <constraint firstAttribute="height" constant="20" id="nG6-ab-gvn"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axg-6V-B08">
-                                                    <rect key="frame" x="44" y="11" width="33" height="18"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                    <rect key="frame" x="69" y="20" width="38" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1370,7 +1370,7 @@
             <objects>
                 <navigationController storyboardIdentifier="homeNav" automaticallyAdjustsScrollViewInsets="NO" id="I8h-zg-9pw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1568,7 +1568,7 @@
             <objects>
                 <navigationController storyboardIdentifier="friendsNav" automaticallyAdjustsScrollViewInsets="NO" id="ibN-Kf-tqi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1588,7 +1588,7 @@
             <objects>
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="4oj-T9-eCr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1607,7 +1607,7 @@
             <objects>
                 <navigationController storyboardIdentifier="liveEventNav" automaticallyAdjustsScrollViewInsets="NO" id="exu-qR-Xau" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1636,8 +1636,8 @@
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EbY-d4-66r"/>
-        <segue reference="rxb-B1-MqQ"/>
-        <segue reference="u4M-XE-OaJ"/>
+        <segue reference="dCX-x9-slC"/>
+        <segue reference="Vij-K3-8Gs"/>
+        <segue reference="sEy-l3-9lj"/>
     </inferredMetricsTieBreakers>
 </document>
