@@ -95,6 +95,7 @@
 		43B85F2F1EAE5E6B003721CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B85F2D1EAE5E6B003721CE /* LaunchScreen.storyboard */; };
 		43B85F3A1EAE5E6B003721CE /* ClozrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F391EAE5E6B003721CE /* ClozrTests.swift */; };
 		43B85F451EAE5E6B003721CE /* ClozrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B85F441EAE5E6B003721CE /* ClozrUITests.swift */; };
+		43BA02AD1EC777BB003BB5D6 /* FriendsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA02AC1EC777BB003BB5D6 /* FriendsSectionView.swift */; };
 		8F5977031EB2FF330076992B /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977021EB2FF330076992B /* LoginScreenViewController.swift */; };
 		8F5977061EB2FFA00076992B /* LiveEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */; };
 		8F5977081EB2FFBA0076992B /* SuggestedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */; };
@@ -224,6 +225,7 @@
 		43B85F401EAE5E6B003721CE /* ClozrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClozrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B85F441EAE5E6B003721CE /* ClozrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClozrUITests.swift; sourceTree = "<group>"; };
 		43B85F461EAE5E6B003721CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43BA02AC1EC777BB003BB5D6 /* FriendsSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSectionView.swift; sourceTree = "<group>"; };
 		4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.release.xcconfig"; sourceTree = "<group>"; };
 		53FAFEEDE4B0BAFAD1E7F3CF /* Pods-ClozrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FC4894735AB1D57FA2BE1DF /* Pods_ClozrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClozrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,7 +424,6 @@
 				43B02AD91EB6EA7E001F6B6F /* App.swift */,
 				43B02ADA1EB6EA7E001F6B6F /* Integration.swift */,
 				43B02AD51EB6E891001F6B6F /* EventVenue.swift */,
-				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
 				43B02ADD1EB6EBCC001F6B6F /* Notifications.swift */,
 				43B02AD31EB6E837001F6B6F /* LiveEvent.swift */,
 				43B02AC91EB6E79E001F6B6F /* Message.swift */,
@@ -445,6 +446,7 @@
 			children = (
 				43A42B1F1EC29A6200A2BD80 /* unused */,
 				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
+				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
 				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
 			);
@@ -558,6 +560,7 @@
 				43A42B101EC017AA00A2BD80 /* detail */,
 				43A42B0F1EC017A000A2BD80 /* create */,
 				43A42B0E1EC0179400A2BD80 /* home */,
+				43BA02AC1EC777BB003BB5D6 /* FriendsSectionView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -636,7 +639,7 @@
 				TargetAttributes = {
 					43B85F201EAE5E6B003721CE = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 9H62L2FZSF;
+						DevelopmentTeam = 636RY68X3J;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -890,6 +893,7 @@
 				43A42AF11EC00D8E00A2BD80 /* SettingsCellTableViewCell.swift in Sources */,
 				43A42AF21EC00D8E00A2BD80 /* SettingsViewController.swift in Sources */,
 				375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */,
+				43BA02AD1EC777BB003BB5D6 /* FriendsSectionView.swift in Sources */,
 				43A42AFE1EC00FA300A2BD80 /* Style.swift in Sources */,
 				43B02ACA1EB6E79E001F6B6F /* Message.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
@@ -1053,7 +1057,7 @@
 			baseConfigurationReference = EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9H62L2FZSF;
+				DEVELOPMENT_TEAM = 636RY68X3J;
 				INFOPLIST_FILE = Clozr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozr;
@@ -1067,7 +1071,7 @@
 			baseConfigurationReference = 4C02A229D27ADDDE58D04D26 /* Pods-Clozr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9H62L2FZSF;
+				DEVELOPMENT_TEAM = 636RY68X3J;
 				INFOPLIST_FILE = Clozr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozr;

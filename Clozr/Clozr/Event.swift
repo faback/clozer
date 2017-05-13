@@ -40,6 +40,8 @@ public class Event:NSObject {
     var ref: FIRDatabaseReference { return snapshot.ref }
     var userId:String?
     
+    static var liveEvent:Event?
+    
     init(snapshot: FIRDataSnapshot) {
         self.snapshot = snapshot
         super.init()

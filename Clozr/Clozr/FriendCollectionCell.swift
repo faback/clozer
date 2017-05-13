@@ -28,7 +28,7 @@ class FriendCollectionCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        self.friendImage.layer.cornerRadius = 23
+        self.friendImage.layer.cornerRadius = 19
         self.friendImage.layoutIfNeeded()
     }
     
@@ -49,7 +49,7 @@ class FriendCollectionCell: UICollectionViewCell {
                 }else{
                     self.friendImage.image = result
                 }
-                self.friendImage.layer.cornerRadius = 23
+                self.friendImage.layer.cornerRadius = 19
                 self.friendImage.layer.masksToBounds = true
 
                 self.friendImage.layoutIfNeeded()

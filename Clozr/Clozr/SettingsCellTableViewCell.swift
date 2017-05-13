@@ -12,6 +12,7 @@ class SettingsCellTableViewCell: UITableViewCell {
     @IBOutlet weak var settingsImage: UIImageView!
     @IBOutlet weak var settingsName: UILabel!
     
+    @IBOutlet weak var settingSwitch: UISwitch!
     
     
     var indexRow:Int?

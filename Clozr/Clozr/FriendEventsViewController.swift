@@ -14,17 +14,48 @@ class FriendEventsViewController: UIViewController {
     var friends = [User]()
     var clozrFriends = [User]()
     var nonClozrFriends = [User]()
-    var sections = ["Friends", "Invite Your Friends"]
+    var sections = ["Clozr Friends", "Invite Your Friends"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+//        let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        flowLayout.minimumLineSpacing = 10
+//        flowLayout.minimumLineSpacing = 10
+//        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        flowLayout.itemSize = CGSize(width: 145, height: 90)
+//        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
+//        self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+//        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        
 
-        friends = (FBClient.friends)
+        
+        collectionView.register(FriendsSectionView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.reloadData()
+        
+        
+        if let collectionViewFlowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            collectionViewFlowLayout.minimumInteritemSpacing = 3
+        }
+        
+        User.getAllUserFromFirebase { (allFriends, error) in
+            self.friends = allFriends!
+            self.clozrFriends = [User]()
+            self.nonClozrFriends = [User]()
+            for usr in allFriends! {
+                if(usr.isClozerUser) {
+                    self.clozrFriends.append(usr)
+                }else{
+                    self.nonClozrFriends.append(usr)
+                }
+            }
+            self.collectionView.reloadData()
+
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -52,7 +83,11 @@ extension FriendEventsViewController: UICollectionViewDelegate , UICollectionVie
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friends.count
+        if(section == 0) {
+            return clozrFriends.count
+        }else {
+            return nonClozrFriends.count
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -60,13 +95,36 @@ extension FriendEventsViewController: UICollectionViewDelegate , UICollectionVie
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendsCell", for: indexPath) as! FriendCollectionCell
-        if(!friends.isEmpty) {
-            let connectedUser = friends[indexPath.row]
-            cell.friend = connectedUser
+        
+        if(indexPath.section == 0) {
+            if(!clozrFriends.isEmpty) {
+                let connectedUser = clozrFriends[indexPath.row]
+                cell.friend = connectedUser
+                cell.eventCount.text = "\(connectedUser.invitedEvents.count) Events"
+            }
+        }else{
+            if(!nonClozrFriends.isEmpty) {
+                let connectedUser = nonClozrFriends[indexPath.row]
+                cell.friend = connectedUser
+                cell.eventCount.text = ""
+            }
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeaderView: FriendsSectionView = self.collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as! FriendsSectionView
+        if(indexPath.section == 0 ) {
+            sectionHeaderView.titleLabel?.text = "Friends on Clozer"
+        }else{
+            sectionHeaderView.titleLabel?.text = "Invite Your Friends"
+        }
+        
+        return sectionHeaderView
     }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

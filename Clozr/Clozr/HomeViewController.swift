@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var control3: BetterSegmentedControl!
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var eventsTableView: UITableView!
+    @IBOutlet weak var categoriesHeight: NSLayoutConstraint!
     
     var locations = [CLLocation]()
     var coordinateList = [CLLocationCoordinate2D]()
@@ -31,6 +32,8 @@ class HomeViewController: UIViewController {
     var sectionTitles = [Int: String]()
     var userReady:Bool = false
     var selectedIndexPath:IndexPath!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
@@ -52,6 +55,7 @@ class HomeViewController: UIViewController {
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
         categoriesCollection.reloadData()
+        categoriesHeight.constant = 100
         
         self.categoriesCollection.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
@@ -95,12 +99,26 @@ class HomeViewController: UIViewController {
         
         if sender.index == 0 {
             mainCategory = Category.getWatch()
+            categoriesHeight.constant = 100
+            if let collectionViewFlowLayout = categoriesCollection?.collectionViewLayout as? UICollectionViewFlowLayout {
+                 collectionViewFlowLayout.minimumInteritemSpacing = 30
+            }
         }
         else if sender.index == 1{
             mainCategory = Category.getPlay()
+            categoriesHeight.constant = 180
+            if let collectionViewFlowLayout = categoriesCollection?.collectionViewLayout as? UICollectionViewFlowLayout {
+                collectionViewFlowLayout.minimumInteritemSpacing = 10
+            }
+
         }
         else {
             mainCategory = Category.getCatchup()
+            categoriesHeight.constant = 100
+            if let collectionViewFlowLayout = categoriesCollection?.collectionViewLayout as? UICollectionViewFlowLayout {
+                collectionViewFlowLayout.minimumInteritemSpacing = 10
+            }
+
         }
         selectedSubCategory = mainCategory.subCategories[0];
         categoriesCollection.reloadData()

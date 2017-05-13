@@ -65,11 +65,7 @@ class User:NSObject {
         
         super.init()
         
-        for child in snapshot.children.allObjects as? [FIRDataSnapshot] ?? [] {
-            if responds(to: Selector(child.key)) {
-                setValue(child.value, forKey: child.key)
-            }
-        }
+       setAllValues(dictionary: snapshot.value as! [String:Any])
     }
     
     static let currentUserDataKey = "com.clozr.loggedinuser"
@@ -77,6 +73,30 @@ class User:NSObject {
     
     
     
+    func setAllValues(dictionary:[String:Any]) {
+        
+        name = dictionary["name"] as? String
+        id = dictionary["id"] as? String
+        about = dictionary["about"] as? String
+        address = dictionary["address"] as? String
+        profilePictureURLString = (dictionary["profilePictureURLString"] as? String)!
+        email = dictionary["email"] as? String
+        lastName = dictionary["lastName"] as? String
+        relationshipStatus = dictionary["relationshipStatus"] as? String
+        latitude = dictionary["latitude"] as? Double
+        longitude = dictionary["longitude"] as? Double
+        firId = dictionary["firId"] as? String
+        userRawContent = dictionary["userRawContent"] as? [String:Any]
+        if let pl = dictionary["previousLocations"] as? [String] {
+            previousLocations = pl
+        }
+        userId = dictionary["userId"] as? String
+        locDict = dictionary["locDict"] as? [String:Any]
+        isClozerUser = (dictionary["isClozerUser"] as? Bool)!
+        if(dictionary["invitedEvents"] != nil){
+            invitedEvents = (dictionary["invitedEvents"] as? [String])!
+        }
+    }
     
     public func dictionaryRepresentation() -> NSDictionary {
         
@@ -165,7 +185,7 @@ class User:NSObject {
     
     func getInvitedEvents()  {
         let count = invitedEvents.count
-        var checker = 0
+        var checker:Int = 0
         for ev in invitedEvents {
             Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
 
@@ -179,6 +199,8 @@ class User:NSObject {
         }
         
     }
+    
+    
     
     
     func addEvent(evt:String) {
@@ -257,6 +279,23 @@ class User:NSObject {
     }
 
     
+    class func getAllUserFromFirebase(completion: @escaping ([User]?, Error?) -> Void){
+        
+        var usrArray = [User]()
+        let usrRef = users
+
+        usrRef.queryOrderedByKey().observe(.value, with: { (snapshot) in
+            
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    let u = User(snapshot: snap)
+                    usrArray.append(u)
+                }
+            }
+            completion(usrArray, nil)
+        })
+        
+    }
 
     
     class func currentLoginUserId() -> String {
