@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Event Details View Controller-->
+        <!--Event Details-->
         <scene sceneID="7fU-IJ-CHV">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="slD-0b-ULM" customClass="EventDetailsViewController" customModule="Clozr" sceneMemberID="viewController">
@@ -266,7 +266,7 @@
                             <constraint firstItem="1Sd-BS-q3a" firstAttribute="top" secondItem="cld-lK-429" secondAttribute="bottom" id="JHm-aA-f9N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qvs-t7-WaP">
+                    <navigationItem key="navigationItem" title="Event Details" id="Qvs-t7-WaP">
                         <barButtonItem key="rightBarButtonItem" title="Respond" id="2xC-4o-Kdc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -283,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="501.49925037481262"/>
         </scene>
-        <!--Business View Controller-->
+        <!--Events-->
         <scene sceneID="AFA-GY-ltO">
             <objects>
                 <viewController id="fHs-xH-6Sa" customClass="BusinessViewController" customModule="Clozr" sceneMemberID="viewController">
@@ -308,7 +308,7 @@
                             <constraint firstAttribute="trailing" secondItem="nD3-6A-cnz" secondAttribute="trailing" id="lUV-sf-eQM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="W6L-T1-DSv"/>
+                    <navigationItem key="navigationItem" title="Events" id="W6L-T1-DSv"/>
                     <connections>
                         <outlet property="contentView" destination="nD3-6A-cnz" id="zMF-jV-wLL"/>
                         <segue destination="LJv-OL-Y6R" kind="show" identifier="BusinessToCreateEvent" id="Vij-K3-8Gs"/>
@@ -316,9 +316,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt9-lj-XTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471" y="981"/>
+            <point key="canvasLocation" x="2391" y="669"/>
         </scene>
-        <!--Create Event View Controller-->
+        <!--Create Event-->
         <scene sceneID="fzj-pj-N3c">
             <objects>
                 <viewController storyboardIdentifier="CreateEventViewController" id="LJv-OL-Y6R" customClass="CreateEventViewController" customModule="Clozr" sceneMemberID="viewController">
@@ -344,6 +344,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Create Event" id="Ha2-1s-Kod"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createEventView" destination="rYS-dl-grc" id="dnQ-Mx-Pwy"/>
@@ -355,7 +356,7 @@
             </objects>
             <point key="canvasLocation" x="3421.5999999999999" y="769.56521739130437"/>
         </scene>
-        <!--Select Movie View Controller-->
+        <!--Movie-->
         <scene sceneID="pr9-Zw-L0h">
             <objects>
                 <viewController id="Gzt-nz-z7L" customClass="SelectMovieViewController" customModule="Clozr" sceneMemberID="viewController">
@@ -472,6 +473,7 @@
                             <constraint firstItem="uZh-df-tY9" firstAttribute="leading" secondItem="PqH-HA-ob2" secondAttribute="leading" id="pD8-8x-xv1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Movie" id="ABq-9C-S4p"/>
                     <connections>
                         <outlet property="displayTheatrersTableView" destination="uZh-df-tY9" id="ac5-q4-oYW"/>
                         <outlet property="moveiNameLabel" destination="2tM-nC-bEk" id="fE3-Wh-9ul"/>
@@ -482,7 +484,7 @@
             </objects>
             <point key="canvasLocation" x="4200.8000000000002" y="1030.4347826086957"/>
         </scene>
-        <!--Maps View Controller-->
+        <!--Map View-->
         <scene sceneID="L6N-oa-fEp">
             <objects>
                 <viewController id="8ro-6t-RTt" customClass="MapsViewController" customModule="Clozr" sceneMemberID="viewController">
@@ -519,7 +521,7 @@
                             <constraint firstItem="cBD-hj-bbM" firstAttribute="top" secondItem="ciB-NK-8TZ" secondAttribute="bottom" id="lxd-GV-5tn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6Wl-QN-FeO"/>
+                    <navigationItem key="navigationItem" title="Map View" id="6Wl-QN-FeO"/>
                     <connections>
                         <outlet property="centerMapButton" destination="r9S-An-RI7" id="3q8-pS-Euv"/>
                         <outlet property="mapView" destination="ciB-NK-8TZ" id="Jvx-J0-cmb"/>
@@ -733,7 +735,7 @@
             </objects>
             <point key="canvasLocation" x="-1140" y="1916"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="tmQ-Ma-aiQ">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="mb1-Rc-b22" customClass="HomeViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
@@ -926,7 +928,7 @@
                             <constraint firstItem="C8B-HT-ZYI" firstAttribute="leading" secondItem="UHI-bx-EDo" secondAttribute="leading" id="xaa-vJ-Nwr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qkc-be-poe"/>
+                    <navigationItem key="navigationItem" title="Home" id="Qkc-be-poe"/>
                     <connections>
                         <outlet property="categoriesCollection" destination="UHI-bx-EDo" id="ldN-Mo-PoI"/>
                         <outlet property="control3" destination="Tan-Fm-NsY" id="dIc-EC-yl2"/>
@@ -941,7 +943,7 @@
             </objects>
             <point key="canvasLocation" x="1124" y="1916"/>
         </scene>
-        <!--Events List View Controller-->
+        <!--My Events-->
         <scene sceneID="hQP-DF-bmk">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="evY-Yq-BwE" customClass="EventsListViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
@@ -954,7 +956,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nn5-6P-3nb">
-                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventTableCell" rowHeight="141" id="mZg-bA-feL" customClass="EventTableCell" customModule="Clozr" customModuleProvider="target">
@@ -1154,7 +1156,7 @@
                             <constraint firstItem="yca-zi-A2e" firstAttribute="top" secondItem="Nn5-6P-3nb" secondAttribute="bottom" id="g1b-Lf-GEd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oml-Xi-iPG"/>
+                    <navigationItem key="navigationItem" title="My Events" id="oml-Xi-iPG"/>
                     <connections>
                         <outlet property="eventsTable" destination="Nn5-6P-3nb" id="ZVm-3U-syg"/>
                         <outlet property="titleLabel" destination="Hub-wY-i8f" id="8qt-Ln-MVc"/>
@@ -1165,7 +1167,7 @@
             </objects>
             <point key="canvasLocation" x="1792.8" y="2652.3238380809598"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="uc3-7V-ch3">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="PWC-KI-tGG" customClass="SettingsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
@@ -1227,7 +1229,7 @@
                             <constraint firstAttribute="trailing" secondItem="cPZ-uS-EYj" secondAttribute="trailing" id="rnd-VA-C9I"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YRT-Dj-L5W"/>
+                    <navigationItem key="navigationItem" title="Settings" id="YRT-Dj-L5W"/>
                     <connections>
                         <outlet property="settingsTable" destination="cPZ-uS-EYj" id="CGk-aH-yqQ"/>
                     </connections>
@@ -1236,7 +1238,7 @@
             </objects>
             <point key="canvasLocation" x="4844" y="2185"/>
         </scene>
-        <!--Friend Events View Controller-->
+        <!--Friends-->
         <scene sceneID="pci-Um-FKS">
             <objects>
                 <viewController storyboardIdentifier="friendsController" automaticallyAdjustsScrollViewInsets="NO" id="vrI-MU-iMG" customClass="FriendEventsViewController" customModule="Clozr" customModuleProvider="target" sceneMemberID="viewController">
@@ -1332,7 +1334,7 @@
                             <constraint firstItem="6XY-2j-9f4" firstAttribute="top" secondItem="U98-9A-yij" secondAttribute="top" constant="64" id="mZa-SQ-lHd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TOC-hC-Shi"/>
+                    <navigationItem key="navigationItem" title="Friends" id="TOC-hC-Shi"/>
                     <connections>
                         <outlet property="collectionView" destination="6XY-2j-9f4" id="i63-Nq-eBZ"/>
                     </connections>
@@ -1349,6 +1351,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1546,6 +1549,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1584,6 +1588,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

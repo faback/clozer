@@ -25,6 +25,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var currentUser :User?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+
         category = Category.mainCategory
         subCategory = Category.subCategory
         events[0] = [Event]()

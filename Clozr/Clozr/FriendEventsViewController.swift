@@ -12,10 +12,15 @@ class FriendEventsViewController: UIViewController {
 
     
     var friends = [User]()
+    var clozrFriends = [User]()
+    var nonClozrFriends = [User]()
+    var sections = ["Friends", "Invite Your Friends"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+
         friends = (FBClient.friends)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -48,6 +53,10 @@ extension FriendEventsViewController: UICollectionViewDelegate , UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friends.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
     }
     
     

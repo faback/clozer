@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
     var selectedIndexPath:IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+
         User.getUserFromFirebase(usrId: (User.currentLoginUserId())) { (usr, error) in
                 currentLoggedInUser = usr
                 self.userReady = true
