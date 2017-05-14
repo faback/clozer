@@ -43,12 +43,12 @@ class ContentController: UIViewController {
     @IBOutlet weak var v5: UIView!
     
     var buttonTag:[Int:UIButton] = [Int:UIButton]()
-    var navArray:[String] = [String]()
+    var navArray:[Int:String] = [Int:String]()
     override func viewDidLoad() {
         //menu
         var tagCounter:Int  = 1
 
-        navArray = [Clozer.Nav.homeNav,Clozer.Nav.liveEventNav, Clozer.Nav.eventDetailNav,Clozer.Nav.friendsNav,Clozer.Nav.settingsNav]
+        navArray = [1:Clozer.Nav.homeNav,2:Clozer.Nav.liveEventNav, 3:Clozer.Nav.eventDetailNav,4:Clozer.Nav.friendsNav,5:Clozer.Nav.settingsNav]
         let allButtons = [hb,fb,mapB,sb,mb]
         for ab in allButtons {
             ab?.tag = tagCounter
@@ -78,8 +78,8 @@ class ContentController: UIViewController {
     
     func didTap(sender: UITapGestureRecognizer) {
         
-//        let tag = sender.view?.tag
-//        tapAction(tag:tag!)
+        let tag = sender.view?.tag
+        tapAction(tag:tag!)
     }
 
     
@@ -93,7 +93,7 @@ class ContentController: UIViewController {
                 b?.alpha = 0.4
             }
         }
-        loadNavInContent(navName: navArray[tag])
+        loadNavInContent(navName: navArray[tag]!)
     }
     
     

@@ -45,6 +45,11 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
                 self.currentUser = userFetched
                 self.reloadData(user: fetchingUser)
             }
+            if let fullname = fetchingUser.name {
+                var fullNameArr = fullname.components(separatedBy: " ")
+                let firstName: String = fullNameArr[0]
+                self.navigationItem.title = "\(firstName)'s Events"
+            }
         }else {
             if let me = currentLoggedInUser   {
                 reloadData(user: me)
@@ -55,6 +60,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
                     self.reloadData(user: self.currentUser)
                 }
             }
+            self.navigationItem.title = "My Events"
         }
         searchBar = UISearchBar()
         searchBar.delegate = self

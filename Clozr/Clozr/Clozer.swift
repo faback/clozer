@@ -11,6 +11,10 @@ import Foundation
 
 class Clozer {
     
+    struct Preferences {
+        static let trackLocation = "com.clozr.tracklocation"
+        static let showEvents = "com.clozr.showEvents"
+    }
     
     struct Nav {
         
@@ -38,4 +42,24 @@ class Clozer {
         static let friendsToLive = "friendsToLive"
     }
     
+    class func savePreference(name:String, val:Bool){
+        let defaults = UserDefaults.standard
+        defaults.set(val, forKey: name)
+    }
+    
+    class func initPreferences() {
+        savePreference(name: Clozer.Preferences.trackLocation, val: true)
+        savePreference(name: Clozer.Preferences.showEvents, val: true)
+    }
+    
+    class func trackLocation()-> Bool {
+        let defaults = UserDefaults.standard
+        return defaults.bool(forKey: Clozer.Preferences.trackLocation)
+    }
+    
+    
+    class func showAllEvents()-> Bool {
+        let defaults = UserDefaults.standard
+        return defaults.bool(forKey: Clozer.Preferences.showEvents)
+    }
 }
