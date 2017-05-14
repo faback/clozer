@@ -194,7 +194,7 @@ class User:NSObject {
                   checker = checker + 1
             })
         }
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.delegate?.reloadTable()
         }
@@ -308,8 +308,11 @@ class User:NSObject {
     }
 
     
-    class func currentLoginUserId() -> String {
-        return defaults.string(forKey: currentUserDataKeyId)!
+    class func currentLoginUserId() -> String? {
+        if let defaultStored = defaults.string(forKey: currentUserDataKeyId) {
+            return defaultStored
+        }
+        return nil
     }
 
     

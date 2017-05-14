@@ -35,7 +35,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         if let me = currentLoggedInUser   {
             reloadData(user: me)
         }else {
-            User.getUserFromFirebase(usrId: User.currentLoginUserId()) { (loggedInUser, error) in
+            User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
                 currentLoggedInUser = loggedInUser
                 self.currentUser = loggedInUser
                 self.reloadData(user: self.currentUser)

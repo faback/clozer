@@ -75,7 +75,7 @@ class EventTableCell: UITableViewCell {
         }
         
         event.invitedUserIds.remove(at: selectedIndex)
-        event.invitedUserIds.append([User.currentLoginUserId() : true])
+        event.invitedUserIds.append([User.currentLoginUserId()! : true])
         
         Event.createOrUpdateEventInFirebase(event: event)
         disableJoinButton()

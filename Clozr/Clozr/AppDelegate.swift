@@ -28,11 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loggedinUser = FIRAuth.auth()?.currentUser
         if loggedinUser != nil  {
-            User.getUserFromFirebase(usrId: User.currentLoginUserId(), completion: { (usr1, error) in
-                FBClient.currentFacebookUser = usr1
-                FBClient.getUsersFriends()
-            })
-            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
+//            FIRAuth.signOut(FIRAuth.auth()!)
+            if let currentLoginId = User.currentLoginUserId() {
+                User.getUserFromFirebase(usrId: currentLoginId, completion: { (usr1, error) in
+                    FBClient.currentFacebookUser = usr1
+                    FBClient.getUsersFriends()
+                    self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
+
+                })
+            }else{
+                window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
+            }
         }else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
         }

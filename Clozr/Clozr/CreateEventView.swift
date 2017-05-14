@@ -135,7 +135,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     
     func createEvent(sender: UIView?=nil){
         
-        User.getUserFromFirebase(usrId: User.currentLoginUserId()) { (usr, error) in
+        User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (usr, error) in
             self.event.inviteUser(userId: (usr?.userId)! , accepted: true)
             currentLoggedInUser = usr
             if let uid = usr?.userId {

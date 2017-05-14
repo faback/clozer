@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
 
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
-        User.getUserFromFirebase(usrId: (User.currentLoginUserId())) { (usr, error) in
+        User.getUserFromFirebase(usrId: (User.currentLoginUserId())!) { (usr, error) in
                 currentLoggedInUser = usr
                 self.userReady = true
                 self.determineMyCurrentLocation()
