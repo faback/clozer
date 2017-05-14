@@ -78,8 +78,8 @@ class ContentController: UIViewController {
     
     func didTap(sender: UITapGestureRecognizer) {
         
-        let tag = sender.view?.tag
-        tapAction(tag:tag!)
+//        let tag = sender.view?.tag
+//        tapAction(tag:tag!)
     }
 
     
