@@ -203,14 +203,14 @@ extension HomeViewController : CLLocationManagerDelegate  {
         self.locations.append(newLocation)
         self.coordinateList.append(newLocation.coordinate)
         if(userReady) {
-            let locString = "\(newLocation.coordinate.latitude),\(newLocation.coordinate.longitude)"
-                
             currentLoggedInUser?.latitude = newLocation.coordinate.latitude
             currentLoggedInUser?.longitude = newLocation.coordinate.longitude
-//            currentLoggedInUser?.previousLocations.append(locString)
-//            currentLoggedInUser?.locDict = ["latitude" : newLocation.coordinate.latitude ,"longitude" : newLocation.coordinate.longitude]
+            currentLatitude = newLocation.coordinate.latitude
+            currentLongitude = newLocation.coordinate.longitude
+            Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLatitude, val: currentLatitude!)
+            Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLongitude, val: currentLongitude!)
             if let cuser = currentLoggedInUser {
-                User.createOrUpdateUserInFirebase(user: currentLoggedInUser)
+                User.createOrUpdateUserInFirebase(user: cuser)
             }
         }
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate

@@ -20,6 +20,8 @@ let yelpConsumerSecret = "33QCvh5bIF5jIHR5klQr7RtBDhQ"
 let yelpToken = "uRcRswHFYa1VkDrGV6LAW2F8clGh5JHV"
 let yelpTokenSecret = "mqtKIxMIR4iBtBPZCmCLEb-Dz3Y"
 
+var currentLatitude:Double?
+var currentLongitude:Double?
 enum YelpSortMode: Int {
     case bestMatched = 0, distance, highestRated
     //    var sortModes:[String] = ["Best Match" ,"Distance" ,  "Highest Rated"]
@@ -89,7 +91,17 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         let distance = 5.0
         let term = searchTerm
         //        let sort  = 0
-        
+        var yelplat = 37.785771
+        var yelplon = -122.406165
+        if let latt = currentLatitude ,let lonn = currentLongitude{
+            yelplat = latt
+            yelplon = lonn
+        }else{
+            yelplat = Clozer.getPreferenceDouble(key: Clozer.Preferences.lastLatitude)
+            yelplon = Clozer.getPreferenceDouble(key: Clozer.Preferences.lastLongitude)
+        }
+        YelpSettings.centeredLatitude = yelplat
+        YelpSettings.centerdLongitude = yelplon
         var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "\(YelpSettings.centeredLatitude),\(YelpSettings.centerdLongitude)" as AnyObject]
         //        parameters["sort"] = sort as AnyObject?
         parameters["radius_filter"] = (distance*1609.34) as AnyObject?
@@ -111,6 +123,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                         var address = ""
                                         var lat = 37.785771
                                         var lon = -122.406165
+
                                         var fullAddress = ""
                                         if location != nil {
                                             let addressArray = location!["address"] as? NSArray

@@ -14,6 +14,8 @@ class Clozer {
     struct Preferences {
         static let trackLocation = "com.clozr.tracklocation"
         static let showEvents = "com.clozr.showEvents"
+        static let lastLatitude = "com.clozr.lastlatitude"
+        static let lastLongitude = "com.clozr.lastlongitude"
     }
     
     struct Nav {
@@ -47,6 +49,11 @@ class Clozer {
         defaults.set(val, forKey: name)
     }
     
+    class func savePreferenceDouble(name:String, val:Double){
+        let defaults = UserDefaults.standard
+        defaults.set(val, forKey: name)
+    }
+    
     class func initPreferences() {
         savePreference(name: Clozer.Preferences.trackLocation, val: true)
         savePreference(name: Clozer.Preferences.showEvents, val: true)
@@ -58,8 +65,15 @@ class Clozer {
     }
     
     
+    
     class func showAllEvents()-> Bool {
         let defaults = UserDefaults.standard
         return defaults.bool(forKey: Clozer.Preferences.showEvents)
     }
+    
+    class func getPreferenceDouble(key:String)->Double {
+        let defaults = UserDefaults.standard
+        return defaults.double(forKey:key)
+    }
+    
 }
