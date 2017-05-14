@@ -16,10 +16,13 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
     var user: String! {
         didSet {
             setProfileImage()
+            friendImage.layer.borderWidth = 3
             if accepted {
-                ResponseImage.image = UIImage(named:"iconmonstr-check-mark-12-32")
+                ResponseImage.image = UIImage(named:"icons8-checked")
+                friendImage.layer.borderColor =  UIColor.greenSea().cgColor
             } else {
-                ResponseImage.image = UIImage(named:"iconmonstr-x-mark-8-32")
+                ResponseImage.image = UIImage(named:"icons8-cancel")
+                friendImage.layer.borderColor =  UIColor.red.cgColor
             }
         }
     }
