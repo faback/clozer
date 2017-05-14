@@ -108,12 +108,18 @@ class MovieDB {
     
     
      func getCinemas(completionHandler:@escaping ([[String:Any]])->()) {
-        var location = "37.785771,-122.406165"
-        if let usr = User.current  {
-            if let lat = usr.latitude , let lon = usr.longitude {
-                location = "\(lat),\(lon)"
-            }
+        
+        var movieLat = 37.785771
+        var movieLon = -122.406165
+        if let latt = currentLatitude ,let lonn = currentLongitude{
+            movieLat = latt
+            movieLon = lonn
+        }else{
+            movieLat = Clozer.getPreferenceDouble(key: Clozer.Preferences.lastLatitude)
+            movieLon = Clozer.getPreferenceDouble(key: Clozer.Preferences.lastLongitude)
         }
+        var location = "37.785771,-122.406165"
+        location = "\(movieLat),\(movieLon)"
         //cinemas
         let showtimesUrl = "https://api.cinepass.de/v4/cinemas?countries=US&location=\(location)&radius=1"
         let manager = AFHTTPSessionManager()
