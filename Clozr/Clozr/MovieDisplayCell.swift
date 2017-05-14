@@ -8,9 +8,15 @@
 
 import UIKit
 
+@objc protocol MovieDisplayCellDelegate{
+    func MovieDisplayCellDelegate(str:String)
+}
+
 class MovieDisplayCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var movieTimingsCollectionVIew: UICollectionView!
+    var showTimings = [String]()
+    var delegate: MovieDisplayCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,26 +25,37 @@ class MovieDisplayCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         //movieTimingsCollectionVIew.isScrollEnabled = false
         movieTimingsCollectionVIew.allowsMultipleSelection = false
         
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return showTimings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = movieTimingsCollectionVIew.dequeueReusableCell(withReuseIdentifier: "MovieTimingCollectionCell", for: indexPath) as! MovieTimingsCollectionCell
+        cell.movieTimingLabel.text = showTimings[indexPath.row]
+        cell.layer.cornerRadius = 5
+        cell.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
+        cell.movieTimingLabel.textColor = UIColor.white
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = movieTimingsCollectionVIew.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 2.0
-        cell?.layer.borderColor = UIColor.gray.cgColor
+        let cell = movieTimingsCollectionVIew.cellForItem(at: indexPath) as! MovieTimingsCollectionCell
+//        cell?.layer.borderWidth = 2.0
+//        cell?.layer.borderColor = UIColor.gray.cgColor
+        delegate?.MovieDisplayCellDelegate(str: showTimings[indexPath.row])
+        
+//        cell.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+//        cell.movieTimingLabel.textColor = UIColor.white
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = movieTimingsCollectionVIew.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 0.0
+        let cell = movieTimingsCollectionVIew.cellForItem(at: indexPath) as! MovieTimingsCollectionCell
+        //cell?.layer.borderWidth = 0.0
+//        cell.backgroundColor = UIColor.white
+//        cell.movieTimingLabel.textColor = UIColor.black
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

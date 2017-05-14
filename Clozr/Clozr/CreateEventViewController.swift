@@ -18,6 +18,7 @@ class CreateEventViewController: UIViewController, CreateEventViewDelegate {
     var businessdelegate: CreateEventViewControllerDelegate!
     @IBOutlet weak var createEventView: CreateEventView!
     var event: Event!
+    var showTime: String!
     var eventFromCreateEventViewToListEventsVC: Event!
     override func viewDidLoad() {
         super.viewDidLoad()

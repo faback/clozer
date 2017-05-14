@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, MovieDisplayCellDelegate {
 
     @IBOutlet weak var displayTheatrersTableView: UITableView!
     @IBOutlet weak var movieImageView: UIImageView!
@@ -27,11 +27,11 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     var maximumDate: Date {
         return (Calendar.current as NSCalendar).date(byAdding: .day, value: 10, to: Date(), options: [])!
     }
-    public var highlightColor = UIColor(red: 0/255.0, green: 199.0/255.0, blue: 194.0/255.0, alpha: 1)    
+    public var highlightColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
     public var darkColor = UIColor(red: 0, green: 22.0/255.0, blue: 39.0/255.0, alpha: 1)
     public var daysBackgroundColor = UIColor(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, alpha: 1)
     
-    
+    var collectionViewShowTiming: String?
     var event:Event?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,9 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         displayTheatrersTableView.dataSource = self
         getTheaters()
         renderMovieView()
-
+        
+        displayDatesCollectionView.delegate = self
+        displayDatesCollectionView.dataSource = self
         fillDates(fromDate: minimumDate, toDate: maximumDate)
         updateCollectionView(to: self.selectedDate)
         components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: selectedDate)
@@ -49,6 +51,8 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
   //       displayTheatrersTableView.rowHeight = UITableViewAutomaticDimension
  //      displayTheatrersTableView.estimatedRowHeight = 150
         // Do any additional setup after loading the view.
+        //TODO
+        moveiNameLabel.isHidden = true
     }
 
     func getTheaters() {
@@ -79,6 +83,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     
     func renderMovieView() {
         moveiNameLabel.text = event?.name
+        self.navigationItem.title = event?.name
 
         if let imgUrl = event?.image {
             var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
@@ -91,11 +96,11 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
                     self.movieImageView.alpha = 1
                     self.movieImageView.image = result
                     UIView.animate(withDuration: 3.0, animations: { () -> Void in
-                        self.movieImageView.alpha = 0.4
+                        self.movieImageView.alpha = 0.8
                     })
                 }else{
                     self.movieImageView.image = result
-                    self.movieImageView.alpha = 0.4
+                    self.movieImageView.alpha = 0.8
                 }
             }, failure: {(req, res, result) -> Void in
                 
@@ -117,13 +122,26 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = displayTheatrersTableView.dequeueReusableCell(withIdentifier: "MovieDisplayCell", for: indexPath) as! MovieDisplayCell
-        print(cell.movieTimingsCollectionVIew.frame.size.height)
+        for showtime in (event?.theaters?[indexPath.section].showtimes)! {
+            cell.showTimings.append(showtime)
+        }
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return event?.theaters?[section].name
+        return (event?.theaters?[section].name)! //+ "\n" + (event?.theaters?[section].location)!)
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let label = UILabel()
+//        label.backgroundColor = UIColor.black
+//        label.textColor = UIColor.white
+//        label.lineBreakMode = .byWordWrapping
+//        label.numberOfLines = 0
+//        label.text = (event?.theaters?[section].name)! //+ "\n" + (event?.theaters?[section].location)!
+//        return label
+//    }
     
     /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -234,6 +252,17 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         if let index = self.dates.index(of: selectedDate) {
             self.displayDatesCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
         }
+    }
+    
+    func MovieDisplayCellDelegate(str: String) {
+        collectionViewShowTiming = str
+        performSegue(withIdentifier: "fromSelectMovieToCreateEvent", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! CreateEventViewController
+        vc.event = self.event
+        vc.showTime = self.collectionViewShowTiming
     }
 
     
