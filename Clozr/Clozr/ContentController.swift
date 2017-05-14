@@ -35,10 +35,38 @@ class ContentController: UIViewController {
     @IBOutlet weak var fb: UIButton!
     @IBOutlet weak var sb: UIButton!
     
+    @IBOutlet weak var v1: UIView!
+    @IBOutlet weak var v2: UIView!
+    @IBOutlet weak var v3: UIView!
+    @IBOutlet weak var v4: UIView!
     
+    @IBOutlet weak var v5: UIView!
+    
+    var buttonTag:[Int:UIButton] = [Int:UIButton]()
+    var navArray:[String] = [String]()
     override func viewDidLoad() {
         //menu
+        var tagCounter:Int  = 1
+
+        navArray = [Clozer.Nav.homeNav,Clozer.Nav.liveEventNav, Clozer.Nav.eventDetailNav,Clozer.Nav.friendsNav,Clozer.Nav.settingsNav]
+        let allButtons = [hb,fb,mapB,sb,mb]
+        for ab in allButtons {
+            ab?.tag = tagCounter
+            buttonTag[tagCounter] = ab
+            tagCounter  = tagCounter + 1
+        }
+        tagCounter = 1
+        let tabViews = [v1,v2,v3,v4,v5]
         
+        for tv in tabViews {
+            tv?.isUserInteractionEnabled = true
+            tv?.tag = tagCounter
+            tagCounter  = tagCounter + 1
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
+            tv?.addGestureRecognizer(tapGesture)
+        }
+        
+
         
         //home
         if let currentContent = currrent  {
@@ -48,9 +76,29 @@ class ContentController: UIViewController {
         }
     }
     
+    func didTap(sender: UITapGestureRecognizer) {
+        
+        let tag = sender.view?.tag
+        tapAction(tag:tag!)
+    }
+
+    
+    
+    func tapAction(tag:Int) {
+        let curr = buttonTag[tag]
+        let allButtons = [hb,fb,mapB,sb,mb]
+        curr?.alpha = 1
+        for b in allButtons {
+            if(b != curr) {
+                b?.alpha = 0.4
+            }
+        }
+        loadNavInContent(navName: navArray[tag])
+    }
+    
     
     func otherAlpha(curr:UIButton) {
-        var allButtons = [hb,fb,mapB,sb,mb]
+        let allButtons = [hb,fb,mapB,sb,mb]
         curr.alpha = 1
         for b in allButtons {
             if(b != curr) {
@@ -58,7 +106,6 @@ class ContentController: UIViewController {
             }
         }
     }
-    
     
     //MARK : Hide and show content.
     

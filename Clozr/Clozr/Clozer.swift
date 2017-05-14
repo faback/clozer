@@ -35,7 +35,7 @@ class Clozer {
         static let moreBusinesses = "moreBusinesses"
         static let createEventSegue = "createEventSegue"
         static let toDetail = "toDetail"
-        
+        static let friendsToLive = "friendsToLive"
     }
     
 }

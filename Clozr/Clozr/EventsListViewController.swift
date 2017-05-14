@@ -23,28 +23,42 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
     var currentUser :User?
+    var comingFromCreate:Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-
+        
+        
+        
         category = Category.mainCategory
         subCategory = Category.subCategory
         events[0] = [Event]()
         events[1] = [Event]()
-        
-        if let me = currentLoggedInUser   {
-            reloadData(user: me)
+        if comingFromCreateEvent {
+            comingFromCreate = true
+        }else{
+            comingFromCreate = false
+        }
+
+        if let fetchingUser = currentUser {
+            User.getUserFromFirebase(usrId: fetchingUser.userId!) { (userFetched, error) in
+                self.currentUser = userFetched
+                self.reloadData(user: fetchingUser)
+            }
         }else {
-            User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
-                currentLoggedInUser = loggedInUser
-                self.currentUser = loggedInUser
-                self.reloadData(user: self.currentUser)
+            if let me = currentLoggedInUser   {
+                reloadData(user: me)
+            }else {
+                User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
+                    currentLoggedInUser = loggedInUser
+                    self.currentUser = loggedInUser
+                    self.reloadData(user: self.currentUser)
+                }
             }
         }
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
-//        navigationItem.titleView = searchBar
         eventsTable.delegate = self
         eventsTable.dataSource = self
         eventsTable.rowHeight = UITableViewAutomaticDimension
@@ -52,15 +66,12 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         Styles.styleNav(controller: self)
         
         loadEvents(searchTerm: nil)
-//        if comingFromCreateEvent {
-////            onAddedEvent(evt: newEventFromCreateEventView)
-//            self.eventsTable.reloadData()
-//        }
         
     }
     
     
     func reloadData(user:User?) {
+        
         user?.delegate = self
         MBProgressHUD.showAdded(to: self.view, animated: true)
         user?.getInvitedEvents();
@@ -152,15 +163,13 @@ extension EventsListViewController: UISearchBarDelegate {
 extension EventsListViewController: UITableViewDelegate , UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //loceventcell
-        //eventTableCell
-        
         if(!locCell) {
             let  eventCell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell") as! EventTableCell
             let section = indexPath.section
             let row = indexPath.row
             let arr = events[section] as! [Event]
             eventCell.event = arr[row]
+            eventCell.reloadFriends()
             return eventCell
         }else {
             let  locCell = tableView.dequeueReusableCell(withIdentifier: "loceventcell") as! LocEventCell

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FriendEventsViewController: UIViewController {
 
@@ -20,46 +21,35 @@ class FriendEventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-//        let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        flowLayout.minimumLineSpacing = 10
-//        flowLayout.minimumLineSpacing = 10
-//        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-//        flowLayout.itemSize = CGSize(width: 145, height: 90)
-//        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
-//        self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
-//        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        
-
-        
         collectionView.register(FriendsSectionView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        
         if let collectionViewFlowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             collectionViewFlowLayout.minimumInteritemSpacing = 3
         }
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+
         var once:Int = 0
         User.getAllUserFromFirebase { (allFriends, error) in
             if(once == 0) {
-            self.friends = allFriends!
-            self.clozrFriends = [User]()
-            self.nonClozrFriends = [User]()
-            for usr in allFriends! {
-                if(usr.isClozerUser) {
-                    self.clozrFriends.append(usr)
-                }else{
-                    self.nonClozrFriends.append(usr)
+                self.friends = allFriends!
+                self.clozrFriends = [User]()
+                self.nonClozrFriends = [User]()
+                for usr in allFriends! {
+                    if(usr.isClozerUser) {
+                        self.clozrFriends.append(usr)
+                    }else{
+                        self.nonClozrFriends.append(usr)
+                    }
                 }
-            }
-            once = 1
-            self.collectionView.reloadData()
-            }
+                once = 1
 
+                self.collectionView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+
+            }
         }
-        
         // Do any additional setup after loading the view.
     }
 
@@ -69,15 +59,18 @@ class FriendEventsViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let indexPath = sender as! IndexPath
+        let vc = segue.destination as! EventsListViewController
+        vc.currentUser = clozrFriends[indexPath.row]
     }
-    */
+ 
 
 }
 
@@ -131,10 +124,16 @@ extension FriendEventsViewController: UICollectionViewDelegate , UICollectionVie
         return sectionHeaderView
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//       //todo
-//    }
-//    
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(indexPath.section == 0 ) {
+            self.performSegue(withIdentifier: Clozer.Segues.friendsToLive, sender: indexPath)
+        }
+    }
+//
 //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
 //        let cell = collectionView.cellForItem(at: indexPath) as! SubCategoryCell
 //        cell.unTintImage()

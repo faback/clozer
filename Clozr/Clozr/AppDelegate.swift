@@ -33,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.getUserFromFirebase(usrId: currentLoginId, completion: { (usr1, error) in
                     FBClient.currentFacebookUser = usr1
                     FBClient.getUsersFriends()
-                    self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
 
                 })
+                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
+
             }else{
                 window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
             }

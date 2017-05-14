@@ -69,6 +69,15 @@ class HomeViewController: UIViewController {
     }
     
     
+    @IBAction func signout(_ sender: Any) {
+        try! FIRAuth.auth()!.signOut()
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "loginController") as! LoginScreenViewController
+        self.present(vc, animated: true, completion: nil)
+
+    }
+    
+    
     @IBAction func showFriends(_ sender: Any) {
         
         self.performSegue(withIdentifier: "showFriends", sender: "showFriends")

@@ -66,7 +66,7 @@ class User:NSObject {
         
         super.init()
         
-       setAllValues(dictionary: snapshot.value as! [String:Any])
+       setAllValues(dictionaryArg: (snapshot.value as? [String:Any]))
     }
     
     static let currentUserDataKey = "com.clozr.loggedinuser"
@@ -74,28 +74,29 @@ class User:NSObject {
     
     
     
-    func setAllValues(dictionary:[String:Any]) {
-        
-        name = dictionary["name"] as? String
-        id = dictionary["id"] as? String
-        about = dictionary["about"] as? String
-        address = dictionary["address"] as? String
-        profilePictureURLString = (dictionary["profilePictureURLString"] as? String)!
-        email = dictionary["email"] as? String
-        lastName = dictionary["lastName"] as? String
-        relationshipStatus = dictionary["relationshipStatus"] as? String
-        latitude = dictionary["latitude"] as? Double
-        longitude = dictionary["longitude"] as? Double
-        firId = dictionary["firId"] as? String
-        userRawContent = dictionary["userRawContent"] as? [String:Any]
-        if let pl = dictionary["previousLocations"] as? [String] {
-            previousLocations = pl
-        }
-        userId = dictionary["userId"] as? String
-        locDict = dictionary["locDict"] as? [String:Any]
-        isClozerUser = (dictionary["isClozerUser"] as? Bool)!
-        if(dictionary["invitedEvents"] != nil){
-            invitedEvents = (dictionary["invitedEvents"] as? [String])!
+    func setAllValues(dictionaryArg:[String:Any]?) {
+        if let dictionary = dictionaryArg {
+            name = dictionary["name"] as? String
+            id = dictionary["id"] as? String
+            about = dictionary["about"] as? String
+            address = dictionary["address"] as? String
+            profilePictureURLString = (dictionary["profilePictureURLString"] as? String)!
+            email = dictionary["email"] as? String
+            lastName = dictionary["lastName"] as? String
+            relationshipStatus = dictionary["relationshipStatus"] as? String
+            latitude = dictionary["latitude"] as? Double
+            longitude = dictionary["longitude"] as? Double
+            firId = dictionary["firId"] as? String
+            userRawContent = dictionary["userRawContent"] as? [String:Any]
+            if let pl = dictionary["previousLocations"] as? [String] {
+                previousLocations = pl
+            }
+            userId = dictionary["userId"] as? String
+            locDict = dictionary["locDict"] as? [String:Any]
+            isClozerUser = (dictionary["isClozerUser"] as? Bool)!
+            if let ie =  dictionary["invitedEvents"] as? [String]{
+                invitedEvents = ie
+            }
         }
     }
     

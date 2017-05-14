@@ -93,6 +93,11 @@ class EventTableCell: UITableViewCell {
         joinDeclineButton.disabledColor = UIColor.white
 
     }
+    
+    func reloadFriends() {
+        inviteUsers()
+        
+    }
   
     func layoutEvent() {
         //        eventImage.image = UIImage(named: event.image!)
@@ -131,9 +136,17 @@ class EventTableCell: UITableViewCell {
         
         friendsCollectionTable.delegate = self
         print("count of users \(event.invitedUserIds.count)")
-        var processedUsers = [String]()
-        var totalCount:Int = event.invitedUserIds.count
+        statusCountsLabel.textColor = UIColor.gray
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+           
+        }
+    }
+    
+    func inviteUsers() {
+        var totalCount:Int = 0
         var acceptedCount:Int = 0
+
         if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
             self.count = 0
             for dict in invitedUsers {
@@ -145,22 +158,27 @@ class EventTableCell: UITableViewCell {
                         acc = 1
                         acceptedCount = acceptedCount + 1
                     }
-                        User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
-                            
-                            self.users.append((usrF! , acc))
-                            self.count += 1;
-                            self.friendsCollectionWidth.constant = CGFloat((self.count * 50 ) + 7 )
-                        })
+                    User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
+                        self.appendUsers(usrTuple: (usrF!,acc))
+                        self.count += 1;
+                        self.friendsCollectionWidth.constant = CGFloat((self.count * 50 ) + 7 )
+                        self.friendsCollectionTable.reloadData()
+                    })
                 }
-          }
+            }
         }
         
+        totalCount = event.invitedUserIds.count
         statusCountsLabel.text = "\(acceptedCount) of \(totalCount) friends attending"
-        statusCountsLabel.textColor = UIColor.gray
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.friendsCollectionTable.reloadData()
-        }
+    }
+    
+    func appendUsers(usrTuple:(User,Int)) {
+//        for existingUser in self.users {
+//            if(existingUser.0.userId != usrTuple.0.userId) {
+                self.users.append(usrTuple)
+//            }
+//        }
+        
     }
 
     
