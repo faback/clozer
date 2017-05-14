@@ -161,7 +161,11 @@ class EventTableCell: UITableViewCell {
                     User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
                         self.appendUsers(usrTuple: (usrF!,acc))
                         self.count += 1;
-                        self.friendsCollectionWidth.constant = CGFloat((self.count * 50 ) + 7 )
+                        var constraintConstant = CGFloat((self.count * 50 ) + 7 )
+                        if(constraintConstant > 300) {
+                            constraintConstant = 300
+                        }
+                        self.friendsCollectionWidth.constant = constraintConstant
                         self.friendsCollectionTable.reloadData()
                     })
                 }
