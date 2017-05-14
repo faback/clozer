@@ -8,11 +8,29 @@
 
 import UIKit
 
-class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var displayTheatrersTableView: UITableView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var moveiNameLabel: UILabel!
+    @IBOutlet weak var displayDatesCollectionView: UICollectionView!
+    var dates: [Date]! = []
+    var timeZone = TimeZone.current
+    var components: DateComponents! {
+        didSet {
+            components.timeZone = timeZone
+        }
+    }
+    var calendar: Calendar = .current
+    var selectedDate = Date()
+    var minimumDate = Date()
+    var maximumDate: Date {
+        return (Calendar.current as NSCalendar).date(byAdding: .day, value: 10, to: Date(), options: [])!
+    }
+    public var highlightColor = UIColor(red: 0/255.0, green: 199.0/255.0, blue: 194.0/255.0, alpha: 1)    
+    public var darkColor = UIColor(red: 0, green: 22.0/255.0, blue: 39.0/255.0, alpha: 1)
+    public var daysBackgroundColor = UIColor(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, alpha: 1)
+    
     
     var event:Event?
     override func viewDidLoad() {
@@ -20,11 +38,12 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         displayTheatrersTableView.delegate = self
         displayTheatrersTableView.dataSource = self
         getTheaters()
-        
-        
-        
         renderMovieView()
-        
+
+        fillDates(fromDate: minimumDate, toDate: maximumDate)
+        updateCollectionView(to: self.selectedDate)
+        components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: selectedDate)
+
 //        movieImageView.alpha = 0.4
         
   //       displayTheatrersTableView.rowHeight = UITableViewAutomaticDimension
@@ -106,14 +125,117 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         return event?.theaters?[section].name
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        let cell = displayTheatrersTableView.dequeueReusableCell(withIdentifier: "MovieDisplayCell", for: indexPath) as! MovieDisplayCell
-////        print(cell.movieTimingsCollectionVIew.frame.size.height)
-////        return cell.movieTimingsCollectionVIew.frame.size.height
-//        return UITableViewAutomaticDimension
-// //       return 120
-//    
-//    }
+    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // constants, should be initialized somewhere else
+        let totalItem: CGFloat = 12
+        let totalCellInARow: CGFloat = 4
+        let cellHeight: CGFloat = 120
+        let itemHeight: CGFloat = 26
+        let collViewTopOffset: CGFloat = 10
+        let collViewBottomOffset: CGFloat = 10
+        
+        let minLineSpacing: CGFloat = 5
+        
+        // calculations
+        let totalRow = ceil(totalItem / totalCellInARow)
+        let totalTopBottomOffset = collViewTopOffset + collViewBottomOffset
+        let totalSpacing = CGFloat(totalRow - 1) * minLineSpacing   // total line space in UICollectionView is (totalRow - 1)
+        let totalHeight  = (itemHeight * totalRow) + totalTopBottomOffset + totalSpacing + 20
+        
+        return totalHeight 
+    } */
+    
+    //DateCollection
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dates.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DatePickerCollectionViewCell
+        
+        let date = dates[indexPath.item]
+        cell.populateItem(date: date, highlightColor: highlightColor, darkColor: darkColor)
+        
+        return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //workaround to center to every cell including ones near margins
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            let offset = CGPoint(x: cell.center.x - collectionView.frame.width / 2, y: 0)
+            collectionView.setContentOffset(offset, animated: true)
+        }
+        
+        // update selected dates
+        let date = dates[indexPath.item]
+        let dayComponent = calendar.dateComponents([.day, .month, .year], from: date)
+        components.day = dayComponent.day
+        components.month = dayComponent.month
+        components.year = dayComponent.year
+        if let selected = calendar.date(from: components) {
+            if selected.compare(minimumDate) == .orderedAscending {
+                selectedDate = minimumDate
+                print(selectedDate)
+                //resetTime()
+            } else {
+                selectedDate = selected
+                print(selectedDate)
+            }
+        }
+    }
+    
+    func resetTime() {
+        components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: selectedDate)
+        updateCollectionView(to: selectedDate)
+    }
+    
+    func updateCollectionView(to currentDate: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YYYY"
+        for i in 0..<dates.count {
+            let date = dates[i]
+            if formatter.string(from: date) == formatter.string(from: currentDate) {
+                let indexPath = IndexPath(row: i, section: 0)
+                displayDatesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                    self.displayDatesCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                })
+                
+                break
+            }
+        }
+    }
+    func fillDates(fromDate: Date, toDate: Date) {
+        
+        var dates: [Date] = []
+        var days = DateComponents()
+        
+        var dayCount = 0
+        repeat {
+            days.day = dayCount
+            dayCount += 1
+            guard let date = calendar.date(byAdding: days, to: fromDate) else {
+                break;
+            }
+            if date.compare(toDate) == .orderedDescending {
+                break
+            }
+            dates.append(date)
+        } while (true)
+        
+        self.dates = dates
+        self.displayDatesCollectionView.reloadData()
+        
+        if let index = self.dates.index(of: selectedDate) {
+            self.displayDatesCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+        }
+    }
+
     
 
     /*

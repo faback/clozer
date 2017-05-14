@@ -19,6 +19,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var creaeEventLabel: UILabel!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var plusImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var reviewImageView: UIImageView!
     @IBOutlet weak var cuisineTypeLabel: UILabel!
@@ -27,6 +28,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var businessPhoneNumberLabel: UILabel!
     @IBOutlet weak var createEventLabel: UILabel!
 
+    @IBOutlet weak var tapToEditLabel: UILabel!
+    @IBOutlet weak var displayDateLabel: UILabel!
+    @IBOutlet weak var displayTimeLabel: UILabel!
     @IBOutlet weak var addDateView: UIView!
     @IBOutlet weak var addDateandTimelabel: UILabel!
     @IBOutlet weak var friendsTableView: UITableView!
@@ -35,6 +39,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var friends : [User]!
     var invitedFriends = [User]()
     var delegate: CreateEventViewDelegate!
+    var selectedIndexPaths = [IndexPath: Bool]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -59,6 +64,15 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         friendsTableView.register(FriendTableCellNib, forCellReuseIdentifier: "FriendTableCell")
         friendsTableView.rowHeight = UITableViewAutomaticDimension
         friendsTableView.estimatedRowHeight = 70
+        
+        self.plusImageView.isHidden = false
+        self.addDateandTimelabel.isHidden = false
+        self.tapToEditLabel.isHidden = true
+        self.displayDateLabel.isHidden = true
+        displayTimeLabel.isHidden = true
+
+        self.mainView.bringSubview(toFront: createEventView)
+        self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
         
          let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
@@ -94,19 +108,19 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 })
             }
         }
-        addDateView.layer.shadowColor = UIColor.black.cgColor
-        addDateView.layer.shadowOpacity = 1
-        addDateView.layer.shadowOffset = CGSize.zero
-        addDateView.layer.shadowRadius = 5
-        addDateView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
-        addDateView.layer.shouldRasterize = true
-        
-        createEventView.layer.shadowColor = UIColor.black.cgColor
-        createEventView.layer.shadowOpacity = 1
-        createEventView.layer.shadowOffset = CGSize.zero
-        createEventView.layer.shadowRadius = 5
-        createEventView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
-        createEventView.layer.shouldRasterize = true
+//        addDateView.layer.shadowColor = UIColor.black.cgColor
+//        addDateView.layer.shadowOpacity = 1
+//        addDateView.layer.shadowOffset = CGSize.zero
+//        addDateView.layer.shadowRadius = 5
+//        addDateView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+//        addDateView.layer.shouldRasterize = true
+//        
+//        createEventView.layer.shadowColor = UIColor.black.cgColor
+//        createEventView.layer.shadowOpacity = 1
+//        createEventView.layer.shadowOffset = CGSize.zero
+//        createEventView.layer.shadowRadius = 5
+//        createEventView.layer.shadowPath = UIBezierPath(rect: addDateView.bounds).cgPath
+//        createEventView.layer.shouldRasterize = true
     }
     
     func showDateTime(sender: UIView?=nil){
@@ -121,12 +135,24 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         self.mainView.addSubview(blurEffectView)
         
         let picker = DateTimePicker.show(view: self.mainView, blurView: blurEffectView)
-            picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+            picker.highlightColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
             picker.completionHandler = { date in
                 // do something after tapping done
                 let formatter = DateFormatter()
-                formatter.dateFormat = self.dateFormat
-                self.addDateandTimelabel.text = formatter.string(from: date)
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = self.dateFormat
+                var timeDate = timeFormatter.string(from: date)
+                formatter.dateStyle = .medium //self.dateFormat
+                self.addDateView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+                self.plusImageView.isHidden = true
+                self.addDateandTimelabel.isHidden = true
+                self.displayDateLabel.isHidden = false
+                self.tapToEditLabel.isHidden = false
+                self.displayTimeLabel.isHidden = false
+                let index = timeDate.index(timeDate.startIndex, offsetBy: 5)
+                self.displayTimeLabel.text = timeDate.substring(to: index)
+                self.displayDateLabel.textColor = UIColor.white
+                self.displayDateLabel.text = formatter.string(from: date)
 
             
             }
@@ -168,6 +194,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendTableCell", for: indexPath) as! FriendTableCell
+        cell.isSelected = selectedIndexPaths[indexPath] ?? false
+        cell.selectionStyle = .none
         cell.accessoryType = cell.isSelected ? .checkmark : .none
         cell.friend = self.friends[indexPath.row]
         return cell
@@ -188,12 +216,21 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.invitedFriends.append(self.friends[indexPath.row])
-        print(self.friends[indexPath.row])
+        if let cell = friendsTableView.cellForRow(at: indexPath){
+            cell.selectionStyle = .none
+            cell.accessoryType = .checkmark
+            selectedIndexPaths[indexPath] = true
+        }
+        //print(self.friends[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.invitedFriends.remove(at: self.invitedFriends.index(of: self.friends[indexPath.row])!)
-        print(self.friends[indexPath.row])
+        if let cell = friendsTableView.cellForRow(at: indexPath){
+            selectedIndexPaths[indexPath] = false
+            cell.accessoryType = .none
+        }
+        //print(self.friends[indexPath.row])
     }
     
     func setEvent(event: Event){

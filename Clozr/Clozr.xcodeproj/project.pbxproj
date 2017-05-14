@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1163A7FF238771C049C778B1 /* Pods_Clozr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B874010EADF68645F307E /* Pods_Clozr.framework */; };
+		3759461B1EC3BCD000A958A2 /* DatePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759461A1EC3BCD000A958A2 /* DatePickerCollectionViewCell.swift */; };
 		375964AF1EB9953900D592AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375964AE1EB9953900D592AA /* MapKit.framework */; };
 		375964B11EBA1BCF00D592AA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964B01EBA1BCF00D592AA /* Business.swift */; };
 		375964BA1EBA21C600D592AA /* BusinessTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964B81EBA21C600D592AA /* BusinessTableCell.swift */; };
@@ -133,6 +134,7 @@
 
 /* Begin PBXFileReference section */
 		24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClozrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3759461A1EC3BCD000A958A2 /* DatePickerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		375964AE1EB9953900D592AA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		375964B01EBA1BCF00D592AA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		375964B81EBA21C600D592AA /* BusinessTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableCell.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				375964CC1EBBEA5300D592AA /* DateCollectionViewCell.swift */,
+				3759461A1EC3BCD000A958A2 /* DatePickerCollectionViewCell.swift */,
 			);
 			name = create;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				8F59770C1EB2FFE60076992B /* MapsViewController.swift in Sources */,
 				375964BA1EBA21C600D592AA /* BusinessTableCell.swift in Sources */,
 				43A42AF81EC00F6200A2BD80 /* SubCategoryCell.swift in Sources */,
+				3759461B1EC3BCD000A958A2 /* DatePickerCollectionViewCell.swift in Sources */,
 				43B02ADE1EB6EBCC001F6B6F /* Notifications.swift in Sources */,
 				43A42ADB1EC00D7400A2BD80 /* FriendCollectionCell.swift in Sources */,
 				43A42B021EC0109800A2BD80 /* ContentController.swift in Sources */,

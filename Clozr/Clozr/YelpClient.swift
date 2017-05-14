@@ -169,9 +169,10 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                             distance = nil
                                         }
                                         let phNumber = m["display_phone"] as? String
-
+                                        let index = phNumber?.index((phNumber?.startIndex)!, offsetBy: 3)
+                                        
                                         eventDict["distance"] = distance
-                                        eventDict["phone"] = phNumber
+                                        eventDict["phone"] = phNumber?.substring(from: index!)
                                         //-----------------------------
                                         eventArray.append(Event(dictionary: eventDict)!)
                                     }
