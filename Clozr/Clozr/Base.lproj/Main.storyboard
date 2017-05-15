@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Sd-BS-q3a">
-                                <rect key="frame" x="1" y="64" width="375" height="559"/>
+                                <rect key="frame" x="1" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="EventDetailsDescriptionCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailsDescriptionCell" rowHeight="107" id="O2h-UW-iiQ" customClass="EventDetailsDescriptionCell" customModule="Clozr" customModuleProvider="target">
@@ -382,7 +382,7 @@
                     <connections>
                         <outlet property="createEventView" destination="rYS-dl-grc" id="dnQ-Mx-Pwy"/>
                         <outlet property="mainView" destination="dtb-Su-kyf" id="Xfo-i2-xDx"/>
-                        <segue destination="evY-Yq-BwE" kind="push" identifier="fromCreateEventToListEvents" id="dCX-x9-slC"/>
+                        <segue destination="ap7-BL-8zR" kind="presentation" identifier="fromCreateEventToListEvents" id="fhd-s9-aJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Nm-plZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,10 +595,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ciB-NK-8TZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9S-An-RI7">
-                                <rect key="frame" x="317" y="30" width="32" height="32"/>
+                                <rect key="frame" x="317" y="74" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="Vcr-hA-lnr"/>
                                     <constraint firstAttribute="height" constant="32" id="yWk-Br-g9l"/>
@@ -1064,7 +1064,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nn5-6P-3nb">
-                                <rect key="frame" x="0.0" y="84" width="375" height="539"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventTableCell" rowHeight="141" id="mZg-bA-feL" customClass="EventTableCell" customModule="Clozr" customModuleProvider="target">
@@ -1504,7 +1504,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiO-zQ-VQd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="616"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4a-BR-qcn">
@@ -1749,8 +1749,9 @@
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rxb-B1-MqQ"/>
         <segue reference="EbY-d4-66r"/>
-        <segue reference="dCX-x9-slC"/>
         <segue reference="u4M-XE-OaJ"/>
+        <segue reference="fhd-s9-aJL"/>
     </inferredMetricsTieBreakers>
 </document>

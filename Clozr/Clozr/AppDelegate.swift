@@ -60,7 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         handleNotificationAction: notificationOpenedBlock, 
                                         settings: onesignalInitSettings)
         
+        
+        
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
+        
         
         FIRApp.configure()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

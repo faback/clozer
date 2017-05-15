@@ -36,14 +36,22 @@ class CreateEventViewController: UIViewController, CreateEventViewDelegate {
     func performSegueToListEventsController(event: Event) {
         self.eventFromCreateEventViewToListEventsVC = event
         performSegue(withIdentifier: "fromCreateEventToListEvents", sender: nil)
-    }
+      }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let vc = segue.destination as! EventsListViewController
-        vc.newEventFromCreateEventView = self.eventFromCreateEventViewToListEventsVC
-        vc.comingFromCreateEvent = true
-        vc.eventFromCreate = event
+//        let vc = segue.destination as! EventsListViewController
+//        vc.newEventFromCreateEventView = self.eventFromCreateEventViewToListEventsVC
+//        vc.comingFromCreateEvent = true
+//        vc.eventFromCreate = event
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "contentController") as! ContentController
+        let vc = segue.destination as! ContentController
+        vc.navName = Clozer.Nav.liveEventNav
+        
+        
+        
+
     }
     
 

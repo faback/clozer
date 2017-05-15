@@ -132,10 +132,7 @@ class EventTableCell: UITableViewCell {
                 disableJoinButton()
             }
         }
-        
-        
         friendsCollectionTable.delegate = self
-        print("count of users \(event.invitedUserIds.count)")
         statusCountsLabel.textColor = UIColor.gray
     }
     
