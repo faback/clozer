@@ -154,7 +154,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     let mapRect:MKMapRect = unwrappedResponse.routes[0].polyline.boundingMapRect
                     self.mapView.setVisibleMapRect(mapRect, animated: true)
                 } else {
-                    let span = MKCoordinateSpanMake(0.1, 0.1)
+                    let span = MKCoordinateSpanMake(0.05, 0.05)
                     let region:MKCoordinateRegion = MKCoordinateRegionMake(source, span)
                     self.mapView.setRegion(region, animated: true)
                 }
@@ -165,8 +165,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.blue
-            polylineRenderer.lineWidth = 5
+            polylineRenderer.strokeColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+            polylineRenderer.lineWidth = 4
             return polylineRenderer
         }
         return MKPolylineRenderer()
