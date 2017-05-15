@@ -102,11 +102,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                             if let usrF = usrF {
                                 if usrF.latitude != nil && usrF.longitude != nil && usrF.id != currentLoggedInUser?.id {
                                     let friendLocation = CLLocationCoordinate2D(latitude: usrF.latitude!, longitude: usrF.longitude!)
-                                    let marker = MapMarker.init(user: usrF)
+//                                    let marker = MapMarker.init(user: usrF)
                                     let friendLocationAnnotation = MKPointAnnotation()
-                                    marker.coordinate = friendLocation
-                                    marker.title      = "\(usrF.firstName ?? "")"
-                                    self.mapView.addAnnotation(marker)
+                                    friendLocationAnnotation.coordinate = friendLocation
+                                    friendLocationAnnotation.title      = "\(usrF.firstName ?? "")"
+                                    self.mapView.addAnnotation(friendLocationAnnotation)
                                     self.mapView.showsUserLocation = true
                                 }
                             }
@@ -123,8 +123,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         if !(annotation is MKPointAnnotation) {
             return nil
         }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "destination")
         
+//        let marker = annotation as! MapMarker
+
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "destination")
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "destination")
             annotationView?.canShowCallout = true
@@ -132,15 +134,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             annotationView?.annotation = annotation
         }
         
-
-        if let marker = annotation as? MapMarker {
-            
-            annotationView?.image = #imageLiteral(resourceName: "userlocation")
-        }
-        else {
-       
-            annotationView?.image = UIImage(named: "destination")
-        }
+        annotationView?.image = UIImage(named: "destination")
         return annotationView
         
     }
