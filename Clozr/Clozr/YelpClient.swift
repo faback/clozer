@@ -157,6 +157,9 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                         eventDict["source"] = "yelp"
                                         eventDict["summary"] =  m["name"] as? String
                                         eventDict["image"] =  m["image_url"] as? String
+                                        if let img = eventDict["image"] as? String {
+                                            eventDict["image"] = img.replace(target: "ms.jpg", withString: "o.jpg")
+                                        }
                                         eventDict["address"] = address
                                         eventDict["latitude"] = lat
                                         eventDict["longitude"] = lon

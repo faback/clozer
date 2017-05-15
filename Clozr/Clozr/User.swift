@@ -224,9 +224,15 @@ class User:NSObject {
                 fbuser.userRawContent?["firId"] = firebaseDetails.uid
                 fbuser.userRawContent?["isClozerUser"] = true
             }
-            user?.setUserId()
-            if let usrId = user?.userId {
-                users.child("/\(usrId)").setValue(user?.dictionaryRepresentation())
+            fbuser.setUserId()
+            if let usrId = fbuser.userId {
+                var dictionary = fbuser.dictionaryRepresentation() as! [String:Any]
+
+                if( fbuser.invitedEvents != nil &&  (fbuser.invitedEvents.count) > 0 ) {
+                    dictionary["invitedEvents"] = fbuser.invitedEvents
+                }
+                users.child("/\(usrId)").setValue(dictionary)
+                
             }
         }
     }

@@ -30,6 +30,7 @@
 		37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */; };
 		37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */; };
 		37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */; };
+		436659321EC9AAEC00B380F2 /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436659311EC9AAEC00B380F2 /* MapMarker.swift */; };
 		437980DF1EC917FF00A17FC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437980DE1EC917FF00A17FC1 /* GoogleService-Info.plist */; };
 		43A42AB41EC00D1F00A2BD80 /* FBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AB31EC00D1F00A2BD80 /* FBClient.swift */; };
 		43A42ACF1EC00D7400A2BD80 /* badminton.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB51EC00D7400A2BD80 /* badminton.png */; };
@@ -180,6 +181,7 @@
 		37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
 		37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDisplayCell.swift; sourceTree = "<group>"; };
 		37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTimingsCollectionCell.swift; sourceTree = "<group>"; };
+		436659311EC9AAEC00B380F2 /* MapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
 		437980DE1EC917FF00A17FC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437980E01EC9194300A17FC1 /* Clozr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clozr.entitlements; sourceTree = "<group>"; };
 		43A42AB31EC00D1F00A2BD80 /* FBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClient.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				43A42B111EC017ED00A2BD80 /* home&login */,
 				8F5977071EB2FFBA0076992B /* SuggestedEventsViewController.swift */,
 				8F5977051EB2FFA00076992B /* LiveEventsViewController.swift */,
+				436659311EC9AAEC00B380F2 /* MapMarker.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1047,6 +1050,7 @@
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,
 				43A42AEB1EC00D8000A2BD80 /* LocalStore.swift in Sources */,
 				8F5977191EB65D050076992B /* FriendListCellCollectionViewCell.swift in Sources */,
+				436659321EC9AAEC00B380F2 /* MapMarker.swift in Sources */,
 				37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */,
 				375964B11EBA1BCF00D592AA /* Business.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
