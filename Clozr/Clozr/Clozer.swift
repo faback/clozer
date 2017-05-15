@@ -7,10 +7,11 @@
 //
 
 import Foundation
-
+import OneSignal
 
 class Clozer {
-    
+   static var deviceToken:String?
+
     struct Preferences {
         static let trackLocation = "com.clozr.tracklocation"
         static let showEvents = "com.clozr.showEvents"
@@ -74,6 +75,12 @@ class Clozer {
     class func getPreferenceDouble(key:String)->Double {
         let defaults = UserDefaults.standard
         return defaults.double(forKey:key)
+    }
+    
+    
+    class func sendMessage(mess:String ,oneSignalIds:[String]) {
+        OneSignal.postNotification(["contents": ["en": mess], "include_player_ids": oneSignalIds])
+
     }
     
 }

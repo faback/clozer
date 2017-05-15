@@ -12,6 +12,7 @@ import Firebase
 import BetterSegmentedControl
 import MapKit
 import MBProgressHUD
+import OneSignal
 
 class HomeViewController: UIViewController {
     var locationManager:CLLocationManager!
@@ -45,6 +46,8 @@ class HomeViewController: UIViewController {
                 currentLoggedInUser = usr
                 self.userReady = true
                 self.determineMyCurrentLocation()
+                self.updateOneSignal(user: usr)
+            
         }
         mainCategory = Category.getWatch()
         control3.titles = ["Watch","Play","Catchup"]
@@ -61,13 +64,23 @@ class HomeViewController: UIViewController {
         categoriesHeight.constant = 100
         
         self.categoriesCollection.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
-        
         selectedSubCategory = mainCategory.subCategories[0];
         changeButtonTitle()
         reloadEventsData()
     }
     
+    
+    func updateOneSignal(user:User?) {
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+//        let hasPrompted = status.permissionStatus.hasPrompted
+//        let userStatus = status.permissionStatus.status
+//        let isSubscribed = status.subscriptionStatus.subscribed
+//        let userSubscriptionSetting = status.subscriptionStatus.userSubscriptionSetting
+        let oneSignalID = status.subscriptionStatus.userId
+        user?.oneSignalId = oneSignalID
+        User.updateChildValues(userId: (user?.userId)!, vals: ["oneSignalId" : oneSignalID as Any])
+//        let pushToken = status.subscriptionStatus.pushToken
+    }
     
     @IBAction func signout(_ sender: Any) {
         try! FIRAuth.auth()!.signOut()
@@ -210,7 +223,7 @@ extension HomeViewController : CLLocationManagerDelegate  {
             Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLatitude, val: currentLatitude!)
             Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLongitude, val: currentLongitude!)
             if let cuser = currentLoggedInUser {
-                User.createOrUpdateUserInFirebase(user: cuser)
+                User.updateChildValues(userId: cuser.userId!, vals: ["latitude" : currentLatitude as Any, "longitude" : currentLongitude as Any]);
             }
         }
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate

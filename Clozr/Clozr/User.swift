@@ -36,6 +36,7 @@ class User:NSObject {
     var firstName: String! = nil
     var lastName: String! = nil
     var name: String! = nil
+    var oneSignalId: String! = nil
     var relationshipStatus: String! = nil
     var friends = ([User]())
     var isClozerUser:Bool = false
@@ -97,6 +98,7 @@ class User:NSObject {
             if let ie =  dictionary["invitedEvents"] as? [String]{
                 invitedEvents = ie
             }
+            oneSignalId = dictionary["oneSignalId"] as? String
         }
     }
     
@@ -117,6 +119,7 @@ class User:NSObject {
         dictionary.setValue(self.invitedEvents, forKey: "invitedEvents")
         dictionary.setValue(self.userRawContent, forKey: "userRawContent")
         dictionary.setValue(self.userId, forKey: "userId")
+        dictionary.setValue(self.oneSignalId, forKey: "oneSignalId")
         dictionary.setValue(self.locDict, forKey: "locDict")
         dictionary.setValue(self.isClozerUser, forKey: "isClozerUser")
         dictionary.setValue(self.previousLocations, forKey: "previousLocations")
@@ -157,7 +160,7 @@ class User:NSObject {
         else {
             self.profilePictureURLString = nil
         }
-        
+        self.oneSignalId = dictionary["oneSignalId"] as? String
 
         self.locDict = dictionary["location"] as? [String: Any]
     }
@@ -238,6 +241,12 @@ class User:NSObject {
         if(user?.userId == User.currentLoginUserId())  {
             User.current = current
         }
+    }
+    
+    
+    class func updateChildValues(userId:String , vals:[String:Any]) {
+        let usrRef = users.child("/\(userId)")
+        usrRef.updateChildValues(vals)
     }
     
     class func tryAndCreate(user:User?) {

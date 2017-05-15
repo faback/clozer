@@ -17,15 +17,24 @@ target 'Clozr' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Firebase/Messaging'
   pod 'Bolts'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'BetterSegmentedControl'
   pod 'FlatUIKit'
+  pod 'OneSignal', '~> 2.0'
 
   target 'ClozrTests' do
     inherit! :search_paths
     # Pods for testing
   end
+  
+  
 
+end
+target 'OnesignalNotificationServiceExtension' do
+    use_frameworks!
+
+    pod 'OneSignal', '>= 2.5.2', '< 3.0'
 end

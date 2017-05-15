@@ -7,9 +7,12 @@
 //
 
 import UIKit
-import Firebase
 import FBSDKCoreKit
 import MapKit
+import UserNotifications
+import Firebase
+
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,12 +20,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isBackground:Bool?
     var deferringUpdates:Bool?
+    let gcmMessageIDKey = "gcm.message_id"
 
     var locationManager:CLLocationManager?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        FIRApp.configure()
+
         
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            
+            print("Received Notification: \(notification!.payload.notificationID)")
+        }
+        
+        let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+            // This block gets called when the user reacts to a notification received
+            let payload: OSNotificationPayload = result!.notification.payload
+            
+            var fullMessage = payload.body
+            print("Message = \(fullMessage)")
+            
+            if payload.additionalData != nil {
+                if payload.title != nil {
+                    let messageTitle = payload.title
+                    print("Message Title = \(messageTitle!)")
+                }
+                
+                let additionalData = payload.additionalData
+                if additionalData?["actionSelected"] != nil {
+                    fullMessage = fullMessage! + "\nPressed ButtonID: \(additionalData!["actionSelected"])"
+                }
+            }
+        }
+        
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false,
+                                     kOSSettingsKeyInAppLaunchURL: true]
+        
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "878fa889-120e-4e5b-90d5-e56a2d83aac8",
+                                        handleNotificationReceived: notificationReceivedBlock, 
+                                        handleNotificationAction: notificationOpenedBlock, 
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        
+        FIRApp.configure()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -33,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.getUserFromFirebase(usrId: currentLoginId, completion: { (usr1, error) in
                     FBClient.currentFacebookUser = usr1
                     FBClient.getUsersFriends()
+                    
 
                 })
                 self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
@@ -43,9 +84,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
         }
+        
+        
+        
         return true
     }
+    
+   
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
        
         isBackground = true;
@@ -77,6 +124,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         return handled
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = String(format: "%@", deviceToken as CVarArg).trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
+       Clozer.deviceToken = token
     }
 
 

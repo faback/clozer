@@ -177,11 +177,21 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             Event.createOrUpdateEventInFirebase(event: self.event)
         }
         //TODO:Balaji loop all users  call invite.
+        var oneSignalIds:[String]  = [String]()
+        oneSignalIds.append((currentLoggedInUser?.oneSignalId)!)
         for friend in self.invitedFriends{
             print(friend.name!)
+            if let osid = friend.oneSignalId {
+                oneSignalIds.append(osid)
+            }
             self.event.inviteUser(userId: (friend.userId)!, accepted: false)
         }
         Event.createOrUpdateEventInFirebase(event: event)
+        var message = "Event notification"
+        if let uname = currentLoggedInUser?.name , let ename = event.name {
+            message = "\(uname) has invited you to \(ename). Check it out!"
+        }
+        Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)
         //Then save event.
         delegate?.performSegueToListEventsController(event: event)
     }

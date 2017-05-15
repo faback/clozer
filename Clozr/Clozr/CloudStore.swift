@@ -42,11 +42,4 @@ class CloudStore {
     
     
     
-    func createOrUpdateLiveEvent(msg:Message?) {
-        if let message = msg  {
-            
-        }
-    }
-    
-    
 }
