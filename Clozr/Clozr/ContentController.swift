@@ -131,6 +131,11 @@ class ContentController: UIViewController {
     }
     
     
+     func loadLiveEvents(from:UIViewController) {
+        otherAlpha(curr: hb)
+        loadNavInContent(navName: Clozer.Nav.liveEventNav)
+      }
+    
 
     @IBAction func homeButton(_ sender: UIButton) {
         otherAlpha(curr: sender)

@@ -18,7 +18,7 @@ public protocol UserInviteDelegate: class {
 
 
 protocol UserChangesProtocol  {
-    func onAddedEvent(evt:Event)
+    func onAddedEvent(evt:Event?,show:Bool)
     func reloadTable(show:Bool)
 }
 
@@ -191,17 +191,21 @@ class User:NSObject {
     func getInvitedEvents()  {
         let count = invitedEvents.count
         var checker:Int = 0
-        for ev in invitedEvents {
-            Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
+        if(invitedEvents.count > 0 ){
+            for ev in invitedEvents {
+                Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
 
-                  self.delegate?.onAddedEvent(evt: evt!)
-                  checker = checker + 1
-            })
+                      self.delegate?.onAddedEvent(evt: evt!, show: true)
+                      checker = checker + 1
+                })
+            }
+        }else{
+            self.delegate?.onAddedEvent(evt: nil,show: true)
         }
-        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.delegate?.reloadTable(show:true)
-        }
+//        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
+//        DispatchQueue.main.asyncAfter(deadline: when) {
+//            self.delegate?.reloadTable(show:true)
+//        }
         
     }
     

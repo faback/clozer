@@ -31,11 +31,27 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         category = Category.mainCategory
         subCategory = Category.subCategory
         events[0] = [Event]()
         events[1] = [Event]()
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        eventsTable.delegate = self
+        eventsTable.dataSource = self
+        eventsTable.rowHeight = UITableViewAutomaticDimension
+        eventsTable.estimatedRowHeight = 100
+        eventsTable.addPullToRefreshHandler {
+            self.refreshEnded()
+        }
+        
+        Styles.styleNav(controller: self)
         if comingFromCreateEvent {
             comingFromCreate = true
         }else{
@@ -45,32 +61,20 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         if(!comingFromCreate!) {
             reloadEvents(show:true)
         }else{
-            onAddedEvent(evt: eventFromCreate!)
-            comingFromCreate = false
-            comingFromCreateEvent = false
-        }
-       
-        searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        eventsTable.delegate = self
-        eventsTable.dataSource = self
-        eventsTable.rowHeight = UITableViewAutomaticDimension
-        eventsTable.estimatedRowHeight = 100
-        eventsTable.addPullToRefreshHandler {
-                self.refreshEnded()
-        }
+            self.refreshEnded()
 
-        Styles.styleNav(controller: self)
+//            reloadEvents(show:false)
+        }
         
-        loadEvents(searchTerm: nil)
-        
+
     }
     
     func reloadEvents(show:Bool) {
         events = [Int:Any]()
-        events[0] = [Event]()
-        events[1] = [Event]()
+        if(!comingFromCreate!) {//
+            events[0] = [Event]()
+            events[1] = [Event]()
+        }//
 
         if let fetchingUser = currentUser {
             User.getUserFromFirebase(usrId: fetchingUser.userId!) { (userFetched, error) in
@@ -95,6 +99,9 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
             }
             self.navigationItem.title = "My Events"
         }
+      //  comingFromCreate = false
+       // comingFromCreateEvent = false
+
     }
     
     func refreshEnded() {
@@ -122,30 +129,22 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     }
     
     
-    func onAddedEvent(evt:Event) {
-        var eventArray = events[0] as! [Event]
-        print("Count \(eventArray.count)")
-        eventArray.insert(evt, at: 0)
-        events[0] = eventArray
-    }
-
-    func loadEvents(searchTerm:String? ) {
-        if(category?.code == "watch" && (subCategory?.code == "movies" || subCategory?.code == "tvshows")) {
-            locCell  = true
-        }
-        sections = [0:"This Week"]
-        
-        for (s , name ) in sections {
-            if(s == 0) {
-                //CK:TODO your filtered events.
-                
-            }else {
-                //CK:TODO your attending events.
-                
+    func onAddedEvent(evt:Event? ,show:Bool) {
+        var eventArray = events[0] as? [Event]
+        if let arr = eventArray ,  let e = evt {
+            eventArray?.insert(e, at: 0)
+            events[0] = eventArray!
+        }else{
+            events[0] = [Event]()
+            if let e = evt {
+                eventArray?.insert(e, at: 0)
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.reloadTable(show: show)
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -187,12 +186,10 @@ extension EventsListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        loadEvents(searchTerm: nil)
         searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        loadEvents(searchTerm: searchBar.text)
         searchBar.resignFirstResponder()
     }
 }
@@ -205,9 +202,15 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
             let  eventCell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell") as! EventTableCell
             let section = indexPath.section
             let row = indexPath.row
-            let arr = events[section] as! [Event]
-            eventCell.event = arr[row]
-            eventCell.reloadFriends()
+            let arr = events[section] as? [Event]
+            if let arrUnwrapped = arr {
+                if((arrUnwrapped.count)>0){
+                    eventCell.event = arrUnwrapped[row]
+                }
+    //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    eventCell.reloadFriends()
+//            }
+            }
             return eventCell
         }else {
             let  locCell = tableView.dequeueReusableCell(withIdentifier: "loceventcell") as! LocEventCell

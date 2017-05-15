@@ -137,10 +137,6 @@ class EventTableCell: UITableViewCell {
         friendsCollectionTable.delegate = self
         print("count of users \(event.invitedUserIds.count)")
         statusCountsLabel.textColor = UIColor.gray
-        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-           
-        }
     }
     
     func inviteUsers() {
@@ -149,7 +145,7 @@ class EventTableCell: UITableViewCell {
         var totalCount:Int = 0
         var acceptedCount:Int = 0
 
-        if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+        if let evt = event , let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
             self.count = 0
             for dict in invitedUsers {
                 let allKeys = dict.keys
@@ -164,26 +160,34 @@ class EventTableCell: UITableViewCell {
                         self.appendUsers(usrTuple: (usrF!,acc))
                         self.count += 1;
                         var constraintConstant = CGFloat((self.count * 50 ) + 7 )
-                        if(constraintConstant > 300) {
-                            constraintConstant = 300
+                        if(constraintConstant > 150) {
+                          constraintConstant = 150
                         }
                         self.friendsCollectionWidth.constant = constraintConstant
-                        self.friendsCollectionTable.reloadData()
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.friendsCollectionTable.reloadData()
+//                        }
                     })
                 }
             }
         }
-        
-        totalCount = event.invitedUserIds.count
-        statusCountsLabel.text = "\(acceptedCount) of \(totalCount) friends attending"
+        if let evt = event {
+            totalCount = event.invitedUserIds.count
+            statusCountsLabel.text = "\(acceptedCount) of \(totalCount) friends attending"
+        }
     }
     
     func appendUsers(usrTuple:(User,Int)) {
-//        for existingUser in self.users {
-//            if(existingUser.0.userId != usrTuple.0.userId) {
-                self.users.append(usrTuple)
-//            }
-//        }
+        var exists:Bool = false
+        for existingUser in self.users {
+            if(existingUser.0.userId == usrTuple.0.userId) {
+                exists = true
+            }
+        }
+        
+        if(!exists) {
+            self.users.append(usrTuple)
+        }
         
     }
 

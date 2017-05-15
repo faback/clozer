@@ -349,7 +349,7 @@
                     <connections>
                         <outlet property="createEventView" destination="rYS-dl-grc" id="dnQ-Mx-Pwy"/>
                         <outlet property="mainView" destination="dtb-Su-kyf" id="Xfo-i2-xDx"/>
-                        <segue destination="evY-Yq-BwE" kind="show" identifier="fromCreateEventToListEvents" id="dCX-x9-slC"/>
+                        <segue destination="evY-Yq-BwE" kind="push" identifier="fromCreateEventToListEvents" id="dCX-x9-slC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Nm-plZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,10 +562,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ciB-NK-8TZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9S-An-RI7">
-                                <rect key="frame" x="317" y="74" width="32" height="32"/>
+                                <rect key="frame" x="317" y="30" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="Vcr-hA-lnr"/>
                                     <constraint firstAttribute="height" constant="32" id="yWk-Br-g9l"/>
@@ -620,7 +620,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1248,7 +1248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0n-TP-Jkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792.8" y="2652.3238380809598"/>
+            <point key="canvasLocation" x="1879" y="3064"/>
         </scene>
         <!--Settings-->
         <scene sceneID="uc3-7V-ch3">
@@ -1443,7 +1443,7 @@
             <objects>
                 <navigationController storyboardIdentifier="homeNav" automaticallyAdjustsScrollViewInsets="NO" id="I8h-zg-9pw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1646,7 +1646,7 @@
             <objects>
                 <navigationController storyboardIdentifier="friendsNav" automaticallyAdjustsScrollViewInsets="NO" id="ibN-Kf-tqi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1666,7 +1666,7 @@
             <objects>
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="4oj-T9-eCr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1685,7 +1685,7 @@
             <objects>
                 <navigationController storyboardIdentifier="liveEventNav" automaticallyAdjustsScrollViewInsets="NO" id="exu-qR-Xau" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1698,7 +1698,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qn4-Gp-zTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="2653.2233883058475"/>
+            <point key="canvasLocation" x="1001" y="3141"/>
         </scene>
     </scenes>
     <resources>
@@ -1714,8 +1714,8 @@
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u4M-XE-OaJ"/>
-        <segue reference="dCX-x9-slC"/>
         <segue reference="EbY-d4-66r"/>
+        <segue reference="dCX-x9-slC"/>
+        <segue reference="u4M-XE-OaJ"/>
     </inferredMetricsTieBreakers>
 </document>
