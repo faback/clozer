@@ -112,8 +112,8 @@ public class Event:NSObject {
         createdBy = dictionary["createdBy"] as? String
         selectedTheater = dictionary["selectedTheater"] as? String
         theaters = [Theater]()
-        if(dictionary["invitedUserIds"] != nil){
-        invitedUserIds = (dictionary["invitedUserIds"] as? [[String:Bool]])!
+        if let iu = dictionary["invitedUserIds"] as? [[String:Bool]] {
+            invitedUserIds = iu
         }
         if let eventID = (Event.getSpaceStripped(val: name!)) {
         id = eventID + source
@@ -127,7 +127,19 @@ public class Event:NSObject {
     }
 
     func inviteUser(userId:String,accepted:Bool){
-        invitedUserIds.append([userId:accepted])
+        var exists:Bool = false
+        for alreadyinvited in invitedUserIds  {
+            let uids = alreadyinvited.keys
+            for k in uids {
+                if(k == userId) {
+                    exists = true
+                }
+            }
+        }
+    
+        if(!exists) {
+            invitedUserIds.append([userId:accepted])
+        }
     }
     
     
