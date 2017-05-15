@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AFNetworking
+
+class MyCustomPointAnnotation: MKPointAnnotation {
+    var imageURL: String? = nil
+}
 
 class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -44,14 +49,14 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let region = MKCoordinateRegion(center: eventLocation!, span: mapSpan)
             mapView.setRegion(region, animated: false)
             
-            let eventLocationAnnotation = MKPointAnnotation()
+            let eventLocationAnnotation = MyCustomPointAnnotation()
             eventLocationAnnotation.coordinate = eventLocation!
             eventLocationAnnotation.title      = "Event Location"
             mapView.addAnnotation(eventLocationAnnotation)
             mapView.showsUserLocation = true
         }
             
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(onTimer), userInfo: nil, repeats: true)
         timer?.fire()
     }
     
@@ -103,9 +108,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                                 if usrF.latitude != nil && usrF.longitude != nil && usrF.id != currentLoggedInUser?.id {
                                     let friendLocation = CLLocationCoordinate2D(latitude: usrF.latitude!, longitude: usrF.longitude!)
                                     
-                                    let friendLocationAnnotation = MKPointAnnotation()
+                                    let friendLocationAnnotation = MyCustomPointAnnotation()
                                     friendLocationAnnotation.coordinate = friendLocation
-                                    friendLocationAnnotation.title      = "\(usrF.firstName ?? "")"
+                                    friendLocationAnnotation.title      = "\(usrF.name ?? "")"
+                                    friendLocationAnnotation.imageURL   = usrF.profilePictureURLString
                                     self.mapView.addAnnotation(friendLocationAnnotation)
                                     self.mapView.showsUserLocation = true
                                 }
@@ -120,19 +126,32 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if !(annotation is MKPointAnnotation) {
+        if !(annotation is MyCustomPointAnnotation) {
+            return nil
+        }
+        let castAnnotation = annotation as? MyCustomPointAnnotation
+        
+        if castAnnotation == nil {
             return nil
         }
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "destination")
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "destination")
+            annotationView = MKAnnotationView(annotation: castAnnotation, reuseIdentifier: "destination")
             annotationView?.canShowCallout = true
         } else {
-            annotationView?.annotation = annotation
+            annotationView?.annotation = castAnnotation
         }
         
-        annotationView?.image = UIImage(named: "destination")
+        if castAnnotation?.imageURL == nil {
+            annotationView?.image = UIImage(named: "destination")
+        } else {
+            let imageView:UIImageView = UIImageView()
+            let url:URL = URL(string: (castAnnotation?.imageURL)!)!
+            imageView.setImageWith(url)
+            annotationView?.image = resizeImage(image: imageView.image!, targetSize: CGSize(width: 32.0, height: 32.0))
+        }
+        
         return annotationView
         
     }
@@ -154,7 +173,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     let mapRect:MKMapRect = unwrappedResponse.routes[0].polyline.boundingMapRect
                     self.mapView.setVisibleMapRect(mapRect, animated: true)
                 } else {
-                    let span = MKCoordinateSpanMake(0.05, 0.05)
+                    let span = MKCoordinateSpanMake(0.001, 0.001)
                     let region:MKCoordinateRegion = MKCoordinateRegionMake(source, span)
                     self.mapView.setRegion(region, animated: true)
                 }
@@ -166,10 +185,36 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
-            polylineRenderer.lineWidth = 4
+            polylineRenderer.lineWidth = 5
             return polylineRenderer
         }
         return MKPolylineRenderer()
+    }
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
 
 }
