@@ -42,7 +42,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var invitedFriends = [User]()
     var delegate: CreateEventViewDelegate!
     var selectedIndexPaths = [IndexPath: Bool]()
-    
+    var clozrFriends = [User]()
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubView()
@@ -78,7 +79,26 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         self.createEventView.isUserInteractionEnabled = false
         let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
-        self.friends = FBClient.friends
+        var once:Int = 0
+
+        User.getAllUserFromFirebase { (allFriends, error) in
+            if(once == 0) {
+                
+                once = 1
+                self.clozrFriends = [User]()
+                for usr in allFriends! {
+                    if(usr.isClozerUser) {
+                        if !self.clozrFriends.contains(usr){
+                            self.clozrFriends.append(usr)
+                        }
+                    }
+                }
+                self.friends = self.clozrFriends
+                self.friendsTableView.reloadData()
+//                MBProgressHUD.hide(for: self.view, animated: true)
+                
+            }
+        }
         let createEventTap = UITapGestureRecognizer(target: self, action: #selector(createEvent(sender:)))
         createEventView.addGestureRecognizer(createEventTap)
         if let evt = self.event {
@@ -167,7 +187,6 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     func createEvent(sender: UIView?=nil){
         
         User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (usr, error) in
-            self.event.inviteUser(userId: (usr?.userId)! , accepted: true)
             currentLoggedInUser = usr
             if let uid = usr?.userId {
                 let me = usr
@@ -179,26 +198,32 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 User.createOrUpdateUserInFirebase(user: me)
             }
             self.event.createdBy = User.currentLoginUserId()
+            var oneSignalIds:[String]  = [String]()
+            if let os  = currentLoggedInUser?.oneSignalId {
+                oneSignalIds.append(os)
+            }
+            for friend in self.invitedFriends{
+                print(friend.name!)
+                if let osid = friend.oneSignalId {
+                    oneSignalIds.append(osid)
+                }
+                friend.setUserId()
+                self.event.inviteUser(userId: (friend.userId)!, accepted: false)
+            }
+            
+            self.event.inviteUser(userId: (currentLoggedInUser?.userId)! , accepted: true)
+            
             Event.createOrUpdateEventInFirebase(event: self.event, eventDt: self.eventDate, eventTm: self.eventTime)
+            var message = "Event notification"
+            if let uname = currentLoggedInUser?.name , let ename = self.event.name {
+                message = "\(uname) has invited you to \(ename). Check it out!"
+            }
+            Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)
+            
+
         }
         //TODO:Balaji loop all users  call invite.
-        var oneSignalIds:[String]  = [String]()
-        oneSignalIds.append((currentLoggedInUser?.oneSignalId)!)
-        for friend in self.invitedFriends{
-            print(friend.name!)
-            if let osid = friend.oneSignalId {
-                oneSignalIds.append(osid)
-            }
-            self.event.inviteUser(userId: (friend.userId)!, accepted: false)
-        }
-        Event.createOrUpdateEventInFirebase(event: event, eventDt: eventDate, eventTm: eventTime)
-        var message = "Event notification"
-        if let uname = currentLoggedInUser?.name , let ename = event.name {
-            message = "\(uname) has invited you to \(ename). Check it out!"
-        }
-        Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)
-
-        //Then save event.
+              //Then save event.
         delegate?.performSegueToListEventsController(event: event)
     }
     /*

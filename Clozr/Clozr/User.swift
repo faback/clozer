@@ -19,7 +19,7 @@ public protocol UserInviteDelegate: class {
 
 protocol UserChangesProtocol  {
     func onAddedEvent(evt:Event)
-    func reloadTable()
+    func reloadTable(show:Bool)
 }
 
 
@@ -200,7 +200,7 @@ class User:NSObject {
         }
         let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: when) {
-            self.delegate?.reloadTable()
+            self.delegate?.reloadTable(show:true)
         }
         
     }

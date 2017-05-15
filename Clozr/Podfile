@@ -17,7 +17,10 @@ target 'Clozr' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+<<<<<<< HEAD
   #pod 'Firebase/Messaging'
+=======
+>>>>>>> 91438f5d6a5024885c0d5c3e17c633c7473e8f61
   pod 'Bolts'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
