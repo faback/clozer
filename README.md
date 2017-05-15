@@ -82,7 +82,7 @@ Clozr focuses on making a meet as easy as 3 taps once the user have had friends/
 
 
 
-
+Copyright @2017 faback team.
 
 
  
