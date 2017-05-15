@@ -25,6 +25,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var locCell:Bool = false
     var currentUser :User?
     var comingFromCreate:Bool?
+    var eventFromCreate:Event?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
@@ -40,7 +41,14 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }else{
             comingFromCreate = false
         }
-        reloadEvents(show:true)
+        
+        if(!comingFromCreate!) {
+            reloadEvents(show:true)
+        }else{
+            onAddedEvent(evt: eventFromCreate!)
+            comingFromCreate = false
+            comingFromCreateEvent = false
+        }
        
         searchBar = UISearchBar()
         searchBar.delegate = self
@@ -117,7 +125,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     func onAddedEvent(evt:Event) {
         var eventArray = events[0] as! [Event]
         print("Count \(eventArray.count)")
-        eventArray.append(evt)
+        eventArray.insert(evt, at: 0)
         events[0] = eventArray
     }
 

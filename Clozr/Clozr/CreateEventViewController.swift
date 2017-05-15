@@ -43,6 +43,7 @@ class CreateEventViewController: UIViewController, CreateEventViewDelegate {
         let vc = segue.destination as! EventsListViewController
         vc.newEventFromCreateEventView = self.eventFromCreateEventViewToListEventsVC
         vc.comingFromCreateEvent = true
+        vc.eventFromCreate = event
     }
     
 
