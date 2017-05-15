@@ -34,6 +34,8 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var addDateView: UIView!
     @IBOutlet weak var addDateandTimelabel: UILabel!
     @IBOutlet weak var friendsTableView: UITableView!
+    var eventDate: String!
+    var eventTime: String!
     var dateFormat = "HH:mm MM/dd/YYYY"
     var event:Event!
     var friends : [User]!
@@ -72,9 +74,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         displayTimeLabel.isHidden = true
 
         self.mainView.bringSubview(toFront: createEventView)
-        self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
-        
-         let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
+        self.createEventView.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        self.createEventView.isUserInteractionEnabled = false
+        let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
         addDateView.addGestureRecognizer(dateAndTimeTap)
         self.friends = FBClient.friends
         let createEventTap = UITapGestureRecognizer(target: self, action: #selector(createEvent(sender:)))
@@ -151,9 +153,12 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 self.displayTimeLabel.isHidden = false
                 let index = timeDate.index(timeDate.startIndex, offsetBy: 5)
                 self.displayTimeLabel.text = timeDate.substring(to: index)
+                self.eventTime = timeDate.substring(to: index)
                 self.displayDateLabel.textColor = UIColor.white
                 self.displayDateLabel.text = formatter.string(from: date)
-
+                self.eventDate = formatter.string(from: date)
+                self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
+                self.createEventView.isUserInteractionEnabled = true
             
             }
         
@@ -174,7 +179,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 User.createOrUpdateUserInFirebase(user: me)
             }
             self.event.createdBy = User.currentLoginUserId()
-            Event.createOrUpdateEventInFirebase(event: self.event)
+            Event.createOrUpdateEventInFirebase(event: self.event, eventDt: self.eventDate, eventTm: self.eventTime)
         }
         //TODO:Balaji loop all users  call invite.
         var oneSignalIds:[String]  = [String]()
@@ -186,12 +191,13 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             }
             self.event.inviteUser(userId: (friend.userId)!, accepted: false)
         }
-        Event.createOrUpdateEventInFirebase(event: event)
+        Event.createOrUpdateEventInFirebase(event: event, eventDt: eventDate, eventTm: eventTime)
         var message = "Event notification"
         if let uname = currentLoggedInUser?.name , let ename = event.name {
             message = "\(uname) has invited you to \(ename). Check it out!"
         }
         Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)
+
         //Then save event.
         delegate?.performSegueToListEventsController(event: event)
     }
