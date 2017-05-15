@@ -38,9 +38,13 @@ class FriendEventsViewController: UIViewController {
                 self.nonClozrFriends = [User]()
                 for usr in allFriends! {
                     if(usr.isClozerUser) {
-                        self.clozrFriends.append(usr)
+                        if !self.clozrFriends.contains(usr){
+                            self.clozrFriends.append(usr)
+                        }
                     }else{
-                        self.nonClozrFriends.append(usr)
+                        if !self.nonClozrFriends.contains(usr){
+                            self.nonClozrFriends.append(usr)
+                        }
                     }
                 }
                 once = 1
