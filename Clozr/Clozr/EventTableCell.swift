@@ -144,6 +144,8 @@ class EventTableCell: UITableViewCell {
     }
     
     func inviteUsers() {
+        self.users =  [(User,Int)]()
+
         var totalCount:Int = 0
         var acceptedCount:Int = 0
 
@@ -191,6 +193,7 @@ class EventTableCell: UITableViewCell {
         eventImage.image = #imageLiteral(resourceName: "noimage.png")
         eventTitle.text = ""
         eventLocation.text = ""
+        
     }
     
     

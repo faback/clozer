@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import ICSPullToRefresh
 
 class EventsListViewController: UIViewController,UserChangesProtocol {
 
@@ -39,11 +40,34 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }else{
             comingFromCreate = false
         }
+        reloadEvents(show:true)
+       
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        eventsTable.delegate = self
+        eventsTable.dataSource = self
+        eventsTable.rowHeight = UITableViewAutomaticDimension
+        eventsTable.estimatedRowHeight = 100
+        eventsTable.addPullToRefreshHandler {
+                self.refreshEnded()
+        }
+
+        Styles.styleNav(controller: self)
+        
+        loadEvents(searchTerm: nil)
+        
+    }
+    
+    func reloadEvents(show:Bool) {
+        events = [Int:Any]()
+        events[0] = [Event]()
+        events[1] = [Event]()
 
         if let fetchingUser = currentUser {
             User.getUserFromFirebase(usrId: fetchingUser.userId!) { (userFetched, error) in
                 self.currentUser = userFetched
-                self.reloadData(user: fetchingUser)
+                self.reloadData(user: fetchingUser,show: show)
             }
             if let fullname = fetchingUser.name {
                 var fullNameArr = fullname.components(separatedBy: " ")
@@ -52,41 +76,41 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
             }
         }else {
             if let me = currentLoggedInUser   {
-                reloadData(user: me)
+                reloadData(user: me,show: show)
             }else {
                 User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
                     currentLoggedInUser = loggedInUser
                     self.currentUser = loggedInUser
-                    self.reloadData(user: self.currentUser)
+                    self.reloadData(user: self.currentUser,show: show)
+                    
                 }
             }
             self.navigationItem.title = "My Events"
         }
-        searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        eventsTable.delegate = self
-        eventsTable.dataSource = self
-        eventsTable.rowHeight = UITableViewAutomaticDimension
-        eventsTable.estimatedRowHeight = 100
-        Styles.styleNav(controller: self)
-        
-        loadEvents(searchTerm: nil)
-        
+    }
+    
+    func refreshEnded() {
+            sleep(1)
+            self.reloadEvents(show: false)
     }
     
     
-    func reloadData(user:User?) {
+    func reloadData(user:User? , show:Bool) {
         
         user?.delegate = self
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        if(show) {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
         user?.getInvitedEvents();
     }
     
-    func reloadTable() {
+    func reloadTable(show:Bool) {
         
         self.eventsTable.reloadData()
-        MBProgressHUD.hide(for: self.view, animated: true)
+        self.eventsTable.pullToRefreshView?.stopAnimating()
+        if(show) {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
     }
     
     
