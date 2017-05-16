@@ -31,6 +31,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
     public var darkColor = UIColor(red: 0, green: 22.0/255.0, blue: 39.0/255.0, alpha: 1)
     public var daysBackgroundColor = UIColor(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, alpha: 1)
     
+    var theaterName: String?
     var collectionViewShowTiming: String?
     var event:Event?
     override func viewDidLoad() {
@@ -69,7 +70,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
                         let addr = loc?["address"] as? [String:Any]
                         let addrText = addr?["display_text"]
                         tDictionary["location"] = addrText
-                        tDictionary["showtimes"] = ["10:00 AM","1:00 PM", "3:00 AM","6:30 PM"]
+                        tDictionary["showtimes"] = ["10:00 AM","1:00 PM", "3:00 PM","6:30 PM"]
                         let theater = Theater(dictionary: tDictionary)
                         theaterArray.append(theater!)
                     }
@@ -126,6 +127,7 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
             cell.showTimings.append(showtime)
         }
         cell.delegate = self
+        cell.sectionNum = indexPath.section
         return cell
     }
     
@@ -254,8 +256,10 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func MovieDisplayCellDelegate(str: String) {
+    func MovieDisplayCellDelegate(str: String, tableSectionNum: Int) {
         collectionViewShowTiming = str
+        theaterName = event?.theaters?[tableSectionNum].name
+        print(theaterName)
         performSegue(withIdentifier: "fromSelectMovieToCreateEvent", sender: nil)
     }
     
@@ -263,6 +267,8 @@ class SelectMovieViewController: UIViewController, UITableViewDelegate, UITableV
         let vc = segue.destination as! CreateEventViewController
         vc.event = self.event
         vc.showTime = self.collectionViewShowTiming
+        vc.movieSelectedDate = self.selectedDate
+        vc.theaterName = self.theaterName
     }
 
     

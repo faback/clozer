@@ -9,13 +9,14 @@
 import UIKit
 
 @objc protocol MovieDisplayCellDelegate{
-    func MovieDisplayCellDelegate(str:String)
+    func MovieDisplayCellDelegate(str:String, tableSectionNum: Int)
 }
 
 class MovieDisplayCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var movieTimingsCollectionVIew: UICollectionView!
     var showTimings = [String]()
+    var sectionNum: Int!
     var delegate: MovieDisplayCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,7 +46,7 @@ class MovieDisplayCell: UITableViewCell, UICollectionViewDataSource, UICollectio
         let cell = movieTimingsCollectionVIew.cellForItem(at: indexPath) as! MovieTimingsCollectionCell
 //        cell?.layer.borderWidth = 2.0
 //        cell?.layer.borderColor = UIColor.gray.cgColor
-        delegate?.MovieDisplayCellDelegate(str: showTimings[indexPath.row])
+        delegate?.MovieDisplayCellDelegate(str: showTimings[indexPath.row], tableSectionNum: sectionNum)
         
 //        cell.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
 //        cell.movieTimingLabel.textColor = UIColor.white

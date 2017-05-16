@@ -58,6 +58,14 @@ class BusinessTableCell: UITableViewCell {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        addressLabel.text = nil
+        distanceLabel.text = nil
+        phoneNumberLabel.text = nil
+        nameLabel.text = nil
+        thumbImageView.image = nil
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

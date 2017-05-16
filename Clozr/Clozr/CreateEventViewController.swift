@@ -19,10 +19,15 @@ class CreateEventViewController: UIViewController, CreateEventViewDelegate {
     @IBOutlet weak var createEventView: CreateEventView!
     var event: Event!
     var showTime: String!
+    var movieSelectedDate: Date!
+    var theaterName: String!
     var eventFromCreateEventViewToListEventsVC: Event!
     override func viewDidLoad() {
         super.viewDidLoad()
         createEventView.event = self.event
+        createEventView.showTime = self.showTime
+        createEventView.selectedMovieDate = self.movieSelectedDate
+        createEventView.theaterName = self.theaterName
         createEventView.delegate = self
         createEventView.initSubView()
         // Do any additional setup after loading the view.

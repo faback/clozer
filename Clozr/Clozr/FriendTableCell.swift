@@ -29,6 +29,11 @@ class FriendTableCell: UITableViewCell {
         friendImageView.clipsToBounds = true
 
     }
+    
+    override func prepareForReuse() {
+       friendNameLabel.text = nil
+       friendImageView.image = nil
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

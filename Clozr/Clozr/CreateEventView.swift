@@ -26,6 +26,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var businessPhoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneImageView: UIImageView!
     @IBOutlet weak var createEventLabel: UILabel!
     
     @IBOutlet weak var tapToEditLabel: UILabel!
@@ -43,6 +44,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var delegate: CreateEventViewDelegate!
     var selectedIndexPaths = [IndexPath: Bool]()
     var clozrFriends = [User]()
+    var showTime: String!
+    var selectedMovieDate: Date!
+    var theaterName: String!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,11 +78,6 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         self.displayDateLabel.isHidden = true
         displayTimeLabel.isHidden = true
         
-        self.mainView.bringSubview(toFront: createEventView)
-        self.createEventView.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
-        self.createEventView.isUserInteractionEnabled = false
-        let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
-        addDateView.addGestureRecognizer(dateAndTimeTap)
         var once:Int = 0
         
         User.getAllUserFromFirebase { (allFriends, error) in
@@ -99,11 +98,46 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 
             }
         }
+
+        if showTime != nil {
+            self.phoneImageView.isHidden = true
+            let formatter = DateFormatter()
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = self.dateFormat
+            //let timeDate = timeFormatter.string(from: selectedMovieDate)
+            formatter.dateStyle = .medium //self.dateFormat
+            self.addDateView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+            self.plusImageView.isHidden = true
+            self.addDateandTimelabel.isHidden = true
+            self.displayDateLabel.isHidden = false
+            self.displayTimeLabel.isHidden = false
+            //let index = timeDate.index(timeDate.startIndex, offsetBy: 5)
+            self.displayTimeLabel.text = showTime
+            self.eventTime = showTime
+            print(theaterName)
+            self.addressLabel.text = theaterName
+            self.displayDateLabel.textColor = UIColor.white
+            self.displayDateLabel.text = formatter.string(from: selectedMovieDate)
+            self.eventDate = formatter.string(from: selectedMovieDate)
+            self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
+            self.createEventView.isUserInteractionEnabled = true
+            self.mainView.bringSubview(toFront: createEventView)
+
+        }
+        else {
+            self.mainView.bringSubview(toFront: createEventView)
+            self.createEventView.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+            self.createEventView.isUserInteractionEnabled = false
+        
+            let dateAndTimeTap = UITapGestureRecognizer(target: self, action: #selector(showDateTime(sender:)))
+            addDateView.addGestureRecognizer(dateAndTimeTap)
+        }
+        
         let createEventTap = UITapGestureRecognizer(target: self, action: #selector(createEvent(sender:)))
         createEventView.addGestureRecognizer(createEventTap)
         if let evt = self.event {
             businessNameLabel.text = evt.name
-            //            distanceLabel.text = business.distance
+            distanceLabel.text = evt.distance
             addressLabel.text = evt.address
             //            reviewImageView.setImageWith(business.ratingImageURL!)
             //            cuisineTypeLabel.text = business.categories
@@ -157,34 +191,35 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         self.mainView.addSubview(blurEffectView)
         
         let picker = DateTimePicker.show(view: self.mainView, blurView: blurEffectView)
-        picker.highlightColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
-        picker.completionHandler = { date in
-            // do something after tapping done
-            let formatter = DateFormatter()
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = self.dateFormat
-            var timeDate = timeFormatter.string(from: date)
-            formatter.dateStyle = .medium //self.dateFormat
-            self.addDateView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
-            self.plusImageView.isHidden = true
-            self.addDateandTimelabel.isHidden = true
-            self.displayDateLabel.isHidden = false
-            self.tapToEditLabel.isHidden = false
-            self.displayTimeLabel.isHidden = false
-            let index = timeDate.index(timeDate.startIndex, offsetBy: 5)
-            self.displayTimeLabel.text = timeDate.substring(to: index)
-            self.eventTime = timeDate.substring(to: index)
-            self.displayDateLabel.textColor = UIColor.white
-            self.displayDateLabel.text = formatter.string(from: date)
-            self.eventDate = formatter.string(from: date)
-            self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
-            self.createEventView.isUserInteractionEnabled = true
+            picker.highlightColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+            picker.completionHandler = { date in
+                // do something after tapping done
+                let formatter = DateFormatter()
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = self.dateFormat
+                let timeDate = timeFormatter.string(from: date)
+                formatter.dateStyle = .medium //self.dateFormat
+                self.addDateView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+                self.plusImageView.isHidden = true
+                self.addDateandTimelabel.isHidden = true
+                self.displayDateLabel.isHidden = false
+                self.tapToEditLabel.isHidden = false
+                self.displayTimeLabel.isHidden = false
+                let index = timeDate.index(timeDate.startIndex, offsetBy: 5)
+                self.displayTimeLabel.text = timeDate.substring(to: index)
+                self.eventTime = timeDate.substring(to: index)
+                self.displayDateLabel.textColor = UIColor.white
+                self.displayDateLabel.text = formatter.string(from: date)
+                self.eventDate = formatter.string(from: date)
+                self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
+                self.createEventView.isUserInteractionEnabled = true
             
         }
         
     }
     
     func createEvent(sender: UIView?=nil){
+        
         
         User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (usr, error) in
             currentLoggedInUser = usr
@@ -225,8 +260,6 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 message = "\(uname) has invited you to \(ename). Check it out!"
             }
             Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)
-            
-            
         }
         //TODO:Balaji loop all users  call invite.
         //Then save event.
