@@ -42,7 +42,7 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
                     }else{
                         self.friendImage.image = result
                     }
-                    self.friendImage.layer.cornerRadius = 23
+                    self.friendImage.layer.cornerRadius = 37.5
                     self.friendImage.layer.masksToBounds = true
                     
                     self.friendImage.layoutIfNeeded()
