@@ -18,7 +18,7 @@ public protocol UserInviteDelegate: class {
 
 
 protocol UserChangesProtocol  {
-    func onAddedEvent(evt:Event)
+    func onAddedEvent(evt:Event?,show:Bool)
     func reloadTable(show:Bool)
 }
 
@@ -50,7 +50,7 @@ class User:NSObject {
     static let defaults = UserDefaults.standard
     var previousLocations:[String] = [String]()
     var userRawContent:[String:Any]! = [String:Any]()
-
+    
     // referrence: https://developers.facebook.com/docs/graph-api/reference/user
     
     var snapshot: FIRDataSnapshot! = nil
@@ -67,7 +67,7 @@ class User:NSObject {
         
         super.init()
         
-       setAllValues(dictionaryArg: (snapshot.value as? [String:Any]))
+        setAllValues(dictionaryArg: (snapshot.value as? [String:Any]))
     }
     
     static let currentUserDataKey = "com.clozr.loggedinuser"
@@ -161,7 +161,7 @@ class User:NSObject {
             self.profilePictureURLString = nil
         }
         self.oneSignalId = dictionary["oneSignalId"] as? String
-
+        
         self.locDict = dictionary["location"] as? [String: Any]
     }
     
@@ -175,12 +175,12 @@ class User:NSObject {
             }
             else {
                 if let nm = self.name {
-                   self.userId = nm.replacingOccurrences(of: " ", with: "")
+                    self.userId = nm.replacingOccurrences(of: " ", with: "")
                 }
                 else {
                     print("there shouldnt be usr")
                 }
-            
+                
             }
         }
         self.userRawContent["userId"] = self.userId
@@ -191,17 +191,21 @@ class User:NSObject {
     func getInvitedEvents()  {
         let count = invitedEvents.count
         var checker:Int = 0
-        for ev in invitedEvents {
-            Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
-
-                  self.delegate?.onAddedEvent(evt: evt!)
-                  checker = checker + 1
-            })
+        if(invitedEvents.count > 0 ){
+            for ev in invitedEvents {
+                Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
+                    
+                    self.delegate?.onAddedEvent(evt: evt!, show: true)
+                    checker = checker + 1
+                })
+            }
+        }else{
+            self.delegate?.onAddedEvent(evt: nil,show: true)
         }
-        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.delegate?.reloadTable(show:true)
-        }
+        //        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
+        //        DispatchQueue.main.asyncAfter(deadline: when) {
+        //            self.delegate?.reloadTable(show:true)
+        //        }
         
     }
     
@@ -220,9 +224,15 @@ class User:NSObject {
                 fbuser.userRawContent?["firId"] = firebaseDetails.uid
                 fbuser.userRawContent?["isClozerUser"] = true
             }
-            user?.setUserId()
-            if let usrId = user?.userId {
-                users.child("/\(usrId)").setValue(user?.dictionaryRepresentation())
+            fbuser.setUserId()
+            if let usrId = fbuser.userId {
+                var dictionary = fbuser.dictionaryRepresentation() as! [String:Any]
+                
+                if( fbuser.invitedEvents != nil &&  (fbuser.invitedEvents.count) > 0 ) {
+                    dictionary["invitedEvents"] = fbuser.invitedEvents
+                }
+                users.child("/\(usrId)").setValue(dictionary)
+                
             }
         }
     }
@@ -255,7 +265,7 @@ class User:NSObject {
         
         if let usrId  = user?.userId {
             getUserFromFirebase(usrId: usrId) { (usr, error) in
-
+                
                 if(error != nil) {
                     dictionary["invitedEvents"] = user?.invitedEvents
                     dictionary["isClozerUser"] = false
@@ -267,10 +277,10 @@ class User:NSObject {
                         users.child("/\(usrId)").setValue(dictionary)
                     }
                 }
-                 users.child("/\(usrId)").setValue(dictionary)
+                users.child("/\(usrId)").setValue(dictionary)
             }
         }
-  
+        
     }
     
     
@@ -282,7 +292,7 @@ class User:NSObject {
     }
     
     
-
+    
     class func getUserFromFirebase(usrId: String,completion: @escaping (User?, Error?) -> Void){
         let usrRef = users.child("/\(usrId)")
         
@@ -292,13 +302,13 @@ class User:NSObject {
             usrRef.removeAllObservers()
         })
     }
-
+    
     
     class func getAllUserFromFirebase(completion: @escaping ([User]?, Error?) -> Void){
         
         var usrArray = [User]()
         let usrRef = users
-
+        
         usrRef.queryOrderedByKey().observe(.value, with: { (snapshot) in
             
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -307,7 +317,7 @@ class User:NSObject {
                     usrArray.append(u)
                 }
             }
-           
+            
         })
         let when = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: when) {
@@ -316,7 +326,7 @@ class User:NSObject {
         
         
     }
-
+    
     
     class func currentLoginUserId() -> String? {
         if let defaultStored = defaults.string(forKey: currentUserDataKeyId) {
@@ -324,7 +334,7 @@ class User:NSObject {
         }
         return nil
     }
-
+    
     
 }
 
@@ -364,4 +374,3 @@ struct Location {
         self.zip = dict["zip"] as? String
     }
 }
-

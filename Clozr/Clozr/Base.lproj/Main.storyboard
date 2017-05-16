@@ -686,11 +686,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends33.png" translatesAutoresizingMaskIntoConstraints="NO" id="fJS-Ao-fCw">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends33.png" translatesAutoresizingMaskIntoConstraints="NO" id="fJS-Ao-fCw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBV-i0-hmS">
-                                <rect key="frame" x="55" y="522" width="266" height="33"/>
+                                <rect key="frame" x="55" y="522.5" width="266" height="33"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="266" id="0Cp-GL-wiM"/>
@@ -770,10 +770,10 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-EE-KIx">
-                                <rect key="frame" x="54" y="405" width="268" height="41"/>
+                                <rect key="frame" x="54" y="405" width="268" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="A71-9k-NEW"/>
+                                    <constraint firstAttribute="height" constant="36" id="A71-9k-NEW"/>
                                     <constraint firstAttribute="width" constant="268" id="jqj-x9-nL1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
@@ -786,7 +786,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-I0-pWO">
-                                <rect key="frame" x="53" y="455" width="269" height="36"/>
+                                <rect key="frame" x="53" y="455.5" width="269" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAG-Ng-DFa">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="36"/>
@@ -829,7 +829,7 @@
                             <constraint firstItem="kBV-i0-hmS" firstAttribute="centerX" secondItem="rAR-aG-uwC" secondAttribute="centerX" id="meB-cY-9us"/>
                             <constraint firstItem="nnX-I0-pWO" firstAttribute="centerX" secondItem="rAR-aG-uwC" secondAttribute="centerX" id="tAl-kp-yBA"/>
                             <constraint firstItem="2vB-sd-Nvp" firstAttribute="centerX" secondItem="rAR-aG-uwC" secondAttribute="centerX" id="xZh-Ui-DDa"/>
-                            <constraint firstItem="nnX-I0-pWO" firstAttribute="top" secondItem="fZb-EE-KIx" secondAttribute="bottom" constant="9.5" id="ywP-AI-D5h"/>
+                            <constraint firstItem="nnX-I0-pWO" firstAttribute="top" secondItem="fZb-EE-KIx" secondAttribute="bottom" constant="14.5" id="ywP-AI-D5h"/>
                         </constraints>
                     </view>
                     <connections>
@@ -839,7 +839,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELc-Dk-klV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1140" y="1916"/>
+            <point key="canvasLocation" x="-1140" y="1915.5922038980511"/>
         </scene>
         <!--Home-->
         <scene sceneID="tmQ-Ma-aiQ">
@@ -1759,8 +1759,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vij-K3-8Gs"/>
-        <segue reference="gSG-nb-9K6"/>
         <segue reference="EbY-d4-66r"/>
         <segue reference="rxb-B1-MqQ"/>
+        <segue reference="dHx-1r-LCF"/>
     </inferredMetricsTieBreakers>
 </document>

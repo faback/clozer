@@ -117,11 +117,10 @@ class LoginScreenViewController: UIViewController {
                             self.currentFirUser = user
                             
                             User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
-                                if(error != nil) {
-                                    print("user already exists")
-                                }
-                                else {
-                                    User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                                if let uff = userFromFirebase {
+                                    print("User already exists")
+                                }else {
+                                User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
                                 }
                             })
                             
@@ -145,9 +144,9 @@ class LoginScreenViewController: UIViewController {
         }
         else {
             retryCounter = 0
-            User.createMe(userUid: currentFirUser!, user: currentFacebookUser)
-            FBClient.currentFacebookUser = currentFacebookUser
-            self.performSegue(withIdentifier: "postLogin", sender: self)
+//            User.createMe(userUid: currentFirUser!, user: currentFacebookUser)
+//            FBClient.currentFacebookUser = currentFacebookUser
+//            self.performSegue(withIdentifier: "postLogin", sender: self)
 
         }
     }

@@ -128,6 +128,7 @@ class ContentController: UIViewController {
     }
     
     func loadNavInContent(navName:String) {
+        self.navName = navName
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         currrent = storyboard.instantiateViewController(withIdentifier: navName) as! UINavigationController //
         showController(controller: currrent!, inContentVew: contentView, ofController: self)
