@@ -61,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
-        
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+                        print("User accepted notifications: \(accepted)")
+        })
         FIRApp.configure()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

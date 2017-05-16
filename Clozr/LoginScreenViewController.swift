@@ -112,14 +112,19 @@ class LoginScreenViewController: UIViewController {
                         if let fbuser = user {
                             self.currentFacebookUser = fbuser
                             let defaults = UserDefaults.standard
-                            defaults.set(user?.userId, forKey: User.currentUserDataKeyId)
+                            defaults.set(fbuser.userId, forKey: User.currentUserDataKeyId)
                             let user = FIRAuth.auth()?.currentUser
                             self.currentFirUser = user
-                            if ((user) != nil) {
-                                User.createMe(userUid: user!, user: self.currentFacebookUser)
-                            }
-//
-                            User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                            
+                            User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
+                                if(error != nil) {
+                                    print("user already exists")
+                                }
+                                else {
+                                    User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                                }
+                            })
+                            
                             FBClient.currentFacebookUser = self.currentFacebookUser
                             FBClient.getUsersFriends()
                             self.performSegue(withIdentifier: "postLogin", sender: self)

@@ -20,7 +20,7 @@ import UIKit
 
 class ContentController: UIViewController {
     
-
+    
     @IBOutlet weak var contentView: UIView!
     var currrent:UIViewController?
     var viewControllerWidth: CGFloat!
@@ -44,11 +44,14 @@ class ContentController: UIViewController {
     
     var buttonTag:[Int:UIButton] = [Int:UIButton]()
     var navArray:[Int:String] = [Int:String]()
+    var navButtonArray:[String:UIButton] = [String:UIButton]()
+    var navName:String?
     override func viewDidLoad() {
         //menu
         var tagCounter:Int  = 1
-
+        
         navArray = [1:Clozer.Nav.homeNav,2:Clozer.Nav.liveEventNav, 3:Clozer.Nav.eventDetailNav,4:Clozer.Nav.friendsNav,5:Clozer.Nav.settingsNav]
+        navButtonArray = [Clozer.Nav.homeNav:hb,Clozer.Nav.liveEventNav:mb, Clozer.Nav.eventDetailNav:mapB,Clozer.Nav.friendsNav:fb,Clozer.Nav.settingsNav:sb]
         let allButtons = [hb,fb,mapB,sb,mb]
         for ab in allButtons {
             ab?.tag = tagCounter
@@ -66,13 +69,13 @@ class ContentController: UIViewController {
             tv?.addGestureRecognizer(tapGesture)
         }
         
-
-        
-        //home
-        if let currentContent = currrent  {
-            print("No content")
-        }else{
-            loadNavInContent(navName: "homeNav")
+        if let selectedNav = navName {
+            otherAlpha(curr: navButtonArray[selectedNav]!)
+            loadNavInContent(navName: selectedNav)
+        }
+        else{
+            otherAlpha(curr: hb)
+            loadNavInContent(navName: Clozer.Nav.homeNav)
         }
     }
     
@@ -81,7 +84,7 @@ class ContentController: UIViewController {
         let tag = sender.view?.tag
         tapAction(tag:tag!)
     }
-
+    
     
     
     func tapAction(tag:Int) {
@@ -127,11 +130,16 @@ class ContentController: UIViewController {
     func loadNavInContent(navName:String) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         currrent = storyboard.instantiateViewController(withIdentifier: navName) as! UINavigationController //
-         showController(controller: currrent!, inContentVew: contentView, ofController: self)
+        showController(controller: currrent!, inContentVew: contentView, ofController: self)
     }
     
     
-
+    func loadLiveEvents(from:UIViewController) {
+        otherAlpha(curr: hb)
+        loadNavInContent(navName: Clozer.Nav.liveEventNav)
+    }
+    
+    
     @IBAction func homeButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
         loadNavInContent(navName: Clozer.Nav.homeNav)
@@ -141,7 +149,7 @@ class ContentController: UIViewController {
     @IBAction func myButton(_ sender: UIButton) {
         otherAlpha(curr: sender)
         loadNavInContent(navName: Clozer.Nav.liveEventNav)
-
+        
         
     }
     
@@ -163,7 +171,7 @@ class ContentController: UIViewController {
         loadNavInContent(navName: Clozer.Nav.settingsNav)
     }
     
-
+    
     
     
     /*
