@@ -143,10 +143,15 @@ public class Event:NSObject {
     }
     
     
+    class func updateChildValues(eventId:String , vals:[String:Any]) {
+        let eventRef = events.child("/\(eventId)")
+        eventRef.updateChildValues(vals)
+    }
+    
+    
     class func createOrUpdateEventInFirebase(event:Event?, eventDt: String? = nil , eventTm: String? = nil) {
         let uniqueId = (event?.id)!
         var dictionary = (event?.dictionaryRepresentation() as! [String:Any])
-        dictionary["createdBy"] = User.currentLoginUserId()
         if let date = eventDt{
             dictionary["eventDate"] = date
         }

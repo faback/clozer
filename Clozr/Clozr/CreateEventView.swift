@@ -208,7 +208,14 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                     oneSignalIds.append(osid)
                 }
                 friend.setUserId()
-                self.event.inviteUser(userId: (friend.userId)!, accepted: false)
+
+                var accepted:Bool = false
+                if(currentLoggedInUser?.userId == friend.userId) {
+                    accepted = true
+                }
+                friend.addEvent(evt: self.event.id)
+                User.createOrUpdateUserInFirebase(user: friend)
+                self.event.inviteUser(userId: (friend.userId)!, accepted: accepted)
             }
             
             self.event.inviteUser(userId: (currentLoggedInUser?.userId)! , accepted: true)

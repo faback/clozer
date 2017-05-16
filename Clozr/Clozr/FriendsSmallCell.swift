@@ -37,10 +37,10 @@ class FriendsSmallCell: UICollectionViewCell {
                 }else{
                     self.friendsImage.image = result
                 }
-                self.friendsImage.layer.borderWidth = 1
+                self.friendsImage.layer.borderWidth = 2
                 if(self.acc == 0){
                     self.friendsImage.layer.borderColor =  UIColor.red.cgColor
-                    self.friendsImage.alpha = 0.5
+//                    self.friendsImage.alpha = 0.5
                 }else{
                     self.friendsImage.layer.borderColor =  UIColor.greenSea().cgColor
                 }
