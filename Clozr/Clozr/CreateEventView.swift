@@ -221,7 +221,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             
             Event.createOrUpdateEventInFirebase(event: self.event, eventDt: self.eventDate, eventTm: self.eventTime)
             var message = "Event notification"
-            if let uname = currentLoggedInUser?.name , let ename = self.event.name {
+            if let uname = currentLoggedInUser?.name , let ename = self.event.name ,let cat = self.event.category {
                 message = "\(uname) has invited you to \(ename). Check it out!"
             }
             Clozer.sendMessage(mess: message, oneSignalIds: oneSignalIds)

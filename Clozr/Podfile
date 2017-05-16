@@ -10,10 +10,7 @@ target 'Clozr' do
   pod 'BDBOAuth1Manager'
   pod 'MBProgressHUD', '~> 0.9.1'
   pod 'ICSPullToRefresh', '~> 0.6'
-  pod 'CBZSplashView', '~> 1.0.0'
-  pod 'SwiftyJSON'
-  pod 'RegexKitLite'
-  pod 'Blurry', '~> 0.0.1'
+
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
