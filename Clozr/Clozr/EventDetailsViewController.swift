@@ -27,18 +27,16 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         
         
         alert.addAction(UIAlertAction(title: "Accept!", style: .default) { action in
-            self.respondButton.isEnabled = false
-            self.respondButton.title = ""
-            
-            // Tell the server that the user accepted.
-            
+//            self.respondButton.isEnabled = false
+//            self.respondButton.title = ""
+            self.saveResponse(true)
+            self.eventDetailsTableView.reloadData()
         })
         alert.addAction(UIAlertAction(title: "Reject!", style: .default) { action in
-            self.respondButton.isEnabled = false
-            self.respondButton.title = ""
-            
-            // Tell the server that the user rejected.
-            
+//            self.respondButton.isEnabled = false
+//            self.respondButton.title = ""
+            self.saveResponse(false)
+            self.eventDetailsTableView.reloadData()
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .default) { action in
         })
@@ -93,6 +91,29 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             mapsVC?.event = event
         }
+    }
+    
+    func saveResponse(_ response:Bool) {
+        
+        var index = 0
+        var selectedIndex = 0
+        if let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+            for dict in invitedUsers {
+                let allKeys = dict.keys
+                for usr in allKeys {
+                    if(usr == User.currentLoginUserId()) {
+                        selectedIndex = index
+                    }
+                    
+                }
+                index = index + 1
+            }
+        }
+        
+        event.invitedUserIds.remove(at: selectedIndex)
+        event.invitedUserIds.append([User.currentLoginUserId()! : response])
+        
+        Event.updateChildValues(eventId: event.id, vals: ["invitedUserIds" : event.invitedUserIds ])
     }
 
 }

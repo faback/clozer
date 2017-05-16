@@ -91,7 +91,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             showRouteOnMap(source: mylocation, destination: eventLocation!)
             updateOnce = true
         } else if (centerMap) {
-            let span = MKCoordinateSpanMake(0.1, 0.1)
+            let span = MKCoordinateSpanMake(0.01, 0.01)
             let region:MKCoordinateRegion = MKCoordinateRegionMake(mylocation, span)
             mapView.setRegion(region, animated: true)
         }
@@ -174,7 +174,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     let mapRect:MKMapRect = unwrappedResponse.routes[0].polyline.boundingMapRect
                     self.mapView.setVisibleMapRect(mapRect, animated: true)
                 } else {
-                    let span = MKCoordinateSpanMake(0.001, 0.001)
+                    let span = MKCoordinateSpanMake(0.01, 0.01)
                     let region:MKCoordinateRegion = MKCoordinateRegionMake(source, span)
                     self.mapView.setRegion(region, animated: true)
                 }
