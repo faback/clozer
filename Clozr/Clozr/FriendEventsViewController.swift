@@ -38,12 +38,13 @@ class FriendEventsViewController: UIViewController {
                 self.nonClozrFriends = [User]()
                 for usr in allFriends! {
                     if(usr.isClozerUser) {
-                        if !self.clozrFriends.contains(usr){
+                        if(!self.valContains(existing: usr, inArry: self.clozrFriends)){
+                        
                             self.clozrFriends.append(usr)
                         }
                     }else{
-                        if !self.nonClozrFriends.contains(usr){
-                            self.nonClozrFriends.append(usr)
+                        if(!self.valContains(existing: usr, inArry: self.nonClozrFriends)){
+                                self.nonClozrFriends.append(usr)
                         }
                     }
                 }
@@ -55,6 +56,18 @@ class FriendEventsViewController: UIViewController {
             }
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func valContains(existing:User ,inArry:[User])->Bool {
+        existing.setUserId()
+        for usr in inArry {
+            usr.setUserId()
+            
+            if usr.userId == existing.userId {
+                return true
+            }
+        }
+        return false
     }
 
     override func didReceiveMemoryWarning() {
