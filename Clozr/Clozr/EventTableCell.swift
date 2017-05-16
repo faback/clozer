@@ -85,7 +85,7 @@ class EventTableCell: UITableViewCell {
     func disableJoinButton() {
         var buttonLabel = "Joined"
         if(event.createdBy == User.currentLoginUserId()) {
-            buttonLabel = "You are Hosting this event"
+            buttonLabel = "Hosting"
         }
         joinDeclineButton.setTitle(buttonLabel, for: .normal)
         joinDeclineButton.setTitleColor(UIColor.greenSea(), for: .disabled)
