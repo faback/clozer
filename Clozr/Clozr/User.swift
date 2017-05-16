@@ -241,7 +241,7 @@ class User:NSObject {
     class func createOrUpdateUserInFirebase(user:User?) {
         user?.setUserId()
         var dictionary = user?.dictionaryRepresentation() as! [String:Any]
-        if( user?.invitedEvents != nil &&  (user?.invitedEvents.count)! > 0 ) {
+        if( (user?.invitedEvents.count)! > 0 ) {
             dictionary["invitedEvents"] = user?.invitedEvents
         }
         if let usrId  = user?.userId {

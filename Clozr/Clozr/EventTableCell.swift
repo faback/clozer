@@ -77,7 +77,7 @@ class EventTableCell: UITableViewCell {
         event.invitedUserIds.remove(at: selectedIndex)
         event.invitedUserIds.append([User.currentLoginUserId()! : true])
         
-        Event.createOrUpdateEventInFirebase(event: event)
+        Event.updateChildValues(eventId: event.id, vals: ["invitedUserIds" : event.invitedUserIds ])
         disableJoinButton()
         
     }
@@ -91,6 +91,7 @@ class EventTableCell: UITableViewCell {
         joinDeclineButton.setTitleColor(UIColor.greenSea(), for: .disabled)
         joinDeclineButton.isEnabled = false
         joinDeclineButton.disabledColor = UIColor.white
+//        reloadFriends()
 
     }
     
@@ -152,6 +153,9 @@ class EventTableCell: UITableViewCell {
                     if(accepted!){
                         acc = 1
                         acceptedCount = acceptedCount + 1
+                        if(usr == User.currentLoginUserId()){
+                            disableJoinButton()
+                        }
                     }
                     User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
                         self.appendUsers(usrTuple: (usrF!,acc))
