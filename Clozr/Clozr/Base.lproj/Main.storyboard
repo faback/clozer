@@ -598,7 +598,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9S-An-RI7">
-                                <rect key="frame" x="317" y="74" width="32" height="32"/>
+                                <rect key="frame" x="333" y="581" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="Vcr-hA-lnr"/>
                                     <constraint firstAttribute="height" constant="32" id="yWk-Br-g9l"/>
@@ -613,10 +613,10 @@
                         <constraints>
                             <constraint firstItem="ciB-NK-8TZ" firstAttribute="top" secondItem="lLs-Cu-xqc" secondAttribute="bottom" id="3iX-DO-G9I"/>
                             <constraint firstAttribute="trailing" secondItem="ciB-NK-8TZ" secondAttribute="trailing" id="4sf-zA-HXp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="r9S-An-RI7" secondAttribute="trailing" constant="10" id="6bD-7d-Q6u"/>
-                            <constraint firstItem="r9S-An-RI7" firstAttribute="top" secondItem="lLs-Cu-xqc" secondAttribute="bottom" constant="10" id="Yqu-5Q-bTK"/>
+                            <constraint firstAttribute="trailing" secondItem="r9S-An-RI7" secondAttribute="trailing" constant="10" id="N80-Ci-Xej"/>
                             <constraint firstItem="ciB-NK-8TZ" firstAttribute="leading" secondItem="KH5-Nd-x16" secondAttribute="leading" id="aUd-5I-AI2"/>
                             <constraint firstItem="cBD-hj-bbM" firstAttribute="top" secondItem="ciB-NK-8TZ" secondAttribute="bottom" id="lxd-GV-5tn"/>
+                            <constraint firstItem="cBD-hj-bbM" firstAttribute="top" secondItem="r9S-An-RI7" secondAttribute="bottom" constant="10" id="ts4-6W-xRT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map View" id="6Wl-QN-FeO"/>
@@ -653,7 +653,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1476,7 +1476,7 @@
             <objects>
                 <navigationController storyboardIdentifier="homeNav" automaticallyAdjustsScrollViewInsets="NO" id="I8h-zg-9pw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1679,7 +1679,7 @@
             <objects>
                 <navigationController storyboardIdentifier="friendsNav" automaticallyAdjustsScrollViewInsets="NO" id="ibN-Kf-tqi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1699,7 +1699,7 @@
             <objects>
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="4oj-T9-eCr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1718,7 +1718,7 @@
             <objects>
                 <navigationController storyboardIdentifier="liveEventNav" automaticallyAdjustsScrollViewInsets="NO" id="exu-qR-Xau" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

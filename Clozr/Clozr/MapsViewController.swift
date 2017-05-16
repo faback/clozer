@@ -149,7 +149,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let imageView:UIImageView = UIImageView()
             let url:URL = URL(string: (castAnnotation?.imageURL)!)!
             imageView.setImageWith(url)
-            annotationView?.image = resizeImage(image: imageView.image!, targetSize: CGSize(width: 32.0, height: 32.0))
+            let newImageView:UIImageView = UIImageView(image: resizeImage(image: imageView.image!, targetSize: CGSize(width: 50, height: 50)))
+            annotationView?.image = maskRoundedImage(image: newImageView.image!, radius: 20)
         }
         
         return annotationView
@@ -215,6 +216,22 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         UIGraphicsEndImageContext()
         
         return newImage!
+    }
+    
+    func maskRoundedImage(image: UIImage, radius: Float) -> UIImage {
+        let imageView: UIImageView = UIImageView(image: image)
+        var layer: CALayer = CALayer()
+        layer = imageView.layer
+        
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(radius)
+        
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return roundedImage!
     }
 
 }
