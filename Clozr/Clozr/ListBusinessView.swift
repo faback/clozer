@@ -63,15 +63,28 @@ class ListBusinessView: UIView, UITableViewDataSource,UITableViewDelegate {
             self.events = evts
             self.businessTableView.reloadData()
             var pinArray=[MKAnnotation]()
+            var doOnce:Bool = false
+            var takeAroundCoordinates:CLLocationCoordinate2D?
+
                 for event in evts {
                     if let latitude = event.latitude , let longitude = event.longitude {
                         let pinLocation = CLLocationCoordinate2DMake(latitude,longitude)
-                        self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
+                        if(!doOnce){
+                            takeAroundCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        }
+                        doOnce = true
+
+//                        self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
                         let pin = PinAnnotation(title: event.name!, coordinate: pinLocation)
                         pinArray.append(pin)
                     }
-            }
-                self.businessMapView.addAnnotations(pinArray)
+                }
+            let zoomLevel:Int = 10
+            let clLocationCordinate = takeAroundCoordinates
+
+            let span = MKCoordinateSpanMake(0, 360 / pow(2, Double(zoomLevel)) * Double(self.businessMapView.frame.size.width) / 256)
+            self.businessMapView.setRegion(MKCoordinateRegionMake(clLocationCordinate!, span), animated: true)
+            self.businessMapView.addAnnotations(pinArray)
         }
     }
     
