@@ -58,6 +58,21 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         initSubView()
     }
     
+    func appendUsers(usr:User) {
+        var exists:Bool = false
+        for existingUser in self.clozrFriends {
+            if(existingUser.userId == usr.userId) {
+                exists = true
+            }
+        }
+        
+        if(!exists) {
+            self.clozrFriends.append(usr)
+        }
+        
+    }
+
+    
     func initSubView() {
         
         let nib = UINib(nibName: "CreateEventView", bundle: nil)
@@ -87,9 +102,10 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 self.clozrFriends = [User]()
                 for usr in allFriends! {
                     if(usr.isClozerUser) {
-                        if !self.clozrFriends.contains(usr){
-                            self.clozrFriends.append(usr)
-                        }
+//                        if !self.clozrFriends.contains(usr){
+//                            self.clozrFriends.append(usr)
+//                        }
+                        self.appendUsers(usr: usr)
                     }
                 }
                 self.friends = self.clozrFriends
@@ -98,6 +114,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                 
             }
         }
+        
 
         if showTime != nil {
             self.phoneImageView.isHidden = true
@@ -142,7 +159,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             //            reviewImageView.setImageWith(business.ratingImageURL!)
             //            cuisineTypeLabel.text = business.categories
             //            reviewCountLabel.text = "\(business.reviewCount!) Reviews"
-            businessPhoneNumberLabel.text = evt.phone
+            businessPhoneNumberLabel.text = evt.phone ?? "408-637-1726"
             if let imgUrl = evt.image {
                 var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
                 if(event.category != "movies") {

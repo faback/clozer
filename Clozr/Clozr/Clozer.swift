@@ -12,6 +12,8 @@ import OneSignal
 class Clozer {
    static var deviceToken:String?
 
+    static var currentLiveEvent:Event?
+    
     struct Preferences {
         static let trackLocation = "com.clozr.tracklocation"
         static let showEvents = "com.clozr.showEvents"

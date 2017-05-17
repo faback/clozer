@@ -194,7 +194,9 @@ class User:NSObject {
         if(invitedEvents.count > 0 ){
             for ev in invitedEvents {
                 Event.getEventFromFirebase(uniqueId: ev, completion: { (evt, error) in
-                    
+                    if(checker == 0 ){
+                        Clozer.currentLiveEvent = evt
+                    }
                     self.delegate?.onAddedEvent(evt: evt!, show: true)
                     checker = checker + 1
                 })
