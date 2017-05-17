@@ -30,12 +30,6 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
         category = Category.mainCategory
         subCategory = Category.subCategory
         events[0] = [Event]()
@@ -59,13 +53,19 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }
         
         if(!comingFromCreate!) {
-             reloadEvents(show:true)
+            reloadEvents(show:true)
         }else{
             self.refreshEnded()
             
             //            reloadEvents(show:false)
         }
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+   
         
     }
     
@@ -87,16 +87,14 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
                 self.navigationItem.title = "\(firstName)'s Events"
             }
         }else {
-            if let me = currentLoggedInUser   {
-                reloadData(user: me,show: show)
-            }else {
+
                 User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
                     currentLoggedInUser = loggedInUser
                     self.currentUser = loggedInUser
                     self.reloadData(user: self.currentUser,show: show)
                     
                 }
-            }
+            
             self.navigationItem.title = "My Events"
         }
         //  comingFromCreate = false
