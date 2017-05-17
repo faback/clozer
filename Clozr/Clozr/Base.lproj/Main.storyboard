@@ -475,7 +475,7 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18_Fast-Furious-7" translatesAutoresizingMaskIntoConstraints="NO" id="NC9-46-tey">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18_Fast-Furious-7" translatesAutoresizingMaskIntoConstraints="NO" id="NC9-46-tey">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="151" id="0bV-Vt-j2f"/>
@@ -661,7 +661,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1484,7 +1484,7 @@
             <objects>
                 <navigationController storyboardIdentifier="homeNav" automaticallyAdjustsScrollViewInsets="NO" id="I8h-zg-9pw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1687,7 +1687,7 @@
             <objects>
                 <navigationController storyboardIdentifier="friendsNav" automaticallyAdjustsScrollViewInsets="NO" id="ibN-Kf-tqi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1707,7 +1707,7 @@
             <objects>
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="4oj-T9-eCr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1726,7 +1726,7 @@
             <objects>
                 <navigationController storyboardIdentifier="liveEventNav" automaticallyAdjustsScrollViewInsets="NO" id="exu-qR-Xau" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
