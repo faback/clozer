@@ -139,9 +139,7 @@ class LoginScreenViewController: UIViewController {
 
                            
                             
-                            FBClient.currentFacebookUser = self.currentFacebookUser
-                            FBClient.getUsersFriends()
-                            self.performSegue(withIdentifier: "postLogin", sender: self)
+                           
 
                         }
                         else {
