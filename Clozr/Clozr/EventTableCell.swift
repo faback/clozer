@@ -106,7 +106,8 @@ class EventTableCell: UITableViewCell {
         eventTime.text = event.time ?? "11:30 AM May 31 , 2017"
         eventLocation.text = event.address
         if let imgUrl = event.image {
-            var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+            var imageUrl = "\(MovieDB.sharedInstance.highResolutionUrl())/\(imgUrl)"
+
             if(event.category != "movies") {
                 imageUrl = imgUrl
             }

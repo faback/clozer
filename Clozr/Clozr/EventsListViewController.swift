@@ -59,7 +59,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }
         
         if(!comingFromCreate!) {
-            reloadEvents(show:true)
+             reloadEvents(show:true)
         }else{
             self.refreshEnded()
             
