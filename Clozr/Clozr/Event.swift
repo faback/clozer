@@ -47,7 +47,7 @@ public class Event:NSObject {
     init(snapshot: FIRDataSnapshot) {
         self.snapshot = snapshot
         super.init()
-        setAllValues(dictionary: snapshot.value as! [String:Any])
+        setAllValues(dictionary: snapshot.value as? [String:Any])
     }
 
     public func dictionaryRepresentation() -> NSDictionary {
@@ -92,27 +92,27 @@ public class Event:NSObject {
         setAllValues(dictionary: dictionary)
     }
     
-    func setAllValues(dictionary:[String:Any]) {
+    func setAllValues(dictionary:[String:Any]?) {
     
-        name = dictionary["name"] as? String
-        type = dictionary["type"] as? String
-        category = dictionary["category"] as? String
-        address = dictionary["address"] as? String
-        source = (dictionary["source"] as? String)!
-        sourceId = dictionary["sourceId"] as? Int
-        image = dictionary["image"] as? String
-        video = dictionary["video"] as? String
-        time = dictionary["time"] as? String
-        summary = dictionary["summary"] as? String
-        latitude = dictionary["latitude"] as? Double
-        longitude = dictionary["longitude"] as? Double
-        distance = dictionary["distance"] as? String
-        phone = dictionary["phone"] as? String
-        epoch = dictionary["epoch"] as? CLong
-        createdBy = dictionary["createdBy"] as? String
-        selectedTheater = dictionary["selectedTheater"] as? String
+        name = dictionary?["name"] as? String
+        type = dictionary?["type"] as? String
+        category = dictionary?["category"] as? String
+        address = dictionary?["address"] as? String
+        source = (dictionary?["source"] as? String)!
+        sourceId = dictionary?["sourceId"] as? Int
+        image = dictionary?["image"] as? String
+        video = dictionary?["video"] as? String
+        time = dictionary?["time"] as? String
+        summary = dictionary?["summary"] as? String
+        latitude = dictionary?["latitude"] as? Double
+        longitude = dictionary?["longitude"] as? Double
+        distance = dictionary?["distance"] as? String
+        phone = dictionary?["phone"] as? String
+        epoch = dictionary?["epoch"] as? CLong
+        createdBy = dictionary?["createdBy"] as? String
+        selectedTheater = dictionary?["selectedTheater"] as? String
         theaters = [Theater]()
-        if let iu = dictionary["invitedUserIds"] as? [[String:Bool]] {
+        if let iu = dictionary?["invitedUserIds"] as? [[String:Bool]] {
             invitedUserIds = iu
         }
         if let eventID = (Event.getSpaceStripped(val: name!)) {
