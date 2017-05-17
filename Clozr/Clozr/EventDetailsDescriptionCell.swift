@@ -20,16 +20,23 @@ class EventDetailsDescriptionCell: UITableViewCell {
     weak var event: Event! {
         didSet {
             titleLabel.text = event.name ?? "Event"
-            descriptionLabel.text = event.summary ?? "No description present"
+            descriptionLabel.text = event.summary ?? "No event description."
             
-            let time:String = event.time ?? "May 31, 2017 at 11:30 AM"
-            timeLabel.text = time
-            //monthLabel.text = event.
+//            var dictionary = (event?.dictionaryRepresentation() as! [String:Any])
+//            let date:String = dictionary["eventDate"] as! String
+//            let time:String = dictionary["eventTime"] as! String
+            
+            timeLabel.text = event.time
+            
+//            let index = timeDate.index(timeDate.startIndex, offsetBy: 3)
+//            self.displayTimeLabel.text = timeDate.substring(to: index)
+//            monthLabel.text = date.
+//            dateLabel.text = date
             hostedByLable.text = ""
-            if event.userId != nil {
-                User.getUserFromFirebase(usrId: event.userId!, completion: { (usrF, error) in
+            if event.createdBy != nil {
+                User.getUserFromFirebase(usrId: event.createdBy!, completion: { (usrF, error) in
                     if let usrF = usrF {
-                        self.hostedByLable.text = "Hosted by: \(usrF.name)"
+                        self.hostedByLable.text = "Hosted by: " + usrF.name!
                     }
                 })
             }
