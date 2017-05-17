@@ -81,7 +81,7 @@ class User:NSObject {
             id = dictionary["id"] as? String
             about = dictionary["about"] as? String
             address = dictionary["address"] as? String
-            profilePictureURLString = (dictionary["profilePictureURLString"] as? String)!
+            profilePictureURLString = (dictionary["profilePictureURLString"] as? String)
             email = dictionary["email"] as? String
             lastName = dictionary["lastName"] as? String
             relationshipStatus = dictionary["relationshipStatus"] as? String
@@ -94,7 +94,11 @@ class User:NSObject {
             }
             userId = dictionary["userId"] as? String
             locDict = dictionary["locDict"] as? [String:Any]
-            isClozerUser = (dictionary["isClozerUser"] as? Bool)!
+            if let clozerUser  = dictionary["isClozerUser"] as? Bool{
+                isClozerUser = clozerUser
+            }else{
+                isClozerUser = false
+            }
             if let ie =  dictionary["invitedEvents"] as? [String]{
                 invitedEvents = ie
             }
