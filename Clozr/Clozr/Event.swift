@@ -162,8 +162,8 @@ public class Event:NSObject {
         }
         
         if let d = eventDt , let t = eventTm {
-                       dictionary["time"] = "\(t) \(d)"
-            }
+            dictionary["time"] = "\(d) at \(t)"
+        }
         events.child("/\(uniqueId)").setValue(dictionary)
     }
     
