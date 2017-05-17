@@ -45,6 +45,13 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
             self.refreshEnded()
         }
         
+      
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         Styles.styleNav(controller: self)
         if comingFromCreateEvent {
             comingFromCreate = true
@@ -59,13 +66,6 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
             
             //            reloadEvents(show:false)
         }
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-   
         
     }
     
@@ -213,7 +213,7 @@ extension EventsListViewController: UITableViewDelegate , UITableViewDataSource 
                 if((arrUnwrapped.count)>0){
                     eventCell.event = arrUnwrapped[row]
                 }
-                //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                eventCell.enableJoinButton()
                 eventCell.reloadFriends()
                 //            }
             }

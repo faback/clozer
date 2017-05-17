@@ -78,6 +78,20 @@ class EventTableCell: UITableViewCell {
         event.invitedUserIds.append([User.currentLoginUserId()! : true])
         
         Event.updateChildValues(eventId: event.id, vals: ["invitedUserIds" : event.invitedUserIds ])
+        var userAcceptingIndex = 0
+        var userAccepting:User?
+        var counter = 0
+        for ua in users {
+            if(ua.0.userId == User.currentLoginUserId()) {
+                userAcceptingIndex = counter
+                userAccepting = ua.0
+            }
+            counter = counter + 1
+        }
+        users.remove(at: userAcceptingIndex)
+        users.append((userAccepting!,1))
+        
+        self.friendsCollectionTable.reloadData()
         disableJoinButton()
         
     }
@@ -85,12 +99,26 @@ class EventTableCell: UITableViewCell {
     func disableJoinButton() {
         var buttonLabel = "Joined"
         if(event.createdBy == User.currentLoginUserId()) {
-            buttonLabel = "You are Hosting this event"
+            buttonLabel = "Hosting"
         }
         joinDeclineButton.setTitle(buttonLabel, for: .normal)
         joinDeclineButton.setTitleColor(UIColor.greenSea(), for: .disabled)
         joinDeclineButton.isEnabled = false
         joinDeclineButton.disabledColor = UIColor.white
+        //        reloadFriends()
+        
+    }
+    
+    func enableJoinButton() {
+        var buttonLabel = "Join"
+        joinDeclineButton.isEnabled = true
+        joinDeclineButton.setTitle(buttonLabel, for: .normal)
+
+        joinDeclineButton.buttonColor = UIColor.belizeHole()
+        joinDeclineButton.shadowColor = UIColor.white
+        joinDeclineButton.shadowHeight = 1.0
+        joinDeclineButton.cornerRadius = 2.0
+        joinDeclineButton.setTitleColor(UIColor.white, for: .normal)
         //        reloadFriends()
         
     }
@@ -128,14 +156,20 @@ class EventTableCell: UITableViewCell {
             })
         }
         
+   
+        friendsCollectionTable.delegate = self
+        statusCountsLabel.textColor = UIColor.gray
+    }
+    
+    func enableOrDisableButton(){
         if let cby = event.createdBy {
             let lusr = User.currentLoginUserId()
             if( cby == lusr) {
                 disableJoinButton()
+            }else{
+                enableJoinButton()
             }
         }
-        friendsCollectionTable.delegate = self
-        statusCountsLabel.textColor = UIColor.gray
     }
     
     func inviteUsers() {
@@ -144,7 +178,7 @@ class EventTableCell: UITableViewCell {
         var totalCount:Int = 0
         var acceptedCount:Int = 0
         
-        if let evt = event , let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
+        if let _ = event , let invitedUsers = event.invitedUserIds as? [[String:Bool]] {
             self.count = 0
             for dict in invitedUsers {
                 let allKeys = dict.keys
@@ -199,7 +233,7 @@ class EventTableCell: UITableViewCell {
         eventImage.image = #imageLiteral(resourceName: "noimage.png")
         eventTitle.text = ""
         eventLocation.text = ""
-        
+        enableJoinButton()
     }
     
     

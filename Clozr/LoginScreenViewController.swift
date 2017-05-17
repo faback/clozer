@@ -118,8 +118,6 @@ class LoginScreenViewController: UIViewController {
                                 User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
                                     if let uff = userFromFirebase {
                                         print("User already exists")
-                                    }else {
-                                        User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
                                     }
                                     FBClient.currentFacebookUser = self.currentFacebookUser
                                     FBClient.getUsersFriends()

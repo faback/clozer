@@ -70,6 +70,7 @@ public class Event:NSObject {
         dictionary.setValue(self.distance, forKey: "distance")
         dictionary.setValue(self.phone, forKey: "phone")
         dictionary.setValue(self.phone, forKey: "epoch")
+        dictionary.setValue(self.createdBy, forKey: "createdBy")
         dictionary.setValue(self.selectedTheater, forKey: "selectedTheater")
         
         dictionary.setValue(self.invitedUserIds , forKey: "invitedUserIds")
@@ -152,6 +153,7 @@ public class Event:NSObject {
     class func createOrUpdateEventInFirebase(event:Event?, eventDt: String? = nil , eventTm: String? = nil) {
         let uniqueId = (event?.id)!
         var dictionary = (event?.dictionaryRepresentation() as! [String:Any])
+        
         if let date = eventDt{
             dictionary["eventDate"] = date
         }

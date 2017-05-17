@@ -187,7 +187,9 @@ class User:NSObject {
                 
             }
         }
-        self.userRawContent["userId"] = self.userId
+        if let uid = self.userId {
+            self.userRawContent["userId"] = uid
+        }
     }
     
     
