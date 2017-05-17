@@ -86,11 +86,17 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
                 let firstName: String = fullNameArr[0]
                 self.navigationItem.title = "\(firstName)'s Events"
             }
+            
+            if fetchingUser.userId == User.currentLoginUserId()! {
+                self.navigationItem.title = "My Events"
+            }
+            
         }else {
 
                 User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
                     currentLoggedInUser = loggedInUser
                     self.currentUser = loggedInUser
+                    
                     self.reloadData(user: self.currentUser,show: show)
                     
                 }
@@ -99,6 +105,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }
         //  comingFromCreate = false
         // comingFromCreateEvent = false
+        
+        
         
     }
     
