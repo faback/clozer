@@ -118,6 +118,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
 
         if showTime != nil {
             self.phoneImageView.isHidden = true
+            self.businessPhoneNumberLabel.isHidden = true
             let formatter = DateFormatter()
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = self.dateFormat
