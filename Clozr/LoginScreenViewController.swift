@@ -107,38 +107,26 @@ class LoginScreenViewController: UIViewController {
                 else {
                     if let data:[String:AnyObject] = result as? [String : AnyObject] {
                         let user = User(dictionary: data )
-                       user?.setUserId()
+                        user?.setUserId()
                         
                         if let fbuser = user {
                             self.currentFacebookUser = fbuser
                             let user = FIRAuth.auth()?.currentUser
                             self.currentFirUser = user
                             
-                            if let ucu = User.currentLoginUserId() {
-                                User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
-                                    if let uff = userFromFirebase {
-                                        print("User already exists")
-                                    }
-                                    FBClient.currentFacebookUser = self.currentFacebookUser
-                                    FBClient.getUsersFriends()
-                                    self.performSegue(withIdentifier: "postLogin", sender: self)
-
-                                })
-                            }else {
-                                User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
-                                FBClient.currentFacebookUser = self.currentFacebookUser
-                                FBClient.getUsersFriends()
-                                self.performSegue(withIdentifier: "postLogin", sender: self)
-
-                            }
-                            
-                            let defaults = UserDefaults.standard
-                            defaults.set(fbuser.userId, forKey: User.currentUserDataKeyId)
-
-                           
-                            
-                           
-
+                            User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
+                                if let userId = userFromFirebase?.userId {
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(userId, forKey: User.currentUserDataKeyId)
+                                    self.performNavAndAddFriends()
+                                }else{
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(fbuser.userId!, forKey: User.currentUserDataKeyId)
+                                    User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                                    self.performNavAndAddFriends()
+                                }
+                                
+                            })
                         }
                         else {
                             self.showAbortMessage(title: Strings.errorAbortTitle,message: Strings.errorUserDataMissingMessage)
@@ -162,10 +150,16 @@ class LoginScreenViewController: UIViewController {
         }
     }
     
+    func performNavAndAddFriends() {
+        FBClient.currentFacebookUser = self.currentFacebookUser
+        FBClient.getUsersFriends()
+        self.performSegue(withIdentifier: "postLogin", sender: self)
 
+    }
+    
 }
 
-   
+
 
 
 extension LoginScreenViewController {
