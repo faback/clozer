@@ -251,13 +251,15 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             }
             self.event.createdBy = User.currentLoginUserId()
             var oneSignalIds:[String]  = [String]()
-            if let os  = currentLoggedInUser?.oneSignalId {
-                oneSignalIds.append(os)
-            }
+//            if let os  = currentLoggedInUser?.oneSignalId {
+//                oneSignalIds.append(os)
+//            }
             for friend in self.invitedFriends{
                 print(friend.name!)
                 if let osid = friend.oneSignalId {
-                    oneSignalIds.append(osid)
+                    if(currentLoggedInUser?.userId != friend.userId) {
+                        oneSignalIds.append(osid)
+                    }
                 }
                 friend.setUserId()
                 var accepted:Bool = false
