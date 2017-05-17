@@ -27,7 +27,7 @@ class LoginScreenViewController: UIViewController {
 
     
     override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 8, delay: 0,  options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+        UIView.animate(withDuration: 4, delay: 0,  options: UIViewAnimationOptions.beginFromCurrentState, animations: {
             self.loginBackGroundImage.transform=CGAffineTransform(scaleX: 2, y: 2);
         }) { (completed) in
         //            self.loginBackGroundImage.transform = CGAffineTransform.identity

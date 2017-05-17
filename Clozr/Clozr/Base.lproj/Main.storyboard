@@ -475,7 +475,7 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18_Fast-Furious-7" translatesAutoresizingMaskIntoConstraints="NO" id="NC9-46-tey">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18_Fast-Furious-7" translatesAutoresizingMaskIntoConstraints="NO" id="NC9-46-tey">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="151" id="0bV-Vt-j2f"/>
