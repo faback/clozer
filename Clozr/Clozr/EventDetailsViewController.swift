@@ -49,21 +49,25 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsDescriptionCell", for: indexPath) as! EventDetailsDescriptionCell
             cell.event = self.event
             return cell
-        } else if indexPath.row == 1 {
+        } else if indexPath.section == 1 {
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsFriendsListCell", for: indexPath) as! EventDetailsFriendsListCell
             cell.event = self.event
             return cell
-        } else if indexPath.row == 2{
+        } else if indexPath.section == 2{
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsMapCell", for: indexPath) as! EventDetailsMapCell
             cell.event = self.event
             return cell

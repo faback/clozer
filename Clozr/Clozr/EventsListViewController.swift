@@ -8,7 +8,7 @@
 
 import UIKit
 import MBProgressHUD
-import ICSPullToRefresh
+import DGElasticPullToRefresh
 
 class EventsListViewController: UIViewController,UserChangesProtocol {
     
@@ -41,12 +41,26 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         eventsTable.dataSource = self
         eventsTable.rowHeight = UITableViewAutomaticDimension
         eventsTable.estimatedRowHeight = 100
-        eventsTable.addPullToRefreshHandler {
-            self.refreshEnded()
-        }
         
-      
+        // HACK! Remove the black line at the end of Nav bar.
+        let view = UIView()
+        view.backgroundColor = self.navigationController!.navigationBar.barTintColor
+        var rect = view.frame
+        rect.origin.x = 0
+        rect.origin.y = self.navigationController!.navigationBar.frame.size.height
+        rect.size.width = self.navigationController!.navigationBar.frame.size.width
+        rect.size.height = 1
+        view.frame = rect
+        self.navigationController!.navigationBar.addSubview(view)
         
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = .white
+        eventsTable.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.refreshEnded()
+            self?.eventsTable.dg_stopLoading()
+            }, loadingView: loadingView)
+        eventsTable.dg_setPullToRefreshFillColor(self.navigationController!.navigationBar.barTintColor!)
+        eventsTable.dg_setPullToRefreshBackgroundColor(eventsTable.backgroundColor!)
         
     }
     
@@ -128,7 +142,6 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     func reloadTable(show:Bool) {
         
         self.eventsTable.reloadData()
-        self.eventsTable.pullToRefreshView?.stopAnimating()
         if(show) {
             MBProgressHUD.hide(for: self.view, animated: true)
         }

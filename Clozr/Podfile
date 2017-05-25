@@ -9,7 +9,6 @@ target 'Clozr' do
   pod 'AFNetworking', '~> 2.5'
   pod 'BDBOAuth1Manager'
   pod 'MBProgressHUD', '~> 0.9.1'
-  pod 'ICSPullToRefresh', '~> 0.6'
 
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
@@ -21,6 +20,7 @@ target 'Clozr' do
   pod 'BetterSegmentedControl'
   pod 'FlatUIKit'
   pod 'OneSignal', '~> 2.0'
+  pod 'DGElasticPullToRefresh’
 
   target 'ClozrTests' do
     inherit! :search_paths
