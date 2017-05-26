@@ -11,6 +11,7 @@ import UIKit
 class FriendListCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var friendImage: UIImageView!
     @IBOutlet weak var ResponseImage: UIImageView!
+    @IBOutlet weak var friendName: UILabel!
     
     var accepted: Bool = false
     var user: String! {
@@ -24,6 +25,7 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
                 ResponseImage.image = UIImage(named:"icons8-cancel")
                 friendImage.layer.borderColor =  UIColor.red.cgColor
             }
+            
         }
     }
     
@@ -31,6 +33,10 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
         self.friendImage.image = nil
         User.getUserFromFirebase(usrId: user, completion: { (usrF, error) in
             if let usrF = usrF {
+                var fullNameArr = usrF.name.components(separatedBy: " ")
+                let firstName: String = fullNameArr[0]
+                self.friendName.text = firstName
+                
                 let imageNetworkUrl:URLRequest = URLRequest(url:URL(string:usrF.profilePictureURLString)!)
                 self.friendImage.setImageWith(imageNetworkUrl, placeholderImage: nil, success: {( req, res, result) -> Void in
                     if res != nil {
@@ -56,5 +62,9 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        friendName.text = ""
+        friendImage.layer.cornerRadius = 37.5
+        friendImage.layer.masksToBounds = true
+        friendImage.layoutIfNeeded()
     }
 }
