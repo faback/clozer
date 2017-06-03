@@ -78,6 +78,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - MBProgressHUD (0.9.2)
   - OneSignal (2.5.3)
+  - RAMAnimatedTabBarController (2.0.13)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.1)
   - OneSignal (< 3.0, >= 2.5.2)
   - OneSignal (~> 2.0)
+  - RAMAnimatedTabBarController (~> 2.0.13)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -114,8 +116,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  OneSignal: 08a57b17168033a3e8c635d676241eb07614a5e6
+  OneSignal: '08a57b17168033a3e8c635d676241eb07614a5e6'
+  RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
 
-PODFILE CHECKSUM: 067fa08adcf6a6c12ecaad3dfdd14008bb850e20
+PODFILE CHECKSUM: 135b45f84401a6dc048b34da19ce9e7e807011b3
 
 COCOAPODS: 1.2.1

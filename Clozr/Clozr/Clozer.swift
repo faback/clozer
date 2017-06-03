@@ -8,7 +8,7 @@
 
 import Foundation
 import OneSignal
-
+import UIKit
 class Clozer {
    static var deviceToken:String?
 
@@ -86,3 +86,15 @@ class Clozer {
     }
     
 }
+//
+//
+//extension UITabBarController {
+//    override open func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        tabBar.items?.forEach({ (item) -> () in
+//            item.selectedImage?.renderingMode = .alwaysOriginal
+//            item.image = item.selectedImage
+//        })
+//    }
+//}

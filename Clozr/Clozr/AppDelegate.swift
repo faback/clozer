@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isBackground:Bool?
     var deferringUpdates:Bool?
     let gcmMessageIDKey = "gcm.message_id"
+    var tabBarController:UITabBarController?
 
     var locationManager:CLLocationManager?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
             
-            print("Received Notification: \(notification!.payload.notificationID)")
+            print("Received Notification: \(notification!.payload.notificationID)") 
         }
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
@@ -78,7 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
 
                 })
-                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "contentController")
+                self.tabBarController = storyboard.instantiateViewController(withIdentifier: "animatedTabBarController") as! UITabBarController
+                self.window?.rootViewController = self.tabBarController
+                
 
             }else{
                 window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "loginController")
@@ -113,10 +116,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        
+
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.gray], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white],for: .selected)
+
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

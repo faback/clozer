@@ -21,6 +21,8 @@ target 'Clozr' do
   pod 'FlatUIKit'
   pod 'OneSignal', '~> 2.0'
   pod 'DGElasticPullToRefresh’
+  pod 'RAMAnimatedTabBarController', '~> 2.0.13'
+
 
   target 'ClozrTests' do
     inherit! :search_paths

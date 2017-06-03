@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.tintColor = UIColor.white
         MBProgressHUD.showAdded(to: self.view, animated: true)
 
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
