@@ -31,20 +31,19 @@ class FriendsSmallCell: UICollectionViewCell {
                 if res != nil {
                     self.friendsImage.alpha = 0.0
                     self.friendsImage.image = result
-                    UIView.animate(withDuration: 3.0, animations: { () -> Void in
-                        self.friendsImage.alpha = 1.2
+                    UIView.animate(withDuration: 2.0, animations: { () -> Void in
+                        self.friendsImage.alpha = 1
                     })
                 }else{
                     self.friendsImage.image = result
                 }
-                self.friendsImage.layer.borderWidth = 2
+                self.friendsImage.layer.borderWidth = 1
                 if(self.acc == 0){
                     self.friendsImage.layer.borderColor =  UIColor.red.cgColor
-//                    self.friendsImage.alpha = 0.5
                 }else{
                     self.friendsImage.layer.borderColor =  UIColor.greenSea().cgColor
                 }
-                self.friendsImage.layer.cornerRadius = 18
+                self.friendsImage.layer.cornerRadius = 17.6
                 self.friendsImage.layer.masksToBounds = true
                 
                 self.friendsImage.layoutIfNeeded()

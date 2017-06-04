@@ -38,7 +38,11 @@ class SubCategoryCell: UICollectionViewCell {
     
     func tintImage() {
         let origImage = UIImage(named: category.imageUrl!)
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        var tintedImage = origImage?.withRenderingMode(.alwaysOriginal)
+
+        if(category.code != "local") {
+            tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        }
         categoryIcon.image = tintedImage
         categoryIcon.tintColor = UIColor.blue
 

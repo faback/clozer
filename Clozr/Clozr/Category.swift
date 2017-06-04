@@ -61,7 +61,7 @@ class Category {
         sportsCategory.name = "Catchup"
         sportsCategory.code = "catchup"
         sportsCategory.imageUrl = "catchup"
-        let subCatNames = ["Shopping","Cafe","Restaurants","Gym"]
+        let subCatNames = ["Local","Shopping","Cafe","Restaurants","Gym"]
         for subCat in subCatNames {
             let sub = Category()
             var replaced = subCat.replacingOccurrences(of: " ", with: "")

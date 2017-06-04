@@ -1413,7 +1413,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6XY-2j-9f4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="490"/>
+                                <rect key="frame" x="0.0" y="1" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jtg-Lt-kJd">
                                     <size key="itemSize" width="100" height="100"/>
@@ -1497,7 +1497,7 @@
                             <constraint firstItem="6XY-2j-9f4" firstAttribute="leading" secondItem="U98-9A-yij" secondAttribute="leading" id="KNU-7k-8xm"/>
                             <constraint firstItem="cgd-BJ-chK" firstAttribute="top" secondItem="6XY-2j-9f4" secondAttribute="bottom" id="Mub-cI-rCH"/>
                             <constraint firstAttribute="trailing" secondItem="6XY-2j-9f4" secondAttribute="trailing" id="QZb-cu-Ec7"/>
-                            <constraint firstItem="6XY-2j-9f4" firstAttribute="top" secondItem="U98-9A-yij" secondAttribute="top" constant="64" id="mZa-SQ-lHd"/>
+                            <constraint firstItem="6XY-2j-9f4" firstAttribute="top" secondItem="U98-9A-yij" secondAttribute="top" constant="1" id="mZa-SQ-lHd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="TOC-hC-Shi"/>
@@ -1540,7 +1540,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OzI-vc-buP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="n9V-um-knV" customClass="RAMFumeAnimation" customModule="RAMAnimatedTabBarController">
+                <customObject id="n9V-um-knV" customClass="RAMFlipTopTransitionItemAnimations" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1885,7 +1885,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EbY-d4-66r"/>
-        <segue reference="rxb-B1-MqQ"/>
+        <segue reference="85b-vg-Y1f"/>
         <segue reference="u4M-XE-OaJ"/>
         <segue reference="dHx-1r-LCF"/>
     </inferredMetricsTieBreakers>

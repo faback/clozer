@@ -31,6 +31,8 @@
 		37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */; };
 		37D367221EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */; };
 		437980DF1EC917FF00A17FC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437980DE1EC917FF00A17FC1 /* GoogleService-Info.plist */; };
+		4384CC911EE45A13009D941E /* EBApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4384CC901EE45A13009D941E /* EBApi.swift */; };
+		4384CC951EE461A3009D941E /* local.png in Resources */ = {isa = PBXBuildFile; fileRef = 4384CC941EE461A3009D941E /* local.png */; };
 		43A42AB41EC00D1F00A2BD80 /* FBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AB31EC00D1F00A2BD80 /* FBClient.swift */; };
 		43A42ACF1EC00D7400A2BD80 /* badminton.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB51EC00D7400A2BD80 /* badminton.png */; };
 		43A42AD01EC00D7400A2BD80 /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42AB61EC00D7400A2BD80 /* baseball.png */; };
@@ -182,6 +184,8 @@
 		37D367211EBF9F6B004B7679 /* MovieTimingsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTimingsCollectionCell.swift; sourceTree = "<group>"; };
 		437980DE1EC917FF00A17FC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437980E01EC9194300A17FC1 /* Clozr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clozr.entitlements; sourceTree = "<group>"; };
+		4384CC901EE45A13009D941E /* EBApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBApi.swift; sourceTree = "<group>"; };
+		4384CC941EE461A3009D941E /* local.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = local.png; sourceTree = "<group>"; };
 		43A42AB31EC00D1F00A2BD80 /* FBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClient.swift; sourceTree = "<group>"; };
 		43A42AB51EC00D7400A2BD80 /* badminton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badminton.png; sourceTree = "<group>"; };
 		43A42AB61EC00D7400A2BD80 /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				43A42AB31EC00D1F00A2BD80 /* FBClient.swift */,
 				375964D51EBD13F800D592AA /* YelpClient.swift */,
 				43A42AF91EC00F7600A2BD80 /* MovieDB.swift */,
+				4384CC901EE45A13009D941E /* EBApi.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 		43A42B0D1EC0174700A2BD80 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				4384CC941EE461A3009D941E /* local.png */,
 				43A42B1D1EC03ECB00A2BD80 /* soccer.png */,
 				43A42B191EC01FF600A2BD80 /* tennis.png */,
 				43A42B171EC01FED00A2BD80 /* pingpong.png */,
@@ -804,6 +810,7 @@
 				43A42B0A1EC016B600A2BD80 /* shopping.png in Resources */,
 				8F59771B1EB65D3F0076992B /* FriendListCell.xib in Resources */,
 				375964CB1EBA70AE00D592AA /* CreateEventView.xib in Resources */,
+				4384CC951EE461A3009D941E /* local.png in Resources */,
 				43A42AD31EC00D7400A2BD80 /* blue.png in Resources */,
 				43B85F2C1EAE5E6B003721CE /* Assets.xcassets in Resources */,
 				43B85F2A1EAE5E6B003721CE /* Main.storyboard in Resources */,
@@ -1042,6 +1049,7 @@
 				43A42AF21EC00D8E00A2BD80 /* SettingsViewController.swift in Sources */,
 				375964CF1EBBEA5300D592AA /* DateCollectionViewCell.swift in Sources */,
 				43BA02AF1EC7CAA7003BB5D6 /* Theater.swift in Sources */,
+				4384CC911EE45A13009D941E /* EBApi.swift in Sources */,
 				43BA02AD1EC777BB003BB5D6 /* FriendsSectionView.swift in Sources */,
 				43A42AFE1EC00FA300A2BD80 /* Style.swift in Sources */,
 				43B02AD81EB6E99E001F6B6F /* EventChatRoom.swift in Sources */,

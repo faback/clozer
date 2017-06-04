@@ -199,42 +199,26 @@ public class Event:NSObject {
         }
         
         if(mainCategory == "play" || mainCategory == "catchup") {
-            YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
-                if error != nil  {
-                     completionHandler([])
-                }
-                else{
-                    completionHandler(results!)
-                }
-                
+             if(subCategory != "local") {
+                YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
+                    if error != nil  {
+                         completionHandler([])
+                    }
+                    else{
+                        completionHandler(results!)
+                    }
+                    
             })
-        }
-    }
-    
-    
-    
-    class func getEventsBySection(mainCategory:String , subCategory:String ,section:String ,completionHandler:@escaping ([Event])->()){
-        
-        if(mainCategory == "watch"  && subCategory == "movies") {
-//            getInternationalMovieTimes()
-            MovieDB.sharedInstance.withMovies(endPoint: "now_playing") { (movieEvents) in
-                completionHandler(movieEvents)
+             } else {
+                EBApi.sharedInstance.withEvents(completionHandler: { (events) in
+                    completionHandler(events)
+                })
             }
         }
-        
-        if(mainCategory == "play" || mainCategory == "catchup") {
-            YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
-                if error != nil  {
-                    completionHandler([])
-                }
-                else{
-                    completionHandler(results!)
-                }
-                
-            })
-        }
     }
     
+    
+   
     
     class func getShowTimes() {
         var location = "37.785771,-122.406165"
