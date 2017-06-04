@@ -28,8 +28,8 @@ class FriendsSectionView: UICollectionReusableView {
     func setupSubViews() {
         self.titleLabel = UILabel()
         self.titleLabel!.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel!.font = UIFont.systemFont(ofSize: 12.0)
-        self.titleLabel!.textColor = UIColor.greenSea()
+        self.titleLabel!.font = UIFont(name: "AvenirNext-Bold", size: 15)
+        self.titleLabel!.textColor = UIColor(fromHexCode: "0x3b5998")
         self.addSubview(titleLabel!)
     }
     
