@@ -116,6 +116,7 @@
 		8F5977201EBE65A70076992B /* EventDetailsMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */; };
 		8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */; };
 		8F5977241EBE65F70076992B /* EventDetailsFriendsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */; };
+		8FB377851EE4A09F0094DAD3 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB377841EE4A09F0094DAD3 /* Channel.swift */; };
 		C9941803001734325B8F20EC /* Pods_ClozrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28DA87C8AB1D48567C874 /* Pods_ClozrTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +282,7 @@
 		8F59771F1EBE65A70076992B /* EventDetailsMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMapCell.swift; sourceTree = "<group>"; };
 		8F5977211EBE65BC0076992B /* EventDetailsMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsMessagesCell.swift; sourceTree = "<group>"; };
 		8F5977231EBE65F70076992B /* EventDetailsFriendsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsFriendsListCell.swift; sourceTree = "<group>"; };
+		8FB377841EE4A09F0094DAD3 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		99916B8E096E069C1CCA7DC8 /* Pods-ClozrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClozrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClozrTests/Pods-ClozrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD8B874010EADF68645F307E /* Pods_Clozr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clozr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0671BFB250E3E04E7E9A03 /* Pods-Clozr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clozr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clozr/Pods-Clozr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				43A42ABD1EC00D7400A2BD80 /* Category.swift */,
 				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
+				8FB377841EE4A09F0094DAD3 /* Channel.swift */,
 				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
 				43BA02AE1EC7CAA7003BB5D6 /* Theater.swift */,
 			);
@@ -1007,6 +1010,7 @@
 				43B02ADC1EB6EA7E001F6B6F /* Integration.swift in Sources */,
 				375964D61EBD13F800D592AA /* YelpClient.swift in Sources */,
 				375964BD1EBA276100D592AA /* ListBusinessView.swift in Sources */,
+				8FB377851EE4A09F0094DAD3 /* Channel.swift in Sources */,
 				8F59770A1EB2FFD10076992B /* EventDetailsViewController.swift in Sources */,
 				43A42AE61EC00D7400A2BD80 /* HomeViewController.swift in Sources */,
 				43A42AD71EC00D7400A2BD80 /* Category.swift in Sources */,

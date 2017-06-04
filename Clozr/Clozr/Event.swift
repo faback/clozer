@@ -117,7 +117,7 @@ public class Event:NSObject {
             invitedUserIds = iu
         }
         if let eventID = (Event.getSpaceStripped(val: name!)) {
-        id = eventID + source
+            id = eventID + source
         }
     }
 
@@ -176,8 +176,8 @@ public class Event:NSObject {
         if let uid = uniqueId {
             let eventRef = events.child("/\(uid)")
         eventRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let usr = Event(snapshot: snapshot)
-            completion(usr,nil)
+            let event = Event(snapshot: snapshot)
+            completion(event,nil)
         })
         }
     }

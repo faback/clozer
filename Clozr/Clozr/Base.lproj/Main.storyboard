@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2uJ-RX-xf0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2uJ-RX-xf0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -269,19 +269,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNs-S2-4nb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="message_demo_image" translatesAutoresizingMaskIntoConstraints="NO" id="iU1-FT-rHL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
-                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-gH-TLo">
+                                                            <rect key="frame" x="153.5" y="28" width="68" height="48"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.22352941179999999" green="0.39607843139999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="325" id="OHf-Qk-VOL"/>
-                                                        <constraint firstAttribute="bottom" secondItem="iU1-FT-rHL" secondAttribute="bottom" id="OUY-XW-8KJ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="iU1-FT-rHL" secondAttribute="trailing" id="ex7-Ys-CxX"/>
-                                                        <constraint firstItem="iU1-FT-rHL" firstAttribute="top" secondItem="yNs-S2-4nb" secondAttribute="top" id="fH0-mS-EQc"/>
-                                                        <constraint firstItem="iU1-FT-rHL" firstAttribute="leading" secondItem="yNs-S2-4nb" secondAttribute="leading" id="wQl-Xc-u0d"/>
+                                                        <constraint firstAttribute="height" constant="100" id="OHf-Qk-VOL"/>
+                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerY" secondItem="yNs-S2-4nb" secondAttribute="centerY" id="uM2-Yv-yhN"/>
+                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerX" secondItem="yNs-S2-4nb" secondAttribute="centerX" id="xST-aG-9IW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -689,7 +690,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1528,7 +1529,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1757,7 +1758,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1800,7 +1801,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1842,7 +1843,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1880,13 +1881,12 @@
         <image name="livetab" width="25" height="25"/>
         <image name="location_grey" width="32" height="32"/>
         <image name="mapstab" width="25" height="25"/>
-        <image name="message_demo_image" width="712" height="636"/>
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EbY-d4-66r"/>
-        <segue reference="85b-vg-Y1f"/>
-        <segue reference="u4M-XE-OaJ"/>
         <segue reference="dHx-1r-LCF"/>
+        <segue reference="Vij-K3-8Gs"/>
+        <segue reference="85b-vg-Y1f"/>
+        <segue reference="EbY-d4-66r"/>
     </inferredMetricsTieBreakers>
 </document>

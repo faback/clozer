@@ -18,8 +18,7 @@ class CloudStore {
     private var liveEvents = database.reference().child("liveevents")
     
     //chat related
-    private var message = database.reference().child("message")
-    private var chatRoom = database.reference().child("chatroom")
+    private var channel = database.reference().child("channels")
     
     //settings
     private var settings = database.reference().child("settings")
