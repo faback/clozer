@@ -146,8 +146,17 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                             
                                             if let displayAddress = location!["display_address"]  {
                                                 let arr = displayAddress as! NSArray
+                                                var count = 0
+                                                var comma = ","
                                                 for lineOf in arr {
-                                                    fullAddress = fullAddress + (lineOf as! String)
+                                                    if(count == 0) {
+                                                        comma = ""
+                                                    }else{
+                                                        comma = ","
+                                                    }
+                                                    fullAddress = fullAddress + comma + (lineOf as! String)
+                                                    count = count + 1
+                                                    address = fullAddress
                                                 }
                                             }
                                         }
