@@ -49,6 +49,7 @@ class HomeEventsCell: UITableViewCell {
         location.text = event.address
         if let imgUrl = event.image {
             var imageUrl = "\(MovieDB.sharedInstance.posterUrl())/\(imgUrl)"
+//            var imageUrl = imgUrl
             if(event.category != "movies") {
                 imageUrl = imgUrl
             }

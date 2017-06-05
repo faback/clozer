@@ -17,6 +17,7 @@ public class Event:NSObject {
 
     public var id : String!
     public var name : String?
+    public var movieId: String?
     public var type : String?
     public var category : String?
     public var summary : String?
@@ -72,7 +73,7 @@ public class Event:NSObject {
         dictionary.setValue(self.phone, forKey: "epoch")
         dictionary.setValue(self.createdBy, forKey: "createdBy")
         dictionary.setValue(self.selectedTheater, forKey: "selectedTheater")
-        
+        dictionary.setValue(self.movieId, forKey: "movieId")
         dictionary.setValue(self.invitedUserIds , forKey: "invitedUserIds")
         return dictionary
     }
@@ -112,6 +113,7 @@ public class Event:NSObject {
         epoch = dictionary?["epoch"] as? CLong
         createdBy = dictionary?["createdBy"] as? String
         selectedTheater = dictionary?["selectedTheater"] as? String
+        movieId = dictionary?["movieId"] as? String
         theaters = [Theater]()
         if let iu = dictionary?["invitedUserIds"] as? [[String:Bool]] {
             invitedUserIds = iu

@@ -18,7 +18,9 @@ import AFNetworking
 
 class EBApi {
     
-    let apiBaseUrl = "https://www.eventbriteapi.com/v3/events/search?token=NL7GKTLCWEFDKJ2BOHIN"
+    let token = "NL7GKTLCWEFDKJ2BOHIN"
+    let eventBaseUrl = "https://www.eventbriteapi.com/v3/events/search?token=NL7GKTLCWEFDKJ2BOHIN"
+    let venueBaseUrl = "https://www.eventbriteapi.com/v3/venues/"
 //    https://www.eventbriteapi.com/v3/events/search?token=NL7GKTLCWEFDKJ2BOHIN&location.latitude=37.3541&location.longitude=-121.9552
     let defaultLatitude = "37.3541"
     let defaultLongitude = "-121.9552"
@@ -36,7 +38,7 @@ class EBApi {
              latitude = "\(cuser.latitude!)"
             longitude = "\(cuser.longitude!)"
         }
-        let eventsUrl = "\(apiBaseUrl)&location.latitude=\(latitude)&location.longitude=\(longitude)"
+        let eventsUrl = "\(eventBaseUrl)&location.latitude=\(latitude)&location.longitude=\(longitude)"
         var request = URLRequest(url: URL(string:eventsUrl)!)
         
         //Forces requests not to be cached - to simulate network error.
@@ -71,12 +73,31 @@ class EBApi {
                                 eventDict["image"] = original["url"] as! String
                             }
                             
-                            let newEvent = Event(dictionary: eventDict)!
+                            let venueId = m["venue_id"] as? String
+                            if let vid = venueId  {
+                                
+                                self.withVenue(vid: vid, completionHandler: { (venueResult) in
+                                    let addressDict = venueResult["address"]  as? [String:Any]
+                                    var addr = ""
+                                    if let ad  = addressDict {
+                                        addr = ad["localized_address_display"] as! String
+                                    }
+                                    eventDict["address"] = addr
+                                    let lat = venueResult["latitude"] as! String
+                                    let lon = venueResult["longitude"] as! String
+                                    eventDict["latitude"] = (lat as NSString).doubleValue
+                                    eventDict["longitude"] = (lon as NSString).doubleValue
+                                    let newEvent = Event(dictionary: eventDict)!
+                                    eventArray.append(newEvent)
+                                    completionHandler(eventArray)
+                                    
+                                })
+                                
+                            }
                             
-                            eventArray.append(newEvent)
                         }
                         
-                        completionHandler(eventArray)
+                        
                         
                         
                         
@@ -90,6 +111,36 @@ class EBApi {
     }
     
     
+    
+    func withVenue(vid:String , completionHandler:@escaping (NSDictionary)->()) {
+        let venueUrl = "\(venueBaseUrl)\(vid)?token=\(token)"
+        var request = URLRequest(url: URL(string:venueUrl)!)
+        
+        //Forces requests not to be cached - to simulate network error.
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+        
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate:nil,
+            delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(
+            with: request as URLRequest,
+            completionHandler: { (data, response, error) in
+                
+                if let data = data {
+                    if let responseDictionary = try! JSONSerialization.jsonObject(
+                        with: data, options:[]) as? NSDictionary {
+                        completionHandler(responseDictionary)
+                    }
+                }else {
+                    completionHandler([:])
+                }
+        });
+        task.resume()
+    }
+
     
 }
 
