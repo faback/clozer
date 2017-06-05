@@ -321,6 +321,9 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
         
         ClozrUser.getUserFromFirebase(usrId: ClozrUser.currentLoginUserId()!) { (usr, error) in
             currentLoggedInUser = usr
+            let uuid = UUID().uuidString
+            self.event.id = uuid
+
             if let uid = usr?.userId {
                 let me = usr
                 me?.addEvent(evt: self.event.id!)
@@ -355,6 +358,13 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
             self.event.inviteUser(userId: (currentLoggedInUser?.userId)! , accepted: true)
             
             Event.createOrUpdateEventInFirebase(event: self.event, eventDt: self.eventDate, eventTm: self.eventTime)
+            
+            // Create chat channel for this event.
+            let dictionary = NSMutableDictionary()
+            dictionary.setValue(self.event.id, forKey: "id")
+            let channel:Channel = Channel(dictionary: ["id" : self.event.id])!
+            Channel.createOrUpdateChannelInFirebase(channel: channel)
+            
             var message = "Event notification"
             if let uname = currentLoggedInUser?.name , let ename = self.event.name ,let cat = self.event.category {
                 message = "\(uname) has invited you to \(ename). Check it out!"
