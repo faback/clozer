@@ -38,14 +38,14 @@ public class Event:NSObject {
     public var selectedTheater:String?
     public var theaters:[Theater]?
     
-    var snapshot: FIRDataSnapshot! = nil
+    var snapshot: DataSnapshot! = nil
     var key: String { return snapshot.key }
-    var ref: FIRDatabaseReference { return snapshot.ref }
+    var ref: DatabaseReference { return snapshot.ref }
     var userId:String?
     
     static var liveEvent:Event?
     
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         self.snapshot = snapshot
         super.init()
         setAllValues(dictionary: snapshot.value as? [String:Any])
@@ -222,7 +222,7 @@ public class Event:NSObject {
     
     class func getShowTimes() {
         var location = "37.785771,-122.406165"
-        if let usr = User.current  {
+        if let usr = ClozrUser.current  {
             if let lat = usr.latitude , let lon = usr.longitude {
                 location = "\(lat),\(lon)"
             }
@@ -251,7 +251,7 @@ public class Event:NSObject {
     
     class func getMovies(completionHandler:@escaping ([Event])->()) {
         var location = "37.785771,-122.406165"
-        if let usr = User.current  {
+        if let usr = ClozrUser.current  {
             if let lat = usr.latitude , let lon = usr.longitude {
                 location = "\(lat),\(lon)"
             }

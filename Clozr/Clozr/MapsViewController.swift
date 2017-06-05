@@ -103,7 +103,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 for dict in invitedUsers {
                     let allKeys = dict.keys
                     for usr in allKeys {
-                        User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
+                        ClozrUser.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
                             if let usrF = usrF {
                                 if usrF.latitude != nil && usrF.longitude != nil && usrF.id != currentLoggedInUser?.id {
                                     let friendLocation = CLLocationCoordinate2D(latitude: usrF.latitude!, longitude: usrF.longitude!)

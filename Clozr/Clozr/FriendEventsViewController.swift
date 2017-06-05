@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
+import RSLoadingView
 
 class FriendEventsViewController: UIViewController {
 
     
-    var friends = [User]()
-    var clozrFriends = [User]()
-    var nonClozrFriends = [User]()
+    var friends = [ClozrUser]()
+    var clozrFriends = [ClozrUser]()
+    var nonClozrFriends = [ClozrUser]()
     var sections = ["Clozr Friends", "Invite Your Friends"]
-    
+    var loadingView:Bool = false
+
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +30,23 @@ class FriendEventsViewController: UIViewController {
             collectionViewFlowLayout.minimumInteritemSpacing = 3
         }
         
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+//        MBProgressHUD.showAdded(to: self.view, animated: true)
+        var rsLoadingView = RSLoadingView()
+        rsLoadingView.shouldTapToDismiss = true
+        rsLoadingView.variantKey = "inAndOut"
+        rsLoadingView.speedFactor = 3.0
+        rsLoadingView.lifeSpanFactor = 1.0
+        rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
+        rsLoadingView.mainColor = UIColor.midnightBlue()
+        rsLoadingView.showOnKeyWindow()
+        loadingView = true
 
         var once:Int = 0
-        User.getAllUserFromFirebase { (allFriends, error) in
+        ClozrUser.getAllUserFromFirebase { (allFriends, error) in
             if(once == 0) {
                 self.friends = allFriends!
-                self.clozrFriends = [User]()
-                self.nonClozrFriends = [User]()
+                self.clozrFriends = [ClozrUser]()
+                self.nonClozrFriends = [ClozrUser]()
                 for usr in allFriends! {
                     if(usr.isClozerUser) {
                         if(!self.valContains(existing: usr, inArry: self.clozrFriends)){
@@ -51,14 +62,19 @@ class FriendEventsViewController: UIViewController {
                 once = 1
 
                 self.collectionView.reloadData()
-                MBProgressHUD.hide(for: self.view, animated: true)
+//                MBProgressHUD.hide(for: self.view, animated: true)
+                if(self.loadingView) {
+                    RSLoadingView.hideFromKeyWindow()
+                    self.loadingView = false
+                }
+
 
             }
         }
         // Do any additional setup after loading the view.
     }
     
-    func valContains(existing:User ,inArry:[User])->Bool {
+    func valContains(existing:ClozrUser ,inArry:[ClozrUser])->Bool {
         existing.setUserId()
         for usr in inArry {
             usr.setUserId()

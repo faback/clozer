@@ -82,7 +82,7 @@
 		43A42B261EC2F2E400A2BD80 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42B251EC2F2E400A2BD80 /* DataManager.swift */; };
 		43A42B281EC2F3CB00A2BD80 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42B271EC2F3CB00A2BD80 /* LocationData.swift */; };
 		43B02ACC1EB6E7F7001F6B6F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACB1EB6E7F7001F6B6F /* Event.swift */; };
-		43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* User.swift */; };
+		43B02ACE1EB6E7FD001F6B6F /* ClozrUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACD1EB6E7FD001F6B6F /* ClozrUser.swift */; };
 		43B02AD01EB6E806001F6B6F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACF1EB6E806001F6B6F /* Settings.swift */; };
 		43B02AD41EB6E837001F6B6F /* LiveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD31EB6E837001F6B6F /* LiveEvent.swift */; };
 		43B02AD61EB6E891001F6B6F /* EventVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02AD51EB6E891001F6B6F /* EventVenue.swift */; };
@@ -235,7 +235,7 @@
 		43A42B251EC2F2E400A2BD80 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		43A42B271EC2F3CB00A2BD80 /* LocationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		43B02ACB1EB6E7F7001F6B6F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		43B02ACD1EB6E7FD001F6B6F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		43B02ACD1EB6E7FD001F6B6F /* ClozrUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClozrUser.swift; sourceTree = "<group>"; };
 		43B02ACF1EB6E806001F6B6F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		43B02AD31EB6E837001F6B6F /* LiveEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveEvent.swift; sourceTree = "<group>"; };
 		43B02AD51EB6E891001F6B6F /* EventVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventVenue.swift; sourceTree = "<group>"; };
@@ -503,7 +503,7 @@
 				43B02ACF1EB6E806001F6B6F /* Settings.swift */,
 				43B02ACB1EB6E7F7001F6B6F /* Event.swift */,
 				8FB377841EE4A09F0094DAD3 /* Channel.swift */,
-				43B02ACD1EB6E7FD001F6B6F /* User.swift */,
+				43B02ACD1EB6E7FD001F6B6F /* ClozrUser.swift */,
 				43BA02AE1EC7CAA7003BB5D6 /* Theater.swift */,
 			);
 			name = Model;
@@ -1058,7 +1058,7 @@
 				37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */,
 				375964B11EBA1BCF00D592AA /* Business.swift in Sources */,
 				43B85F251EAE5E6B003721CE /* AppDelegate.swift in Sources */,
-				43B02ACE1EB6E7FD001F6B6F /* User.swift in Sources */,
+				43B02ACE1EB6E7FD001F6B6F /* ClozrUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

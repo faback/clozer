@@ -34,7 +34,7 @@ class EventDetailsDescriptionCell: UITableViewCell {
 //            dateLabel.text = date
             hostedByLable.text = ""
             if event.createdBy != nil {
-                User.getUserFromFirebase(usrId: event.createdBy!, completion: { (usrF, error) in
+                ClozrUser.getUserFromFirebase(usrId: event.createdBy!, completion: { (usrF, error) in
                     if let usrF = usrF {
                         self.hostedByLable.text = "Hosted by: " + usrF.name!
                     }

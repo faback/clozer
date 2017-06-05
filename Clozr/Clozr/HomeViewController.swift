@@ -11,8 +11,10 @@ import Firebase
 //import HMSegmentedControl
 import BetterSegmentedControl
 import MapKit
-import MBProgressHUD
+//import MBProgressHUD
 import OneSignal
+import RSLoadingView
+
 
 class HomeViewController: UIViewController {
     var locationManager:CLLocationManager!
@@ -34,17 +36,26 @@ class HomeViewController: UIViewController {
     var sectionTitles = [Int: String]()
     var userReady:Bool = false
     var selectedIndexPath:IndexPath!
-    
+    var loadingView:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.tintColor = UIColor.white
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+//        MBProgressHUD.showAdded(to: self.view, animated: true)
+        var rsLoadingView = RSLoadingView()
+        rsLoadingView.shouldTapToDismiss = true
+        rsLoadingView.variantKey = "inAndOut"
+        rsLoadingView.speedFactor = 3.0
+        rsLoadingView.lifeSpanFactor = 1.0
+        rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
 
+        rsLoadingView.mainColor = UIColor.midnightBlue()
+        rsLoadingView.showOnKeyWindow()
+        loadingView = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
-        User.getUserFromFirebase(usrId: (User.currentLoginUserId())!) { (usr, error) in
+        ClozrUser.getUserFromFirebase(usrId: (ClozrUser.currentLoginUserId())!) { (usr, error) in
                 currentLoggedInUser = usr
                 self.userReady = true
                 self.determineMyCurrentLocation()
@@ -75,7 +86,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    func updateOneSignal(user:User?) {
+    func updateOneSignal(user:ClozrUser?) {
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
 //        let hasPrompted = status.permissionStatus.hasPrompted
 //        let userStatus = status.permissionStatus.status
@@ -83,12 +94,12 @@ class HomeViewController: UIViewController {
 //        let userSubscriptionSetting = status.subscriptionStatus.userSubscriptionSetting
         let oneSignalID = status.subscriptionStatus.userId
         user?.oneSignalId = oneSignalID
-        User.updateChildValues(userId: (user?.userId)!, vals: ["oneSignalId" : oneSignalID as Any])
+        ClozrUser.updateChildValues(userId: (user?.userId)!, vals: ["oneSignalId" : oneSignalID as Any])
 //        let pushToken = status.subscriptionStatus.pushToken
     }
     
     @IBAction func signout(_ sender: Any) {
-        try! FIRAuth.auth()!.signOut()
+        try! Auth.auth().signOut()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "loginController") as! LoginScreenViewController
         self.present(vc, animated: true, completion: nil)
@@ -112,9 +123,11 @@ class HomeViewController: UIViewController {
             self.sectionedEvents[0] = evts
             self.sectionTitles[0] = "Suggested"
             self.eventsTableView.reloadData()
-            MBProgressHUD.hide(for: self.view, animated: true)
-
-
+//            MBProgressHUD.hide(for: self.view, animated: true)
+            if(self.loadingView) {
+             RSLoadingView.hideFromKeyWindow()
+                self.loadingView = false
+            }
         }
     }
     @IBAction func moreEvents(_ sender: Any) {
@@ -228,7 +241,7 @@ extension HomeViewController : CLLocationManagerDelegate  {
             Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLatitude, val: currentLatitude!)
             Clozer.savePreferenceDouble(name: Clozer.Preferences.lastLongitude, val: currentLongitude!)
             if let cuser = currentLoggedInUser {
-                User.updateChildValues(userId: cuser.userId!, vals: ["latitude" : currentLatitude as Any, "longitude" : currentLongitude as Any]);
+                ClozrUser.updateChildValues(userId: cuser.userId!, vals: ["latitude" : currentLatitude as Any, "longitude" : currentLongitude as Any]);
             }
         }
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate

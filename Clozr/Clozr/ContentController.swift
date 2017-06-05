@@ -25,7 +25,7 @@ class ContentController: UIViewController {
     var currrent:UIViewController?
     var viewControllerWidth: CGFloat!
     
-    var currentUser: User!
+    var currentUser: ClozrUser!
     var beginningMargin: CGFloat!
     var trailingMargin: CGFloat!
     

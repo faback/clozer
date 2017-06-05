@@ -16,9 +16,9 @@ public class Channel:NSObject {
     
     public var id : String!
     
-    var snapshot: FIRDataSnapshot! = nil
+    var snapshot: DataSnapshot! = nil
 
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         self.snapshot = snapshot
         super.init()
         setAllValues(dictionary: snapshot.value as? [String:Any])

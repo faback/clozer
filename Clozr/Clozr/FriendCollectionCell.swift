@@ -18,7 +18,7 @@ class FriendCollectionCell: UICollectionViewCell {
     
     var indexRow:Int?
     
-    var friend:User!  {
+    var friend:ClozrUser!  {
         didSet {
             if(friend != nil) {
                 layoutFriend()

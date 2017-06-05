@@ -10,8 +10,8 @@ import Foundation
 import Firebase
 
 let base = "https://clozer-ebbea.firebaseio.com"
-var database: FIRDatabase = FIRDatabase.database()
-var currentLoggedInUser:User?
+var database: Database = Database.database()
+var currentLoggedInUser:ClozrUser?
 public protocol UserInviteDelegate: class {
     func passEvent(event:Event)
 }
@@ -23,7 +23,7 @@ protocol UserChangesProtocol  {
 }
 
 
-class User:NSObject {
+class ClozrUser:NSObject {
     
     static var users = database.reference().child("users")
     static var events = database.reference().child("events")
@@ -38,9 +38,9 @@ class User:NSObject {
     var name: String! = nil
     var oneSignalId: String! = nil
     var relationshipStatus: String! = nil
-    var friends = ([User]())
+    var friends = ([ClozrUser]())
     var isClozerUser:Bool = false
-    private static var _current: User! = nil
+    private static var _current: ClozrUser! = nil
     var firId:String! = nil
     var invitedEvents:[String]! = [String]()
     public var address : String?
@@ -53,15 +53,15 @@ class User:NSObject {
     
     // referrence: https://developers.facebook.com/docs/graph-api/reference/user
     
-    var snapshot: FIRDataSnapshot! = nil
+    var snapshot: DataSnapshot! = nil
     var key: String { return snapshot.key }
-    var ref: FIRDatabaseReference { return snapshot.ref }
+    var ref: DatabaseReference { return snapshot.ref }
     var userId:String?
     
     var myCurrentEventInvites = [Event]()
-    static var current:User?
+    static var current:ClozrUser?
     
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         
         self.snapshot = snapshot
         
@@ -171,7 +171,7 @@ class User:NSObject {
     
     func setUserId() {
         if let mail = self.email {
-            self.userId = User.getEmailStripped(mailID:mail )
+            self.userId = ClozrUser.getEmailStripped(mailID:mail )
         }else{
             if let fname = firstName , let lname = lastName {
                 self.userId = fname + lname
@@ -219,7 +219,7 @@ class User:NSObject {
         invitedEvents.append(evt)
     }
     
-    class func createMe(userUid:FIRUser? , user:User?) {
+    class func createMe(userUid:User? , user:ClozrUser?) {
         if let fbuser = user  {
             if let firebaseDetails = userUid {
                 fbuser.firId = firebaseDetails.uid
@@ -241,7 +241,7 @@ class User:NSObject {
     }
     
     
-    class func createOrUpdateUserInFirebase(user:User?) {
+    class func createOrUpdateUserInFirebase(user:ClozrUser?) {
         user?.setUserId()
         var dictionary = user?.dictionaryRepresentation() as! [String:Any]
         if( (user?.invitedEvents.count)! > 0 ) {
@@ -251,8 +251,8 @@ class User:NSObject {
             users.child("/\(usrId)").setValue(dictionary)
         }
         
-        if(user?.userId == User.currentLoginUserId())  {
-            User.current = current
+        if(user?.userId == ClozrUser.currentLoginUserId())  {
+            ClozrUser.current = current
         }
     }
     
@@ -262,7 +262,7 @@ class User:NSObject {
         usrRef.updateChildValues(vals)
     }
     
-    class func tryAndCreate(user:User?) {
+    class func tryAndCreate(user:ClozrUser?) {
         var dictionary = user?.dictionaryRepresentation() as! [String:Any]
         user?.setUserId()
         
@@ -296,27 +296,27 @@ class User:NSObject {
     
     
     
-    class func getUserFromFirebase(usrId: String,completion: @escaping (User?, Error?) -> Void){
+    class func getUserFromFirebase(usrId: String,completion: @escaping (ClozrUser?, Error?) -> Void){
         let usrRef = users.child("/\(usrId)")
         
         usrRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let usr = User(snapshot: snapshot)
+            let usr = ClozrUser(snapshot: snapshot)
             completion(usr,nil)
             usrRef.removeAllObservers()
         })
     }
     
     
-    class func getAllUserFromFirebase(completion: @escaping ([User]?, Error?) -> Void){
+    class func getAllUserFromFirebase(completion: @escaping ([ClozrUser]?, Error?) -> Void){
         
-        var usrArray = [User]()
+        var usrArray = [ClozrUser]()
         let usrRef = users
         
         usrRef.queryOrderedByKey().observe(.value, with: { (snapshot) in
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
-                    let u = User(snapshot: snap)
+                    let u = ClozrUser(snapshot: snap)
                     usrArray.append(u)
                 }
             }

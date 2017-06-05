@@ -12,8 +12,8 @@ import FBSDKLoginKit
 import FirebaseAuth
 
 class FBClient {
-    static var currentFacebookUser:User!
-    static var friends:[User]!
+    static var currentFacebookUser:ClozrUser!
+    static var friends:[ClozrUser]!
     
     class func getUsersFriends(completionHandler:((Any?, Error?) -> ())? = nil) {
         if(friends == nil) {
@@ -36,16 +36,16 @@ class FBClient {
     }
     
     class func getFriendsList(_ data:[String : AnyObject]) {
-        var friendsArray : [User] = []
+        var friendsArray : [ClozrUser] = []
         var friendsUserIds :[String] = []
         //try to parse friends
         if let data = data["data"] as? [[String: AnyObject]] {
             for userData:[String: AnyObject] in data {
-                if let friend = User(dictionary: userData) {
+                if let friend = ClozrUser(dictionary: userData) {
                     friend.setUserId()
                     friendsArray.append(friend)
                     friendsUserIds.append(friend.id!)
-                    User.tryAndCreate(user: friend)
+                    ClozrUser.tryAndCreate(user: friend)
                 }
             }
             currentFacebookUser.friends = friendsArray

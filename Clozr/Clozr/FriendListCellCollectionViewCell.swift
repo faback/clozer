@@ -31,7 +31,7 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
     
     func setProfileImage() {
         self.friendImage.image = nil
-        User.getUserFromFirebase(usrId: user, completion: { (usrF, error) in
+        ClozrUser.getUserFromFirebase(usrId: user, completion: { (usrF, error) in
             if let usrF = usrF {
                 var fullNameArr = usrF.name.components(separatedBy: " ")
                 let firstName: String = fullNameArr[0]

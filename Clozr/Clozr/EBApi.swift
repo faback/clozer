@@ -80,7 +80,9 @@ class EBApi {
                                     let addressDict = venueResult["address"]  as? [String:Any]
                                     var addr = ""
                                     if let ad  = addressDict {
-                                        addr = ad["localized_address_display"] as! String
+                                        if let anotheradd = ad["localized_address_display"] as? String {
+                                            addr = anotheradd
+                                        }
                                     }
                                     eventDict["address"] = addr
                                     let lat = venueResult["latitude"] as! String

@@ -65,15 +65,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.promptForPushNotifications(userResponse: { accepted in
                         print("User accepted notifications: \(accepted)")
         })
-        FIRApp.configure()
+        FirebaseApp.configure()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        let loggedinUser = FIRAuth.auth()?.currentUser
+        let loggedinUser = Auth.auth().currentUser
         if loggedinUser != nil  {
 //            FIRAuth.signOut(FIRAuth.auth()!)
-            if let currentLoginId = User.currentLoginUserId() {
-                User.getUserFromFirebase(usrId: currentLoginId, completion: { (usr1, error) in
+            if let currentLoginId = ClozrUser.currentLoginUserId() {
+                ClozrUser.getUserFromFirebase(usrId: currentLoginId, completion: { (usr1, error) in
                     FBClient.currentFacebookUser = usr1
                     FBClient.getUsersFriends()
                     

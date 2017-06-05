@@ -105,7 +105,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
             for dict in invitedUsers {
                 let allKeys = dict.keys
                 for usr in allKeys {
-                    if(usr == User.currentLoginUserId()) {
+                    if(usr == ClozrUser.currentLoginUserId()) {
                         selectedIndex = index
                     }
                     
@@ -115,7 +115,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         event.invitedUserIds.remove(at: selectedIndex)
-        event.invitedUserIds.append([User.currentLoginUserId()! : response])
+        event.invitedUserIds.append([ClozrUser.currentLoginUserId()! : response])
         
         Event.updateChildValues(eventId: event.id, vals: ["invitedUserIds" : event.invitedUserIds ])
     }

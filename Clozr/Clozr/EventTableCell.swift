@@ -24,7 +24,7 @@ class EventTableCell: UITableViewCell {
     @IBOutlet weak var friendsCollectionTable: UICollectionView!
     
     var indexRow:Int?
-    var users = [(User,Int)]()
+    var users = [(ClozrUser,Int)]()
     var count = 0
     var event:Event!  {
         didSet {
@@ -65,7 +65,7 @@ class EventTableCell: UITableViewCell {
             for dict in invitedUsers {
                 let allKeys = dict.keys
                 for usr in allKeys {
-                    if(usr == User.currentLoginUserId()) {
+                    if(usr == ClozrUser.currentLoginUserId()) {
                         selectedIndex = index
                     }
                     
@@ -75,14 +75,14 @@ class EventTableCell: UITableViewCell {
         }
         
         event.invitedUserIds.remove(at: selectedIndex)
-        event.invitedUserIds.append([User.currentLoginUserId()! : true])
+        event.invitedUserIds.append([ClozrUser.currentLoginUserId()! : true])
         
         Event.updateChildValues(eventId: event.id, vals: ["invitedUserIds" : event.invitedUserIds ])
         var userAcceptingIndex = 0
-        var userAccepting:User?
+        var userAccepting:ClozrUser?
         var counter = 0
         for ua in users {
-            if(ua.0.userId == User.currentLoginUserId()) {
+            if(ua.0.userId == ClozrUser.currentLoginUserId()) {
                 userAcceptingIndex = counter
                 userAccepting = ua.0
             }
@@ -98,7 +98,7 @@ class EventTableCell: UITableViewCell {
     
     func disableJoinButton() {
         var buttonLabel = "Joined"
-        if(event.createdBy == User.currentLoginUserId()) {
+        if(event.createdBy == ClozrUser.currentLoginUserId()) {
             buttonLabel = "Hosting"
         }
         joinDeclineButton.setTitle(buttonLabel, for: .normal)
@@ -163,7 +163,7 @@ class EventTableCell: UITableViewCell {
     
     func enableOrDisableButton(){
         if let cby = event.createdBy {
-            let lusr = User.currentLoginUserId()
+            let lusr = ClozrUser.currentLoginUserId()
             if( cby == lusr) {
                 disableJoinButton()
             }else{
@@ -173,7 +173,7 @@ class EventTableCell: UITableViewCell {
     }
     
     func inviteUsers() {
-        self.users =  [(User,Int)]()
+        self.users =  [(ClozrUser,Int)]()
         
         var totalCount:Int = 0
         var acceptedCount:Int = 0
@@ -188,11 +188,11 @@ class EventTableCell: UITableViewCell {
                     if(accepted!){
                         acc = 1
                         acceptedCount = acceptedCount + 1
-                        if(usr == User.currentLoginUserId()){
+                        if(usr == ClozrUser.currentLoginUserId()){
                             disableJoinButton()
                         }
                     }
-                    User.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
+                    ClozrUser.getUserFromFirebase(usrId: usr, completion: { (usrF, error) in
                         self.appendUsers(usrTuple: (usrF!,acc))
                         self.count += 1;
                         var constraintConstant = CGFloat((self.count * 50 ) + 7 )
@@ -213,7 +213,7 @@ class EventTableCell: UITableViewCell {
         }
     }
     
-    func appendUsers(usrTuple:(User,Int)) {
+    func appendUsers(usrTuple:(ClozrUser,Int)) {
         var exists:Bool = false
         for existingUser in self.users {
             if(existingUser.0.userId == usrTuple.0.userId) {

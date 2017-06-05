@@ -39,11 +39,11 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     var eventTime: String!
     var dateFormat = "HH:mm MM/dd/YYYY"
     var event:Event!
-    var friends : [User]!
-    var invitedFriends = [User]()
+    var friends : [ClozrUser]!
+    var invitedFriends = [ClozrUser]()
     var delegate: CreateEventViewDelegate!
     var selectedIndexPaths = [IndexPath: Bool]()
-    var clozrFriends = [User]()
+    var clozrFriends = [ClozrUser]()
     var showTime: String!
     var selectedMovieDate: Date!
     var theaterName: String!
@@ -58,7 +58,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         initSubView()
     }
     
-    func appendUsers(usr:User) {
+    func appendUsers(usr:ClozrUser) {
         var exists:Bool = false
         for existingUser in self.clozrFriends {
             if(existingUser.userId == usr.userId) {
@@ -95,11 +95,11 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         
         var once:Int = 0
         
-        User.getAllUserFromFirebase { (allFriends, error) in
+        ClozrUser.getAllUserFromFirebase { (allFriends, error) in
             if(once == 0) {
                 
                 once = 1
-                self.clozrFriends = [User]()
+                self.clozrFriends = [ClozrUser]()
                 for usr in allFriends! {
                     if(usr.isClozerUser) {
 //                        if !self.clozrFriends.contains(usr){
@@ -239,7 +239,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
     func createEvent(sender: UIView?=nil){
         
         
-        User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (usr, error) in
+        ClozrUser.getUserFromFirebase(usrId: ClozrUser.currentLoginUserId()!) { (usr, error) in
             currentLoggedInUser = usr
             let uuid = UUID().uuidString
             self.event.id = uuid
@@ -247,13 +247,13 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             if let uid = usr?.userId {
                 let me = usr
                 me?.addEvent(evt: self.event.id!)
-                User.createOrUpdateUserInFirebase(user: me)
+                ClozrUser.createOrUpdateUserInFirebase(user: me)
             }else {
                 let me = usr
                 me?.addEvent(evt: self.event.id!)
-                User.createOrUpdateUserInFirebase(user: me)
+                ClozrUser.createOrUpdateUserInFirebase(user: me)
             }
-            self.event.createdBy = User.currentLoginUserId()
+            self.event.createdBy = ClozrUser.currentLoginUserId()
             var oneSignalIds:[String]  = [String]()
 //            if let os  = currentLoggedInUser?.oneSignalId {
 //                oneSignalIds.append(os)
@@ -271,7 +271,7 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
                     accepted = true
                 }
                 friend.addEvent(evt: self.event.id)
-                User.createOrUpdateUserInFirebase(user: friend)
+                ClozrUser.createOrUpdateUserInFirebase(user: friend)
                 self.event.inviteUser(userId: (friend.userId)!, accepted: accepted)
             }
             

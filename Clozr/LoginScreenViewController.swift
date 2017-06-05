@@ -16,10 +16,10 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var loginBackGroundImage: UIImageView!
     
     
-    var currentFacebookUser : User!
+    var currentFacebookUser : ClozrUser!
     fileprivate var retryCounter  = 0
     fileprivate let maxRetries = 3
-    var currentFirUser:FIRUser?
+    var currentFirUser:User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +66,10 @@ class LoginScreenViewController: UIViewController {
                 return
             }
             
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
             // Perform login by calling Firebase APIs
-            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -106,23 +106,23 @@ class LoginScreenViewController: UIViewController {
                 }
                 else {
                     if let data:[String:AnyObject] = result as? [String : AnyObject] {
-                        let user = User(dictionary: data )
+                        let user = ClozrUser(dictionary: data )
                         user?.setUserId()
                         
                         if let fbuser = user {
                             self.currentFacebookUser = fbuser
-                            let user = FIRAuth.auth()?.currentUser
+                            let user = Auth.auth().currentUser
                             self.currentFirUser = user
                             
-                            User.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
+                            ClozrUser.getUserFromFirebase(usrId: fbuser.userId!, completion: { (userFromFirebase, error) in
                                 if let userId = userFromFirebase?.userId {
                                     let defaults = UserDefaults.standard
-                                    defaults.set(userId, forKey: User.currentUserDataKeyId)
+                                    defaults.set(userId, forKey: ClozrUser.currentUserDataKeyId)
                                     self.performNavAndAddFriends()
                                 }else{
                                     let defaults = UserDefaults.standard
-                                    defaults.set(fbuser.userId!, forKey: User.currentUserDataKeyId)
-                                    User.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
+                                    defaults.set(fbuser.userId!, forKey: ClozrUser.currentUserDataKeyId)
+                                    ClozrUser.createMe(userUid: self.currentFirUser!, user: self.currentFacebookUser)
                                     self.performNavAndAddFriends()
                                 }
                                 
@@ -172,9 +172,9 @@ extension LoginScreenViewController {
             return
         }
         
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+        Auth.auth().signIn(with: credential, completion: { (user, error) in
             
             guard error == nil else {
                 print (error ?? "")
@@ -189,7 +189,7 @@ extension LoginScreenViewController {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        try! FIRAuth.auth()!.signOut()
+        try! Auth.auth().signOut()
         print ("User log out of facebook")
     }
 }

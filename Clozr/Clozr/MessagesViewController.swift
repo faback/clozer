@@ -14,23 +14,23 @@ import Photos
 class MessagesViewController: JSQMessagesViewController {
 
     weak var event: Event!
-    var channelRef: FIRDatabaseReference?
+    var channelRef: DatabaseReference?
     var channel: Channel?
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-    private lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
-    private var newMessageRefHandle: FIRDatabaseHandle?
+    private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
+    private var newMessageRefHandle: DatabaseHandle?
     
-    lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://clozer-ebbea.appspot.com")
+    lazy var storageRef: StorageReference = Storage.storage().reference(forURL: "gs://clozer-ebbea.appspot.com")
     private let imageURLNotSetKey = "NOTSET"
     private var photoMessageMap = [String: JSQPhotoMediaItem]()
-    private var updatedMessageRefHandle: FIRDatabaseHandle?
+    private var updatedMessageRefHandle: DatabaseHandle?
     
-    private lazy var usersTypingQuery: FIRDatabaseQuery =
+    private lazy var usersTypingQuery: DatabaseQuery =
         self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
-    private lazy var userIsTypingRef: FIRDatabaseReference =
+    private lazy var userIsTypingRef: DatabaseReference =
         self.channelRef!.child("typingIndicator").child(self.senderId) // 1
     private var localTyping = false // 2
     var isTyping: Bool {
@@ -55,8 +55,8 @@ class MessagesViewController: JSQMessagesViewController {
             self.observeTyping()
         }
         
-        self.senderId = FIRAuth.auth()?.currentUser?.uid
-        self.senderDisplayName = FIRAuth.auth()?.currentUser?.displayName
+        self.senderId = Auth.auth().currentUser?.uid
+        self.senderDisplayName = Auth.auth().currentUser?.displayName
         title = event.name
         
         // No avatars
@@ -116,17 +116,18 @@ class MessagesViewController: JSQMessagesViewController {
     
     private func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
         // 1
-        let storageRef = FIRStorage.storage().reference(forURL: photoURL)
+        let storageRef = Storage.storage().reference(forURL: photoURL)
         
         // 2
-        storageRef.data(withMaxSize: INT64_MAX){ (data, error) in
+        
+        storageRef.getData(maxSize: INT64_MAX){ (data, error) in
             if let error = error {
                 print("Error downloading image data: \(error)")
                 return
             }
             
             // 3
-            storageRef.metadata(completion: { (metadata, metadataErr) in
+            storageRef.getMetadata(completion: { (metadata, metadataErr) in
                 if let error = metadataErr {
                     print("Error downloading metadata: \(error)")
                     return
@@ -230,7 +231,7 @@ class MessagesViewController: JSQMessagesViewController {
         userIsTypingRef = typingIndicatorRef.child(senderId)
         userIsTypingRef.onDisconnectRemoveValue()
         
-        usersTypingQuery.observe(.value) { (data: FIRDataSnapshot) in
+        usersTypingQuery.observe(.value) { (data: DataSnapshot) in
             // 2 You're the only one typing, don't show the indicator
             if data.childrenCount == 1 && self.isTyping {
                 return
@@ -258,7 +259,7 @@ class MessagesViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         let message = messages[indexPath.item]
-        let id:String? = FIRAuth.auth()?.currentUser?.uid
+        let id:String? = Auth.auth().currentUser?.uid
         if let id = id {
             switch message.senderId {
             case id:
@@ -276,7 +277,7 @@ class MessagesViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
         let message = messages[indexPath.item]
-        let id:String? = FIRAuth.auth()?.currentUser?.uid
+        let id:String? = Auth.auth().currentUser?.uid
         if let id = id {
             switch message.senderId {
             case id:
@@ -343,10 +344,10 @@ extension MessagesViewController: UIImagePickerControllerDelegate, UINavigationC
                     let imageFileURL = contentEditingInput?.fullSizeImageURL
                     
                     // 5
-                    let path = "\(FIRAuth.auth()?.currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
+                    let path = "\(Auth.auth().currentUser?.uid ?? "")/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
                     
                     // 6
-                    self.storageRef.child(path).putFile(imageFileURL!, metadata: nil) { (metadata, error) in
+                    self.storageRef.child(path).putFile(from: imageFileURL!, metadata: nil) { (metadata, error) in
                         if let error = error {
                             print("Error uploading photo: \(error.localizedDescription)")
                             return
@@ -364,12 +365,12 @@ extension MessagesViewController: UIImagePickerControllerDelegate, UINavigationC
                 // 3
                 let imageData = UIImageJPEGRepresentation(image, 1.0)
                 // 4
-                let imagePath = FIRAuth.auth()!.currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+                let imagePath = Auth.auth().currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
                 // 5
-                let metadata = FIRStorageMetadata()
+                let metadata = StorageMetadata()
                 metadata.contentType = "image/jpeg"
                 // 6
-                storageRef.child(imagePath).put(imageData!, metadata: metadata) { (metadata, error) in
+                storageRef.child(imagePath).putData(imageData!, metadata: metadata) { (metadata, error) in
                     if let error = error {
                         print("Error uploading photo: \(error)")
                         return

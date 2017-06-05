@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 import DGElasticPullToRefresh
+import RSLoadingView
 
 class EventsListViewController: UIViewController,UserChangesProtocol {
     
@@ -23,7 +24,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var events:[Int:Any] = [Int:Any]()
     var sections:[Int:String] = [Int:String]()
     var locCell:Bool = false
-    var currentUser :User?
+    var currentUser :ClozrUser?
     var comingFromCreate:Bool?
     var eventFromCreate:Event?
     override func viewDidLoad() {
@@ -91,7 +92,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         }//
         
         if let fetchingUser = currentUser {
-            User.getUserFromFirebase(usrId: fetchingUser.userId!) { (userFetched, error) in
+            ClozrUser.getUserFromFirebase(usrId: fetchingUser.userId!) { (userFetched, error) in
                 self.currentUser = userFetched
                 self.reloadData(user: fetchingUser,show: show)
             }
@@ -101,13 +102,13 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
                 self.navigationItem.title = "\(firstName)'s Events"
             }
             
-            if fetchingUser.userId == User.currentLoginUserId()! {
+            if fetchingUser.userId == ClozrUser.currentLoginUserId()! {
                 self.navigationItem.title = "My Events"
             }
             
         }else {
 
-                User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (loggedInUser, error) in
+                ClozrUser.getUserFromFirebase(usrId: ClozrUser.currentLoginUserId()!) { (loggedInUser, error) in
                     currentLoggedInUser = loggedInUser
                     self.currentUser = loggedInUser
                     
@@ -130,11 +131,21 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     }
     
     
-    func reloadData(user:User? , show:Bool) {
+    func reloadData(user:ClozrUser? , show:Bool) {
         
         user?.delegate = self
         if(show) {
-            MBProgressHUD.showAdded(to: self.view, animated: true)
+            var rsLoadingView = RSLoadingView()
+            rsLoadingView.shouldTapToDismiss = true
+            rsLoadingView.variantKey = "inAndOut"
+            rsLoadingView.speedFactor = 3.0
+            rsLoadingView.lifeSpanFactor = 1.0
+            rsLoadingView.mainColor = UIColor.midnightBlue()
+            rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
+
+            rsLoadingView.showOnKeyWindow()
+//            loadingView = true
+
         }
         user?.getInvitedEvents();
     }
@@ -143,7 +154,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         
         self.eventsTable.reloadData()
         if(show) {
-            MBProgressHUD.hide(for: self.view, animated: true)
+//            MBProgressHUD.hide(for: self.view, animated: true)
+            RSLoadingView.hideFromKeyWindow()
         }
     }
     
