@@ -22,15 +22,13 @@ target 'Clozr' do
   pod 'DGElasticPullToRefresh’
   pod 'RAMAnimatedTabBarController', '~> 2.0.13'
   pod 'JSQMessagesViewController'
-
+  pod 'SwiftGifOrigin', '~> 1.6.1'
 
   target 'ClozrTests' do
     inherit! :search_paths
     # Pods for testing
   end
   
-  
-
 end
 target 'OnesignalNotificationServiceExtension' do
     use_frameworks!

@@ -57,7 +57,6 @@
 		43A42AE51EC00D7400A2BD80 /* HomeEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */; };
 		43A42AE61EC00D7400A2BD80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */; };
 		43A42AE71EC00D7400A2BD80 /* icehockey.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ACD1EC00D7400A2BD80 /* icehockey.png */; };
-		43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43A42ACE1EC00D7400A2BD80 /* Info.plist */; };
 		43A42AEB1EC00D8000A2BD80 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AE91EC00D8000A2BD80 /* LocalStore.swift */; };
 		43A42AEC1EC00D8000A2BD80 /* LocEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */; };
 		43A42AF11EC00D8E00A2BD80 /* SettingsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */; };
@@ -211,7 +210,6 @@
 		43A42ACB1EC00D7400A2BD80 /* HomeEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeEventsCell.swift; sourceTree = "<group>"; };
 		43A42ACC1EC00D7400A2BD80 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		43A42ACD1EC00D7400A2BD80 /* icehockey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icehockey.png; sourceTree = "<group>"; };
-		43A42ACE1EC00D7400A2BD80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43A42AE91EC00D8000A2BD80 /* LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
 		43A42AEA1EC00D8000A2BD80 /* LocEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocEventCell.swift; sourceTree = "<group>"; };
 		43A42AEE1EC00D8D00A2BD80 /* SettingsCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -588,7 +586,6 @@
 			children = (
 				43B85F301EAE5E6B003721CE /* Info.plist */,
 				437980E01EC9194300A17FC1 /* Clozr.entitlements */,
-				43A42ACE1EC00D7400A2BD80 /* Info.plist */,
 				437980DE1EC917FF00A17FC1 /* GoogleService-Info.plist */,
 			);
 			name = Configurations;
@@ -833,7 +830,6 @@
 				43A42B081EC0167500A2BD80 /* noimage.png in Resources */,
 				43A42B1E1EC03ECB00A2BD80 /* soccer.png in Resources */,
 				43A42B041EC0136800A2BD80 /* tvshows.png in Resources */,
-				43A42AE81EC00D7400A2BD80 /* Info.plist in Resources */,
 				43A42AE21EC00D7400A2BD80 /* gametime.png in Resources */,
 				43A42ADE1EC00D7400A2BD80 /* friends22.png in Resources */,
 				437980DF1EC917FF00A17FC1 /* GoogleService-Info.plist in Resources */,
