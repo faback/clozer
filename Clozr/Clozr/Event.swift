@@ -114,13 +114,14 @@ public class Event:NSObject {
         createdBy = dictionary?["createdBy"] as? String
         selectedTheater = dictionary?["selectedTheater"] as? String
         movieId = dictionary?["movieId"] as? String
+        id = dictionary?["id"] as? String
         theaters = [Theater]()
         if let iu = dictionary?["invitedUserIds"] as? [[String:Bool]] {
             invitedUserIds = iu
         }
-        if let eventID = (Event.getSpaceStripped(val: name!)) {
-            id = eventID + source
-        }
+//        if let eventID = (Event.getSpaceStripped(val: name!)) {
+//            id = eventID + source
+//        }
     }
 
     
@@ -173,15 +174,12 @@ public class Event:NSObject {
     
     
     class func getEventFromFirebase(uniqueId: String,completion: @escaping (Event?, Error?) -> Void){
-        let uniqueId:String? = getSpaceStripped(val: uniqueId)
-        
-        if let uid = uniqueId {
-            let eventRef = events.child("/\(uid)")
+        let uid = uniqueId
+        let eventRef = events.child("/\(uid)")
         eventRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let event = Event(snapshot: snapshot)
             completion(event,nil)
         })
-        }
     }
     
     

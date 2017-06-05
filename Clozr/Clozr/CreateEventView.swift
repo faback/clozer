@@ -241,6 +241,9 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
         
         User.getUserFromFirebase(usrId: User.currentLoginUserId()!) { (usr, error) in
             currentLoggedInUser = usr
+            let uuid = UUID().uuidString
+            self.event.id = uuid
+
             if let uid = usr?.userId {
                 let me = usr
                 me?.addEvent(evt: self.event.id!)
@@ -273,7 +276,6 @@ class CreateEventView: UIView, UITableViewDelegate, UITableViewDataSource, Creat
             }
             
             self.event.inviteUser(userId: (currentLoggedInUser?.userId)! , accepted: true)
-            
             Event.createOrUpdateEventInFirebase(event: self.event, eventDt: self.eventDate, eventTm: self.eventTime)
             
             // Create chat channel for this event.

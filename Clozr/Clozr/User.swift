@@ -210,11 +210,6 @@ class User:NSObject {
         }else{
             self.delegate?.onAddedEvent(evt: nil,show: true)
         }
-        //        let when = DispatchTime.now() + 4 // change 2 to desired number of seconds
-        //        DispatchQueue.main.asyncAfter(deadline: when) {
-        //            self.delegate?.reloadTable(show:true)
-        //        }
-        
     }
     
     

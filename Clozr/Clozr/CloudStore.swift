@@ -24,21 +24,6 @@ class CloudStore {
     private var settings = database.reference().child("settings")
     
        
-
-    
-    func createOrUpdateEvent(evt:Event?) {
-        if evt != nil  {
-            
-        }
-    }
-    
-    
-    func createOrUpdateLiveEvent(evt:LiveEvent?) {
-        if let event = evt  {
-            
-        }
-    }
-    
     
     
 }
