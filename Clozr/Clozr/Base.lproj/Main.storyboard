@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2uJ-RX-xf0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2uJ-RX-xf0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -230,7 +230,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6V-LM-FkJ">
-                                                    <rect key="frame" x="8" y="215" width="359" height="1"/>
+                                                    <rect key="frame" x="8" y="233.5" width="359" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="uee-YQ-KwX"/>
@@ -242,13 +242,13 @@
                                                 <constraint firstItem="0sj-WU-Rv7" firstAttribute="leading" secondItem="RQg-N4-n49" secondAttribute="trailing" constant="6" id="7kD-kK-tLl"/>
                                                 <constraint firstItem="eOM-vQ-cvn" firstAttribute="leading" secondItem="0sj-WU-Rv7" secondAttribute="trailing" constant="-3" id="9Ty-tt-48y"/>
                                                 <constraint firstItem="RQg-N4-n49" firstAttribute="top" secondItem="3i3-Yh-Qa0" secondAttribute="bottom" constant="11" id="9kV-8u-PYB"/>
-                                                <constraint firstItem="k6V-LM-FkJ" firstAttribute="top" secondItem="eOM-vQ-cvn" secondAttribute="bottom" constant="7" id="Cj1-Aj-KZA"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RQg-N4-n49" secondAttribute="bottom" constant="13" id="JH4-kP-L3u"/>
                                                 <constraint firstAttribute="trailing" secondItem="k6V-LM-FkJ" secondAttribute="trailing" constant="8" id="Le6-V6-pmM"/>
                                                 <constraint firstItem="eOM-vQ-cvn" firstAttribute="top" secondItem="3i3-Yh-Qa0" secondAttribute="bottom" constant="13" id="MNX-zG-3Ad"/>
                                                 <constraint firstItem="0sj-WU-Rv7" firstAttribute="top" secondItem="3i3-Yh-Qa0" secondAttribute="bottom" constant="11" id="T3O-Tj-FuQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="3i3-Yh-Qa0" secondAttribute="trailing" id="VXe-TN-Wf8"/>
                                                 <constraint firstAttribute="trailing" secondItem="eOM-vQ-cvn" secondAttribute="trailing" constant="5" id="a0a-C5-QoW"/>
+                                                <constraint firstItem="k6V-LM-FkJ" firstAttribute="bottom" secondItem="0sj-WU-Rv7" secondAttribute="bottom" constant="7" id="dJ4-F8-gjg"/>
                                                 <constraint firstItem="RQg-N4-n49" firstAttribute="leading" secondItem="mo8-DE-wkf" secondAttribute="leading" constant="8" id="eZu-Xt-oGx"/>
                                                 <constraint firstItem="3i3-Yh-Qa0" firstAttribute="top" secondItem="mo8-DE-wkf" secondAttribute="top" id="h3p-vT-rov"/>
                                                 <constraint firstItem="k6V-LM-FkJ" firstAttribute="leading" secondItem="mo8-DE-wkf" secondAttribute="leading" constant="8" id="iaW-sE-X5h"/>
@@ -265,14 +265,14 @@
                                         <rect key="frame" x="0.0" y="476" width="375" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="A4G-zL-RMd" id="AdT-jH-lwc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNs-S2-4nb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-gH-TLo">
-                                                            <rect key="frame" x="153.5" y="28" width="68" height="48"/>
+                                                            <rect key="frame" x="154" y="31" width="68" height="38.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -280,17 +280,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.22352941179999999" green="0.39607843139999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="OHf-Qk-VOL"/>
-                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerY" secondItem="yNs-S2-4nb" secondAttribute="centerY" id="uM2-Yv-yhN"/>
-                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerX" secondItem="yNs-S2-4nb" secondAttribute="centerX" id="xST-aG-9IW"/>
+                                                        <constraint firstAttribute="height" constant="100" id="Bfh-3Z-hPM"/>
+                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerY" secondItem="yNs-S2-4nb" secondAttribute="centerY" id="e9R-3d-zhg"/>
+                                                        <constraint firstItem="cT0-gH-TLo" firstAttribute="centerX" secondItem="yNs-S2-4nb" secondAttribute="centerX" id="nRg-tF-ajI"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="yNs-S2-4nb" firstAttribute="leading" secondItem="AdT-jH-lwc" secondAttribute="leading" id="1Hn-8O-ocg"/>
-                                                <constraint firstAttribute="trailing" secondItem="yNs-S2-4nb" secondAttribute="trailing" id="9iN-6B-pAe"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yNs-S2-4nb" secondAttribute="bottom" constant="10" id="gPZ-cN-4Fm"/>
-                                                <constraint firstItem="yNs-S2-4nb" firstAttribute="top" secondItem="AdT-jH-lwc" secondAttribute="top" id="yJ0-hj-vG5"/>
+                                                <constraint firstItem="yNs-S2-4nb" firstAttribute="leading" secondItem="AdT-jH-lwc" secondAttribute="leading" id="KvX-BG-TE3"/>
+                                                <constraint firstItem="yNs-S2-4nb" firstAttribute="top" secondItem="AdT-jH-lwc" secondAttribute="top" id="THm-Bd-Byc"/>
+                                                <constraint firstAttribute="trailing" secondItem="yNs-S2-4nb" secondAttribute="trailing" id="jBK-sW-uEB"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yNs-S2-4nb" secondAttribute="bottom" constant="10" id="trz-j1-Pfk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -690,7 +690,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventDetailNav" automaticallyAdjustsScrollViewInsets="NO" id="2tC-Is-gVo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="UNb-03-DD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="UNb-03-DD3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1527,7 +1527,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="uUj-vL-jA1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uUj-vL-jA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1756,7 +1756,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="JzX-nX-55d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JzX-nX-55d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1799,7 +1799,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GWH-yV-dg6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GWH-yV-dg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.17254901959999999" green="0.31764705879999999" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -1841,7 +1841,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="DHQ-RJ-Tsb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DHQ-RJ-Tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1882,9 +1882,9 @@
         <image name="settingstab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dHx-1r-LCF"/>
-        <segue reference="Vij-K3-8Gs"/>
+        <segue reference="blN-ml-52E"/>
         <segue reference="85b-vg-Y1f"/>
         <segue reference="EbY-d4-66r"/>
+        <segue reference="dHx-1r-LCF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -255,7 +255,39 @@ class MessagesViewController: JSQMessagesViewController {
             return incomingBubbleImageView
         }
     }
-
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        let id:String? = FIRAuth.auth()?.currentUser?.uid
+        if let id = id {
+            switch message.senderId {
+            case id:
+                return nil
+            default:
+                guard let senderDisplayName = message.senderDisplayName else {
+                    assertionFailure()
+                    return nil
+                }
+                return NSAttributedString(string: senderDisplayName)
+            }
+        }
+        return nil
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        let message = messages[indexPath.item]
+        let id:String? = FIRAuth.auth()?.currentUser?.uid
+        if let id = id {
+            switch message.senderId {
+            case id:
+                return 0
+            default:
+                return 15
+            }
+        }
+        return 0
+    }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
