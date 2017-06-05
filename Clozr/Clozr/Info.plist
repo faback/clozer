@@ -53,6 +53,10 @@
 	<string>Do you allow this app to know your current location?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Do you allow this app to know your current location?</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Do you allow this app to use camera for chat?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Do you allow this app to access Photo library for chat?</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
