@@ -184,7 +184,7 @@ public class Event:NSObject {
     
     
     
-    class func getEvents(mainCategory:String , subCategory:String , completionHandler:@escaping ([Event])->()){
+    class func getEvents(mainCategory:String , subCategory:String , offset:Int=0, completionHandler:@escaping ([Event])->()){
         
         if(mainCategory == "watch"  && subCategory == "movies") {
             MovieDB.sharedInstance.withMovies(endPoint: "now_playing") { (movieEvents) in
@@ -200,14 +200,13 @@ public class Event:NSObject {
         
         if(mainCategory == "play" || mainCategory == "catchup") {
              if(subCategory != "local") {
-                YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, completion: { (results, error) in
+                YelpClient.sharedInstance.yelpSearch(subCategory, subCat: subCategory, offset: offset, completion: { (results, error) in
                     if error != nil  {
                          completionHandler([])
                     }
                     else{
                         completionHandler(results!)
                     }
-                    
             })
              } else {
                 EBApi.sharedInstance.withEvents(completionHandler: { (events) in

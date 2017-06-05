@@ -26,6 +26,7 @@
 		375964D01EBBEA5300D592AA /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CD1EBBEA5300D592AA /* DateTimePicker.swift */; };
 		375964D11EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */; };
 		375964D61EBD13F800D592AA /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375964D51EBD13F800D592AA /* YelpClient.swift */; };
+		37860C2F1EE38965002FFF3E /* InfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37860C2E1EE38965002FFF3E /* InfiniteScrollView.swift */; };
 		37D367161EBE959F004B7679 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367151EBE959F004B7679 /* CreateEventViewController.swift */; };
 		37D367181EBF7DA9004B7679 /* SelectMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */; };
 		37D367201EBF9DB2004B7679 /* MovieDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */; };
@@ -178,6 +179,7 @@
 		375964CD1EBBEA5300D592AA /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		375964CE1EBBEA5300D592AA /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		375964D51EBD13F800D592AA /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		37860C2E1EE38965002FFF3E /* InfiniteScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollView.swift; sourceTree = "<group>"; };
 		37D367151EBE959F004B7679 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMovieViewController.swift; sourceTree = "<group>"; };
 		37D3671F1EBF9DB2004B7679 /* MovieDisplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDisplayCell.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				375964C21EBA30B400D592AA /* BusinessViewController.swift */,
 				37D367171EBF7DA9004B7679 /* SelectMovieViewController.swift */,
 				37D367151EBE959F004B7679 /* CreateEventViewController.swift */,
+				37860C2E1EE38965002FFF3E /* InfiniteScrollView.swift */,
 			);
 			name = create;
 			sourceTree = "<group>";
@@ -741,7 +744,6 @@
 				TargetAttributes = {
 					43B85F201EAE5E6B003721CE = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 636RY68X3J;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -767,11 +769,10 @@
 					};
 					43DAF25B1EC92BB6007AA0BA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 636RY68X3J;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -893,7 +894,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		848FCE2E368B379912755C00 /* [CP] Embed Pods Frameworks */ = {
@@ -938,7 +939,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B37B6DA20C9DB9E0C329FB21 /* [CP] Embed Pods Frameworks */ = {
@@ -983,7 +984,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1039,6 +1040,7 @@
 				43A42ADB1EC00D7400A2BD80 /* FriendCollectionCell.swift in Sources */,
 				43A42B021EC0109800A2BD80 /* ContentController.swift in Sources */,
 				43A42AD81EC00D7400A2BD80 /* CloudStore.swift in Sources */,
+				37860C2F1EE38965002FFF3E /* InfiniteScrollView.swift in Sources */,
 				375964C11EBA2F4200D592AA /* PinAnnotation.swift in Sources */,
 				375964C31EBA30B400D592AA /* BusinessViewController.swift in Sources */,
 				8F5977221EBE65BC0076992B /* EventDetailsMessagesCell.swift in Sources */,
@@ -1228,7 +1230,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clozr/Clozr.entitlements;
-				DEVELOPMENT_TEAM = 636RY68X3J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Clozr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozer;
@@ -1244,7 +1246,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clozr/Clozr.entitlements;
-				DEVELOPMENT_TEAM = 636RY68X3J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Clozr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozer;
@@ -1313,8 +1315,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8492D21BB7AAFEA48A95D19C /* Pods-OnesignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OnesignalNotificationServiceExtension/OnesignalNotificationServiceExtension.entitlements;
-				DEVELOPMENT_TEAM = 636RY68X3J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnesignalNotificationServiceExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozer.OnesignalNotificationServiceExtension;
@@ -1328,8 +1329,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 073ABAB4C552CA74CB14BD76 /* Pods-OnesignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OnesignalNotificationServiceExtension/OnesignalNotificationServiceExtension.entitlements;
-				DEVELOPMENT_TEAM = 636RY68X3J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnesignalNotificationServiceExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faback.Clozer.OnesignalNotificationServiceExtension;

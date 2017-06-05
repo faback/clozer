@@ -11,16 +11,12 @@ import UIKit
 class BusinessTableCell: UITableViewCell {
 
     
-    @IBOutlet weak var businessCellMainView: UIView!
     @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var ratingImageView: UIImageView!
-    @IBOutlet weak var ratingsCountLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var CuisineTypeLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var dollarLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneImage: UIImageView!
     
     var event: Event!{
         didSet{
@@ -51,6 +47,10 @@ class BusinessTableCell: UITableViewCell {
             addressLabel.text = event.address
             distanceLabel.text = event.distance
             phoneNumberLabel.text = event.phone
+            if event.phone == nil {
+                phoneImage.isHidden = true
+            }
+            
 //            ratingsCountLabel.text = "\(business.reviewCount!) Reviews"
 //            ratingImageView.setImageWith(business.ratingImageURL!)
 //            CuisineTypeLabel.text = business.categories

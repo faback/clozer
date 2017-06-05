@@ -10,8 +10,11 @@ import UIKit
 
 class FriendTableCell: UITableViewCell {
 
-    @IBOutlet weak var friendNameLabel: UILabel!
+//    @IBOutlet weak var friendNameLabel: UILabel!
+//    @IBOutlet weak var friendImageView: UIImageView!
+//    @IBOutlet weak var friendPhoneNoLabel: UILabel!
     @IBOutlet weak var friendImageView: UIImageView!
+    @IBOutlet weak var friendNameLabel: UILabel!
     @IBOutlet weak var friendPhoneNoLabel: UILabel!
     var friend: ClozrUser!{
         didSet{

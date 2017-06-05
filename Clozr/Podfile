@@ -24,6 +24,8 @@ target 'Clozr' do
   pod 'JSQMessagesViewController'
   pod 'SwiftGifOrigin', '~> 1.6.1'
   pod 'RSLoadingView', '~> 1.1'
+  pod 'NVActivityIndicatorView'
+
   target 'ClozrTests' do
     inherit! :search_paths
     # Pods for testing

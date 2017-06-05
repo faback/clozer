@@ -86,9 +86,9 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     var offset = 0
     
     
-    func yelpSearch(_ searchTerm: String, subCat:String , completion: @escaping ([Event]?, Error?) -> Void) -> AFHTTPRequestOperation {
+    func yelpSearch(_ searchTerm: String, subCat:String , offset:Int=0, completion: @escaping ([Event]?, Error?) -> Void) -> AFHTTPRequestOperation {
         
-        let distance = 5.0
+        let distance = 20.0
         let term = searchTerm
         //        let sort  = 0
         var yelplat = 37.785771
@@ -173,7 +173,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                                         } else {
                                             eventDict["image"] = m["image_url"] as? String
                                         }
-                                        eventDict["address"] = address
+                                        eventDict["address"] = fullAddress
                                         eventDict["latitude"] = lat
                                         eventDict["longitude"] = lon
                                         let distance: String?
