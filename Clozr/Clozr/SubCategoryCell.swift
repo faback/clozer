@@ -44,7 +44,7 @@ class SubCategoryCell: UICollectionViewCell {
             tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         }
         categoryIcon.image = tintedImage
-        categoryIcon.tintColor = UIColor.blue
+        categoryIcon.tintColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
 
     }
     

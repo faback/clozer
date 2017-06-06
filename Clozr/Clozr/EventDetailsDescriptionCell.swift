@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class EventDetailsDescriptionCell: UITableViewCell {
 
     @IBOutlet weak var monthLabel: UILabel!
