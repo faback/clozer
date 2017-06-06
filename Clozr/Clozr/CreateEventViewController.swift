@@ -8,7 +8,7 @@
 
 import UIKit
 import FlatUIKit
-
+import RAMAnimatedTabBarController
 protocol CreateEventViewControllerDelegate {
     func setEvent(event: Event)
 }
@@ -241,22 +241,10 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
     
     func performSegueToListEventsController(event: Event) {
         self.eventFromCreateEventViewToListEventsVC = event
-        performSegue(withIdentifier: "fromCreateEventToListEvents", sender: nil)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        //        let vc = segue.destination as! EventsListViewController
-        //        vc.newEventFromCreateEventView = self.eventFromCreateEventViewToListEventsVC
-        //        vc.comingFromCreateEvent = true
-        //        vc.eventFromCreate = event
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let vc = storyboard.instantiateViewController(withIdentifier: "contentController") as! ContentController
-        let vc = segue.destination as! ContentController
-        vc.navName = Clozer.Nav.liveEventNav
-        
-        
-        
-        
+        self.tabBarController?.selectedIndex = 1
+        if let ramTBC = self.tabBarController as? RAMAnimatedTabBarController {
+            ramTBC.setSelectIndex(from: 0, to: 1)
+        }
     }
     
     func appendUsers(usr:ClozrUser) {
