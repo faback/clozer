@@ -9,8 +9,7 @@
 import UIKit
 //import MBProgressHUD
 import DGElasticPullToRefresh
-import RSLoadingView
-
+import NVActivityIndicatorView
 class EventsListViewController: UIViewController,UserChangesProtocol {
     
     @IBOutlet weak var eventsTable: UITableView!
@@ -27,10 +26,15 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     var currentUser :ClozrUser?
     var comingFromCreate:Bool?
     var eventFromCreate:Event?
+    var loadingView:Bool = false
+    var activityIndicatorView: NVActivityIndicatorView = Styles.activityIndicatorBig()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
+        self.loadingView = true
+        activityIndicatorView.startAnimating()
         category = Category.mainCategory
         subCategory = Category.subCategory
         events[0] = [Event]()
@@ -65,6 +69,12 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         
     }
     
+    
+    func setupActivityIndicator(){
+        activityIndicatorView.center = CGPoint(x: self.view.bounds.size.width/2 , y: self.view.bounds.size.height/2 - 60)
+        self.view.addSubview(activityIndicatorView)
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         
         Styles.styleNav(controller: self)
@@ -76,12 +86,11 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         
         if(!comingFromCreate!) {
             reloadEvents(show:true)
+          
         }else{
             self.refreshEnded()
-            
-            //            reloadEvents(show:false)
+        //reloadEvents(show:false)
         }
-        
     }
     
     func reloadEvents(show:Bool) {
@@ -135,15 +144,7 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         
         user?.delegate = self
         if(show) {
-            var rsLoadingView = RSLoadingView()
-            rsLoadingView.shouldTapToDismiss = true
-            rsLoadingView.variantKey = "inAndOut"
-            rsLoadingView.speedFactor = 3.0
-            rsLoadingView.lifeSpanFactor = 1.0
-            rsLoadingView.mainColor = UIColor.midnightBlue()
-            rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
-
-            rsLoadingView.showOnKeyWindow()
+           
 //            loadingView = true
 
         }
@@ -151,12 +152,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
     }
     
     func reloadTable(show:Bool) {
-        
+        activityIndicatorView.stopAnimating()
         self.eventsTable.reloadData()
-        if(show) {
-//            MBProgressHUD.hide(for: self.view, animated: true)
-            RSLoadingView.hideFromKeyWindow()
-        }
     }
     
     

@@ -81,9 +81,9 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9.2)
+  - NVActivityIndicatorView (3.6.1)
   - OneSignal (2.5.4)
   - RAMAnimatedTabBarController (2.0.13)
-  - RSLoadingView (1.1.0)
   - SwiftGifOrigin (1.6.1)
 
 DEPENDENCIES:
@@ -100,10 +100,10 @@ DEPENDENCIES:
   - FlatUIKit
   - JSQMessagesViewController
   - MBProgressHUD (~> 0.9.1)
+  - NVActivityIndicatorView
   - OneSignal (< 3.0, >= 2.5.2)
   - OneSignal (~> 2.0)
   - RAMAnimatedTabBarController (~> 2.0.13)
-  - RSLoadingView (~> 1.1)
   - SwiftGifOrigin (~> 1.6.1)
 
 SPEC CHECKSUMS:
@@ -127,11 +127,11 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   OneSignal: da994bcf6a2efbdceaf71e389e1d05245c562899
   RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
-  RSLoadingView: b9cdf4970da28e5d4b306784688e640696dd80d3
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
 
-PODFILE CHECKSUM: 94e0e0d812a01b4a16588faf17832f646d66a7f5
+PODFILE CHECKSUM: 206014fbcd8a01d052b6a4aa2aff1a4f1a54c15f
 
 COCOAPODS: 1.2.1

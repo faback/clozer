@@ -13,8 +13,7 @@ import BetterSegmentedControl
 import MapKit
 //import MBProgressHUD
 import OneSignal
-import RSLoadingView
-
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
     var locationManager:CLLocationManager!
@@ -36,23 +35,14 @@ class HomeViewController: UIViewController {
     var sectionTitles = [Int: String]()
     var userReady:Bool = false
     var selectedIndexPath:IndexPath!
-    var loadingView:Bool = false
-    
+    var activityIndicatorView: NVActivityIndicatorView = Styles.activityIndicatorBig()
+    var coverView:UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tabBarController?.tabBar.tintColor = UIColor.white
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
-        var rsLoadingView = RSLoadingView()
-        rsLoadingView.shouldTapToDismiss = true
-        rsLoadingView.variantKey = "inAndOut"
-        rsLoadingView.speedFactor = 3.0
-        rsLoadingView.lifeSpanFactor = 1.0
-        rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
-
-        rsLoadingView.mainColor = UIColor.midnightBlue()
-        rsLoadingView.showOnKeyWindow()
-        loadingView = true
+        Styles.setupActivityIndicator(indicator: activityIndicatorView, inView: self.view)
+        coverView =  Styles.startAnimating(inView: self.view, indicator: activityIndicatorView)
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
         ClozrUser.getUserFromFirebase(usrId: (ClozrUser.currentLoginUserId())!) { (usr, error) in
@@ -84,7 +74,7 @@ class HomeViewController: UIViewController {
         changeButtonTitle()
         reloadEventsData()
     }
-    
+   
     
     func updateOneSignal(user:ClozrUser?) {
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
@@ -123,11 +113,8 @@ class HomeViewController: UIViewController {
             self.sectionedEvents[0] = evts
             self.sectionTitles[0] = "Suggested"
             self.eventsTableView.reloadData()
-//            MBProgressHUD.hide(for: self.view, animated: true)
-            if(self.loadingView) {
-             RSLoadingView.hideFromKeyWindow()
-                self.loadingView = false
-            }
+            
+            Styles.stopAnimating(coverView: self.coverView!, indicator: self.activityIndicatorView)
         }
     }
     @IBAction func moreEvents(_ sender: Any) {
@@ -142,7 +129,7 @@ class HomeViewController: UIViewController {
     }
     
     func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        
+        activityIndicatorView.startAnimating()
         if sender.index == 0 {
             mainCategory = Category.getWatch()
             categoriesHeight.constant = 100

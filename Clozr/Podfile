@@ -23,7 +23,6 @@ target 'Clozr' do
   pod 'RAMAnimatedTabBarController', '~> 2.0.13'
   pod 'JSQMessagesViewController'
   pod 'SwiftGifOrigin', '~> 1.6.1'
-  pod 'RSLoadingView', '~> 1.1'
   pod 'NVActivityIndicatorView'
 
   target 'ClozrTests' do

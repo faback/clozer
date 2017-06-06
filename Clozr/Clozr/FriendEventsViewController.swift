@@ -8,8 +8,7 @@
 
 import UIKit
 //import MBProgressHUD
-import RSLoadingView
-
+import NVActivityIndicatorView
 class FriendEventsViewController: UIViewController {
 
     
@@ -18,6 +17,7 @@ class FriendEventsViewController: UIViewController {
     var nonClozrFriends = [ClozrUser]()
     var sections = ["Clozr Friends", "Invite Your Friends"]
     var loadingView:Bool = false
+    var activityIndicatorView: NVActivityIndicatorView = Styles.activityIndicatorBig()
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
@@ -31,16 +31,9 @@ class FriendEventsViewController: UIViewController {
         }
         
 //        MBProgressHUD.showAdded(to: self.view, animated: true)
-        var rsLoadingView = RSLoadingView()
-        rsLoadingView.shouldTapToDismiss = true
-        rsLoadingView.variantKey = "inAndOut"
-        rsLoadingView.speedFactor = 3.0
-        rsLoadingView.lifeSpanFactor = 1.0
-        rsLoadingView.dimBackgroundColor = UIColor.black.withAlphaComponent(0.2)
-        rsLoadingView.mainColor = UIColor.midnightBlue()
-        rsLoadingView.showOnKeyWindow()
+        setupActivityIndicator()
         loadingView = true
-
+        activityIndicatorView.startAnimating()
         var once:Int = 0
         ClozrUser.getAllUserFromFirebase { (allFriends, error) in
             if(once == 0) {
@@ -62,12 +55,7 @@ class FriendEventsViewController: UIViewController {
                 once = 1
 
                 self.collectionView.reloadData()
-//                MBProgressHUD.hide(for: self.view, animated: true)
-                if(self.loadingView) {
-                    RSLoadingView.hideFromKeyWindow()
-                    self.loadingView = false
-                }
-
+                self.activityIndicatorView.stopAnimating()
 
             }
         }
@@ -92,6 +80,11 @@ class FriendEventsViewController: UIViewController {
     }
     
 
+    func setupActivityIndicator(){
+        activityIndicatorView.center = CGPoint(x: self.view.bounds.size.width/2 , y: self.view.bounds.size.height/2 - 60)
+        self.view.addSubview(activityIndicatorView)
+
+    }
     
     // MARK: - Navigation
 
