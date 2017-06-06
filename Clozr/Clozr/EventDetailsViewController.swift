@@ -47,13 +47,14 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLayoutSubviews()
 
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,22 +63,22 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.section == 0 {
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsDescriptionCell", for: indexPath) as! EventDetailsDescriptionCell
             cell.event = self.event
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 1 {
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsFriendsListCell", for: indexPath) as! EventDetailsFriendsListCell
             cell.event = self.event
             return cell
-        } else if indexPath.section == 2{
+        } else {
             let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsMapCell", for: indexPath) as! EventDetailsMapCell
             cell.event = self.event
             return cell
-        } else {
-            let cell = eventDetailsTableView.dequeueReusableCell(withIdentifier: "EventDetailsMessagesCell", for: indexPath) as! EventDetailsMessagesCell
-            cell.event = self.event
-            return cell
         }
-        
+    
     }
+    
+
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         eventDetailsTableView.deselectRow(at: indexPath, animated: true)
