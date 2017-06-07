@@ -13,6 +13,7 @@ import AFNetworking
 
 class MyCustomPointAnnotation: MKPointAnnotation {
     var imageURL: String? = nil
+    var event: Event? = nil
 }
 
 class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {

@@ -430,6 +430,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapButton" destination="q6i-eG-bD5" id="LeI-tF-9dO"/>
                         <outlet property="mapView" destination="NHR-7l-HYL" id="SpK-wV-czr"/>
                         <outlet property="tableView" destination="QR0-Y4-wuJ" id="5dc-bv-8F0"/>
                         <segue destination="LJv-OL-Y6R" kind="show" identifier="BusinessToCreateEvent" id="Vij-K3-8Gs"/>
