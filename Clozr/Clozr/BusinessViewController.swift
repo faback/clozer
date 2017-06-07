@@ -9,9 +9,10 @@
 import UIKit
 import MapKit
 
-class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate, ListBusinessViewDelegate  {
+class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, MKMapViewDelegate,CLLocationManagerDelegate, ListBusinessViewDelegate  {
 
     
+    @IBOutlet weak var mapButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     var category:Category?
@@ -22,9 +23,16 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     var isMoreDataLoading = false
     var loadingMoreView: InfiniteScrollView?
     var isTableViewShowing: Bool = true
+    let manager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        manager.distanceFilter = 1.0
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
        // contentView.delegate = self
         
 //        let picker = DateTimePicker.show(view: contentView)
@@ -45,8 +53,9 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.estimatedRowHeight = 100
         
         mapView.delegate = self
+        mapView.showsUserLocation = true
         
-        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollView.defaultHeight)
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         loadingMoreView = InfiniteScrollView(frame: frame)
         loadingMoreView!.isHidden = true
         tableView.addSubview(loadingMoreView!)
@@ -92,25 +101,75 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
             
             var takeAroundCoordinates:CLLocationCoordinate2D?
             
-            for event in evts {
-                if let latitude = event.latitude , let longitude = event.longitude {
-                    let pinLocation = CLLocationCoordinate2DMake(latitude,longitude)
-                    if(!doOnce){
-                        takeAroundCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    }
-                    doOnce = true
-                    
-                    // self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true)
-                    let pin = PinAnnotation(title: event.name!, coordinate: pinLocation)
-                    pinArray.append(pin)
-                }
-            }
-            let zoomLevel:Int = 10
-            let clLocationCordinate = takeAroundCoordinates
+            if self.category?.name != "Watch"{
             
-            let span = MKCoordinateSpanMake(0, 360 / pow(2, Double(zoomLevel)) * Double(self.mapView.frame.size.width) / 256)
-            self.mapView.setRegion(MKCoordinateRegionMake(clLocationCordinate!, span), animated: true)
-            self.mapView.addAnnotations(pinArray)
+                for event in evts {
+                    if let latitude = event.latitude , let longitude = event.longitude {
+                        let pinLocation = CLLocationCoordinate2DMake(latitude,longitude)
+                        if(!doOnce){
+                            takeAroundCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        }
+                        doOnce = true
+                        
+                        // self.businessMapView.setRegion(MKCoordinateRegionMakeWithDistance(pinLocation, 2000, 2000), animated: true
+
+                        let pin = MyCustomPointAnnotation()// PinAnnotation(title: event.name!, coordinate: pinLocation)
+                        pin.coordinate = pinLocation
+                        pin.title = event.name!
+                        pin.event = event
+                        self.mapView.addAnnotation(pin)
+                        
+                       // pinArray.append(pin)
+                    }
+                }
+                let zoomLevel:Int = 10
+                let clLocationCordinate = takeAroundCoordinates
+                
+                let span = MKCoordinateSpanMake(0, 360 / pow(2, Double(zoomLevel)) * Double(self.mapView.frame.size.width) / 256)
+                self.mapView.setRegion(MKCoordinateRegionMake(clLocationCordinate!, span), animated: true)
+                //self.mapView.addAnnotations(pinArray)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+
+            } else {
+                self.mapButton.isEnabled = false
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is MyCustomPointAnnotation) {
+            return nil
+        }
+        let castAnnotation = annotation as? MyCustomPointAnnotation
+        
+        if castAnnotation == nil {
+            return nil
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "destination")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: castAnnotation, reuseIdentifier: "destination")
+            annotationView?.canShowCallout = true
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+        } else {
+            annotationView?.annotation = castAnnotation
+        }
+        
+        if castAnnotation?.imageURL == nil {
+            annotationView?.image = UIImage(named: "destination")
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+            
+        }
+        return annotationView
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if let annot = view.annotation as? MyCustomPointAnnotation {
+           performSeguetoCreateEvent(event: annot.event!)
         }
     }
     
@@ -133,7 +192,9 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         performSeguetoCreateEvent(event: events[indexPath.row])
+        
     }
 
     
