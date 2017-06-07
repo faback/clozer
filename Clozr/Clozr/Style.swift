@@ -50,6 +50,10 @@ class Styles {
 
     }
     
+    class func themeColor()->UIColor {
+        return UIColor(fromHexCode: "0x3b5998")
+    }
+    
     class func startAnimating(inView:UIView,indicator:NVActivityIndicatorView)->UIView {
         indicator.startAnimating()
         return showDimLayer(inView: inView)

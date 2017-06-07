@@ -146,7 +146,7 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
             timeFormatter.dateFormat = self.dateFormat
             //let timeDate = timeFormatter.string(from: selectedMovieDate)
             formatter.dateStyle = .medium //self.dateFormat
-            self.addDateButton.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:1)
+            self.addDateButton.backgroundColor = Styles.themeColor()
 //            self.plusImageView.isHidden = true
 //            self.addDateandTimelabel.isHidden = true
 //            self.displayDateLabel.isHidden = false
@@ -161,7 +161,7 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
            // self.displayDateLabel.textColor = UIColor.white
            // self.displayDateLabel.text = formatter.string(from: selectedMovieDate)
             self.eventDate = formatter.string(from: selectedMovieDate)
-            self.createEventView.backgroundColor = UIColor(red: 57.0/255.0, green: 101.0/255.0, blue: 169.0/255.0, alpha:0.8)
+            self.createEventView.backgroundColor = Styles.themeColor()
             self.createEventLabel.textColor = UIColor.white
             self.createEventView.isUserInteractionEnabled = true
             self.mainView.bringSubview(toFront: createEventView)
@@ -207,8 +207,8 @@ class CreateEventViewController: UIViewController,UITableViewDelegate, UITableVi
                     if res != nil {
                         self.backgroundImageView.alpha = 0.5
                         self.backgroundImageView.image = result
-                        UIView.animate(withDuration: 3.0, animations: { () -> Void in
-                            self.backgroundImageView.alpha = 0.4
+                        UIView.animate(withDuration: 2.0, animations: { () -> Void in
+                            self.backgroundImageView.alpha = 1
                         })
                     }else{
                         self.backgroundImageView.image = result
