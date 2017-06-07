@@ -40,6 +40,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.viewControllers?[1].tabBarItem.badgeColor = UIColor(fromHexCode: "0x3b5998")
+        self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = "2"
+
         Styles.setupActivityIndicator(indicator: activityIndicatorView, inView: self.view)
         coverView =  Styles.startAnimating(inView: self.view, indicator: activityIndicatorView)
         
