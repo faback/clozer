@@ -46,6 +46,8 @@ class EventsListViewController: UIViewController,UserChangesProtocol {
         eventsTable.dataSource = self
         eventsTable.rowHeight = UITableViewAutomaticDimension
         eventsTable.estimatedRowHeight = 100
+        self.tabBarController?.selectedViewController?.tabBarItem.badgeColor = UIColor(fromHexCode: "0x3b5998")
+        self.tabBarController?.selectedViewController?.tabBarItem.badgeValue = "2"
         
         // HACK! Remove the black line at the end of Nav bar.
         let view = UIView()

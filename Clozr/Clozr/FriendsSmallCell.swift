@@ -38,10 +38,11 @@ class FriendsSmallCell: UICollectionViewCell {
                     self.friendsImage.image = result
                 }
                 self.friendsImage.layer.borderWidth = 1
+                
                 if(self.acc == 0){
-                    self.friendsImage.layer.borderColor =  UIColor.red.cgColor
+                    self.friendsImage.layer.borderColor =  UIColor.red.withAlphaComponent(0.6).cgColor
                 }else{
-                    self.friendsImage.layer.borderColor =  UIColor.greenSea().cgColor
+                    self.friendsImage.layer.borderColor =  UIColor.greenSea().withAlphaComponent(0.6).cgColor
                 }
                 self.friendsImage.layer.cornerRadius = 17.6
                 self.friendsImage.layer.masksToBounds = true

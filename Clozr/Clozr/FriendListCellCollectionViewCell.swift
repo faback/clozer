@@ -20,10 +20,10 @@ class FriendListCellCollectionViewCell: UICollectionViewCell {
             friendImage.layer.borderWidth = 3
             if accepted {
                 ResponseImage.image = UIImage(named:"icons8-checked")
-                friendImage.layer.borderColor =  UIColor.greenSea().cgColor
+                friendImage.layer.borderColor =  UIColor.greenSea().withAlphaComponent(0.6).cgColor
             } else {
                 ResponseImage.image = UIImage(named:"icons8-cancel")
-                friendImage.layer.borderColor =  UIColor.red.cgColor
+                friendImage.layer.borderColor =  UIColor.red.withAlphaComponent(0.6).cgColor
             }
             
         }
